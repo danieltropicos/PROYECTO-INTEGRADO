@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Proyecto_Integrador.Modelos
+namespace Proyecto_Integrador.Controladores
 {
-    internal class Usuario
+    internal class ClienteControlador
     {
     }
 }
