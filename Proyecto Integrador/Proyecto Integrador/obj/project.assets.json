@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\gxngt\\source\\repos\\Proyecto Integrador\\Proyecto Integrador\\Proyecto Integrador.csproj",
+      "projectUniqueName": "C:\\Users\\gxngt\\source\\repos\\PROYECTO-INTEGRADO\\Proyecto Integrador\\Proyecto Integrador\\Proyecto Integrador.csproj",
       "projectName": "Proyecto Integrador",
-      "projectPath": "C:\\Users\\gxngt\\source\\repos\\Proyecto Integrador\\Proyecto Integrador\\Proyecto Integrador.csproj",
+      "projectPath": "C:\\Users\\gxngt\\source\\repos\\PROYECTO-INTEGRADO\\Proyecto Integrador\\Proyecto Integrador\\Proyecto Integrador.csproj",
       "packagesPath": "C:\\Users\\gxngt\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\gxngt\\source\\repos\\Proyecto Integrador\\Proyecto Integrador\\obj\\",
+      "outputPath": "C:\\Users\\gxngt\\source\\repos\\PROYECTO-INTEGRADO\\Proyecto Integrador\\Proyecto Integrador\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -77,7 +77,7 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.203/PortableRuntimeIdentifierGraph.json",
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.204/PortableRuntimeIdentifierGraph.json",
         "packagesToPrune": {
           "Microsoft.CSharp": "(,4.7.32767]",
           "Microsoft.VisualBasic": "(,10.4.32767]",
