@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Proyecto_Integrador.Controladores
 {
-    internal class UsuarioControladort
+    internal class UsuarioControlador
     {
     }
 }
