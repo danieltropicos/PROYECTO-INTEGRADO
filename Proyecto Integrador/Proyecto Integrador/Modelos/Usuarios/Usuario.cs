@@ -5,7 +5,7 @@ namespace Proyecto_Integrador.Modelos.Usuarios;
 
 public class Usuario : Persona
 {
-    const string CONSTRASENA_TEMPORAL = "Temp1234!";
+    private const string CONTRASENA_TEMPORAL = "Temp1234!";
     public string NombreUsuario { get; private set; }
     public Rol Rol { get; private set; }
     private string ContrasenaEncriptada { get; set; }
@@ -29,13 +29,21 @@ public class Usuario : Persona
     {
         NombreUsuario = nombreUsuario;
         Rol = rol;
-        ContrasenaEncriptada = HashContrasena(CONSTRASENA_TEMPORAL);
+
+        ContrasenaEncriptada = HashContrasena(CONTRASENA_TEMPORAL);
+        DebeCambiarContrasena = true;
     }
 
     public void CambiarContrasena(string nuevaContrasena)
     {
         ContrasenaEncriptada = HashContrasena(nuevaContrasena);
         DebeCambiarContrasena = false;
+    }
+
+    public bool ValidarContrasena(string contrasena)
+    {
+        return ContrasenaEncriptada ==
+            HashContrasena(contrasena);
     }
 
     private string HashContrasena(string contrasena)
