@@ -1,4 +1,7 @@
-﻿namespace Proyecto_Integrador.Modelos.Usuarios;
+﻿using System.Security.Cryptography;
+using System.Text;
+
+namespace Proyecto_Integrador.Modelos.Usuarios;
 
 public class Usuario : Persona
 {
@@ -37,9 +40,19 @@ public class Usuario : Persona
 
     private string HashContrasena(string contrasena)
     {
-        return Convert.ToBase64String(
-            System.Text.Encoding.UTF8
-                .GetBytes(contrasena)
-        );
+        using (SHA256 sha256 = SHA256.Create())
+        {
+            byte[] bytes = Encoding.UTF8.GetBytes(contrasena);
+            byte[] hash = sha256.ComputeHash(bytes);
+
+            StringBuilder sb = new StringBuilder();
+
+            foreach (byte b in hash)
+            {
+                sb.Append(b.ToString("x2"));
+            }
+
+            return sb.ToString();
+        }
     }
 }

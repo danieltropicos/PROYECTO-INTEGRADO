@@ -7,40 +7,36 @@ public class Cotizacion
     public Guid Id { get; private set; } = Guid.NewGuid();
     public Cliente Cliente { get; private set; }
     public Usuario UsuarioCreador { get; private set; }
-    public decimal Largo { get; private set; }
-    public decimal Ancho { get; private set; }
-    public List<PuntoTerreno> Puntos { get; private set; } = new();
-    public decimal Volumen { get; private set; }
-    public DateTime FechaCreacion { get; private set; } = DateTime.Now;
-    public List<DetalleCotizacion> Detalles { get; private set; } = new();
-    public decimal Total { get; private set; }
+    public List<PuntoTerreno> TerrenoOriginal { get; private set; } = new();
+    public List<PuntoTerreno> TerrenoFinal { get; private set; } = new();
+    public decimal ValorMetroCubico { get; private set; }
+    public decimal VolumenCalculado { get; private set; }
+    public decimal Total => VolumenCalculado * ValorMetroCubico;
 
-    public Cotizacion(Cliente cliente, Usuario usuarioCreador, decimal largo, decimal ancho)
+    public DateTime FechaCreacion { get; private set; } = DateTime.Now;
+
+    public Cotizacion(
+        Cliente cliente,
+        Usuario usuarioCreador,
+        decimal valorMetroCubico)
     {
         Cliente = cliente;
         UsuarioCreador = usuarioCreador;
-        Largo = largo;
-        Ancho = ancho;
+        ValorMetroCubico = valorMetroCubico;
     }
 
-    public void AgregarPunto(PuntoTerreno punto)
+    public void AgregarPuntoOriginal(PuntoTerreno punto)
     {
-        Puntos.Add(punto);
+        TerrenoOriginal.Add(punto);
+    }
+
+    public void AgregarPuntoFinal(PuntoTerreno punto)
+    {
+        TerrenoFinal.Add(punto);
     }
 
     public void EstablecerVolumen(decimal volumen)
     {
-        Volumen = volumen;
-    }
-
-    public void AgregarDetalle(DetalleCotizacion detalle)
-    {
-        Detalles.Add(detalle);
-        CalcularTotal();
-    }
-
-    private void CalcularTotal()
-    {
-        Total = Detalles.Sum(d => d.Subtotal);
+        VolumenCalculado = volumen;
     }
 }
