@@ -6,5 +6,6 @@ namespace Proyecto_Integrador.Controladores
 {
     internal class ClienteControlador
     {
+
     }
 }
