@@ -1,11 +1,11 @@
 ﻿using System.Security.Cryptography;
 using System.Text;
+using System.Text.Json.Serialization;
 
 namespace Proyecto_Integrador.Modelos.Usuarios;
 
 public class Usuario : Persona
-{
-    private const string CONTRASENA_TEMPORAL = "Temp1234!";
+{    
     public string NombreUsuario { get; private set; }
     public string ContrasenaEncriptada { get; private set; }
     public Rol Rol { get; private set; }
@@ -29,10 +29,8 @@ public class Usuario : Persona
             direccion)
     {
         NombreUsuario = nombreUsuario;
-        Rol = rol;
-
-        ContrasenaEncriptada = HashContrasena(CONTRASENA_TEMPORAL);
-        DebeCambiarContrasena = true;
+        Rol = new Rol("Usuario");
+        ContrasenaEncriptada = HashContrasena(contrasenaUsuario);
     }
 
     public void CambiarContrasena(string nuevaContrasena)
