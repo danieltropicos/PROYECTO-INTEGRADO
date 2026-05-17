@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿namespace Proyecto_Integrador.Controladores;
 
-namespace Proyecto_Integrador.Controladores
+public class ClienteControlador
 {
-    internal class ClienteControlador
-    {
 
-    }
 }
