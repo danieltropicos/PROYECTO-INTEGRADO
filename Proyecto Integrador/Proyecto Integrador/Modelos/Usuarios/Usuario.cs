@@ -12,6 +12,27 @@ public class Usuario : Persona
 
     [JsonConstructor]
     public Usuario(
+    string nombre,
+    string apellido,
+    string correoElectronico,
+    string telefono,
+    string direccion,
+    string nombreUsuario,
+    string contrasenaEncriptada,
+    Rol rol)
+
+    : base(
+        nombre,
+        apellido,
+        correoElectronico,
+        telefono,
+        direccion)
+    {
+        NombreUsuario = nombreUsuario;
+        Rol = rol;
+        ContrasenaEncriptada = contrasenaEncriptada;
+    }
+    public Usuario(
         string nombre,
         string apellido,
         string correoElectronico,
