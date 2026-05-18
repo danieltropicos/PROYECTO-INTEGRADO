@@ -1,16 +1,38 @@
-﻿namespace Proyecto_Integrador.Modelos.Usuarios;
+﻿using System.Text.Json.Serialization;
+
+namespace Proyecto_Integrador.Modelos.Usuarios;
 
 public abstract class Persona
 {
-    public Guid Id { get; private set; } = Guid.NewGuid();
+    public Guid Id { get; private set; }
     public string Nombre { get; protected set; }
     public string Apellido { get; protected set; }
     public string CorreoElectronico { get; protected set; }
     public string Telefono { get; protected set; }
     public string Direccion { get; protected set; }
-    public bool EsActivo { get; protected set; } = true;
+    public bool EsActivo { get; set; } = true;
     public DateTime FechaRegistro { get; protected set; } = DateTime.Now;
 
+    [JsonConstructor]
+    protected Persona(
+    Guid id,
+    string nombre,
+    string apellido,
+    string correoElectronico,
+    string telefono,
+    string direccion,
+    bool esActivo,
+    DateTime fechaRegistro)
+    {
+        Id = id;
+        Nombre = nombre;
+        Apellido = apellido;
+        CorreoElectronico = correoElectronico;
+        Telefono = telefono;
+        Direccion = direccion;
+        EsActivo = esActivo;
+        FechaRegistro = fechaRegistro;
+    }
     protected Persona(
         string nombre,
         string apellido,
@@ -18,6 +40,7 @@ public abstract class Persona
         string telefono,
         string direccion)
     {
+        Id = Guid.NewGuid();
         Nombre = nombre;
         Apellido = apellido;
         CorreoElectronico = correoElectronico;
@@ -25,13 +48,8 @@ public abstract class Persona
         Direccion = direccion;
     }
 
-    public void Activar()
+    public void CambiarEstado(bool estado)
     {
-        EsActivo = true;
-    }
-
-    public void Desactivar()
-    {
-        EsActivo = false;
+        EsActivo = estado;
     }
 }

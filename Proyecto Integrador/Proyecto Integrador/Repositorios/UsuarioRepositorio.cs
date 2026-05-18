@@ -56,4 +56,20 @@ public class UsuarioRepositorio
         lista.Add(usuario);
         Guardar(lista);
     }
+    public void Actualizar(Usuario usuarioActualizado)
+    {
+        List<Usuario> lista = Leer();
+
+        for (int i = 0; i < lista.Count; i++)
+        {
+            if (lista[i].Id == usuarioActualizado.Id)
+            {
+                lista[i].CambiarEstado(usuarioActualizado.EsActivo);
+
+                break;
+            }
+        }
+
+        Guardar(lista);
+    }
 }

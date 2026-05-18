@@ -24,5 +24,9 @@ namespace Proyecto_Integrador.Controladores
         {
             usuarioRepositorio.Agregar(usuario);
         }
+        public void ActualizarUsuario(Usuario usuario)
+        {
+            usuarioRepositorio.Actualizar(usuario);
+        }
     }
 }

@@ -5,33 +5,40 @@ using System.Text.Json.Serialization;
 namespace Proyecto_Integrador.Modelos.Usuarios;
 
 public class Usuario : Persona
-{    
+{
     public string NombreUsuario { get; private set; }
     public string ContrasenaEncriptada { get; private set; }
     public Rol Rol { get; private set; }
 
     [JsonConstructor]
     public Usuario(
-    string nombre,
-    string apellido,
-    string correoElectronico,
-    string telefono,
-    string direccion,
-    string nombreUsuario,
-    string contrasenaEncriptada,
-    Rol rol)
-
-    : base(
-        nombre,
-        apellido,
-        correoElectronico,
-        telefono,
-        direccion)
+        Guid id,                        
+        string nombre,
+        string apellido,
+        string correoElectronico,
+        string telefono,
+        string direccion,
+        bool esActivo,                  
+        DateTime fechaRegistro,         
+        string nombreUsuario,
+        string contrasenaEncriptada,
+        Rol rol)
+        : base(
+            id,                         
+            nombre,
+            apellido,
+            correoElectronico,
+            telefono,
+            direccion,
+            esActivo,
+            fechaRegistro)
     {
         NombreUsuario = nombreUsuario;
-        Rol = rol;
         ContrasenaEncriptada = contrasenaEncriptada;
+        Rol = rol;
     }
+
+    //  usuarios nuevos
     public Usuario(
         string nombre,
         string apellido,
@@ -39,9 +46,9 @@ public class Usuario : Persona
         string telefono,
         string direccion,
         string nombreUsuario,
-        string contrasenaUsuario
-        )
-
+        string contrasena,
+        Rol rol,
+        bool encriptar)
         : base(
             nombre,
             apellido,
@@ -50,9 +57,10 @@ public class Usuario : Persona
             direccion)
     {
         NombreUsuario = nombreUsuario;
-        Rol = new Rol("Usuario");
-        ContrasenaEncriptada = HashContrasena(contrasenaUsuario);
+        Rol = rol;
+        ContrasenaEncriptada = HashContrasena(contrasena);
     }
+
 
     public void CambiarContrasena(string nuevaContrasena)
     {
