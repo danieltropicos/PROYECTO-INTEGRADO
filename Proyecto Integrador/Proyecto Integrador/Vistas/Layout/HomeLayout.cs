@@ -1,4 +1,5 @@
 ﻿using Proyecto_Integrador.Vistas.Cotizaciones;
+using Proyecto_Integrador.Vistas.Usuarios;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -28,7 +29,7 @@ namespace Proyecto_Integrador.Vistas.Layout
         //Boton Usuarios
         private void button1_Click(object sender, EventArgs e)
         {
-
+            AbrirVista(new RegistrarUsuariosControl());            
         }
 
         //Boton Clientes
