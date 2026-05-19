@@ -29,45 +29,53 @@
         private void InitializeComponent()
         {
             panel1 = new Panel();
-            label1 = new Label();
-            labelUsuario = new Label();
-            labelContraseña = new Label();
-            txtUsuario = new TextBox();
-            txtContraseña = new TextBox();
             btnIngresar = new Button();
+            txtContraseña = new TextBox();
+            txtUsuario = new TextBox();
+            labelContraseña = new Label();
+            labelUsuario = new Label();
+            label1 = new Label();
             panel1.SuspendLayout();
             SuspendLayout();
             // 
             // panel1
             // 
+            panel1.BackColor = SystemColors.ControlLight;
             panel1.Controls.Add(btnIngresar);
             panel1.Controls.Add(txtContraseña);
             panel1.Controls.Add(txtUsuario);
             panel1.Controls.Add(labelContraseña);
             panel1.Controls.Add(labelUsuario);
             panel1.Controls.Add(label1);
-            panel1.Location = new Point(161, 52);
+            panel1.Location = new Point(77, 33);
             panel1.Name = "panel1";
-            panel1.Size = new Size(589, 367);
+            panel1.Size = new Size(587, 571);
             panel1.TabIndex = 0;
             // 
-            // label1
+            // btnIngresar
             // 
-            label1.AutoSize = true;
-            label1.Location = new Point(159, 64);
-            label1.Name = "label1";
-            label1.Size = new Size(265, 20);
-            label1.TabIndex = 0;
-            label1.Text = "Biemvenido, Inicia sesion para acceder";
+            btnIngresar.FlatStyle = FlatStyle.Flat;
+            btnIngresar.Location = new Point(231, 250);
+            btnIngresar.Name = "btnIngresar";
+            btnIngresar.Size = new Size(123, 36);
+            btnIngresar.TabIndex = 5;
+            btnIngresar.Text = "Ingresar";
+            btnIngresar.UseVisualStyleBackColor = true;
+            btnIngresar.Click += btnIngresar_Click;
             // 
-            // labelUsuario
+            // txtContraseña
             // 
-            labelUsuario.AutoSize = true;
-            labelUsuario.Location = new Point(102, 144);
-            labelUsuario.Name = "labelUsuario";
-            labelUsuario.Size = new Size(62, 20);
-            labelUsuario.TabIndex = 1;
-            labelUsuario.Text = "Usuario:";
+            txtContraseña.Location = new Point(194, 182);
+            txtContraseña.Name = "txtContraseña";
+            txtContraseña.Size = new Size(276, 27);
+            txtContraseña.TabIndex = 4;
+            // 
+            // txtUsuario
+            // 
+            txtUsuario.Location = new Point(194, 141);
+            txtUsuario.Name = "txtUsuario";
+            txtUsuario.Size = new Size(276, 27);
+            txtUsuario.TabIndex = 3;
             // 
             // labelContraseña
             // 
@@ -78,38 +86,35 @@
             labelContraseña.TabIndex = 2;
             labelContraseña.Text = "Contraseña:";
             // 
-            // txtUsuario
+            // labelUsuario
             // 
-            txtUsuario.Location = new Point(194, 141);
-            txtUsuario.Name = "txtUsuario";
-            txtUsuario.Size = new Size(276, 27);
-            txtUsuario.TabIndex = 3;
+            labelUsuario.AutoSize = true;
+            labelUsuario.Location = new Point(102, 144);
+            labelUsuario.Name = "labelUsuario";
+            labelUsuario.Size = new Size(62, 20);
+            labelUsuario.TabIndex = 1;
+            labelUsuario.Text = "Usuario:";
             // 
-            // txtContraseña
+            // label1
             // 
-            txtContraseña.Location = new Point(194, 182);
-            txtContraseña.Name = "txtContraseña";
-            txtContraseña.Size = new Size(276, 27);
-            txtContraseña.TabIndex = 4;
-            // 
-            // btnIngresar
-            // 
-            btnIngresar.Location = new Point(231, 250);
-            btnIngresar.Name = "btnIngresar";
-            btnIngresar.Size = new Size(123, 36);
-            btnIngresar.TabIndex = 5;
-            btnIngresar.Text = "Ingresar";
-            btnIngresar.UseVisualStyleBackColor = true;
-            btnIngresar.Click += btnIngresar_Click;
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 10F);
+            label1.Location = new Point(155, 69);
+            label1.Name = "label1";
+            label1.Size = new Size(303, 23);
+            label1.TabIndex = 0;
+            label1.Text = "Biemvenido, Inicia sesion para acceder";
             // 
             // Login
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(933, 510);
+            BackColor = SystemColors.Control;
+            ClientSize = new Size(759, 627);
             Controls.Add(panel1);
             Name = "Login";
             Text = "Login";
+            Load += Login_Load;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             ResumeLayout(false);

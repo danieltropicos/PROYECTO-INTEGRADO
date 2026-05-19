@@ -39,7 +39,7 @@ namespace Proyecto_Integrador.Vistas.Login
 
         private void btnIngresar_Click(object sender, EventArgs e)
         {
-            
+
             UsuarioControlador usuarioControlador = new UsuarioControlador();
             foreach (var usuario in usuarioControlador.ObtenerUsuarios())
             {
@@ -50,6 +50,11 @@ namespace Proyecto_Integrador.Vistas.Login
                 }
             }
 
+
+        }
+
+        private void Login_Load(object sender, EventArgs e)
+        {
 
         }
     }
