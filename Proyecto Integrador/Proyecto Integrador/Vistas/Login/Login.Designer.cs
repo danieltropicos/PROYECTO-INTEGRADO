@@ -86,7 +86,6 @@
             txtContraseña.Name = "txtContraseña";
             txtContraseña.Size = new Size(253, 27);
             txtContraseña.TabIndex = 4;
-            txtContraseña.UseSystemPasswordChar = true;
             // 
             // txtUsuario
             // 
