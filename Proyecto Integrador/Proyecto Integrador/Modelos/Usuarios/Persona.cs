@@ -7,6 +7,7 @@ public abstract class Persona
     public Guid Id { get; private set; }
     public string Nombre { get; protected set; }
     public string Apellido { get; protected set; }
+    public string NombreCompleto => $"{Nombre} {Apellido}";
     public string CorreoElectronico { get; protected set; }
     public string Telefono { get; protected set; }
     public string Direccion { get; protected set; }

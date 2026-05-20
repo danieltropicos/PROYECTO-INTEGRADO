@@ -22,10 +22,7 @@ public class CotizacionRepositorio
         GuardarCotizaciones();
     }
 
-    public List<Cotizacion> ObtenerCotizaciones()
-    {
-        return cotizaciones;
-    }
+    public List<Cotizacion> ObtenerCotizaciones() => cotizaciones;
 
     private void GuardarCotizaciones()
     {
@@ -45,10 +42,7 @@ public class CotizacionRepositorio
 
     private void CargarCotizaciones()
     {
-        if (File.Exists(RutaArchivo))
-        {
-            return;
-        }
+        if (File.Exists(RutaArchivo)) return;
 
         var opciones = new JsonSerializerOptions
         {
