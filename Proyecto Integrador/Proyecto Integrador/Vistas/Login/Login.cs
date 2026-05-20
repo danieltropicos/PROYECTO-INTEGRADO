@@ -102,5 +102,11 @@ namespace Proyecto_Integrador.Vistas.Login
                 pictureBox1.Image = Image.FromFile("Imagenes/ojoCerrado.jpg");
             }
         }
+
+        private void Login_Load(object sender, EventArgs e)
+        {
+            txtContraseña.UseSystemPasswordChar = true;
+            pictureBox1.Image = Image.FromFile("Imagenes/ojoCerrado.jpg");
+        }
     }
 }
