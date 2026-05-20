@@ -16,6 +16,9 @@
     <Compile Update="Vistas\RegistrarAdministradores.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Vistas\Usuarios\RegistrarUsuarios.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Vistas\Usuarios\RegistrarUsuariosControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
