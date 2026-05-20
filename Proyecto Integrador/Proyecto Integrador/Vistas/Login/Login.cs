@@ -48,28 +48,26 @@ namespace Proyecto_Integrador.Vistas.Login
         private void btnIngresar_Click(object sender, EventArgs e)
         {
 
-            //UsuarioControlador usuarioControlador = new UsuarioControlador();
-            //int bandera = 0;
-            //foreach (var usuario in usuarioControlador.ObtenerUsuarios())
-            //{
-            //    if (usuario.NombreUsuario == txtUsuario.Text && usuario.ContrasenaEncriptada == HashContrasena(txtContraseña.Text))
-            //    {
-            //        MessageBox.Show("-- Bienvenido " + usuario.NombreUsuario + ". --");
-            //        HomeLayout homeLayout = new HomeLayout();
-            //        homeLayout.Show();
-            //        this.Hide();
-            //        bandera++;
+            UsuarioControlador usuarioControlador = new UsuarioControlador();
+            int bandera = 0;
+            foreach (var usuario in usuarioControlador.ObtenerUsuarios())
+            {
+                if (usuario.NombreUsuario == txtUsuario.Text && usuario.ContrasenaEncriptada == HashContrasena(txtContraseña.Text))
+                {
+                    MessageBox.Show("-- Bienvenido " + usuario.NombreUsuario + ". --");
+                    HomeLayout homeLayout = new HomeLayout(usuario);
+                    homeLayout.Show();
+                    this.Hide();
+                    bandera++;
 
-            //    }
-            //}
-            //if (bandera == 0)
-            //{
-            //    MessageBox.Show("-- Usuario o Contraseña Incorrecto --");
-            //    Limpiar();
-            //}
-            HomeLayout homeLayout = new HomeLayout();
-            homeLayout.Show();
-            this.Hide();
+                }
+            }
+            if (bandera == 0)
+            {
+                MessageBox.Show("-- Usuario o Contraseña Incorrecto --");
+                Limpiar();
+            }
+
         }
 
         private void button1_Click(object sender, EventArgs e)

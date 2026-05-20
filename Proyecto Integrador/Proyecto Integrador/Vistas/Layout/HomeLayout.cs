@@ -1,3 +1,4 @@
+using Proyecto_Integrador.Modelos.Usuarios;
 using Proyecto_Integrador.Utilidades;
 using Proyecto_Integrador.Vistas.Clientes;
 using Proyecto_Integrador.Vistas.Cotizaciones;
@@ -8,12 +9,17 @@ namespace Proyecto_Integrador.Vistas.Layout
     public partial class HomeLayout : Form
     {
         private readonly Button[] _botonesMenu;
+        private readonly Usuario _usuario;
 
-        public HomeLayout()
+        public HomeLayout(Usuario usuario)
         {
             InitializeComponent();
             _botonesMenu = [button1, button2, button3, button4];
             AplicarEstilosLayout();
+            
+            _usuario = usuario;
+
+            button1.Visible = _usuario.Rol.Nombre == "Admin";
 
             picLogoNavbar.ImageLocation = AppAssets.RutaLogoNavbar;
             picLogoCentro.ImageLocation = AppAssets.RutaLogoCentro;
@@ -61,6 +67,16 @@ namespace Proyecto_Integrador.Vistas.Layout
 
         private void button4_Click(object sender, EventArgs e)
         {
+        }
+
+        private void panelNavbar_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void HomeLayout_Load(object sender, EventArgs e)
+        {
+            
         }
     }
 }
