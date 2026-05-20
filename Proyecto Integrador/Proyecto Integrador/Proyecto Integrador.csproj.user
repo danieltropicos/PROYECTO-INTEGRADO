@@ -4,6 +4,9 @@
     <Compile Update="Vistas\Cotizaciones\CotizacionControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Update="Vistas\FormLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Vistas\GestionUsuarios.cs">
       <SubType>Form</SubType>
     </Compile>

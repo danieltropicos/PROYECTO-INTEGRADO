@@ -47,15 +47,16 @@
             panel1.Controls.Add(labelContraseña);
             panel1.Controls.Add(labelUsuario);
             panel1.Controls.Add(label1);
-            panel1.Location = new Point(77, 33);
+            panel1.Location = new Point(12, 12);
             panel1.Name = "panel1";
-            panel1.Size = new Size(587, 571);
+            panel1.Size = new Size(600, 603);
             panel1.TabIndex = 0;
+            panel1.Paint += panel1_Paint;
             // 
             // btnIngresar
             // 
             btnIngresar.FlatStyle = FlatStyle.Flat;
-            btnIngresar.Location = new Point(231, 250);
+            btnIngresar.Location = new Point(243, 309);
             btnIngresar.Name = "btnIngresar";
             btnIngresar.Size = new Size(123, 36);
             btnIngresar.TabIndex = 5;
@@ -65,22 +66,22 @@
             // 
             // txtContraseña
             // 
-            txtContraseña.Location = new Point(194, 182);
+            txtContraseña.Location = new Point(229, 241);
             txtContraseña.Name = "txtContraseña";
-            txtContraseña.Size = new Size(276, 27);
+            txtContraseña.Size = new Size(253, 27);
             txtContraseña.TabIndex = 4;
             // 
             // txtUsuario
             // 
-            txtUsuario.Location = new Point(194, 141);
+            txtUsuario.Location = new Point(229, 200);
             txtUsuario.Name = "txtUsuario";
-            txtUsuario.Size = new Size(276, 27);
+            txtUsuario.Size = new Size(253, 27);
             txtUsuario.TabIndex = 3;
             // 
             // labelContraseña
             // 
             labelContraseña.AutoSize = true;
-            labelContraseña.Location = new Point(102, 185);
+            labelContraseña.Location = new Point(137, 244);
             labelContraseña.Name = "labelContraseña";
             labelContraseña.Size = new Size(86, 20);
             labelContraseña.TabIndex = 2;
@@ -89,28 +90,29 @@
             // labelUsuario
             // 
             labelUsuario.AutoSize = true;
-            labelUsuario.Location = new Point(102, 144);
+            labelUsuario.Location = new Point(138, 203);
             labelUsuario.Name = "labelUsuario";
             labelUsuario.Size = new Size(62, 20);
             labelUsuario.TabIndex = 1;
             labelUsuario.Text = "Usuario:";
+            labelUsuario.Click += labelUsuario_Click;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 10F);
-            label1.Location = new Point(155, 69);
+            label1.Font = new Font("Segoe UI", 15F);
+            label1.Location = new Point(211, 88);
             label1.Name = "label1";
-            label1.Size = new Size(303, 23);
+            label1.Size = new Size(189, 35);
             label1.TabIndex = 0;
-            label1.Text = "Biemvenido, Inicia sesion para acceder";
+            label1.Text = "Inicio de Sesion";
             // 
             // Login
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.Control;
-            ClientSize = new Size(759, 627);
+            ClientSize = new Size(626, 627);
             Controls.Add(panel1);
             Name = "Login";
             Text = "Login";
