@@ -1,6 +1,7 @@
 using Proyecto_Integrador.Vistas;
 using Proyecto_Integrador.Vistas.Cotizaciones;
 using Proyecto_Integrador.Vistas.Layout;
+using Proyecto_Integrador.Vistas.Login;
 
 namespace Proyecto_Integrador
 {
@@ -15,7 +16,7 @@ namespace Proyecto_Integrador
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            Application.Run(new HomeLayout());
+            Application.Run(new Login());
         }
     }
 }
