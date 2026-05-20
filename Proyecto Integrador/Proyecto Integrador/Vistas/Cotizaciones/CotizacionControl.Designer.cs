@@ -34,11 +34,11 @@
             groupBox1 = new GroupBox();
             tableLayoutPanel3 = new TableLayoutPanel();
             label1 = new Label();
-            comboBox1 = new ComboBox();
+            comboBoxClientes = new ComboBox();
             textBox1 = new TextBox();
             label3 = new Label();
             label2 = new Label();
-            comboBox2 = new ComboBox();
+            comboBoxMateriales = new ComboBox();
             groupBox2 = new GroupBox();
             dataGridView1 = new DataGridView();
             colX1 = new DataGridViewTextBoxColumn();
@@ -130,11 +130,11 @@
             tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 40F));
             tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 60F));
             tableLayoutPanel3.Controls.Add(label1, 0, 0);
-            tableLayoutPanel3.Controls.Add(comboBox1, 1, 0);
+            tableLayoutPanel3.Controls.Add(comboBoxClientes, 1, 0);
             tableLayoutPanel3.Controls.Add(textBox1, 1, 2);
             tableLayoutPanel3.Controls.Add(label3, 0, 2);
             tableLayoutPanel3.Controls.Add(label2, 0, 1);
-            tableLayoutPanel3.Controls.Add(comboBox2, 1, 1);
+            tableLayoutPanel3.Controls.Add(comboBoxMateriales, 1, 1);
             tableLayoutPanel3.Dock = DockStyle.Fill;
             tableLayoutPanel3.Location = new Point(3, 19);
             tableLayoutPanel3.Name = "tableLayoutPanel3";
@@ -156,14 +156,14 @@
             label1.Text = "Cliente";
             label1.TextAlign = ContentAlignment.MiddleLeft;
             // 
-            // comboBox1
+            // comboBoxClientes
             // 
-            comboBox1.Dock = DockStyle.Fill;
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(166, 3);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(240, 23);
-            comboBox1.TabIndex = 1;
+            comboBoxClientes.Dock = DockStyle.Fill;
+            comboBoxClientes.FormattingEnabled = true;
+            comboBoxClientes.Location = new Point(166, 3);
+            comboBoxClientes.Name = "comboBoxClientes";
+            comboBoxClientes.Size = new Size(240, 23);
+            comboBoxClientes.TabIndex = 1;
             // 
             // textBox1
             // 
@@ -195,14 +195,14 @@
             label2.Text = "Material";
             label2.TextAlign = ContentAlignment.MiddleLeft;
             // 
-            // comboBox2
+            // comboBoxMateriales
             // 
-            comboBox2.Dock = DockStyle.Fill;
-            comboBox2.FormattingEnabled = true;
-            comboBox2.Location = new Point(166, 36);
-            comboBox2.Name = "comboBox2";
-            comboBox2.Size = new Size(240, 23);
-            comboBox2.TabIndex = 7;
+            comboBoxMateriales.Dock = DockStyle.Fill;
+            comboBoxMateriales.FormattingEnabled = true;
+            comboBoxMateriales.Location = new Point(166, 36);
+            comboBoxMateriales.Name = "comboBoxMateriales";
+            comboBoxMateriales.Size = new Size(240, 23);
+            comboBoxMateriales.TabIndex = 7;
             // 
             // groupBox2
             // 
@@ -369,6 +369,7 @@
             button1.TabIndex = 4;
             button1.Text = "Calcular";
             button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
             // 
             // CotizacionControl
             // 
@@ -400,7 +401,7 @@
         private GroupBox groupBox1;
         private TableLayoutPanel tableLayoutPanel3;
         private Label label1;
-        private ComboBox comboBox1;
+        private ComboBox comboBoxClientes;
         private Label label3;
         private TextBox textBox1;
         private GroupBox groupBox2;
@@ -421,6 +422,6 @@
         private Label label7;
         private Button button1;
         private Label label2;
-        private ComboBox comboBox2;
+        private ComboBox comboBoxMateriales;
     }
 }
