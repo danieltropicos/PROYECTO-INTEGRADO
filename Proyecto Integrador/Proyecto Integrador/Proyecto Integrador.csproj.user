@@ -7,7 +7,7 @@
     <Compile Update="Vistas\Cotizaciones\CotizacionControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="Vistas\GestionUsuarios.cs">
+    <Compile Update="Vistas\Usuarios\GestionUsuarios.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Vistas\Layout\HomeLayout.cs">
@@ -16,7 +16,7 @@
     <Compile Update="Vistas\Login\Login.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Vistas\RegistrarAdministradores.cs">
+    <Compile Update="Vistas\Usuarios\RegistrarAdministradores.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Vistas\Usuarios\RegistrarUsuarios.cs">

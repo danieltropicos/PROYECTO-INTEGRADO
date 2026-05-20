@@ -23,7 +23,7 @@ public partial class RegistrarUsuariosControl : UserControl
 
     private void btnRegistrar_Click(object sender, EventArgs e)
     {
-        Rol nuevorol = new Rol("Admin");
+        Rol nuevorol = new Rol("Usuario");
         Usuario usuarionuevo = new Usuario(txtNombreUsu.Text, txtApellidoUsu.Text, txtCorreoUsu.Text, txtTelefonoUsu.Text, txtDireccionUsu.Text, txtNombreUsuarioUsu.Text, txtContrasenaUsu.Text, nuevorol, true);
         controladorUsuario.AgregarUsuario(usuarionuevo);
         Limpiar();

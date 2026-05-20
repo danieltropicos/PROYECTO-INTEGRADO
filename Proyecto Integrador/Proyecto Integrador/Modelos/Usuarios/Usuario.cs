@@ -60,7 +60,7 @@ public class Usuario : Persona
         Rol = rol;
         ContrasenaEncriptada = HashContrasena(contrasena);
     }
-
+    
 
     public void CambiarContrasena(string nuevaContrasena)
     {
