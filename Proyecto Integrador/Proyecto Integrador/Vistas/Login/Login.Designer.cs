@@ -28,7 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Login));
             panel1 = new Panel();
+            pictureBox1 = new PictureBox();
             button1 = new Button();
             btnIngresar = new Button();
             txtContraseña = new TextBox();
@@ -37,11 +39,13 @@
             labelUsuario = new Label();
             label1 = new Label();
             panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // panel1
             // 
             panel1.BackColor = SystemColors.ControlLight;
+            panel1.Controls.Add(pictureBox1);
             panel1.Controls.Add(button1);
             panel1.Controls.Add(btnIngresar);
             panel1.Controls.Add(txtContraseña);
@@ -64,6 +68,18 @@
             button1.Text = "Crear Cuenta";
             button1.UseVisualStyleBackColor = true;
             button1.Click += button1_Click;
+            // 
+            // pictureBox1
+            // 
+            pictureBox1.BackColor = SystemColors.Window;
+            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
+            pictureBox1.Location = new Point(452, 244);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(30, 20);
+            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox1.TabIndex = 6;
+            pictureBox1.TabStop = false;
+            pictureBox1.Click += pictureBox1_Click;
             // 
             // btnIngresar
             // 
@@ -133,6 +149,7 @@
             Text = "Login";
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
         }
 
@@ -145,6 +162,7 @@
         private TextBox txtUsuario;
         private Label labelContraseña;
         private Label labelUsuario;
+        private PictureBox pictureBox1;
         private Button button1;
     }
 }

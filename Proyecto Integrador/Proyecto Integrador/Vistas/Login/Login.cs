@@ -39,29 +39,68 @@ namespace Proyecto_Integrador.Vistas.Login
             }
         }
 
+        private void Limpiar()
+        {
+            txtContraseña.Clear();
+            txtUsuario.Clear();
+        }
+
         private void btnIngresar_Click(object sender, EventArgs e)
         {
 
             UsuarioControlador usuarioControlador = new UsuarioControlador();
+            int bandera = 0;
             foreach (var usuario in usuarioControlador.ObtenerUsuarios())
             {
                 if (usuario.NombreUsuario == txtUsuario.Text && usuario.ContrasenaEncriptada == HashContrasena(txtContraseña.Text))
                 {
-                    MessageBox.Show("Bienvenido.");
+                    MessageBox.Show("-- Bienvenido " + usuario.NombreUsuario + ". --");
                     HomeLayout homeLayout = new HomeLayout();
                     homeLayout.Show();
                     this.Hide();
+                    bandera++;
+
                 }
             }
-
-
+            if (bandera == 0)
+            {
+                MessageBox.Show("-- Usuario o Contraseña Incorrecto --");
+                Limpiar();
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
+            txtContraseña.UseSystemPasswordChar = true;
+            pictureBox1.Image = Image.FromFile("Imagenes/ojoCerrado.jpg");
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void labelUsuario_Click(object sender, EventArgs e)
+        {
+
             var registrarUsuariosForm = new RegistrarUsuarios();
             registrarUsuariosForm.Show();
             Hide();
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            if (txtContraseña.UseSystemPasswordChar)
+            {
+                txtContraseña.UseSystemPasswordChar = false;
+                pictureBox1.Image = Image.FromFile("Imagenes/ojoAbierto.jpg");
+
+            }
+            else
+            {
+                txtContraseña.UseSystemPasswordChar = true;
+                pictureBox1.Image = Image.FromFile("Imagenes/ojoCerrado.jpg");
+            }
         }
     }
 }
