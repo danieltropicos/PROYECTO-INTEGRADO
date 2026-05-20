@@ -31,7 +31,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Login));
             panel1 = new Panel();
             pictureBox1 = new PictureBox();
-            button1 = new Button();
             btnIngresar = new Button();
             txtContraseña = new TextBox();
             txtUsuario = new TextBox();
@@ -46,7 +45,6 @@
             // 
             panel1.BackColor = SystemColors.ControlLight;
             panel1.Controls.Add(pictureBox1);
-            panel1.Controls.Add(button1);
             panel1.Controls.Add(btnIngresar);
             panel1.Controls.Add(txtContraseña);
             panel1.Controls.Add(txtUsuario);
@@ -71,21 +69,10 @@
             pictureBox1.TabStop = false;
             pictureBox1.Click += pictureBox1_Click;
             // 
-            // button1
-            // 
-            button1.Location = new Point(359, 309);
-            button1.Margin = new Padding(3, 4, 3, 4);
-            button1.Name = "button1";
-            button1.Size = new Size(112, 36);
-            button1.TabIndex = 6;
-            button1.Text = "Crear Cuenta";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
-            // 
             // btnIngresar
             // 
             btnIngresar.FlatStyle = FlatStyle.Flat;
-            btnIngresar.Location = new Point(229, 309);
+            btnIngresar.Location = new Point(248, 310);
             btnIngresar.Name = "btnIngresar";
             btnIngresar.Size = new Size(123, 36);
             btnIngresar.TabIndex = 5;
@@ -161,6 +148,5 @@
         private Label labelContraseña;
         private Label labelUsuario;
         private PictureBox pictureBox1;
-        private Button button1;
     }
 }
