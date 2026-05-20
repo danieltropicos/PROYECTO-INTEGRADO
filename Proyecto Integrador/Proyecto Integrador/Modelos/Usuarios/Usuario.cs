@@ -11,57 +11,28 @@ public class Usuario : Persona
     public Rol Rol { get; private set; }
 
     [JsonConstructor]
-    public Usuario(
-        Guid id,                        
+    public Usuario(                      
         string nombre,
         string apellido,
         string correoElectronico,
         string telefono,
-        string direccion,
-        bool esActivo,                  
-        DateTime fechaRegistro,         
+        string direccion,               
         string nombreUsuario,
         string contrasenaEncriptada,
         Rol rol)
-        : base(
-            id,                         
+        : base(                        
             nombre,
             apellido,
             correoElectronico,
             telefono,
             direccion,
-            esActivo,
-            fechaRegistro)
+            true)
     {
         NombreUsuario = nombreUsuario;
         ContrasenaEncriptada = contrasenaEncriptada;
         Rol = rol;
     }
-
-    //  usuarios nuevos
-    public Usuario(
-        string nombre,
-        string apellido,
-        string correoElectronico,
-        string telefono,
-        string direccion,
-        string nombreUsuario,
-        string contrasena,
-        Rol rol,
-        bool encriptar)
-        : base(
-            nombre,
-            apellido,
-            correoElectronico,
-            telefono,
-            direccion)
-    {
-        NombreUsuario = nombreUsuario;
-        Rol = rol;
-        ContrasenaEncriptada = HashContrasena(contrasena);
-    }
     
-
     public void CambiarContrasena(string nuevaContrasena)
     {
         ContrasenaEncriptada = HashContrasena(nuevaContrasena);
@@ -75,19 +46,14 @@ public class Usuario : Persona
 
     private string HashContrasena(string contrasena)
     {
-        using (SHA256 sha256 = SHA256.Create())
-        {
-            byte[] bytes = Encoding.UTF8.GetBytes(contrasena);
-            byte[] hash = sha256.ComputeHash(bytes);
+        using SHA256 sha256 = SHA256.Create();
+        byte[] bytes = Encoding.UTF8.GetBytes(contrasena);
+        byte[] hash = sha256.ComputeHash(bytes);
 
-            StringBuilder sb = new StringBuilder();
+        StringBuilder sb = new();
+        foreach (byte b in hash)
+            sb.Append(b.ToString("x2"));
 
-            foreach (byte b in hash)
-            {
-                sb.Append(b.ToString("x2"));
-            }
-
-            return sb.ToString();
-        }
+        return sb.ToString();
     }
 }

@@ -4,7 +4,7 @@ namespace Proyecto_Integrador.Modelos.Usuarios;
 
 public abstract class Persona
 {
-    public Guid Id { get; private set; }
+    public Guid Id { get; private set; } = Guid.NewGuid();
     public string Nombre { get; protected set; }
     public string Apellido { get; protected set; }
     public string NombreCompleto => $"{Nombre} {Apellido}";
@@ -16,23 +16,19 @@ public abstract class Persona
 
     [JsonConstructor]
     protected Persona(
-    Guid id,
     string nombre,
     string apellido,
     string correoElectronico,
     string telefono,
     string direccion,
-    bool esActivo,
-    DateTime fechaRegistro)
+    bool esActivo)
     {
-        Id = id;
         Nombre = nombre;
         Apellido = apellido;
         CorreoElectronico = correoElectronico;
         Telefono = telefono;
         Direccion = direccion;
         EsActivo = esActivo;
-        FechaRegistro = fechaRegistro;
     }
     protected Persona(
         string nombre,

@@ -21,6 +21,8 @@ namespace Proyecto_Integrador.Vistas.Layout
 
             picLogoNavbar.ImageLocation = AppAssets.RutaLogoNavbar;
             picLogoCentro.ImageLocation = AppAssets.RutaLogoCentro;
+
+            picIconoCerrarSesion.ImageLocation = AppAssets.RutaIconoCerrarSesion;
         }
 
         private void AbrirVista(UserControl vista, Button botonActivo)
@@ -47,6 +49,14 @@ namespace Proyecto_Integrador.Vistas.Layout
 
         private void button4_Click(object sender, EventArgs e)
         {
+            MessageBox.Show("Esto aun está en desarrollo");
+        }
+
+        private void btnCerrarSesion_Click(object sender, EventArgs e)
+        {
+            var login = new Login.Login();
+            login.Show();
+            Close();
         }
     }
 }

@@ -20,6 +20,9 @@ namespace Proyecto_Integrador.Controladores
             return usuarioRepositorio.Leer();
         }
 
+        public Usuario? ObtenerUsuarioPorNombreUsuario(string nombreDeUsuario) => 
+            usuarioRepositorio.ObtenerUsuarioPorNombreUsuario(nombreDeUsuario);
+
         public void AgregarUsuario(Usuario usuario)
         {
             usuarioRepositorio.Agregar(usuario);

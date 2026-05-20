@@ -36,6 +36,11 @@ public class UsuarioRepositorio
         return lista;
     }
 
+    public Usuario? ObtenerUsuarioPorNombreUsuario(string nombreDeUsuario)
+    {
+        return Leer().FirstOrDefault(x => x.NombreUsuario == nombreDeUsuario);
+    }
+
     private void Guardar(List<Usuario> lista)
     {
         var opciones = new JsonSerializerOptions

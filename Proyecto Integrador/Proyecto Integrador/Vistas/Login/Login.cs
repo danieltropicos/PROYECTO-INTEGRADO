@@ -14,45 +14,21 @@ namespace Proyecto_Integrador.Vistas.Login
             InitializeComponent();
         }
 
-        private static string HashContrasena(string contrasena)
-        {
-            using SHA256 sha256 = SHA256.Create();
-            byte[] bytes = Encoding.UTF8.GetBytes(contrasena);
-            byte[] hash = sha256.ComputeHash(bytes);
-
-            StringBuilder sb = new();
-            foreach (byte b in hash)
-                sb.Append(b.ToString("x2"));
-
-            return sb.ToString();
-        }
-
-        private void Limpiar()
-        {
-            txtContraseña.Clear();
-            txtUsuario.Clear();
-        }
-
         private void btnIngresar_Click(object sender, EventArgs e)
         {
             UsuarioControlador usuarioControlador = new();
-            int bandera = 0;
-            foreach (var usuario in usuarioControlador.ObtenerUsuarios())
+
+            var usuario = usuarioControlador.ObtenerUsuarioPorNombreUsuario(txtUsuario.Text);
+            if (usuario != null && usuario.ValidarContrasena(txtContraseña.Text))
             {
-                if (usuario.NombreUsuario == txtUsuario.Text && usuario.ContrasenaEncriptada == HashContrasena(txtContraseña.Text))
-                {
-                    MessageBox.Show("-- Bienvenido " + usuario.NombreUsuario + ". --");
-                    HomeLayout homeLayout = new(usuario);
-                    homeLayout.Show();
-                    Hide();
-                    bandera++;
-                }
+                HomeLayout homeLayout = new(usuario);
+                homeLayout.Show();
+                Hide();
             }
-            if (bandera == 0)
+            else
             {
-                MessageBox.Show("-- Usuario o Contraseña Incorrecto --");
-                Limpiar();
-            }
+                MessageBox.Show("-- Usuario o Contraseña Incorrecto --");                
+            }            
         }
 
         private void btnCrearCuenta_Click(object sender, EventArgs e)

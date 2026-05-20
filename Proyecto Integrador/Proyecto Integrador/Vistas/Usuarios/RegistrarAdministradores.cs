@@ -26,7 +26,14 @@ namespace Proyecto_Integrador.Vistas
         private void btnRegistrar_Click(object sender, EventArgs e)
         {
             Rol nuevorol = new Rol("Admin");
-            Usuario adminnuevo = new Usuario(txtNombreAdm.Text, txtApellidoAdm.Text, txtCorreoAdm.Text, txtTelefonoAdm.Text, txtDireccionAdm.Text, txtNombreUsuarioAdm.Text, txtContrasenaAdm.Text,nuevorol,true);
+            Usuario adminnuevo = new Usuario(txtNombreAdm.Text,
+                                             txtApellidoAdm.Text,
+                                             txtCorreoAdm.Text,
+                                             txtTelefonoAdm.Text,
+                                             txtDireccionAdm.Text,
+                                             txtNombreUsuarioAdm.Text,
+                                             txtContrasenaAdm.Text,
+                                             nuevorol);
             controladorUsuario.AgregarUsuario(adminnuevo);
             Limpiar();
 

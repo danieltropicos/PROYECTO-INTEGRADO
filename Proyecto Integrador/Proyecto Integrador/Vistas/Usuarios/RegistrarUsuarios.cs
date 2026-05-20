@@ -23,8 +23,7 @@ namespace Proyecto_Integrador.Vistas.Usuarios
                 txtDireccionUsu.Text,
                 txtNombreUsuarioUsu.Text,
                 txtContrasenaUsu.Text,
-                nuevorol,
-                true);
+                nuevorol);
             _controladorUsuario.AgregarUsuario(usuarionuevo);
             Limpiar();
         }
