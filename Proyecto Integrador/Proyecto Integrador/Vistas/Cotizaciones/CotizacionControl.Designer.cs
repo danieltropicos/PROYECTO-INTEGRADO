@@ -1,4 +1,4 @@
-﻿namespace Proyecto_Integrador.Vistas.Cotizaciones
+namespace Proyecto_Integrador.Vistas.Cotizaciones
 {
     partial class CotizacionControl
     {
@@ -105,7 +105,7 @@
             tableLayoutPanel2.Location = new Point(3, 3);
             tableLayoutPanel2.Name = "tableLayoutPanel2";
             tableLayoutPanel2.RowCount = 4;
-            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Absolute, 130F));
+            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Absolute, 158F));
             tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 30F));
             tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 30F));
             tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 40F));
@@ -127,8 +127,8 @@
             // tableLayoutPanel3
             // 
             tableLayoutPanel3.ColumnCount = 2;
-            tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 40F));
-            tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 60F));
+            tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 110F));
+            tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
             tableLayoutPanel3.Controls.Add(label1, 0, 0);
             tableLayoutPanel3.Controls.Add(comboBoxClientes, 1, 0);
             tableLayoutPanel3.Controls.Add(textBox1, 1, 2);
@@ -138,16 +138,17 @@
             tableLayoutPanel3.Dock = DockStyle.Fill;
             tableLayoutPanel3.Location = new Point(3, 19);
             tableLayoutPanel3.Name = "tableLayoutPanel3";
+            tableLayoutPanel3.Padding = new Padding(4, 2, 4, 4);
             tableLayoutPanel3.RowCount = 3;
-            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 33.3333321F));
-            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 33.3333321F));
-            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 33.3333321F));
+            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Absolute, 40F));
+            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Absolute, 40F));
+            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Absolute, 40F));
             tableLayoutPanel3.Size = new Size(409, 102);
             tableLayoutPanel3.TabIndex = 0;
             // 
             // label1
             // 
-            label1.AutoSize = true;
+            label1.AutoSize = false;
             label1.Dock = DockStyle.Fill;
             label1.Location = new Point(3, 0);
             label1.Name = "label1";
@@ -175,7 +176,7 @@
             // 
             // label3
             // 
-            label3.AutoSize = true;
+            label3.AutoSize = false;
             label3.Dock = DockStyle.Fill;
             label3.Location = new Point(3, 66);
             label3.Name = "label3";
@@ -186,7 +187,7 @@
             // 
             // label2
             // 
-            label2.AutoSize = true;
+            label2.AutoSize = false;
             label2.Dock = DockStyle.Fill;
             label2.Location = new Point(3, 33);
             label2.Name = "label2";
@@ -314,7 +315,7 @@
             tableLayoutPanel4.RowCount = 3;
             tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
             tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Absolute, 45F));
+            tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Absolute, 56F));
             tableLayoutPanel4.Size = new Size(409, 155);
             tableLayoutPanel4.TabIndex = 0;
             // 
@@ -362,10 +363,11 @@
             // button1
             // 
             tableLayoutPanel4.SetColumnSpan(button1, 2);
-            button1.Dock = DockStyle.Fill;
+            button1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             button1.Location = new Point(3, 113);
+            button1.Margin = new Padding(3, 10, 3, 3);
             button1.Name = "button1";
-            button1.Size = new Size(403, 39);
+            button1.Size = new Size(403, 42);
             button1.TabIndex = 4;
             button1.Text = "Calcular";
             button1.UseVisualStyleBackColor = true;

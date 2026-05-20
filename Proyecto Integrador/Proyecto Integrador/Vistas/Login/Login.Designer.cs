@@ -31,6 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Login));
             panel1 = new Panel();
             pictureBox1 = new PictureBox();
+            button1 = new Button();
             btnIngresar = new Button();
             txtContraseña = new TextBox();
             txtUsuario = new TextBox();
@@ -45,17 +46,28 @@
             // 
             panel1.BackColor = SystemColors.ControlLight;
             panel1.Controls.Add(pictureBox1);
+            panel1.Controls.Add(button1);
             panel1.Controls.Add(btnIngresar);
             panel1.Controls.Add(txtContraseña);
             panel1.Controls.Add(txtUsuario);
             panel1.Controls.Add(labelContraseña);
             panel1.Controls.Add(labelUsuario);
             panel1.Controls.Add(label1);
-            panel1.Location = new Point(12, 12);
+            panel1.Location = new Point(10, 9);
+            panel1.Margin = new Padding(3, 2, 3, 2);
             panel1.Name = "panel1";
-            panel1.Size = new Size(600, 603);
+            panel1.Size = new Size(525, 452);
             panel1.TabIndex = 0;
-            panel1.Paint += panel1_Paint;
+            // 
+            // button1
+            // 
+            button1.Location = new Point(314, 232);
+            button1.Name = "button1";
+            button1.Size = new Size(98, 27);
+            button1.TabIndex = 6;
+            button1.Text = "Crear Cuenta";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
             // 
             // pictureBox1
             // 
@@ -72,9 +84,10 @@
             // btnIngresar
             // 
             btnIngresar.FlatStyle = FlatStyle.Flat;
-            btnIngresar.Location = new Point(243, 309);
+            btnIngresar.Location = new Point(200, 232);
+            btnIngresar.Margin = new Padding(3, 2, 3, 2);
             btnIngresar.Name = "btnIngresar";
-            btnIngresar.Size = new Size(123, 36);
+            btnIngresar.Size = new Size(108, 27);
             btnIngresar.TabIndex = 5;
             btnIngresar.Text = "Ingresar";
             btnIngresar.UseVisualStyleBackColor = true;
@@ -82,57 +95,58 @@
             // 
             // txtContraseña
             // 
-            txtContraseña.Location = new Point(229, 241);
+            txtContraseña.Location = new Point(200, 181);
+            txtContraseña.Margin = new Padding(3, 2, 3, 2);
             txtContraseña.Name = "txtContraseña";
-            txtContraseña.Size = new Size(253, 27);
+            txtContraseña.Size = new Size(222, 23);
             txtContraseña.TabIndex = 4;
             // 
             // txtUsuario
             // 
-            txtUsuario.Location = new Point(229, 200);
+            txtUsuario.Location = new Point(200, 150);
+            txtUsuario.Margin = new Padding(3, 2, 3, 2);
             txtUsuario.Name = "txtUsuario";
-            txtUsuario.Size = new Size(253, 27);
+            txtUsuario.Size = new Size(222, 23);
             txtUsuario.TabIndex = 3;
             // 
             // labelContraseña
             // 
             labelContraseña.AutoSize = true;
-            labelContraseña.Location = new Point(137, 244);
+            labelContraseña.Location = new Point(120, 183);
             labelContraseña.Name = "labelContraseña";
-            labelContraseña.Size = new Size(86, 20);
+            labelContraseña.Size = new Size(70, 15);
             labelContraseña.TabIndex = 2;
             labelContraseña.Text = "Contraseña:";
             // 
             // labelUsuario
             // 
             labelUsuario.AutoSize = true;
-            labelUsuario.Location = new Point(138, 203);
+            labelUsuario.Location = new Point(121, 152);
             labelUsuario.Name = "labelUsuario";
-            labelUsuario.Size = new Size(62, 20);
+            labelUsuario.Size = new Size(50, 15);
             labelUsuario.TabIndex = 1;
             labelUsuario.Text = "Usuario:";
-            labelUsuario.Click += labelUsuario_Click;
             // 
             // label1
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 15F);
-            label1.Location = new Point(211, 88);
+            label1.Location = new Point(185, 66);
             label1.Name = "label1";
-            label1.Size = new Size(189, 35);
+            label1.Size = new Size(148, 28);
             label1.TabIndex = 0;
             label1.Text = "Inicio de Sesion";
             // 
             // Login
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.Control;
-            ClientSize = new Size(626, 627);
+            ClientSize = new Size(548, 470);
             Controls.Add(panel1);
+            Margin = new Padding(3, 2, 3, 2);
             Name = "Login";
             Text = "Login";
-            Load += Login_Load;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
@@ -149,5 +163,6 @@
         private Label labelContraseña;
         private Label labelUsuario;
         private PictureBox pictureBox1;
+        private Button button1;
     }
 }

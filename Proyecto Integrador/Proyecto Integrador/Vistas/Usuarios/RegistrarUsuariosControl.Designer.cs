@@ -1,33 +1,23 @@
-﻿namespace Proyecto_Integrador.Vistas.Usuarios
+namespace Proyecto_Integrador.Vistas.Usuarios
 {
     partial class RegistrarUsuariosControl
     {
-        /// <summary> 
-        /// Variable del diseñador necesaria.
-        /// </summary>
         private System.ComponentModel.IContainer components = null;
 
-        /// <summary> 
-        /// Limpiar los recursos que se estén usando.
-        /// </summary>
-        /// <param name="disposing">true si los recursos administrados se deben desechar; false en caso contrario.</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
-            {
                 components.Dispose();
-            }
             base.Dispose(disposing);
         }
 
         #region Código generado por el Diseñador de componentes
 
-        /// <summary> 
-        /// Método necesario para admitir el Diseñador. No se puede modificar
-        /// el contenido de este método con el editor de código.
-        /// </summary>
         private void InitializeComponent()
         {
+            PanelAdminUsuarios = new Panel();
+            tableLayoutFormulario = new TableLayoutPanel();
+            label1 = new Label();
             labelNombre = new Label();
             txtNombreUsu = new TextBox();
             labelApellido = new Label();
@@ -36,193 +26,239 @@
             txtCorreoUsu = new TextBox();
             labelTelefono = new Label();
             txtTelefonoUsu = new TextBox();
+            labelDireccionUsu = new Label();
+            txtDireccionUsu = new TextBox();
             label6 = new Label();
             txtNombreUsuarioUsu = new TextBox();
             labelContraseña = new Label();
             txtContrasenaUsu = new TextBox();
-            btnRegistrar = new Button();
+            flowLayoutPanelBotones = new FlowLayoutPanel();
             btnLimpiar = new Button();
-            labelDireccionUsu = new Label();
-            label1 = new Label();
-            txtDireccionUsu = new TextBox();
-            PanelAdminUsuarios = new Panel();
+            btnRegistrar = new Button();
             PanelAdminUsuarios.SuspendLayout();
+            tableLayoutFormulario.SuspendLayout();
+            flowLayoutPanelBotones.SuspendLayout();
             SuspendLayout();
+            // 
+            // PanelAdminUsuarios
+            // 
+            PanelAdminUsuarios.Controls.Add(tableLayoutFormulario);
+            PanelAdminUsuarios.Dock = DockStyle.Fill;
+            PanelAdminUsuarios.Location = new Point(0, 0);
+            PanelAdminUsuarios.Name = "PanelAdminUsuarios";
+            PanelAdminUsuarios.Padding = new Padding(24, 16, 24, 24);
+            PanelAdminUsuarios.Size = new Size(520, 520);
+            PanelAdminUsuarios.TabIndex = 3;
+            // 
+            // tableLayoutFormulario
+            // 
+            tableLayoutFormulario.ColumnCount = 2;
+            tableLayoutFormulario.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 140F));
+            tableLayoutFormulario.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            tableLayoutFormulario.Controls.Add(label1, 0, 0);
+            tableLayoutFormulario.Controls.Add(labelNombre, 0, 1);
+            tableLayoutFormulario.Controls.Add(txtNombreUsu, 1, 1);
+            tableLayoutFormulario.Controls.Add(labelApellido, 0, 2);
+            tableLayoutFormulario.Controls.Add(txtApellidoUsu, 1, 2);
+            tableLayoutFormulario.Controls.Add(labelCorreoUsu, 0, 3);
+            tableLayoutFormulario.Controls.Add(txtCorreoUsu, 1, 3);
+            tableLayoutFormulario.Controls.Add(labelTelefono, 0, 4);
+            tableLayoutFormulario.Controls.Add(txtTelefonoUsu, 1, 4);
+            tableLayoutFormulario.Controls.Add(labelDireccionUsu, 0, 5);
+            tableLayoutFormulario.Controls.Add(txtDireccionUsu, 1, 5);
+            tableLayoutFormulario.Controls.Add(label6, 0, 6);
+            tableLayoutFormulario.Controls.Add(txtNombreUsuarioUsu, 1, 6);
+            tableLayoutFormulario.Controls.Add(labelContraseña, 0, 7);
+            tableLayoutFormulario.Controls.Add(txtContrasenaUsu, 1, 7);
+            tableLayoutFormulario.Controls.Add(flowLayoutPanelBotones, 1, 8);
+            tableLayoutFormulario.Dock = DockStyle.Top;
+            tableLayoutFormulario.Location = new Point(24, 16);
+            tableLayoutFormulario.Name = "tableLayoutFormulario";
+            tableLayoutFormulario.RowCount = 9;
+            tableLayoutFormulario.RowStyles.Add(new RowStyle(SizeType.Absolute, 44F));
+            tableLayoutFormulario.RowStyles.Add(new RowStyle(SizeType.Absolute, 48F));
+            tableLayoutFormulario.RowStyles.Add(new RowStyle(SizeType.Absolute, 48F));
+            tableLayoutFormulario.RowStyles.Add(new RowStyle(SizeType.Absolute, 48F));
+            tableLayoutFormulario.RowStyles.Add(new RowStyle(SizeType.Absolute, 48F));
+            tableLayoutFormulario.RowStyles.Add(new RowStyle(SizeType.Absolute, 48F));
+            tableLayoutFormulario.RowStyles.Add(new RowStyle(SizeType.Absolute, 48F));
+            tableLayoutFormulario.RowStyles.Add(new RowStyle(SizeType.Absolute, 48F));
+            tableLayoutFormulario.RowStyles.Add(new RowStyle(SizeType.Absolute, 56F));
+            tableLayoutFormulario.SetColumnSpan(label1, 2);
+            tableLayoutFormulario.Size = new Size(472, 436);
+            tableLayoutFormulario.TabIndex = 0;
+            // 
+            // label1
+            // 
+            label1.Dock = DockStyle.Fill;
+            label1.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            label1.Location = new Point(3, 0);
+            label1.Name = "label1";
+            label1.Size = new Size(466, 44);
+            label1.TabIndex = 2;
+            label1.Text = "Registrar Usuario";
+            label1.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // labelNombre
             // 
-            labelNombre.AutoSize = true;
-            labelNombre.Location = new Point(26, 52);
+            labelNombre.Dock = DockStyle.Fill;
+            labelNombre.Location = new Point(3, 44);
             labelNombre.Name = "labelNombre";
-            labelNombre.Size = new Size(51, 15);
+            labelNombre.Size = new Size(134, 48);
             labelNombre.TabIndex = 2;
             labelNombre.Text = "Nombre";
+            labelNombre.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // txtNombreUsu
             // 
-            txtNombreUsu.Location = new Point(107, 50);
-            txtNombreUsu.Margin = new Padding(3, 2, 3, 2);
+            txtNombreUsu.Dock = DockStyle.Fill;
+            txtNombreUsu.Location = new Point(143, 47);
             txtNombreUsu.Name = "txtNombreUsu";
-            txtNombreUsu.Size = new Size(246, 23);
+            txtNombreUsu.Size = new Size(326, 23);
             txtNombreUsu.TabIndex = 3;
             // 
             // labelApellido
             // 
-            labelApellido.AutoSize = true;
-            labelApellido.Location = new Point(26, 91);
+            labelApellido.Dock = DockStyle.Fill;
+            labelApellido.Location = new Point(3, 92);
             labelApellido.Name = "labelApellido";
-            labelApellido.Size = new Size(51, 15);
+            labelApellido.Size = new Size(134, 48);
             labelApellido.TabIndex = 4;
             labelApellido.Text = "Apellido";
+            labelApellido.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // txtApellidoUsu
             // 
-            txtApellidoUsu.Location = new Point(107, 89);
-            txtApellidoUsu.Margin = new Padding(3, 2, 3, 2);
+            txtApellidoUsu.Dock = DockStyle.Fill;
+            txtApellidoUsu.Location = new Point(143, 95);
             txtApellidoUsu.Name = "txtApellidoUsu";
-            txtApellidoUsu.Size = new Size(246, 23);
+            txtApellidoUsu.Size = new Size(326, 23);
             txtApellidoUsu.TabIndex = 5;
             // 
             // labelCorreoUsu
             // 
-            labelCorreoUsu.AutoSize = true;
-            labelCorreoUsu.Location = new Point(26, 132);
+            labelCorreoUsu.Dock = DockStyle.Fill;
+            labelCorreoUsu.Location = new Point(3, 140);
             labelCorreoUsu.Name = "labelCorreoUsu";
-            labelCorreoUsu.Size = new Size(43, 15);
+            labelCorreoUsu.Size = new Size(134, 48);
             labelCorreoUsu.TabIndex = 6;
             labelCorreoUsu.Text = "Correo";
+            labelCorreoUsu.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // txtCorreoUsu
             // 
-            txtCorreoUsu.Location = new Point(107, 130);
-            txtCorreoUsu.Margin = new Padding(3, 2, 3, 2);
+            txtCorreoUsu.Dock = DockStyle.Fill;
+            txtCorreoUsu.Location = new Point(143, 143);
             txtCorreoUsu.Name = "txtCorreoUsu";
-            txtCorreoUsu.Size = new Size(246, 23);
+            txtCorreoUsu.Size = new Size(326, 23);
             txtCorreoUsu.TabIndex = 7;
             // 
             // labelTelefono
             // 
-            labelTelefono.AutoSize = true;
-            labelTelefono.Location = new Point(26, 178);
+            labelTelefono.Dock = DockStyle.Fill;
+            labelTelefono.Location = new Point(3, 188);
             labelTelefono.Name = "labelTelefono";
-            labelTelefono.Size = new Size(52, 15);
+            labelTelefono.Size = new Size(134, 48);
             labelTelefono.TabIndex = 8;
-            labelTelefono.Text = "Telefono";
+            labelTelefono.Text = "Teléfono";
+            labelTelefono.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // txtTelefonoUsu
             // 
-            txtTelefonoUsu.Location = new Point(107, 176);
-            txtTelefonoUsu.Margin = new Padding(3, 2, 3, 2);
+            txtTelefonoUsu.Dock = DockStyle.Fill;
+            txtTelefonoUsu.Location = new Point(143, 191);
             txtTelefonoUsu.Name = "txtTelefonoUsu";
-            txtTelefonoUsu.Size = new Size(246, 23);
+            txtTelefonoUsu.Size = new Size(326, 23);
             txtTelefonoUsu.TabIndex = 9;
+            // 
+            // labelDireccionUsu
+            // 
+            labelDireccionUsu.Dock = DockStyle.Fill;
+            labelDireccionUsu.Location = new Point(3, 236);
+            labelDireccionUsu.Name = "labelDireccionUsu";
+            labelDireccionUsu.Size = new Size(134, 48);
+            labelDireccionUsu.TabIndex = 16;
+            labelDireccionUsu.Text = "Dirección";
+            labelDireccionUsu.TextAlign = ContentAlignment.MiddleLeft;
+            // 
+            // txtDireccionUsu
+            // 
+            txtDireccionUsu.Dock = DockStyle.Fill;
+            txtDireccionUsu.Location = new Point(143, 239);
+            txtDireccionUsu.Name = "txtDireccionUsu";
+            txtDireccionUsu.Size = new Size(326, 23);
+            txtDireccionUsu.TabIndex = 17;
             // 
             // label6
             // 
-            label6.AutoSize = true;
-            label6.Location = new Point(26, 249);
+            label6.Dock = DockStyle.Fill;
+            label6.Location = new Point(3, 284);
             label6.Name = "label6";
-            label6.Size = new Size(94, 15);
+            label6.Size = new Size(134, 48);
             label6.TabIndex = 10;
-            label6.Text = "Nombre Usuario";
+            label6.Text = "Usuario";
+            label6.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // txtNombreUsuarioUsu
             // 
-            txtNombreUsuarioUsu.Location = new Point(135, 247);
-            txtNombreUsuarioUsu.Margin = new Padding(3, 2, 3, 2);
+            txtNombreUsuarioUsu.Dock = DockStyle.Fill;
+            txtNombreUsuarioUsu.Location = new Point(143, 287);
             txtNombreUsuarioUsu.Name = "txtNombreUsuarioUsu";
-            txtNombreUsuarioUsu.Size = new Size(219, 23);
+            txtNombreUsuarioUsu.Size = new Size(326, 23);
             txtNombreUsuarioUsu.TabIndex = 11;
             // 
             // labelContraseña
             // 
-            labelContraseña.AutoSize = true;
-            labelContraseña.Location = new Point(26, 288);
+            labelContraseña.Dock = DockStyle.Fill;
+            labelContraseña.Location = new Point(3, 332);
             labelContraseña.Name = "labelContraseña";
-            labelContraseña.Size = new Size(67, 15);
+            labelContraseña.Size = new Size(134, 48);
             labelContraseña.TabIndex = 12;
             labelContraseña.Text = "Contraseña";
+            labelContraseña.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // txtContrasenaUsu
             // 
-            txtContrasenaUsu.Location = new Point(107, 286);
-            txtContrasenaUsu.Margin = new Padding(3, 2, 3, 2);
+            txtContrasenaUsu.Dock = DockStyle.Fill;
+            txtContrasenaUsu.Location = new Point(143, 335);
             txtContrasenaUsu.Name = "txtContrasenaUsu";
-            txtContrasenaUsu.Size = new Size(246, 23);
+            txtContrasenaUsu.Size = new Size(326, 23);
             txtContrasenaUsu.TabIndex = 13;
+            txtContrasenaUsu.UseSystemPasswordChar = true;
             // 
-            // btnRegistrar
+            // flowLayoutPanelBotones
             // 
-            btnRegistrar.Location = new Point(107, 332);
-            btnRegistrar.Margin = new Padding(3, 2, 3, 2);
-            btnRegistrar.Name = "btnRegistrar";
-            btnRegistrar.Size = new Size(82, 22);
-            btnRegistrar.TabIndex = 14;
-            btnRegistrar.Text = "Registrar";
-            btnRegistrar.UseVisualStyleBackColor = true;
-            btnRegistrar.Click += btnRegistrar_Click;
+            flowLayoutPanelBotones.Controls.Add(btnLimpiar);
+            flowLayoutPanelBotones.Controls.Add(btnRegistrar);
+            flowLayoutPanelBotones.Dock = DockStyle.Fill;
+            flowLayoutPanelBotones.FlowDirection = FlowDirection.RightToLeft;
+            flowLayoutPanelBotones.Location = new Point(143, 383);
+            flowLayoutPanelBotones.Name = "flowLayoutPanelBotones";
+            flowLayoutPanelBotones.Padding = new Padding(0, 8, 0, 0);
+            flowLayoutPanelBotones.Size = new Size(326, 50);
+            flowLayoutPanelBotones.TabIndex = 18;
+            flowLayoutPanelBotones.WrapContents = false;
             // 
             // btnLimpiar
             // 
-            btnLimpiar.Location = new Point(240, 332);
-            btnLimpiar.Margin = new Padding(3, 2, 3, 2);
+            btnLimpiar.Location = new Point(168, 11);
+            btnLimpiar.Margin = new Padding(8, 0, 0, 0);
             btnLimpiar.Name = "btnLimpiar";
-            btnLimpiar.Size = new Size(82, 22);
+            btnLimpiar.Size = new Size(150, 42);
             btnLimpiar.TabIndex = 15;
             btnLimpiar.Text = "Limpiar";
             btnLimpiar.UseVisualStyleBackColor = true;
             // 
-            // labelDireccionUsu
+            // btnRegistrar
             // 
-            labelDireccionUsu.AutoSize = true;
-            labelDireccionUsu.Location = new Point(26, 216);
-            labelDireccionUsu.Name = "labelDireccionUsu";
-            labelDireccionUsu.Size = new Size(57, 15);
-            labelDireccionUsu.TabIndex = 16;
-            labelDireccionUsu.Text = "Dirección";
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Location = new Point(144, 21);
-            label1.Name = "label1";
-            label1.Size = new Size(96, 15);
-            label1.TabIndex = 2;
-            label1.Text = "Registrar Usuario";
-            // 
-            // txtDireccionUsu
-            // 
-            txtDireccionUsu.Location = new Point(107, 214);
-            txtDireccionUsu.Margin = new Padding(3, 2, 3, 2);
-            txtDireccionUsu.Name = "txtDireccionUsu";
-            txtDireccionUsu.Size = new Size(246, 23);
-            txtDireccionUsu.TabIndex = 17;
-            // 
-            // PanelAdminUsuarios
-            // 
-            PanelAdminUsuarios.Controls.Add(txtDireccionUsu);
-            PanelAdminUsuarios.Controls.Add(label1);
-            PanelAdminUsuarios.Controls.Add(labelDireccionUsu);
-            PanelAdminUsuarios.Controls.Add(btnLimpiar);
-            PanelAdminUsuarios.Controls.Add(btnRegistrar);
-            PanelAdminUsuarios.Controls.Add(txtContrasenaUsu);
-            PanelAdminUsuarios.Controls.Add(labelContraseña);
-            PanelAdminUsuarios.Controls.Add(txtNombreUsuarioUsu);
-            PanelAdminUsuarios.Controls.Add(label6);
-            PanelAdminUsuarios.Controls.Add(txtTelefonoUsu);
-            PanelAdminUsuarios.Controls.Add(labelTelefono);
-            PanelAdminUsuarios.Controls.Add(txtCorreoUsu);
-            PanelAdminUsuarios.Controls.Add(labelCorreoUsu);
-            PanelAdminUsuarios.Controls.Add(txtApellidoUsu);
-            PanelAdminUsuarios.Controls.Add(labelApellido);
-            PanelAdminUsuarios.Controls.Add(txtNombreUsu);
-            PanelAdminUsuarios.Controls.Add(labelNombre);
-            PanelAdminUsuarios.Dock = DockStyle.Fill;
-            PanelAdminUsuarios.Location = new Point(0, 0);
-            PanelAdminUsuarios.Margin = new Padding(3, 2, 3, 2);
-            PanelAdminUsuarios.Name = "PanelAdminUsuarios";
-            PanelAdminUsuarios.Size = new Size(390, 448);
-            PanelAdminUsuarios.TabIndex = 3;
+            btnRegistrar.Location = new Point(10, 11);
+            btnRegistrar.Margin = new Padding(8, 0, 0, 0);
+            btnRegistrar.Name = "btnRegistrar";
+            btnRegistrar.Size = new Size(150, 42);
+            btnRegistrar.TabIndex = 14;
+            btnRegistrar.Text = "Registrar";
+            btnRegistrar.UseVisualStyleBackColor = true;
+            btnRegistrar.Click += btnRegistrar_Click;
             // 
             // RegistrarUsuariosControl
             // 
@@ -230,14 +266,18 @@
             AutoScaleMode = AutoScaleMode.Font;
             Controls.Add(PanelAdminUsuarios);
             Name = "RegistrarUsuariosControl";
-            Size = new Size(390, 448);
+            Size = new Size(520, 520);
             PanelAdminUsuarios.ResumeLayout(false);
-            PanelAdminUsuarios.PerformLayout();
+            tableLayoutFormulario.ResumeLayout(false);
+            tableLayoutFormulario.PerformLayout();
+            flowLayoutPanelBotones.ResumeLayout(false);
             ResumeLayout(false);
         }
 
         #endregion
 
+        private Panel PanelAdminUsuarios;
+        private TableLayoutPanel tableLayoutFormulario;
         private Label labelNombre;
         private TextBox txtNombreUsu;
         private Label labelApellido;
@@ -255,6 +295,6 @@
         private Label labelDireccionUsu;
         private Label label1;
         private TextBox txtDireccionUsu;
-        private Panel PanelAdminUsuarios;
+        private FlowLayoutPanel flowLayoutPanelBotones;
     }
 }

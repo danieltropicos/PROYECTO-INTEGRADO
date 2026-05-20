@@ -2,6 +2,7 @@
 using Proyecto_Integrador.Controladores;
 using Proyecto_Integrador.Modelos.Usuarios;
 using Proyecto_Integrador.Vistas.Layout;
+using Proyecto_Integrador.Vistas.Usuarios;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -68,7 +69,7 @@ namespace Proyecto_Integrador.Vistas.Login
             }
         }
 
-        private void Login_Load(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)
         {
             txtContraseña.UseSystemPasswordChar = true;
             pictureBox1.Image = Image.FromFile("Imagenes/ojoCerrado.jpg");
@@ -82,6 +83,9 @@ namespace Proyecto_Integrador.Vistas.Login
         private void labelUsuario_Click(object sender, EventArgs e)
         {
 
+            var registrarUsuariosForm = new RegistrarUsuarios();
+            registrarUsuariosForm.Show();
+            Hide();
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
