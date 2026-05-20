@@ -28,7 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Login));
             panel1 = new Panel();
+            pictureBox1 = new PictureBox();
             btnIngresar = new Button();
             txtContraseña = new TextBox();
             txtUsuario = new TextBox();
@@ -36,11 +38,13 @@
             labelUsuario = new Label();
             label1 = new Label();
             panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // panel1
             // 
             panel1.BackColor = SystemColors.ControlLight;
+            panel1.Controls.Add(pictureBox1);
             panel1.Controls.Add(btnIngresar);
             panel1.Controls.Add(txtContraseña);
             panel1.Controls.Add(txtUsuario);
@@ -52,6 +56,18 @@
             panel1.Size = new Size(600, 603);
             panel1.TabIndex = 0;
             panel1.Paint += panel1_Paint;
+            // 
+            // pictureBox1
+            // 
+            pictureBox1.BackColor = SystemColors.Window;
+            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
+            pictureBox1.Location = new Point(452, 244);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(30, 20);
+            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox1.TabIndex = 6;
+            pictureBox1.TabStop = false;
+            pictureBox1.Click += pictureBox1_Click;
             // 
             // btnIngresar
             // 
@@ -70,6 +86,7 @@
             txtContraseña.Name = "txtContraseña";
             txtContraseña.Size = new Size(253, 27);
             txtContraseña.TabIndex = 4;
+            txtContraseña.UseSystemPasswordChar = true;
             // 
             // txtUsuario
             // 
@@ -119,6 +136,7 @@
             Load += Login_Load;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
         }
 
@@ -131,5 +149,6 @@
         private TextBox txtUsuario;
         private Label labelContraseña;
         private Label labelUsuario;
+        private PictureBox pictureBox1;
     }
 }

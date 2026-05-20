@@ -58,7 +58,8 @@ namespace Proyecto_Integrador.Vistas.Login
 
         private void Login_Load(object sender, EventArgs e)
         {
-
+            txtContraseña.UseSystemPasswordChar = true;
+            pictureBox1.Image = Image.FromFile("Imagenes/ojoCerrado.jpg");
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)
@@ -69,6 +70,21 @@ namespace Proyecto_Integrador.Vistas.Login
         private void labelUsuario_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            if (txtContraseña.UseSystemPasswordChar)
+            {
+                txtContraseña.UseSystemPasswordChar = false;
+                pictureBox1.Image = Image.FromFile("Imagenes/ojoAbierto.jpg");
+
+            }
+            else
+            {
+                txtContraseña.UseSystemPasswordChar = true;
+                pictureBox1.Image = Image.FromFile("Imagenes/ojoCerrado.jpg");
+            }
         }
     }
 }
