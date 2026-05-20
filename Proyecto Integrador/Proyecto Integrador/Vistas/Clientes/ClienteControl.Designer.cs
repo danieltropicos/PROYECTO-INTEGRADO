@@ -1,4 +1,4 @@
-﻿namespace Proyecto_Integrador.Vistas.Clientes
+namespace Proyecto_Integrador.Vistas.Clientes
 {
     partial class ClienteControl
     {
@@ -42,6 +42,7 @@
             label4 = new Label();
             button1 = new Button();
             button2 = new Button();
+            flowLayoutPanelAcciones = new FlowLayoutPanel();
             textBoxCorreo = new TextBox();
             textBoxDocumento = new TextBox();
             dgvClientes = new DataGridView();
@@ -68,8 +69,8 @@
             tableLayoutPanel1.Location = new Point(0, 0);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
             tableLayoutPanel1.RowCount = 2;
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 60F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 40F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 55F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 45F));
             tableLayoutPanel1.Size = new Size(545, 581);
             tableLayoutPanel1.TabIndex = 0;
             // 
@@ -108,26 +109,26 @@
             tableLayoutPanel2.Controls.Add(textBoxTelefono, 1, 2);
             tableLayoutPanel2.Controls.Add(textBoxDireccion, 2, 2);
             tableLayoutPanel2.Controls.Add(label4, 0, 3);
-            tableLayoutPanel2.Controls.Add(button1, 2, 4);
-            tableLayoutPanel2.Controls.Add(button2, 1, 4);
+            tableLayoutPanel2.Controls.Add(flowLayoutPanelAcciones, 1, 4);
             tableLayoutPanel2.Controls.Add(textBoxCorreo, 1, 1);
             tableLayoutPanel2.Controls.Add(textBoxDocumento, 1, 3);
             tableLayoutPanel2.Dock = DockStyle.Fill;
             tableLayoutPanel2.Location = new Point(3, 19);
             tableLayoutPanel2.Name = "tableLayoutPanel2";
+            tableLayoutPanel2.Padding = new Padding(8, 4, 8, 8);
             tableLayoutPanel2.RowCount = 5;
-            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 20.0000019F));
-            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 19.9999981F));
-            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 19.9999981F));
-            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 19.9999981F));
-            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 20.0000019F));
-            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
+            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Absolute, 48F));
+            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Absolute, 48F));
+            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Absolute, 48F));
+            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Absolute, 48F));
+            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Absolute, 56F));
+            tableLayoutPanel2.SetColumnSpan(flowLayoutPanelAcciones, 2);
             tableLayoutPanel2.Size = new Size(533, 205);
             tableLayoutPanel2.TabIndex = 0;
             // 
             // label1
             // 
-            label1.AutoSize = true;
+            label1.AutoSize = false;
             label1.Dock = DockStyle.Fill;
             label1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label1.Location = new Point(3, 0);
@@ -155,7 +156,7 @@
             // 
             // label2
             // 
-            label2.AutoSize = true;
+            label2.AutoSize = false;
             label2.Dock = DockStyle.Fill;
             label2.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label2.Location = new Point(3, 41);
@@ -167,7 +168,7 @@
             // 
             // label3
             // 
-            label3.AutoSize = true;
+            label3.AutoSize = false;
             label3.Dock = DockStyle.Fill;
             label3.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label3.Location = new Point(3, 81);
@@ -195,7 +196,7 @@
             // 
             // label4
             // 
-            label4.AutoSize = true;
+            label4.AutoSize = false;
             label4.Dock = DockStyle.Fill;
             label4.Font = new Font("Segoe UI", 9F);
             label4.Location = new Point(3, 121);
@@ -205,12 +206,25 @@
             label4.Text = "Documento";
             label4.TextAlign = ContentAlignment.MiddleLeft;
             // 
+            // flowLayoutPanelAcciones
+            // 
+            flowLayoutPanelAcciones.Controls.Add(button2);
+            flowLayoutPanelAcciones.Controls.Add(button1);
+            flowLayoutPanelAcciones.Dock = DockStyle.Fill;
+            flowLayoutPanelAcciones.FlowDirection = FlowDirection.RightToLeft;
+            flowLayoutPanelAcciones.Location = new Point(184, 200);
+            flowLayoutPanelAcciones.Name = "flowLayoutPanelAcciones";
+            flowLayoutPanelAcciones.Padding = new Padding(0, 8, 0, 0);
+            flowLayoutPanelAcciones.Size = new Size(341, 48);
+            flowLayoutPanelAcciones.TabIndex = 16;
+            flowLayoutPanelAcciones.WrapContents = false;
+            // 
             // button1
             // 
-            button1.Dock = DockStyle.Fill;
-            button1.Location = new Point(357, 164);
+            button1.Location = new Point(188, 11);
+            button1.Margin = new Padding(8, 0, 0, 0);
             button1.Name = "button1";
-            button1.Size = new Size(173, 38);
+            button1.Size = new Size(150, 42);
             button1.TabIndex = 12;
             button1.Text = "Agregar";
             button1.UseVisualStyleBackColor = true;
@@ -218,10 +232,10 @@
             // 
             // button2
             // 
-            button2.Dock = DockStyle.Fill;
-            button2.Location = new Point(180, 164);
+            button2.Location = new Point(30, 11);
+            button2.Margin = new Padding(8, 0, 0, 0);
             button2.Name = "button2";
-            button2.Size = new Size(171, 38);
+            button2.Size = new Size(150, 42);
             button2.TabIndex = 13;
             button2.Text = "Limpiar";
             button2.UseVisualStyleBackColor = true;
@@ -328,6 +342,7 @@
         private Label label4;
         private Button button1;
         private Button button2;
+        private FlowLayoutPanel flowLayoutPanelAcciones;
         private TextBox textBoxCorreo;
         private TextBox textBoxDocumento;
         private DataGridView dgvClientes;
