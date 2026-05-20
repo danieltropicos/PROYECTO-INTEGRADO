@@ -35,9 +35,9 @@ namespace Proyecto_Integrador.Vistas.Layout
             panelBienvenida.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)picLogoCentro).BeginInit();
             SuspendLayout();
-            // 
+            //
             // tableLayoutPanel1
-            // 
+            //
             tableLayoutPanel1.ColumnCount = 2;
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 251F));
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
@@ -51,11 +51,12 @@ namespace Proyecto_Integrador.Vistas.Layout
             tableLayoutPanel1.RowCount = 2;
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 96F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            tableLayoutPanel1.BackColor = Color.FromArgb(243, 244, 246);
             tableLayoutPanel1.Size = new Size(1224, 680);
             tableLayoutPanel1.TabIndex = 0;
-            // 
+            //
             // panelNavbar
-            // 
+            //
             tableLayoutPanel1.SetColumnSpan(panelNavbar, 2);
             panelNavbar.Controls.Add(lblTituloApp);
             panelNavbar.Controls.Add(picLogoNavbar);
@@ -64,22 +65,25 @@ namespace Proyecto_Integrador.Vistas.Layout
             panelNavbar.Margin = new Padding(0);
             panelNavbar.Name = "panelNavbar";
             panelNavbar.Padding = new Padding(14, 11, 18, 11);
+            panelNavbar.BackColor = Color.FromArgb(30, 58, 95);
             panelNavbar.Size = new Size(1224, 96);
             panelNavbar.TabIndex = 0;
-            panelNavbar.Paint += panelNavbar_Paint;
-            // 
+            //
             // lblTituloApp
-            // 
+            //
+            lblTituloApp.BackColor = Color.Transparent;
             lblTituloApp.Dock = DockStyle.Fill;
+            lblTituloApp.Font = new Font("Segoe UI", 14F, FontStyle.Bold);
+            lblTituloApp.ForeColor = Color.White;
             lblTituloApp.Location = new Point(243, 11);
             lblTituloApp.Name = "lblTituloApp";
             lblTituloApp.Size = new Size(963, 74);
             lblTituloApp.TabIndex = 1;
             lblTituloApp.Text = "GeoTerra";
             lblTituloApp.TextAlign = ContentAlignment.MiddleRight;
-            // 
+            //
             // picLogoNavbar
-            // 
+            //
             picLogoNavbar.Dock = DockStyle.Left;
             picLogoNavbar.Location = new Point(14, 11);
             picLogoNavbar.Margin = new Padding(3, 4, 3, 4);
@@ -88,9 +92,9 @@ namespace Proyecto_Integrador.Vistas.Layout
             picLogoNavbar.SizeMode = PictureBoxSizeMode.Zoom;
             picLogoNavbar.TabIndex = 0;
             picLogoNavbar.TabStop = false;
-            // 
+            //
             // flowLayoutPanel1
-            // 
+            //
             flowLayoutPanel1.Controls.Add(button1);
             flowLayoutPanel1.Controls.Add(button2);
             flowLayoutPanel1.Controls.Add(button3);
@@ -101,78 +105,117 @@ namespace Proyecto_Integrador.Vistas.Layout
             flowLayoutPanel1.Margin = new Padding(0);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
             flowLayoutPanel1.Padding = new Padding(9, 16, 9, 16);
+            flowLayoutPanel1.BackColor = Color.FromArgb(30, 58, 95);
             flowLayoutPanel1.Size = new Size(251, 584);
             flowLayoutPanel1.TabIndex = 1;
             flowLayoutPanel1.WrapContents = false;
-            // 
+            //
             // button1
-            // 
+            //
             button1.Location = new Point(12, 20);
             button1.Margin = new Padding(3, 4, 3, 8);
             button1.Name = "button1";
             button1.Size = new Size(226, 64);
             button1.TabIndex = 0;
+            button1.BackColor = Color.FromArgb(30, 58, 95);
+            button1.Cursor = Cursors.Hand;
+            button1.FlatAppearance.BorderSize = 0;
+            button1.FlatAppearance.MouseOverBackColor = Color.FromArgb(59, 93, 122);
+            button1.FlatStyle = FlatStyle.Flat;
+            button1.Font = new Font("Segoe UI", 10F);
+            button1.ForeColor = Color.White;
+            button1.Padding = new Padding(20, 0, 0, 0);
             button1.Text = "  Usuarios";
-            button1.UseVisualStyleBackColor = true;
+            button1.TextAlign = ContentAlignment.MiddleLeft;
+            button1.UseVisualStyleBackColor = false;
             button1.Click += button1_Click;
-            // 
+            //
             // button2
-            // 
+            //
             button2.Location = new Point(12, 96);
             button2.Margin = new Padding(3, 4, 3, 8);
             button2.Name = "button2";
             button2.Size = new Size(226, 64);
             button2.TabIndex = 1;
+            button2.BackColor = Color.FromArgb(30, 58, 95);
+            button2.Cursor = Cursors.Hand;
+            button2.FlatAppearance.BorderSize = 0;
+            button2.FlatAppearance.MouseOverBackColor = Color.FromArgb(59, 93, 122);
+            button2.FlatStyle = FlatStyle.Flat;
+            button2.Font = new Font("Segoe UI", 10F);
+            button2.ForeColor = Color.White;
+            button2.Padding = new Padding(20, 0, 0, 0);
             button2.Text = "  Clientes";
-            button2.UseVisualStyleBackColor = true;
+            button2.TextAlign = ContentAlignment.MiddleLeft;
+            button2.UseVisualStyleBackColor = false;
             button2.Click += button2_Click;
-            // 
+            //
             // button3
-            // 
+            //
             button3.Location = new Point(12, 172);
             button3.Margin = new Padding(3, 4, 3, 8);
             button3.Name = "button3";
             button3.Size = new Size(226, 64);
             button3.TabIndex = 2;
+            button3.BackColor = Color.FromArgb(30, 58, 95);
+            button3.Cursor = Cursors.Hand;
+            button3.FlatAppearance.BorderSize = 0;
+            button3.FlatAppearance.MouseOverBackColor = Color.FromArgb(59, 93, 122);
+            button3.FlatStyle = FlatStyle.Flat;
+            button3.Font = new Font("Segoe UI", 10F);
+            button3.ForeColor = Color.White;
+            button3.Padding = new Padding(20, 0, 0, 0);
             button3.Text = "  Cotización";
-            button3.UseVisualStyleBackColor = true;
+            button3.TextAlign = ContentAlignment.MiddleLeft;
+            button3.UseVisualStyleBackColor = false;
             button3.Click += button3_Click;
-            // 
+            //
             // button4
-            // 
+            //
             button4.Location = new Point(12, 248);
             button4.Margin = new Padding(3, 4, 3, 8);
             button4.Name = "button4";
             button4.Size = new Size(226, 64);
             button4.TabIndex = 3;
+            button4.BackColor = Color.FromArgb(30, 58, 95);
+            button4.Cursor = Cursors.Hand;
+            button4.FlatAppearance.BorderSize = 0;
+            button4.FlatAppearance.MouseOverBackColor = Color.FromArgb(59, 93, 122);
+            button4.FlatStyle = FlatStyle.Flat;
+            button4.Font = new Font("Segoe UI", 10F);
+            button4.ForeColor = Color.White;
+            button4.Padding = new Padding(20, 0, 0, 0);
             button4.Text = "  Facturas";
-            button4.UseVisualStyleBackColor = true;
+            button4.TextAlign = ContentAlignment.MiddleLeft;
+            button4.UseVisualStyleBackColor = false;
             button4.Click += button4_Click;
-            // 
+            //
             // panelContenido
-            // 
+            //
             panelContenido.Controls.Add(panelBienvenida);
             panelContenido.Dock = DockStyle.Fill;
             panelContenido.Location = new Point(251, 96);
             panelContenido.Margin = new Padding(0);
             panelContenido.Name = "panelContenido";
             panelContenido.Padding = new Padding(18, 21, 18, 21);
+            panelContenido.BackColor = Color.FromArgb(243, 244, 246);
             panelContenido.Size = new Size(973, 584);
             panelContenido.TabIndex = 2;
-            // 
+            //
             // panelBienvenida
-            // 
+            //
             panelBienvenida.Controls.Add(picLogoCentro);
             panelBienvenida.Dock = DockStyle.Fill;
             panelBienvenida.Location = new Point(18, 21);
             panelBienvenida.Margin = new Padding(3, 4, 3, 4);
             panelBienvenida.Name = "panelBienvenida";
-            panelBienvenida.Padding = new Padding(606, 179, 606, 179);
+            panelBienvenida.BackColor = Color.FromArgb(243, 244, 246);
+            panelBienvenida.Padding = new Padding(280, 100, 280, 100);
             panelBienvenida.Size = new Size(937, 542);
             panelBienvenida.TabIndex = 0;
-            // 
+            //
             // picLogoCentro
-            // 
+            //
             picLogoCentro.Dock = DockStyle.Fill;
             picLogoCentro.Location = new Point(606, 179);
             picLogoCentro.Margin = new Padding(3, 4, 3, 4);
@@ -181,11 +224,12 @@ namespace Proyecto_Integrador.Vistas.Layout
             picLogoCentro.SizeMode = PictureBoxSizeMode.Zoom;
             picLogoCentro.TabIndex = 0;
             picLogoCentro.TabStop = false;
-            // 
+            //
             // HomeLayout
-            // 
+            //
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.FromArgb(243, 244, 246);
             ClientSize = new Size(1224, 680);
             Controls.Add(tableLayoutPanel1);
             Margin = new Padding(3, 4, 3, 4);
@@ -194,7 +238,6 @@ namespace Proyecto_Integrador.Vistas.Layout
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Proyecto Integrador";
             WindowState = FormWindowState.Maximized;
-            Load += HomeLayout_Load;
             tableLayoutPanel1.ResumeLayout(false);
             panelNavbar.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)picLogoNavbar).EndInit();

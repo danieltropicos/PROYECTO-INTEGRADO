@@ -43,6 +43,7 @@ namespace Proyecto_Integrador.Vistas.Usuarios
             // PanelAdminUsuarios
             // 
             PanelAdminUsuarios.Controls.Add(tableLayoutFormulario);
+            PanelAdminUsuarios.BackColor = Color.FromArgb(243, 244, 246);
             PanelAdminUsuarios.Dock = DockStyle.Fill;
             PanelAdminUsuarios.Location = new Point(0, 0);
             PanelAdminUsuarios.Margin = new Padding(3, 4, 3, 4);
@@ -94,6 +95,7 @@ namespace Proyecto_Integrador.Vistas.Usuarios
             tableLayoutFormulario.SetColumnSpan(label1, 2);
             label1.Dock = DockStyle.Fill;
             label1.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            label1.ForeColor = Color.FromArgb(30, 58, 95);
             label1.Location = new Point(3, 0);
             label1.Name = "label1";
             label1.Size = new Size(534, 59);
@@ -104,6 +106,7 @@ namespace Proyecto_Integrador.Vistas.Usuarios
             // labelNombre
             // 
             labelNombre.Dock = DockStyle.Fill;
+            labelNombre.ForeColor = Color.FromArgb(75, 85, 99);
             labelNombre.Location = new Point(3, 59);
             labelNombre.Name = "labelNombre";
             labelNombre.Size = new Size(154, 64);
@@ -113,7 +116,10 @@ namespace Proyecto_Integrador.Vistas.Usuarios
             // 
             // txtNombreUsu
             // 
+            txtNombreUsu.BackColor = Color.White;
+            txtNombreUsu.BorderStyle = BorderStyle.FixedSingle;
             txtNombreUsu.Dock = DockStyle.Fill;
+            txtNombreUsu.Font = new Font("Segoe UI", 10F);
             txtNombreUsu.Location = new Point(163, 63);
             txtNombreUsu.Margin = new Padding(3, 4, 3, 4);
             txtNombreUsu.Name = "txtNombreUsu";
@@ -123,6 +129,7 @@ namespace Proyecto_Integrador.Vistas.Usuarios
             // labelApellido
             // 
             labelApellido.Dock = DockStyle.Fill;
+            labelApellido.ForeColor = Color.FromArgb(75, 85, 99);
             labelApellido.Location = new Point(3, 123);
             labelApellido.Name = "labelApellido";
             labelApellido.Size = new Size(154, 64);
@@ -132,7 +139,10 @@ namespace Proyecto_Integrador.Vistas.Usuarios
             // 
             // txtApellidoUsu
             // 
+            txtApellidoUsu.BackColor = Color.White;
+            txtApellidoUsu.BorderStyle = BorderStyle.FixedSingle;
             txtApellidoUsu.Dock = DockStyle.Fill;
+            txtApellidoUsu.Font = new Font("Segoe UI", 10F);
             txtApellidoUsu.Location = new Point(163, 127);
             txtApellidoUsu.Margin = new Padding(3, 4, 3, 4);
             txtApellidoUsu.Name = "txtApellidoUsu";
@@ -142,6 +152,7 @@ namespace Proyecto_Integrador.Vistas.Usuarios
             // labelCorreoUsu
             // 
             labelCorreoUsu.Dock = DockStyle.Fill;
+            labelCorreoUsu.ForeColor = Color.FromArgb(75, 85, 99);
             labelCorreoUsu.Location = new Point(3, 187);
             labelCorreoUsu.Name = "labelCorreoUsu";
             labelCorreoUsu.Size = new Size(154, 64);
@@ -151,7 +162,10 @@ namespace Proyecto_Integrador.Vistas.Usuarios
             // 
             // txtCorreoUsu
             // 
+            txtCorreoUsu.BackColor = Color.White;
+            txtCorreoUsu.BorderStyle = BorderStyle.FixedSingle;
             txtCorreoUsu.Dock = DockStyle.Fill;
+            txtCorreoUsu.Font = new Font("Segoe UI", 10F);
             txtCorreoUsu.Location = new Point(163, 191);
             txtCorreoUsu.Margin = new Padding(3, 4, 3, 4);
             txtCorreoUsu.Name = "txtCorreoUsu";
@@ -161,6 +175,7 @@ namespace Proyecto_Integrador.Vistas.Usuarios
             // labelTelefono
             // 
             labelTelefono.Dock = DockStyle.Fill;
+            labelTelefono.ForeColor = Color.FromArgb(75, 85, 99);
             labelTelefono.Location = new Point(3, 251);
             labelTelefono.Name = "labelTelefono";
             labelTelefono.Size = new Size(154, 64);
@@ -170,7 +185,10 @@ namespace Proyecto_Integrador.Vistas.Usuarios
             // 
             // txtTelefonoUsu
             // 
+            txtTelefonoUsu.BackColor = Color.White;
+            txtTelefonoUsu.BorderStyle = BorderStyle.FixedSingle;
             txtTelefonoUsu.Dock = DockStyle.Fill;
+            txtTelefonoUsu.Font = new Font("Segoe UI", 10F);
             txtTelefonoUsu.Location = new Point(163, 255);
             txtTelefonoUsu.Margin = new Padding(3, 4, 3, 4);
             txtTelefonoUsu.Name = "txtTelefonoUsu";
@@ -180,6 +198,7 @@ namespace Proyecto_Integrador.Vistas.Usuarios
             // labelDireccionUsu
             // 
             labelDireccionUsu.Dock = DockStyle.Fill;
+            labelDireccionUsu.ForeColor = Color.FromArgb(75, 85, 99);
             labelDireccionUsu.Location = new Point(3, 315);
             labelDireccionUsu.Name = "labelDireccionUsu";
             labelDireccionUsu.Size = new Size(154, 64);
@@ -189,7 +208,10 @@ namespace Proyecto_Integrador.Vistas.Usuarios
             // 
             // txtDireccionUsu
             // 
+            txtDireccionUsu.BackColor = Color.White;
+            txtDireccionUsu.BorderStyle = BorderStyle.FixedSingle;
             txtDireccionUsu.Dock = DockStyle.Fill;
+            txtDireccionUsu.Font = new Font("Segoe UI", 10F);
             txtDireccionUsu.Location = new Point(163, 319);
             txtDireccionUsu.Margin = new Padding(3, 4, 3, 4);
             txtDireccionUsu.Name = "txtDireccionUsu";
@@ -199,6 +221,7 @@ namespace Proyecto_Integrador.Vistas.Usuarios
             // label6
             // 
             label6.Dock = DockStyle.Fill;
+            label6.ForeColor = Color.FromArgb(75, 85, 99);
             label6.Location = new Point(3, 379);
             label6.Name = "label6";
             label6.Size = new Size(154, 64);
@@ -208,7 +231,10 @@ namespace Proyecto_Integrador.Vistas.Usuarios
             // 
             // txtNombreUsuarioUsu
             // 
+            txtNombreUsuarioUsu.BackColor = Color.White;
+            txtNombreUsuarioUsu.BorderStyle = BorderStyle.FixedSingle;
             txtNombreUsuarioUsu.Dock = DockStyle.Fill;
+            txtNombreUsuarioUsu.Font = new Font("Segoe UI", 10F);
             txtNombreUsuarioUsu.Location = new Point(163, 383);
             txtNombreUsuarioUsu.Margin = new Padding(3, 4, 3, 4);
             txtNombreUsuarioUsu.Name = "txtNombreUsuarioUsu";
@@ -218,6 +244,7 @@ namespace Proyecto_Integrador.Vistas.Usuarios
             // labelContraseña
             // 
             labelContraseña.Dock = DockStyle.Fill;
+            labelContraseña.ForeColor = Color.FromArgb(75, 85, 99);
             labelContraseña.Location = new Point(3, 443);
             labelContraseña.Name = "labelContraseña";
             labelContraseña.Size = new Size(154, 64);
@@ -227,7 +254,10 @@ namespace Proyecto_Integrador.Vistas.Usuarios
             // 
             // txtContrasenaUsu
             // 
+            txtContrasenaUsu.BackColor = Color.White;
+            txtContrasenaUsu.BorderStyle = BorderStyle.FixedSingle;
             txtContrasenaUsu.Dock = DockStyle.Fill;
+            txtContrasenaUsu.Font = new Font("Segoe UI", 10F);
             txtContrasenaUsu.Location = new Point(163, 447);
             txtContrasenaUsu.Margin = new Padding(3, 4, 3, 4);
             txtContrasenaUsu.Name = "txtContrasenaUsu";
@@ -251,29 +281,44 @@ namespace Proyecto_Integrador.Vistas.Usuarios
             // 
             // btnLimpiar
             // 
+            btnLimpiar.BackColor = Color.FromArgb(229, 231, 235);
+            btnLimpiar.Cursor = Cursors.Hand;
+            btnLimpiar.FlatAppearance.BorderSize = 0;
+            btnLimpiar.FlatAppearance.MouseOverBackColor = Color.FromArgb(209, 213, 219);
+            btnLimpiar.FlatStyle = FlatStyle.Flat;
+            btnLimpiar.Font = new Font("Segoe UI", 10F);
+            btnLimpiar.ForeColor = Color.FromArgb(17, 24, 39);
             btnLimpiar.Location = new Point(203, 11);
             btnLimpiar.Margin = new Padding(9, 0, 0, 0);
             btnLimpiar.Name = "btnLimpiar";
             btnLimpiar.Size = new Size(171, 56);
             btnLimpiar.TabIndex = 15;
             btnLimpiar.Text = "Limpiar";
-            btnLimpiar.UseVisualStyleBackColor = true;
+            btnLimpiar.UseVisualStyleBackColor = false;
             // 
             // btnRegistrar
             // 
+            btnRegistrar.BackColor = Color.FromArgb(245, 158, 11);
+            btnRegistrar.Cursor = Cursors.Hand;
+            btnRegistrar.FlatAppearance.BorderSize = 0;
+            btnRegistrar.FlatAppearance.MouseOverBackColor = Color.FromArgb(217, 119, 6);
+            btnRegistrar.FlatStyle = FlatStyle.Flat;
+            btnRegistrar.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            btnRegistrar.ForeColor = Color.White;
             btnRegistrar.Location = new Point(23, 11);
             btnRegistrar.Margin = new Padding(9, 0, 0, 0);
             btnRegistrar.Name = "btnRegistrar";
             btnRegistrar.Size = new Size(171, 56);
             btnRegistrar.TabIndex = 14;
             btnRegistrar.Text = "Registrar";
-            btnRegistrar.UseVisualStyleBackColor = true;
+            btnRegistrar.UseVisualStyleBackColor = false;
             btnRegistrar.Click += btnRegistrar_Click;
             // 
             // RegistrarUsuariosControl
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.FromArgb(243, 244, 246);
             Controls.Add(PanelAdminUsuarios);
             Margin = new Padding(3, 4, 3, 4);
             Name = "RegistrarUsuariosControl";

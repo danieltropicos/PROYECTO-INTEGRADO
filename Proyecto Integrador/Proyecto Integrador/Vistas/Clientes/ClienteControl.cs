@@ -1,28 +1,16 @@
 using Proyecto_Integrador.Controladores;
 using Proyecto_Integrador.Modelos.Usuarios;
-using Proyecto_Integrador.Utilidades;
 
 namespace Proyecto_Integrador.Vistas.Clientes
 {
     public partial class ClienteControl : UserControl
     {
         private readonly ClienteControlador clienteRepositorio;
+
         public ClienteControl()
         {
             clienteRepositorio = new ClienteControlador();
-
             InitializeComponent();
-
-            BackColor = AppTheme.FondoPrincipal;
-            panel1.BackColor = AppTheme.FondoPrincipal;
-            tableLayoutPanel1.BackColor = AppTheme.FondoPrincipal;
-            UiHelper.EstilizarGroupBox(groupBox1);
-            UiHelper.EstilizarDataGridView(dgvClientes);
-            UiHelper.EstilizarLabelsEn(groupBox1);
-            UiHelper.EstilizarTextBoxesEn(groupBox1);
-            UiHelper.EstilizarBotonPrimario(button1);
-            UiHelper.EstilizarBotonSecundario(button2);
-
             cargarClientes();
         }
 

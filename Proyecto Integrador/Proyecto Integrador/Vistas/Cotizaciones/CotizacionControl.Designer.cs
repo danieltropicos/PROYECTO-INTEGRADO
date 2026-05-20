@@ -80,11 +80,13 @@ namespace Proyecto_Integrador.Vistas.Cotizaciones
             tableLayoutPanel1.Name = "tableLayoutPanel1";
             tableLayoutPanel1.RowCount = 1;
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            tableLayoutPanel1.BackColor = Color.FromArgb(243, 244, 246);
             tableLayoutPanel1.Size = new Size(1069, 591);
             tableLayoutPanel1.TabIndex = 0;
             // 
             // panel2
             // 
+            panel2.BackColor = Color.White;
             panel2.Dock = DockStyle.Fill;
             panel2.Location = new Point(430, 3);
             panel2.Name = "panel2";
@@ -101,6 +103,7 @@ namespace Proyecto_Integrador.Vistas.Cotizaciones
             tableLayoutPanel2.Controls.Add(groupBox2, 0, 1);
             tableLayoutPanel2.Controls.Add(groupBox3, 0, 2);
             tableLayoutPanel2.Controls.Add(groupBox4, 0, 3);
+            tableLayoutPanel2.BackColor = Color.FromArgb(243, 244, 246);
             tableLayoutPanel2.Dock = DockStyle.Fill;
             tableLayoutPanel2.Location = new Point(3, 3);
             tableLayoutPanel2.Name = "tableLayoutPanel2";
@@ -115,8 +118,11 @@ namespace Proyecto_Integrador.Vistas.Cotizaciones
             // groupBox1
             // 
             tableLayoutPanel2.SetColumnSpan(groupBox1, 2);
+            groupBox1.BackColor = Color.White;
             groupBox1.Controls.Add(tableLayoutPanel3);
             groupBox1.Dock = DockStyle.Fill;
+            groupBox1.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            groupBox1.ForeColor = Color.FromArgb(30, 58, 95);
             groupBox1.Location = new Point(3, 3);
             groupBox1.Name = "groupBox1";
             groupBox1.Size = new Size(415, 124);
@@ -150,6 +156,7 @@ namespace Proyecto_Integrador.Vistas.Cotizaciones
             // 
             label1.AutoSize = false;
             label1.Dock = DockStyle.Fill;
+            label1.ForeColor = Color.FromArgb(75, 85, 99);
             label1.Location = new Point(3, 0);
             label1.Name = "label1";
             label1.Size = new Size(157, 33);
@@ -159,7 +166,10 @@ namespace Proyecto_Integrador.Vistas.Cotizaciones
             // 
             // comboBoxClientes
             // 
+            comboBoxClientes.BackColor = Color.White;
             comboBoxClientes.Dock = DockStyle.Fill;
+            comboBoxClientes.FlatStyle = FlatStyle.Flat;
+            comboBoxClientes.Font = new Font("Segoe UI", 10F);
             comboBoxClientes.FormattingEnabled = true;
             comboBoxClientes.Location = new Point(166, 3);
             comboBoxClientes.Name = "comboBoxClientes";
@@ -168,7 +178,10 @@ namespace Proyecto_Integrador.Vistas.Cotizaciones
             // 
             // textBox1
             // 
+            textBox1.BackColor = Color.White;
+            textBox1.BorderStyle = BorderStyle.FixedSingle;
             textBox1.Dock = DockStyle.Fill;
+            textBox1.Font = new Font("Segoe UI", 10F);
             textBox1.Location = new Point(166, 69);
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(240, 23);
@@ -178,6 +191,7 @@ namespace Proyecto_Integrador.Vistas.Cotizaciones
             // 
             label3.AutoSize = false;
             label3.Dock = DockStyle.Fill;
+            label3.ForeColor = Color.FromArgb(75, 85, 99);
             label3.Location = new Point(3, 66);
             label3.Name = "label3";
             label3.Size = new Size(157, 36);
@@ -189,6 +203,7 @@ namespace Proyecto_Integrador.Vistas.Cotizaciones
             // 
             label2.AutoSize = false;
             label2.Dock = DockStyle.Fill;
+            label2.ForeColor = Color.FromArgb(75, 85, 99);
             label2.Location = new Point(3, 33);
             label2.Name = "label2";
             label2.Size = new Size(157, 33);
@@ -198,7 +213,10 @@ namespace Proyecto_Integrador.Vistas.Cotizaciones
             // 
             // comboBoxMateriales
             // 
+            comboBoxMateriales.BackColor = Color.White;
             comboBoxMateriales.Dock = DockStyle.Fill;
+            comboBoxMateriales.FlatStyle = FlatStyle.Flat;
+            comboBoxMateriales.Font = new Font("Segoe UI", 10F);
             comboBoxMateriales.FormattingEnabled = true;
             comboBoxMateriales.Location = new Point(166, 36);
             comboBoxMateriales.Name = "comboBoxMateriales";
@@ -208,8 +226,11 @@ namespace Proyecto_Integrador.Vistas.Cotizaciones
             // groupBox2
             // 
             tableLayoutPanel2.SetColumnSpan(groupBox2, 2);
+            groupBox2.BackColor = Color.White;
             groupBox2.Controls.Add(dataGridView1);
             groupBox2.Dock = DockStyle.Fill;
+            groupBox2.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            groupBox2.ForeColor = Color.FromArgb(30, 58, 95);
             groupBox2.Location = new Point(3, 133);
             groupBox2.Name = "groupBox2";
             groupBox2.Size = new Size(415, 130);
@@ -221,7 +242,21 @@ namespace Proyecto_Integrador.Vistas.Cotizaciones
             // 
             dataGridView1.AllowUserToAddRows = false;
             dataGridView1.AllowUserToDeleteRows = false;
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(243, 244, 246);
+            dataGridView1.BackgroundColor = Color.White;
+            dataGridView1.BorderStyle = BorderStyle.None;
+            dataGridView1.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(30, 58, 95);
+            dataGridView1.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            dataGridView1.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+            dataGridView1.ColumnHeadersDefaultCellStyle.SelectionBackColor = Color.FromArgb(30, 58, 95);
+            dataGridView1.ColumnHeadersHeight = 36;
+            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            dataGridView1.DefaultCellStyle.BackColor = Color.White;
+            dataGridView1.DefaultCellStyle.ForeColor = Color.FromArgb(17, 24, 39);
+            dataGridView1.DefaultCellStyle.SelectionBackColor = Color.FromArgb(59, 93, 122);
+            dataGridView1.DefaultCellStyle.SelectionForeColor = Color.White;
+            dataGridView1.EnableHeadersVisualStyles = false;
+            dataGridView1.GridColor = Color.FromArgb(229, 231, 235);
             dataGridView1.Columns.AddRange(new DataGridViewColumn[] { colX1, colY1, colZ1 });
             dataGridView1.Dock = DockStyle.Fill;
             dataGridView1.Location = new Point(3, 19);
@@ -251,8 +286,11 @@ namespace Proyecto_Integrador.Vistas.Cotizaciones
             // groupBox3
             // 
             tableLayoutPanel2.SetColumnSpan(groupBox3, 2);
+            groupBox3.BackColor = Color.White;
             groupBox3.Controls.Add(dataGridView2);
             groupBox3.Dock = DockStyle.Fill;
+            groupBox3.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            groupBox3.ForeColor = Color.FromArgb(30, 58, 95);
             groupBox3.Location = new Point(3, 269);
             groupBox3.Name = "groupBox3";
             groupBox3.Size = new Size(415, 130);
@@ -264,7 +302,21 @@ namespace Proyecto_Integrador.Vistas.Cotizaciones
             // 
             dataGridView2.AllowUserToAddRows = false;
             dataGridView2.AllowUserToDeleteRows = false;
-            dataGridView2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView2.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(243, 244, 246);
+            dataGridView2.BackgroundColor = Color.White;
+            dataGridView2.BorderStyle = BorderStyle.None;
+            dataGridView2.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(30, 58, 95);
+            dataGridView2.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            dataGridView2.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+            dataGridView2.ColumnHeadersDefaultCellStyle.SelectionBackColor = Color.FromArgb(30, 58, 95);
+            dataGridView2.ColumnHeadersHeight = 36;
+            dataGridView2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            dataGridView2.DefaultCellStyle.BackColor = Color.White;
+            dataGridView2.DefaultCellStyle.ForeColor = Color.FromArgb(17, 24, 39);
+            dataGridView2.DefaultCellStyle.SelectionBackColor = Color.FromArgb(59, 93, 122);
+            dataGridView2.DefaultCellStyle.SelectionForeColor = Color.White;
+            dataGridView2.EnableHeadersVisualStyles = false;
+            dataGridView2.GridColor = Color.FromArgb(229, 231, 235);
             dataGridView2.Columns.AddRange(new DataGridViewColumn[] { colX2, colY2, colZ2 });
             dataGridView2.Dock = DockStyle.Fill;
             dataGridView2.Location = new Point(3, 19);
@@ -290,8 +342,11 @@ namespace Proyecto_Integrador.Vistas.Cotizaciones
             // groupBox4
             // 
             tableLayoutPanel2.SetColumnSpan(groupBox4, 2);
+            groupBox4.BackColor = Color.White;
             groupBox4.Controls.Add(tableLayoutPanel4);
             groupBox4.Dock = DockStyle.Fill;
+            groupBox4.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            groupBox4.ForeColor = Color.FromArgb(30, 58, 95);
             groupBox4.Location = new Point(3, 405);
             groupBox4.Name = "groupBox4";
             groupBox4.Size = new Size(415, 177);
@@ -322,6 +377,7 @@ namespace Proyecto_Integrador.Vistas.Cotizaciones
             // label4
             // 
             label4.AutoSize = true;
+            label4.ForeColor = Color.FromArgb(75, 85, 99);
             label4.Location = new Point(3, 0);
             label4.Name = "label4";
             label4.Size = new Size(54, 15);
@@ -333,6 +389,7 @@ namespace Proyecto_Integrador.Vistas.Cotizaciones
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label5.ForeColor = Color.FromArgb(30, 58, 95);
             label5.Location = new Point(207, 0);
             label5.Name = "label5";
             label5.Size = new Size(33, 15);
@@ -342,6 +399,7 @@ namespace Proyecto_Integrador.Vistas.Cotizaciones
             // label6
             // 
             label6.AutoSize = true;
+            label6.ForeColor = Color.FromArgb(75, 85, 99);
             label6.Location = new Point(3, 55);
             label6.Name = "label6";
             label6.Size = new Size(35, 15);
@@ -353,6 +411,7 @@ namespace Proyecto_Integrador.Vistas.Cotizaciones
             // 
             label7.AutoSize = true;
             label7.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label7.ForeColor = Color.FromArgb(30, 58, 95);
             label7.Location = new Point(207, 55);
             label7.Name = "label7";
             label7.Size = new Size(21, 15);
@@ -364,19 +423,27 @@ namespace Proyecto_Integrador.Vistas.Cotizaciones
             // 
             tableLayoutPanel4.SetColumnSpan(button1, 2);
             button1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            button1.BackColor = Color.FromArgb(245, 158, 11);
+            button1.Cursor = Cursors.Hand;
+            button1.FlatAppearance.BorderSize = 0;
+            button1.FlatAppearance.MouseOverBackColor = Color.FromArgb(217, 119, 6);
+            button1.FlatStyle = FlatStyle.Flat;
+            button1.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            button1.ForeColor = Color.White;
             button1.Location = new Point(3, 113);
             button1.Margin = new Padding(3, 10, 3, 3);
             button1.Name = "button1";
             button1.Size = new Size(403, 42);
             button1.TabIndex = 4;
             button1.Text = "Calcular";
-            button1.UseVisualStyleBackColor = true;
+            button1.UseVisualStyleBackColor = false;
             button1.Click += button1_Click;
             // 
             // CotizacionControl
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.FromArgb(243, 244, 246);
             Controls.Add(tableLayoutPanel1);
             Name = "CotizacionControl";
             Size = new Size(1069, 591);

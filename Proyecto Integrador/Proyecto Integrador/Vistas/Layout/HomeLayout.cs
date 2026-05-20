@@ -15,32 +15,12 @@ namespace Proyecto_Integrador.Vistas.Layout
         {
             InitializeComponent();
             _botonesMenu = [button1, button2, button3, button4];
-            AplicarEstilosLayout();
-            
             _usuario = usuario;
 
             button1.Visible = _usuario.Rol.Nombre == "Admin";
 
             picLogoNavbar.ImageLocation = AppAssets.RutaLogoNavbar;
             picLogoCentro.ImageLocation = AppAssets.RutaLogoCentro;
-        }
-
-        private void AplicarEstilosLayout()
-        {
-            BackColor = AppTheme.FondoPrincipal;
-            tableLayoutPanel1.BackColor = AppTheme.FondoPrincipal;
-
-            panelNavbar.BackColor = AppTheme.AzulPrincipal;
-            flowLayoutPanel1.BackColor = AppTheme.AzulPrincipal;
-            panelContenido.BackColor = AppTheme.FondoPrincipal;
-            panelBienvenida.BackColor = AppTheme.FondoPrincipal;
-
-            lblTituloApp.ForeColor = AppTheme.Blanco;
-            lblTituloApp.Font = AppTheme.FuenteTitulo;
-            lblTituloApp.BackColor = Color.Transparent;
-
-            foreach (var boton in _botonesMenu)
-                UiHelper.EstilizarBotonSidebar(boton);
         }
 
         private void AbrirVista(UserControl vista, Button botonActivo)
@@ -67,16 +47,6 @@ namespace Proyecto_Integrador.Vistas.Layout
 
         private void button4_Click(object sender, EventArgs e)
         {
-        }
-
-        private void panelNavbar_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void HomeLayout_Load(object sender, EventArgs e)
-        {
-            
         }
     }
 }

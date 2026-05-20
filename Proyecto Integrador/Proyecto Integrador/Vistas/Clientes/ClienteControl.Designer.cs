@@ -71,12 +71,14 @@ namespace Proyecto_Integrador.Vistas.Clientes
             tableLayoutPanel1.RowCount = 2;
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 55F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 45F));
+            tableLayoutPanel1.BackColor = Color.FromArgb(243, 244, 246);
             tableLayoutPanel1.Size = new Size(545, 581);
             tableLayoutPanel1.TabIndex = 0;
             // 
             // panel1
             // 
             panel1.Controls.Add(groupBox1);
+            panel1.BackColor = Color.FromArgb(243, 244, 246);
             panel1.Dock = DockStyle.Fill;
             panel1.Location = new Point(3, 351);
             panel1.Name = "panel1";
@@ -86,8 +88,10 @@ namespace Proyecto_Integrador.Vistas.Clientes
             // groupBox1
             // 
             groupBox1.Controls.Add(tableLayoutPanel2);
+            groupBox1.BackColor = Color.White;
             groupBox1.Dock = DockStyle.Fill;
             groupBox1.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            groupBox1.ForeColor = Color.FromArgb(30, 58, 95);
             groupBox1.Location = new Point(0, 0);
             groupBox1.Name = "groupBox1";
             groupBox1.Size = new Size(539, 227);
@@ -131,6 +135,7 @@ namespace Proyecto_Integrador.Vistas.Clientes
             label1.AutoSize = false;
             label1.Dock = DockStyle.Fill;
             label1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label1.ForeColor = Color.FromArgb(75, 85, 99);
             label1.Location = new Point(3, 0);
             label1.Name = "label1";
             label1.Size = new Size(171, 41);
@@ -140,7 +145,10 @@ namespace Proyecto_Integrador.Vistas.Clientes
             // 
             // textBoxNombre
             // 
+            textBoxNombre.BackColor = Color.White;
+            textBoxNombre.BorderStyle = BorderStyle.FixedSingle;
             textBoxNombre.Dock = DockStyle.Fill;
+            textBoxNombre.Font = new Font("Segoe UI", 10F);
             textBoxNombre.Location = new Point(180, 3);
             textBoxNombre.Name = "textBoxNombre";
             textBoxNombre.Size = new Size(171, 23);
@@ -148,7 +156,10 @@ namespace Proyecto_Integrador.Vistas.Clientes
             // 
             // textBoxApellido
             // 
+            textBoxApellido.BackColor = Color.White;
+            textBoxApellido.BorderStyle = BorderStyle.FixedSingle;
             textBoxApellido.Dock = DockStyle.Fill;
+            textBoxApellido.Font = new Font("Segoe UI", 10F);
             textBoxApellido.Location = new Point(357, 3);
             textBoxApellido.Name = "textBoxApellido";
             textBoxApellido.Size = new Size(173, 23);
@@ -159,6 +170,7 @@ namespace Proyecto_Integrador.Vistas.Clientes
             label2.AutoSize = false;
             label2.Dock = DockStyle.Fill;
             label2.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label2.ForeColor = Color.FromArgb(75, 85, 99);
             label2.Location = new Point(3, 41);
             label2.Name = "label2";
             label2.Size = new Size(171, 40);
@@ -171,6 +183,7 @@ namespace Proyecto_Integrador.Vistas.Clientes
             label3.AutoSize = false;
             label3.Dock = DockStyle.Fill;
             label3.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label3.ForeColor = Color.FromArgb(75, 85, 99);
             label3.Location = new Point(3, 81);
             label3.Name = "label3";
             label3.Size = new Size(171, 40);
@@ -180,7 +193,10 @@ namespace Proyecto_Integrador.Vistas.Clientes
             // 
             // textBoxTelefono
             // 
+            textBoxTelefono.BackColor = Color.White;
+            textBoxTelefono.BorderStyle = BorderStyle.FixedSingle;
             textBoxTelefono.Dock = DockStyle.Fill;
+            textBoxTelefono.Font = new Font("Segoe UI", 10F);
             textBoxTelefono.Location = new Point(180, 84);
             textBoxTelefono.Name = "textBoxTelefono";
             textBoxTelefono.Size = new Size(171, 23);
@@ -188,7 +204,10 @@ namespace Proyecto_Integrador.Vistas.Clientes
             // 
             // textBoxDireccion
             // 
+            textBoxDireccion.BackColor = Color.White;
+            textBoxDireccion.BorderStyle = BorderStyle.FixedSingle;
             textBoxDireccion.Dock = DockStyle.Fill;
+            textBoxDireccion.Font = new Font("Segoe UI", 10F);
             textBoxDireccion.Location = new Point(357, 84);
             textBoxDireccion.Name = "textBoxDireccion";
             textBoxDireccion.Size = new Size(173, 23);
@@ -199,6 +218,7 @@ namespace Proyecto_Integrador.Vistas.Clientes
             label4.AutoSize = false;
             label4.Dock = DockStyle.Fill;
             label4.Font = new Font("Segoe UI", 9F);
+            label4.ForeColor = Color.FromArgb(75, 85, 99);
             label4.Location = new Point(3, 121);
             label4.Name = "label4";
             label4.Size = new Size(171, 40);
@@ -221,29 +241,46 @@ namespace Proyecto_Integrador.Vistas.Clientes
             // 
             // button1
             // 
+            button1.BackColor = Color.FromArgb(245, 158, 11);
+            button1.Cursor = Cursors.Hand;
+            button1.FlatAppearance.BorderSize = 0;
+            button1.FlatAppearance.MouseOverBackColor = Color.FromArgb(217, 119, 6);
+            button1.FlatStyle = FlatStyle.Flat;
+            button1.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            button1.ForeColor = Color.White;
             button1.Location = new Point(188, 11);
             button1.Margin = new Padding(8, 0, 0, 0);
             button1.Name = "button1";
             button1.Size = new Size(150, 42);
             button1.TabIndex = 12;
             button1.Text = "Agregar";
-            button1.UseVisualStyleBackColor = true;
+            button1.UseVisualStyleBackColor = false;
             button1.Click += button1_Click;
             // 
             // button2
             // 
+            button2.BackColor = Color.FromArgb(229, 231, 235);
+            button2.Cursor = Cursors.Hand;
+            button2.FlatAppearance.BorderSize = 0;
+            button2.FlatAppearance.MouseOverBackColor = Color.FromArgb(209, 213, 219);
+            button2.FlatStyle = FlatStyle.Flat;
+            button2.Font = new Font("Segoe UI", 10F);
+            button2.ForeColor = Color.FromArgb(17, 24, 39);
             button2.Location = new Point(30, 11);
             button2.Margin = new Padding(8, 0, 0, 0);
             button2.Name = "button2";
             button2.Size = new Size(150, 42);
             button2.TabIndex = 13;
             button2.Text = "Limpiar";
-            button2.UseVisualStyleBackColor = true;
+            button2.UseVisualStyleBackColor = false;
             // 
             // textBoxCorreo
             // 
             tableLayoutPanel2.SetColumnSpan(textBoxCorreo, 2);
+            textBoxCorreo.BackColor = Color.White;
+            textBoxCorreo.BorderStyle = BorderStyle.FixedSingle;
             textBoxCorreo.Dock = DockStyle.Fill;
+            textBoxCorreo.Font = new Font("Segoe UI", 10F);
             textBoxCorreo.Location = new Point(180, 44);
             textBoxCorreo.Name = "textBoxCorreo";
             textBoxCorreo.Size = new Size(350, 23);
@@ -252,7 +289,10 @@ namespace Proyecto_Integrador.Vistas.Clientes
             // textBoxDocumento
             // 
             tableLayoutPanel2.SetColumnSpan(textBoxDocumento, 2);
+            textBoxDocumento.BackColor = Color.White;
+            textBoxDocumento.BorderStyle = BorderStyle.FixedSingle;
             textBoxDocumento.Dock = DockStyle.Fill;
+            textBoxDocumento.Font = new Font("Segoe UI", 10F);
             textBoxDocumento.Location = new Point(180, 124);
             textBoxDocumento.Name = "textBoxDocumento";
             textBoxDocumento.Size = new Size(350, 23);
@@ -262,8 +302,22 @@ namespace Proyecto_Integrador.Vistas.Clientes
             // 
             dgvClientes.AllowUserToAddRows = false;
             dgvClientes.AllowUserToDeleteRows = false;
+            dgvClientes.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(243, 244, 246);
             dgvClientes.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dgvClientes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvClientes.BackgroundColor = Color.White;
+            dgvClientes.BorderStyle = BorderStyle.None;
+            dgvClientes.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(30, 58, 95);
+            dgvClientes.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            dgvClientes.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+            dgvClientes.ColumnHeadersDefaultCellStyle.SelectionBackColor = Color.FromArgb(30, 58, 95);
+            dgvClientes.ColumnHeadersHeight = 36;
+            dgvClientes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            dgvClientes.DefaultCellStyle.BackColor = Color.White;
+            dgvClientes.DefaultCellStyle.ForeColor = Color.FromArgb(17, 24, 39);
+            dgvClientes.DefaultCellStyle.SelectionBackColor = Color.FromArgb(59, 93, 122);
+            dgvClientes.DefaultCellStyle.SelectionForeColor = Color.White;
+            dgvClientes.EnableHeadersVisualStyles = false;
+            dgvClientes.GridColor = Color.FromArgb(229, 231, 235);
             dgvClientes.Columns.AddRange(new DataGridViewColumn[] { colNombre, colCorreo, colTelefono, colDireccion, colDocumento, colAcciones });
             dgvClientes.Dock = DockStyle.Fill;
             dgvClientes.Location = new Point(3, 3);
@@ -314,6 +368,7 @@ namespace Proyecto_Integrador.Vistas.Clientes
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.FromArgb(243, 244, 246);
             Controls.Add(tableLayoutPanel1);
             Name = "ClienteControl";
             Size = new Size(545, 581);

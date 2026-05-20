@@ -1,6 +1,5 @@
 using Proyecto_Integrador.Controladores;
 using Proyecto_Integrador.Modelos.Usuarios;
-using Proyecto_Integrador.Utilidades;
 
 namespace Proyecto_Integrador.Vistas.Usuarios;
 
@@ -11,14 +10,6 @@ public partial class RegistrarUsuariosControl : UserControl
     public RegistrarUsuariosControl()
     {
         InitializeComponent();
-
-        BackColor = AppTheme.FondoPrincipal;
-        PanelAdminUsuarios.BackColor = AppTheme.FondoPrincipal;
-        UiHelper.EstilizarLabel(label1, esTitulo: true);
-        UiHelper.EstilizarLabelsEn(tableLayoutFormulario);
-        UiHelper.EstilizarTextBoxesEn(tableLayoutFormulario);
-        UiHelper.EstilizarBotonPrimario(btnRegistrar);
-        UiHelper.EstilizarBotonSecundario(btnLimpiar);
     }
 
     private void btnRegistrar_Click(object sender, EventArgs e)
