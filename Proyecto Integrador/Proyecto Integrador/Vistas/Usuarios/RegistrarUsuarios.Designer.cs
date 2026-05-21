@@ -17,8 +17,10 @@
         {
             tableLayoutMain = new TableLayoutPanel();
             panelBrand = new Panel();
+            tableLayoutLogo = new TableLayoutPanel();
             picLogo = new PictureBox();
             panelForm = new Panel();
+            tableLayoutCentro = new TableLayoutPanel();
             tableLayoutForm = new TableLayoutPanel();
             label1 = new Label();
             labelNombre = new Label();
@@ -36,6 +38,7 @@
             labelContraseña = new Label();
             tableLayoutContraseña = new TableLayoutPanel();
             txtContrasenaUsu = new TextBox();
+            tableLayoutOjo = new TableLayoutPanel();
             picOjo = new PictureBox();
             flowLayoutPanelBotones = new FlowLayoutPanel();
             btnLimpiar = new Button();
@@ -43,10 +46,13 @@
             lnkVolver = new LinkLabel();
             tableLayoutMain.SuspendLayout();
             panelBrand.SuspendLayout();
+            tableLayoutLogo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)picLogo).BeginInit();
             panelForm.SuspendLayout();
+            tableLayoutCentro.SuspendLayout();
             tableLayoutForm.SuspendLayout();
             tableLayoutContraseña.SuspendLayout();
+            tableLayoutOjo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)picOjo).BeginInit();
             flowLayoutPanelBotones.SuspendLayout();
             SuspendLayout();
@@ -54,8 +60,8 @@
             // tableLayoutMain
             // 
             tableLayoutMain.ColumnCount = 2;
-            tableLayoutMain.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 42F));
-            tableLayoutMain.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 58F));
+            tableLayoutMain.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 30F));
+            tableLayoutMain.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 70F));
             tableLayoutMain.Controls.Add(panelBrand, 0, 0);
             tableLayoutMain.Controls.Add(panelForm, 1, 0);
             tableLayoutMain.Dock = DockStyle.Fill;
@@ -70,24 +76,40 @@
             // panelBrand
             // 
             panelBrand.BackColor = Color.FromArgb(30, 58, 95);
-            panelBrand.Controls.Add(picLogo);
+            panelBrand.Controls.Add(tableLayoutLogo);
             panelBrand.Dock = DockStyle.Fill;
             panelBrand.Location = new Point(0, 0);
             panelBrand.Margin = new Padding(0);
             panelBrand.Name = "panelBrand";
-            panelBrand.Padding = new Padding(42);
-            panelBrand.Size = new Size(386, 580);
+            panelBrand.Size = new Size(276, 580);
             panelBrand.TabIndex = 0;
+            // 
+            // tableLayoutLogo
+            // 
+            tableLayoutLogo.ColumnCount = 3;
+            tableLayoutLogo.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutLogo.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 400F));
+            tableLayoutLogo.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutLogo.Controls.Add(picLogo, 1, 1);
+            tableLayoutLogo.Dock = DockStyle.Fill;
+            tableLayoutLogo.Location = new Point(0, 0);
+            tableLayoutLogo.Name = "tableLayoutLogo";
+            tableLayoutLogo.RowCount = 3;
+            tableLayoutLogo.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tableLayoutLogo.RowStyles.Add(new RowStyle(SizeType.Absolute, 260F));
+            tableLayoutLogo.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tableLayoutLogo.Size = new Size(276, 580);
+            tableLayoutLogo.TabIndex = 0;
             // 
             // picLogo
             // 
             picLogo.BackColor = Color.Transparent;
             picLogo.Dock = DockStyle.Fill;
             picLogo.ImageLocation = "Recursos\\Imagenes\\logo-center.png";
-            picLogo.Location = new Point(42, 42);
+            picLogo.Location = new Point(-62, 160);
             picLogo.Margin = new Padding(0);
             picLogo.Name = "picLogo";
-            picLogo.Size = new Size(302, 496);
+            picLogo.Size = new Size(400, 260);
             picLogo.SizeMode = PictureBoxSizeMode.Zoom;
             picLogo.TabIndex = 0;
             picLogo.TabStop = false;
@@ -96,17 +118,36 @@
             // 
             panelForm.AutoScroll = true;
             panelForm.BackColor = Color.White;
-            panelForm.Controls.Add(tableLayoutForm);
+            panelForm.Controls.Add(tableLayoutCentro);
             panelForm.Dock = DockStyle.Fill;
-            panelForm.Location = new Point(386, 0);
+            panelForm.Location = new Point(276, 0);
             panelForm.Margin = new Padding(0);
             panelForm.Name = "panelForm";
-            panelForm.Padding = new Padding(40, 36, 40, 28);
-            panelForm.Size = new Size(534, 580);
+            panelForm.Padding = new Padding(24);
+            panelForm.Size = new Size(644, 580);
             panelForm.TabIndex = 1;
+            // 
+            // tableLayoutCentro
+            // 
+            tableLayoutCentro.ColumnCount = 3;
+            tableLayoutCentro.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutCentro.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 480F));
+            tableLayoutCentro.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutCentro.Controls.Add(tableLayoutForm, 1, 1);
+            tableLayoutCentro.Dock = DockStyle.Fill;
+            tableLayoutCentro.Location = new Point(24, 24);
+            tableLayoutCentro.Name = "tableLayoutCentro";
+            tableLayoutCentro.RowCount = 3;
+            tableLayoutCentro.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tableLayoutCentro.RowStyles.Add(new RowStyle());
+            tableLayoutCentro.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tableLayoutCentro.Size = new Size(596, 532);
+            tableLayoutCentro.TabIndex = 0;
             // 
             // tableLayoutForm
             // 
+            tableLayoutForm.AutoSize = true;
+            tableLayoutForm.AutoSizeMode = AutoSizeMode.GrowAndShrink;
             tableLayoutForm.ColumnCount = 2;
             tableLayoutForm.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 140F));
             tableLayoutForm.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
@@ -127,10 +168,9 @@
             tableLayoutForm.Controls.Add(tableLayoutContraseña, 1, 7);
             tableLayoutForm.Controls.Add(flowLayoutPanelBotones, 1, 8);
             tableLayoutForm.Controls.Add(lnkVolver, 0, 9);
-            tableLayoutForm.AutoSize = true;
-            tableLayoutForm.AutoSizeMode = AutoSizeMode.GrowAndShrink;
             tableLayoutForm.Dock = DockStyle.Top;
-            tableLayoutForm.Location = new Point(40, 36);
+            tableLayoutForm.Location = new Point(58, 47);
+            tableLayoutForm.Margin = new Padding(0);
             tableLayoutForm.Name = "tableLayoutForm";
             tableLayoutForm.RowCount = 10;
             tableLayoutForm.RowStyles.Add(new RowStyle(SizeType.Absolute, 52F));
@@ -142,7 +182,8 @@
             tableLayoutForm.RowStyles.Add(new RowStyle(SizeType.Absolute, 44F));
             tableLayoutForm.RowStyles.Add(new RowStyle(SizeType.Absolute, 44F));
             tableLayoutForm.RowStyles.Add(new RowStyle(SizeType.Absolute, 56F));
-            tableLayoutForm.RowStyles.Add(new RowStyle(SizeType.AutoSize));
+            tableLayoutForm.RowStyles.Add(new RowStyle());
+            tableLayoutForm.Size = new Size(480, 437);
             tableLayoutForm.TabIndex = 0;
             // 
             // label1
@@ -153,7 +194,7 @@
             label1.ForeColor = Color.FromArgb(30, 58, 95);
             label1.Location = new Point(3, 0);
             label1.Name = "label1";
-            label1.Size = new Size(448, 52);
+            label1.Size = new Size(474, 52);
             label1.TabIndex = 0;
             label1.Text = "Registrar usuario";
             label1.TextAlign = ContentAlignment.MiddleLeft;
@@ -179,7 +220,7 @@
             txtNombreUsu.Location = new Point(143, 55);
             txtNombreUsu.Margin = new Padding(3, 3, 3, 6);
             txtNombreUsu.Name = "txtNombreUsu";
-            txtNombreUsu.Size = new Size(308, 25);
+            txtNombreUsu.Size = new Size(334, 25);
             txtNombreUsu.TabIndex = 2;
             // 
             // labelApellido
@@ -203,7 +244,7 @@
             txtApellidoUsu.Location = new Point(143, 99);
             txtApellidoUsu.Margin = new Padding(3, 3, 3, 6);
             txtApellidoUsu.Name = "txtApellidoUsu";
-            txtApellidoUsu.Size = new Size(308, 25);
+            txtApellidoUsu.Size = new Size(334, 25);
             txtApellidoUsu.TabIndex = 4;
             // 
             // labelCorreoUsu
@@ -227,7 +268,7 @@
             txtCorreoUsu.Location = new Point(143, 143);
             txtCorreoUsu.Margin = new Padding(3, 3, 3, 6);
             txtCorreoUsu.Name = "txtCorreoUsu";
-            txtCorreoUsu.Size = new Size(308, 25);
+            txtCorreoUsu.Size = new Size(334, 25);
             txtCorreoUsu.TabIndex = 6;
             // 
             // labelTelefono
@@ -251,7 +292,7 @@
             txtTelefonoUsu.Location = new Point(143, 187);
             txtTelefonoUsu.Margin = new Padding(3, 3, 3, 6);
             txtTelefonoUsu.Name = "txtTelefonoUsu";
-            txtTelefonoUsu.Size = new Size(308, 25);
+            txtTelefonoUsu.Size = new Size(334, 25);
             txtTelefonoUsu.TabIndex = 8;
             // 
             // labelDireccionUsu
@@ -275,7 +316,7 @@
             txtDireccionUsu.Location = new Point(143, 231);
             txtDireccionUsu.Margin = new Padding(3, 3, 3, 6);
             txtDireccionUsu.Name = "txtDireccionUsu";
-            txtDireccionUsu.Size = new Size(308, 25);
+            txtDireccionUsu.Size = new Size(334, 25);
             txtDireccionUsu.TabIndex = 10;
             // 
             // label6
@@ -299,7 +340,7 @@
             txtNombreUsuarioUsu.Location = new Point(143, 275);
             txtNombreUsuarioUsu.Margin = new Padding(3, 3, 3, 6);
             txtNombreUsuarioUsu.Name = "txtNombreUsuarioUsu";
-            txtNombreUsuarioUsu.Size = new Size(308, 25);
+            txtNombreUsuarioUsu.Size = new Size(334, 25);
             txtNombreUsuarioUsu.TabIndex = 12;
             // 
             // labelContraseña
@@ -320,14 +361,14 @@
             tableLayoutContraseña.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
             tableLayoutContraseña.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 30F));
             tableLayoutContraseña.Controls.Add(txtContrasenaUsu, 0, 0);
-            tableLayoutContraseña.Controls.Add(picOjo, 1, 0);
+            tableLayoutContraseña.Controls.Add(tableLayoutOjo, 1, 0);
             tableLayoutContraseña.Dock = DockStyle.Fill;
             tableLayoutContraseña.Location = new Point(143, 319);
             tableLayoutContraseña.Margin = new Padding(3, 3, 3, 6);
             tableLayoutContraseña.Name = "tableLayoutContraseña";
             tableLayoutContraseña.RowCount = 1;
             tableLayoutContraseña.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutContraseña.Size = new Size(308, 35);
+            tableLayoutContraseña.Size = new Size(334, 35);
             tableLayoutContraseña.TabIndex = 14;
             // 
             // txtContrasenaUsu
@@ -339,9 +380,25 @@
             txtContrasenaUsu.Location = new Point(3, 3);
             txtContrasenaUsu.Margin = new Padding(3, 3, 6, 3);
             txtContrasenaUsu.Name = "txtContrasenaUsu";
-            txtContrasenaUsu.Size = new Size(269, 25);
+            txtContrasenaUsu.Size = new Size(295, 25);
             txtContrasenaUsu.TabIndex = 0;
             txtContrasenaUsu.UseSystemPasswordChar = true;
+            // 
+            // tableLayoutOjo
+            // 
+            tableLayoutOjo.ColumnCount = 1;
+            tableLayoutOjo.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            tableLayoutOjo.Controls.Add(picOjo, 0, 1);
+            tableLayoutOjo.Dock = DockStyle.Fill;
+            tableLayoutOjo.Location = new Point(304, 0);
+            tableLayoutOjo.Margin = new Padding(0);
+            tableLayoutOjo.Name = "tableLayoutOjo";
+            tableLayoutOjo.RowCount = 3;
+            tableLayoutOjo.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tableLayoutOjo.RowStyles.Add(new RowStyle(SizeType.Absolute, 28F));
+            tableLayoutOjo.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tableLayoutOjo.Size = new Size(30, 35);
+            tableLayoutOjo.TabIndex = 2;
             // 
             // picOjo
             // 
@@ -349,13 +406,12 @@
             picOjo.Cursor = Cursors.Hand;
             picOjo.Dock = DockStyle.Fill;
             picOjo.ImageLocation = "Recursos\\Imagenes\\ojoCerrado.jpg";
-            picOjo.Location = new Point(278, 3);
-            picOjo.Margin = new Padding(0, 4, 0, 4);
+            picOjo.Location = new Point(2, 5);
+            picOjo.Margin = new Padding(2);
             picOjo.Name = "picOjo";
-            picOjo.Padding = new Padding(4);
-            picOjo.Size = new Size(30, 29);
+            picOjo.Size = new Size(26, 24);
             picOjo.SizeMode = PictureBoxSizeMode.Zoom;
-            picOjo.TabIndex = 1;
+            picOjo.TabIndex = 0;
             picOjo.TabStop = false;
             picOjo.Click += picOjo_Click;
             // 
@@ -365,11 +421,11 @@
             flowLayoutPanelBotones.Controls.Add(btnRegistrar);
             flowLayoutPanelBotones.Dock = DockStyle.Fill;
             flowLayoutPanelBotones.FlowDirection = FlowDirection.RightToLeft;
-            flowLayoutPanelBotones.Location = new Point(143, 363);
+            flowLayoutPanelBotones.Location = new Point(143, 364);
             flowLayoutPanelBotones.Margin = new Padding(3, 4, 3, 3);
             flowLayoutPanelBotones.Name = "flowLayoutPanelBotones";
             flowLayoutPanelBotones.Padding = new Padding(0, 6, 0, 0);
-            flowLayoutPanelBotones.Size = new Size(308, 49);
+            flowLayoutPanelBotones.Size = new Size(334, 49);
             flowLayoutPanelBotones.TabIndex = 15;
             flowLayoutPanelBotones.WrapContents = false;
             // 
@@ -382,7 +438,7 @@
             btnLimpiar.FlatStyle = FlatStyle.Flat;
             btnLimpiar.Font = new Font("Segoe UI", 10F);
             btnLimpiar.ForeColor = Color.FromArgb(17, 24, 39);
-            btnLimpiar.Location = new Point(163, 9);
+            btnLimpiar.Location = new Point(189, 6);
             btnLimpiar.Margin = new Padding(8, 0, 0, 0);
             btnLimpiar.Name = "btnLimpiar";
             btnLimpiar.Size = new Size(145, 40);
@@ -400,7 +456,7 @@
             btnRegistrar.FlatStyle = FlatStyle.Flat;
             btnRegistrar.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             btnRegistrar.ForeColor = Color.White;
-            btnRegistrar.Location = new Point(10, 9);
+            btnRegistrar.Location = new Point(36, 6);
             btnRegistrar.Margin = new Padding(8, 0, 0, 0);
             btnRegistrar.Name = "btnRegistrar";
             btnRegistrar.Size = new Size(145, 40);
@@ -411,18 +467,18 @@
             // 
             // lnkVolver
             // 
-            tableLayoutForm.SetColumnSpan(lnkVolver, 2);
             lnkVolver.ActiveLinkColor = Color.FromArgb(30, 58, 95);
             lnkVolver.AutoSize = true;
             lnkVolver.BackColor = Color.White;
+            tableLayoutForm.SetColumnSpan(lnkVolver, 2);
             lnkVolver.Cursor = Cursors.Hand;
             lnkVolver.Font = new Font("Segoe UI", 9F);
             lnkVolver.LinkBehavior = LinkBehavior.HoverUnderline;
             lnkVolver.LinkColor = Color.FromArgb(59, 93, 122);
-            lnkVolver.Location = new Point(3, 419);
+            lnkVolver.Location = new Point(3, 422);
             lnkVolver.Margin = new Padding(3, 6, 3, 0);
             lnkVolver.Name = "lnkVolver";
-            lnkVolver.Size = new Size(168, 15);
+            lnkVolver.Size = new Size(148, 15);
             lnkVolver.TabIndex = 16;
             lnkVolver.TabStop = true;
             lnkVolver.Text = "← Volver al inicio de sesión";
@@ -436,20 +492,23 @@
             BackColor = Color.FromArgb(243, 244, 246);
             ClientSize = new Size(920, 580);
             Controls.Add(tableLayoutMain);
-            FormBorderStyle = FormBorderStyle.FixedSingle;
-            MaximizeBox = false;
-            MinimumSize = new Size(922, 590);
+            MinimumSize = new Size(800, 520);
             Name = "RegistrarUsuarios";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Registrar usuario";
+            WindowState = FormWindowState.Maximized;
             tableLayoutMain.ResumeLayout(false);
             panelBrand.ResumeLayout(false);
+            tableLayoutLogo.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)picLogo).EndInit();
             panelForm.ResumeLayout(false);
+            tableLayoutCentro.ResumeLayout(false);
+            tableLayoutCentro.PerformLayout();
             tableLayoutForm.ResumeLayout(false);
             tableLayoutForm.PerformLayout();
             tableLayoutContraseña.ResumeLayout(false);
             tableLayoutContraseña.PerformLayout();
+            tableLayoutOjo.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)picOjo).EndInit();
             flowLayoutPanelBotones.ResumeLayout(false);
             ResumeLayout(false);
@@ -459,8 +518,10 @@
 
         private TableLayoutPanel tableLayoutMain;
         private Panel panelBrand;
+        private TableLayoutPanel tableLayoutLogo;
         private PictureBox picLogo;
         private Panel panelForm;
+        private TableLayoutPanel tableLayoutCentro;
         private TableLayoutPanel tableLayoutForm;
         private Label label1;
         private Label labelNombre;
@@ -478,6 +539,7 @@
         private Label labelContraseña;
         private TableLayoutPanel tableLayoutContraseña;
         private TextBox txtContrasenaUsu;
+        private TableLayoutPanel tableLayoutOjo;
         private PictureBox picOjo;
         private FlowLayoutPanel flowLayoutPanelBotones;
         private Button btnLimpiar;

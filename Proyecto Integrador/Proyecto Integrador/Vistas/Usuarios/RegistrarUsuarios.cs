@@ -1,6 +1,5 @@
 ﻿using Proyecto_Integrador.Controladores;
 using Proyecto_Integrador.Modelos.Usuarios;
-
 namespace Proyecto_Integrador.Vistas.Usuarios
 {
     public partial class RegistrarUsuarios : Form

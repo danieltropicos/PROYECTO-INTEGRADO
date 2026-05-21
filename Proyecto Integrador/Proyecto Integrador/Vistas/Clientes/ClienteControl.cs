@@ -5,47 +5,35 @@ namespace Proyecto_Integrador.Vistas.Clientes
 {
     public partial class ClienteControl : UserControl
     {
-        private readonly ClienteControlador clienteRepositorio;
+        private readonly ClienteControlador _clienteControlador = new();
 
         public ClienteControl()
         {
-            clienteRepositorio = new ClienteControlador();
             InitializeComponent();
-            cargarClientes();
+            CargarClientes();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btnNuevoCliente_Click(object sender, EventArgs e)
         {
-            var cliente = new Cliente(
-                textBoxNombre.Text,
-                textBoxApellido.Text,
-                textBoxCorreo.Text,
-                textBoxTelefono.Text,
-                textBoxDireccion.Text,
-                textBoxDocumento.Text
-            );
+            using var form = new ClienteForm();
+            if (form.ShowDialog(FindForm()) != DialogResult.OK || form.ClienteCreado is null)
+                return;
 
-            clienteRepositorio.AgregarCliente(cliente);
-            cargarClientes();
-            limpiarCampos();
-            MessageBox.Show("Cliente agregado exitosamente", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            _clienteControlador.AgregarCliente(form.ClienteCreado);
+            CargarClientes();
+            MessageBox.Show("Cliente agregado exitosamente", "Éxito",
+                MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
-        private void limpiarCampos()
-        {
-            textBoxNombre.Text = "";
-            textBoxApellido.Text = "";
-            textBoxCorreo.Text = "";
-            textBoxTelefono.Text = "";
-            textBoxDireccion.Text = "";
-            textBoxDocumento.Text = "";
-        }
+        private void txtBuscar_TextChanged(object sender, EventArgs e) => CargarClientes();
 
-        private void cargarClientes()
+        private void CargarClientes()
         {
+            var filtro = txtBuscar.Text.Trim();
+            var clientes = _clienteControlador.ObtenerClientes(
+                string.IsNullOrEmpty(filtro) ? null : filtro);
+
             dgvClientes.Rows.Clear();
-            var clientes = clienteRepositorio.ObtenerClientes();
-
             foreach (var cliente in clientes)
             {
                 dgvClientes.Rows.Add(
@@ -54,8 +42,7 @@ namespace Proyecto_Integrador.Vistas.Clientes
                     cliente.Telefono,
                     cliente.Direccion,
                     cliente.Documento,
-                    cliente.EsActivo
-                );
+                    cliente.EsActivo);
             }
         }
     }

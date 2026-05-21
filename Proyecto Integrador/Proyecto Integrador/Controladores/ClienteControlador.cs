@@ -16,5 +16,6 @@ public class ClienteControlador
         clienteRepositorio.AgregarCliente(cliente);
     }
 
-    public List<Cliente> ObtenerClientes() => clienteRepositorio.ObtenerClientes();
+    public List<Cliente> ObtenerClientes(string? filtro = null) =>
+        clienteRepositorio.ObtenerClientes(filtro);
 }

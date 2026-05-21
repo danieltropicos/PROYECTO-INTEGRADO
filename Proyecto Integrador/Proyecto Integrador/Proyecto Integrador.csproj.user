@@ -4,6 +4,9 @@
     <Compile Update="Vistas\Clientes\ClienteControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Update="Vistas\Clientes\ClienteForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Vistas\Cotizaciones\CotizacionControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -16,6 +19,9 @@
     <Compile Update="Vistas\Login\Login.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Vistas\Usuarios\PerfilUsuarioControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Update="Vistas\Usuarios\RegistrarAdministradores.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -24,6 +30,9 @@
     </Compile>
     <Compile Update="Vistas\Usuarios\RegistrarUsuariosControl.cs">
       <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="Vistas\Usuarios\UsuarioForm.cs">
+      <SubType>Form</SubType>
     </Compile>
   </ItemGroup>
 </Project>

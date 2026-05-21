@@ -22,7 +22,23 @@ public class ClienteRepositorio
         GuardarClientes();
     }
 
-    public List<Cliente> ObtenerClientes() => clientes;
+    public List<Cliente> ObtenerClientes(string? filtro = null)
+    {
+        IEnumerable<Cliente> resultado = clientes;
+
+        if (!string.IsNullOrWhiteSpace(filtro))
+        {
+            resultado = resultado.Where(c =>
+                c.NombreCompleto.Contains(filtro, StringComparison.OrdinalIgnoreCase) ||
+                c.Nombre.Contains(filtro, StringComparison.OrdinalIgnoreCase) ||
+                c.Apellido.Contains(filtro, StringComparison.OrdinalIgnoreCase) ||
+                c.Documento.Contains(filtro, StringComparison.OrdinalIgnoreCase));
+        }
+
+        return resultado
+            .OrderBy(c => c.NombreCompleto, StringComparer.OrdinalIgnoreCase)
+            .ToList();
+    }
 
     private void GuardarClientes()
     {

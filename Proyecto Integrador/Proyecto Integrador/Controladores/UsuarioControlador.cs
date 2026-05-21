@@ -15,10 +15,8 @@ namespace Proyecto_Integrador.Controladores
             usuarioRepositorio = new UsuarioRepositorio();
         }
 
-        public List<Usuario> ObtenerUsuarios()
-        {
-            return usuarioRepositorio.Leer();
-        }
+        public List<Usuario> ObtenerUsuarios(string? filtro = null) =>
+            usuarioRepositorio.Leer(filtro);
 
         public Usuario? ObtenerUsuarioPorNombreUsuario(string nombreDeUsuario) => 
             usuarioRepositorio.ObtenerUsuarioPorNombreUsuario(nombreDeUsuario);

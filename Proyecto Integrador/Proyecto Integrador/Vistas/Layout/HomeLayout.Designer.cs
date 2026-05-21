@@ -19,9 +19,10 @@ namespace Proyecto_Integrador.Vistas.Layout
             panelNavbar = new Panel();
             tableLayoutNavbar = new TableLayoutPanel();
             picLogoNavbar = new PictureBox();
-            lblTituloApp = new Label();
+            btnMiPerfilNavbar = new Button();
             panelSidebar = new Panel();
             flowLayoutPanel1 = new FlowLayoutPanel();
+            btnHome = new Button();
             button1 = new Button();
             button2 = new Button();
             button3 = new Button();
@@ -83,11 +84,12 @@ namespace Proyecto_Integrador.Vistas.Layout
             //
             // tableLayoutNavbar
             //
-            tableLayoutNavbar.ColumnCount = 2;
-            tableLayoutNavbar.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 140F));
+            tableLayoutNavbar.ColumnCount = 3;
+            tableLayoutNavbar.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 120F));
             tableLayoutNavbar.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            tableLayoutNavbar.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 140F));
             tableLayoutNavbar.Controls.Add(picLogoNavbar, 0, 0);
-            tableLayoutNavbar.Controls.Add(lblTituloApp, 1, 0);
+            tableLayoutNavbar.Controls.Add(btnMiPerfilNavbar, 2, 0);
             tableLayoutNavbar.Dock = DockStyle.Fill;
             tableLayoutNavbar.Location = new Point(12, 8);
             tableLayoutNavbar.Name = "tableLayoutNavbar";
@@ -108,18 +110,24 @@ namespace Proyecto_Integrador.Vistas.Layout
             picLogoNavbar.TabIndex = 0;
             picLogoNavbar.TabStop = false;
             //
-            // lblTituloApp
-            //
-            lblTituloApp.BackColor = Color.Transparent;
-            lblTituloApp.Dock = DockStyle.Fill;
-            lblTituloApp.Font = new Font("Segoe UI", 14F, FontStyle.Bold);
-            lblTituloApp.ForeColor = Color.White;
-            lblTituloApp.Location = new Point(143, 0);
-            lblTituloApp.Name = "lblTituloApp";
-            lblTituloApp.Size = new Size(1053, 56);
-            lblTituloApp.TabIndex = 1;
-            lblTituloApp.Text = "GeoTerra";
-            lblTituloApp.TextAlign = ContentAlignment.MiddleRight;
+            // btnMiPerfilNavbar
+            // 
+            btnMiPerfilNavbar.BackColor = Color.FromArgb(59, 93, 122);
+            btnMiPerfilNavbar.Cursor = Cursors.Hand;
+            btnMiPerfilNavbar.Dock = DockStyle.Fill;
+            btnMiPerfilNavbar.FlatAppearance.BorderSize = 0;
+            btnMiPerfilNavbar.FlatAppearance.MouseOverBackColor = Color.FromArgb(75, 110, 140);
+            btnMiPerfilNavbar.FlatStyle = FlatStyle.Flat;
+            btnMiPerfilNavbar.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            btnMiPerfilNavbar.ForeColor = Color.White;
+            btnMiPerfilNavbar.Location = new Point(1059, 0);
+            btnMiPerfilNavbar.Margin = new Padding(8, 8, 12, 8);
+            btnMiPerfilNavbar.Name = "btnMiPerfilNavbar";
+            btnMiPerfilNavbar.Size = new Size(125, 40);
+            btnMiPerfilNavbar.TabIndex = 1;
+            btnMiPerfilNavbar.Text = "Mi perfil";
+            btnMiPerfilNavbar.UseVisualStyleBackColor = false;
+            btnMiPerfilNavbar.Click += btnMiPerfilNavbar_Click;
             //
             // panelSidebar
             // 
@@ -136,6 +144,7 @@ namespace Proyecto_Integrador.Vistas.Layout
             // 
             // flowLayoutPanel1
             // 
+            flowLayoutPanel1.Controls.Add(btnHome);
             flowLayoutPanel1.Controls.Add(button1);
             flowLayoutPanel1.Controls.Add(button2);
             flowLayoutPanel1.Controls.Add(button3);
@@ -151,9 +160,29 @@ namespace Proyecto_Integrador.Vistas.Layout
             flowLayoutPanel1.TabIndex = 0;
             flowLayoutPanel1.WrapContents = false;
             //
+            // btnHome
+            //
+            btnHome.Location = new Point(12, 20);
+            btnHome.Margin = new Padding(3, 4, 3, 8);
+            btnHome.Name = "btnHome";
+            btnHome.Size = new Size(226, 64);
+            btnHome.TabIndex = 0;
+            btnHome.BackColor = Color.FromArgb(59, 93, 122);
+            btnHome.Cursor = Cursors.Hand;
+            btnHome.FlatAppearance.BorderSize = 0;
+            btnHome.FlatAppearance.MouseOverBackColor = Color.FromArgb(75, 110, 140);
+            btnHome.FlatStyle = FlatStyle.Flat;
+            btnHome.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            btnHome.ForeColor = Color.White;
+            btnHome.Padding = new Padding(20, 0, 0, 0);
+            btnHome.Text = "  Inicio";
+            btnHome.TextAlign = ContentAlignment.MiddleLeft;
+            btnHome.UseVisualStyleBackColor = false;
+            btnHome.Click += btnHome_Click;
+            //
             // button1
             //
-            button1.Location = new Point(12, 20);
+            button1.Location = new Point(12, 92);
             button1.Margin = new Padding(3, 4, 3, 8);
             button1.Name = "button1";
             button1.Size = new Size(226, 64);
@@ -322,7 +351,7 @@ namespace Proyecto_Integrador.Vistas.Layout
             //
             tableLayoutCentro.ColumnCount = 3;
             tableLayoutCentro.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            tableLayoutCentro.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 360F));
+            tableLayoutCentro.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 720F));
             tableLayoutCentro.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
             tableLayoutCentro.Controls.Add(picLogoCentro, 1, 1);
             tableLayoutCentro.Dock = DockStyle.Fill;
@@ -330,7 +359,7 @@ namespace Proyecto_Integrador.Vistas.Layout
             tableLayoutCentro.Name = "tableLayoutCentro";
             tableLayoutCentro.RowCount = 3;
             tableLayoutCentro.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutCentro.RowStyles.Add(new RowStyle(SizeType.Absolute, 200F));
+            tableLayoutCentro.RowStyles.Add(new RowStyle(SizeType.Absolute, 400F));
             tableLayoutCentro.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
             tableLayoutCentro.Size = new Size(937, 566);
             tableLayoutCentro.TabIndex = 0;
@@ -342,7 +371,7 @@ namespace Proyecto_Integrador.Vistas.Layout
             picLogoCentro.Location = new Point(291, 183);
             picLogoCentro.Margin = new Padding(0);
             picLogoCentro.Name = "picLogoCentro";
-            picLogoCentro.Size = new Size(360, 200);
+            picLogoCentro.Size = new Size(720, 400);
             picLogoCentro.SizeMode = PictureBoxSizeMode.Zoom;
             picLogoCentro.TabIndex = 0;
             picLogoCentro.TabStop = false;
@@ -385,9 +414,10 @@ namespace Proyecto_Integrador.Vistas.Layout
         private Panel panelNavbar;
         private TableLayoutPanel tableLayoutNavbar;
         private PictureBox picLogoNavbar;
-        private Label lblTituloApp;
+        private Button btnMiPerfilNavbar;
         private Panel panelSidebar;
         private FlowLayoutPanel flowLayoutPanel1;
+        private Button btnHome;
         private Panel panelCerrarSesion;
         private TableLayoutPanel tableLayoutCerrarSesion;
         private PictureBox picIconoCerrarSesion;

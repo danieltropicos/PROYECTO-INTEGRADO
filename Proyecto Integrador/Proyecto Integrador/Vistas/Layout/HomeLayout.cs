@@ -14,18 +14,31 @@ namespace Proyecto_Integrador.Vistas.Layout
         public HomeLayout(Usuario usuario)
         {
             InitializeComponent();
-            _botonesMenu = [button1, button2, button3, button4];
+            _botonesMenu = [btnHome, button1, button2, button3, button4];
             _usuario = usuario;
 
             button1.Visible = _usuario.Rol.Nombre == "Admin";
 
             picLogoNavbar.ImageLocation = AppAssets.RutaLogoNavbar;
             picLogoCentro.ImageLocation = AppAssets.RutaLogoCentro;
-
             picIconoCerrarSesion.ImageLocation = AppAssets.RutaIconoCerrarSesion;
+
+            UiHelper.EstilizarBotonNavbar(btnMiPerfilNavbar);
+            MostrarHome();
         }
 
-        private void AbrirVista(UserControl vista, Button botonActivo)
+        private void MostrarHome()
+        {
+            foreach (Control c in panelContenido.Controls.OfType<UserControl>().ToList())
+                panelContenido.Controls.Remove(c);
+
+            panelBienvenida.Visible = true;
+            panelBienvenida.BringToFront();
+
+            UiHelper.MarcarBotonSidebarActivo(btnHome, _botonesMenu);
+        }
+
+        private void AbrirVista(UserControl vista, Button? botonActivo)
         {
             foreach (Control c in panelContenido.Controls.OfType<UserControl>().ToList())
                 panelContenido.Controls.Remove(c);
@@ -37,6 +50,11 @@ namespace Proyecto_Integrador.Vistas.Layout
 
             UiHelper.MarcarBotonSidebarActivo(botonActivo, _botonesMenu);
         }
+
+        private void btnHome_Click(object sender, EventArgs e) => MostrarHome();
+
+        private void btnMiPerfilNavbar_Click(object sender, EventArgs e) =>
+            AbrirVista(new PerfilUsuarioControl(_usuario), null);
 
         private void button1_Click(object sender, EventArgs e) =>
             AbrirVista(new RegistrarUsuariosControl(), button1);

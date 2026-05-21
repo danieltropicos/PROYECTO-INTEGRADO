@@ -2,8 +2,6 @@
 using Proyecto_Integrador.Modelos.Usuarios;
 using Proyecto_Integrador.Vistas.Layout;
 using Proyecto_Integrador.Vistas.Usuarios;
-using System.Security.Cryptography;
-using System.Text;
 
 namespace Proyecto_Integrador.Vistas.Login
 {
@@ -27,8 +25,8 @@ namespace Proyecto_Integrador.Vistas.Login
             }
             else
             {
-                MessageBox.Show("-- Usuario o Contraseña Incorrecto --");                
-            }            
+                MessageBox.Show("-- Usuario o Contraseña Incorrecto --");
+            }
         }
 
         private void btnCrearCuenta_Click(object sender, EventArgs e)

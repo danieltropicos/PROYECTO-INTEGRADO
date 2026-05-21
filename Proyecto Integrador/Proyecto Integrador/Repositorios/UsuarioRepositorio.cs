@@ -11,7 +11,7 @@ public class UsuarioRepositorio
     private static readonly string folder = "Data";
     public static readonly string filePath = Path.Combine(folder, "Usuarios.json");
 
-    public List<Usuario> Leer()
+    public List<Usuario> Leer(string? filtro = null)
     {
         List<Usuario> lista = new List<Usuario>();
 
@@ -33,7 +33,18 @@ public class UsuarioRepositorio
             File.WriteAllText(filePath, "[]");
         }
 
-        return lista;
+        if (!string.IsNullOrWhiteSpace(filtro))
+        {
+            lista = lista
+                .Where(u =>
+                    u.NombreCompleto.Contains(filtro, StringComparison.OrdinalIgnoreCase) ||
+                    u.NombreUsuario.Contains(filtro, StringComparison.OrdinalIgnoreCase))
+                .ToList();
+        }
+
+        return lista
+            .OrderBy(u => u.NombreCompleto, StringComparer.OrdinalIgnoreCase)
+            .ToList();
     }
 
     public Usuario? ObtenerUsuarioPorNombreUsuario(string nombreDeUsuario)

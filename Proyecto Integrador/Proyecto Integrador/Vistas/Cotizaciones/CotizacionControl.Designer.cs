@@ -168,7 +168,8 @@ namespace Proyecto_Integrador.Vistas.Cotizaciones
             // 
             comboBoxClientes.BackColor = Color.White;
             comboBoxClientes.Dock = DockStyle.Fill;
-            comboBoxClientes.FlatStyle = FlatStyle.Flat;
+            comboBoxClientes.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBoxClientes.FlatStyle = FlatStyle.Standard;
             comboBoxClientes.Font = new Font("Segoe UI", 10F);
             comboBoxClientes.FormattingEnabled = true;
             comboBoxClientes.Location = new Point(166, 3);
@@ -215,7 +216,8 @@ namespace Proyecto_Integrador.Vistas.Cotizaciones
             // 
             comboBoxMateriales.BackColor = Color.White;
             comboBoxMateriales.Dock = DockStyle.Fill;
-            comboBoxMateriales.FlatStyle = FlatStyle.Flat;
+            comboBoxMateriales.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBoxMateriales.FlatStyle = FlatStyle.Standard;
             comboBoxMateriales.Font = new Font("Segoe UI", 10F);
             comboBoxMateriales.FormattingEnabled = true;
             comboBoxMateriales.Location = new Point(166, 36);
@@ -242,6 +244,7 @@ namespace Proyecto_Integrador.Vistas.Cotizaciones
             // 
             dataGridView1.AllowUserToAddRows = false;
             dataGridView1.AllowUserToDeleteRows = false;
+            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridView1.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(243, 244, 246);
             dataGridView1.BackgroundColor = Color.White;
             dataGridView1.BorderStyle = BorderStyle.None;
@@ -262,6 +265,7 @@ namespace Proyecto_Integrador.Vistas.Cotizaciones
             dataGridView1.Location = new Point(3, 19);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.ReadOnly = true;
+            dataGridView1.RowHeadersVisible = false;
             dataGridView1.Size = new Size(409, 108);
             dataGridView1.TabIndex = 0;
             // 
@@ -302,6 +306,7 @@ namespace Proyecto_Integrador.Vistas.Cotizaciones
             // 
             dataGridView2.AllowUserToAddRows = false;
             dataGridView2.AllowUserToDeleteRows = false;
+            dataGridView2.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridView2.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(243, 244, 246);
             dataGridView2.BackgroundColor = Color.White;
             dataGridView2.BorderStyle = BorderStyle.None;
@@ -321,6 +326,7 @@ namespace Proyecto_Integrador.Vistas.Cotizaciones
             dataGridView2.Dock = DockStyle.Fill;
             dataGridView2.Location = new Point(3, 19);
             dataGridView2.Name = "dataGridView2";
+            dataGridView2.RowHeadersVisible = false;
             dataGridView2.Size = new Size(409, 108);
             dataGridView2.TabIndex = 0;
             // 
