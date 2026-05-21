@@ -46,37 +46,35 @@ namespace Proyecto_Integrador.Vistas.Usuarios
             tableLayoutPanel1.Controls.Add(dgvUsuarios, 0, 1);
             tableLayoutPanel1.Dock = DockStyle.Fill;
             tableLayoutPanel1.Location = new Point(0, 0);
-            tableLayoutPanel1.Margin = new Padding(3, 2, 3, 2);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
             tableLayoutPanel1.RowCount = 2;
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 48F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 64F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel1.Size = new Size(520, 520);
+            tableLayoutPanel1.Size = new Size(594, 693);
             tableLayoutPanel1.TabIndex = 0;
             // 
             // tableLayoutToolbar
             // 
             tableLayoutToolbar.BackColor = Color.FromArgb(243, 244, 246);
             tableLayoutToolbar.ColumnCount = 3;
-            tableLayoutToolbar.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 346F));
+            tableLayoutToolbar.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 395F));
             tableLayoutToolbar.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
-            tableLayoutToolbar.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 162F));
+            tableLayoutToolbar.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 185F));
             tableLayoutToolbar.Controls.Add(tableLayoutBuscar, 0, 0);
             tableLayoutToolbar.Controls.Add(btnNuevoUsuario, 2, 0);
             tableLayoutToolbar.Dock = DockStyle.Fill;
-            tableLayoutToolbar.Location = new Point(3, 2);
-            tableLayoutToolbar.Margin = new Padding(3, 2, 3, 2);
+            tableLayoutToolbar.Location = new Point(3, 3);
             tableLayoutToolbar.Name = "tableLayoutToolbar";
             tableLayoutToolbar.RowCount = 1;
-            tableLayoutToolbar.RowStyles.Add(new RowStyle(SizeType.Absolute, 44F));
-            tableLayoutToolbar.Size = new Size(514, 44);
+            tableLayoutToolbar.RowStyles.Add(new RowStyle(SizeType.Absolute, 59F));
+            tableLayoutToolbar.Size = new Size(588, 58);
             tableLayoutToolbar.TabIndex = 0;
             // 
             // tableLayoutBuscar
             // 
             tableLayoutBuscar.ColumnCount = 2;
-            tableLayoutBuscar.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 109F));
-            tableLayoutBuscar.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 231F));
+            tableLayoutBuscar.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 125F));
+            tableLayoutBuscar.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 264F));
             tableLayoutBuscar.Controls.Add(lblBuscar, 0, 0);
             tableLayoutBuscar.Controls.Add(txtBuscar, 1, 0);
             tableLayoutBuscar.Dock = DockStyle.Fill;
@@ -84,18 +82,18 @@ namespace Proyecto_Integrador.Vistas.Usuarios
             tableLayoutBuscar.Margin = new Padding(3, 0, 3, 0);
             tableLayoutBuscar.Name = "tableLayoutBuscar";
             tableLayoutBuscar.RowCount = 1;
-            tableLayoutBuscar.RowStyles.Add(new RowStyle(SizeType.Absolute, 44F));
-            tableLayoutBuscar.Size = new Size(340, 44);
+            tableLayoutBuscar.RowStyles.Add(new RowStyle(SizeType.Absolute, 59F));
+            tableLayoutBuscar.Size = new Size(389, 59);
             tableLayoutBuscar.TabIndex = 0;
             // 
             // lblBuscar
             // 
             lblBuscar.Font = new Font("Segoe UI", 10F);
             lblBuscar.ForeColor = Color.FromArgb(75, 85, 99);
-            lblBuscar.Location = new Point(3, 6);
-            lblBuscar.Margin = new Padding(3, 6, 5, 6);
+            lblBuscar.Location = new Point(3, 8);
+            lblBuscar.Margin = new Padding(3, 8, 6, 8);
             lblBuscar.Name = "lblBuscar";
-            lblBuscar.Size = new Size(101, 25);
+            lblBuscar.Size = new Size(115, 33);
             lblBuscar.TabIndex = 0;
             lblBuscar.Text = "Buscar usuarios:";
             lblBuscar.TextAlign = ContentAlignment.MiddleLeft;
@@ -105,11 +103,11 @@ namespace Proyecto_Integrador.Vistas.Usuarios
             txtBuscar.BorderStyle = BorderStyle.FixedSingle;
             txtBuscar.Dock = DockStyle.Fill;
             txtBuscar.Font = new Font("Segoe UI", 10F);
-            txtBuscar.Location = new Point(112, 6);
-            txtBuscar.Margin = new Padding(3, 6, 3, 6);
+            txtBuscar.Location = new Point(128, 8);
+            txtBuscar.Margin = new Padding(3, 8, 3, 8);
             txtBuscar.Name = "txtBuscar";
             txtBuscar.PlaceholderText = "Nombre o usuario...";
-            txtBuscar.Size = new Size(225, 25);
+            txtBuscar.Size = new Size(258, 30);
             txtBuscar.TabIndex = 1;
             txtBuscar.TextChanged += txtBuscar_TextChanged;
             // 
@@ -123,10 +121,10 @@ namespace Proyecto_Integrador.Vistas.Usuarios
             btnNuevoUsuario.FlatStyle = FlatStyle.Flat;
             btnNuevoUsuario.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             btnNuevoUsuario.ForeColor = Color.White;
-            btnNuevoUsuario.Location = new Point(355, 6);
-            btnNuevoUsuario.Margin = new Padding(3, 6, 3, 6);
+            btnNuevoUsuario.Location = new Point(406, 8);
+            btnNuevoUsuario.Margin = new Padding(3, 8, 3, 8);
             btnNuevoUsuario.Name = "btnNuevoUsuario";
-            btnNuevoUsuario.Size = new Size(156, 32);
+            btnNuevoUsuario.Size = new Size(179, 43);
             btnNuevoUsuario.TabIndex = 2;
             btnNuevoUsuario.Text = "+ Nuevo usuario";
             btnNuevoUsuario.UseVisualStyleBackColor = false;
@@ -163,60 +161,65 @@ namespace Proyecto_Integrador.Vistas.Usuarios
             dgvUsuarios.Dock = DockStyle.Fill;
             dgvUsuarios.EnableHeadersVisualStyles = false;
             dgvUsuarios.GridColor = Color.FromArgb(229, 231, 235);
-            dgvUsuarios.Location = new Point(3, 50);
-            dgvUsuarios.Margin = new Padding(3, 2, 3, 2);
+            dgvUsuarios.Location = new Point(3, 67);
             dgvUsuarios.MultiSelect = false;
             dgvUsuarios.Name = "dgvUsuarios";
             dgvUsuarios.ReadOnly = true;
             dgvUsuarios.RowHeadersVisible = false;
-            dgvUsuarios.Size = new Size(514, 468);
+            dgvUsuarios.RowHeadersWidth = 51;
+            dgvUsuarios.Size = new Size(588, 623);
             dgvUsuarios.TabIndex = 1;
             // 
             // colNombre
             // 
             colNombre.HeaderText = "Nombre";
+            colNombre.MinimumWidth = 6;
             colNombre.Name = "colNombre";
             colNombre.ReadOnly = true;
             // 
             // colUsuario
             // 
             colUsuario.HeaderText = "Usuario";
+            colUsuario.MinimumWidth = 6;
             colUsuario.Name = "colUsuario";
             colUsuario.ReadOnly = true;
             // 
             // colCorreo
             // 
             colCorreo.HeaderText = "Correo";
+            colCorreo.MinimumWidth = 6;
             colCorreo.Name = "colCorreo";
             colCorreo.ReadOnly = true;
             // 
             // colTelefono
             // 
             colTelefono.HeaderText = "Teléfono";
+            colTelefono.MinimumWidth = 6;
             colTelefono.Name = "colTelefono";
             colTelefono.ReadOnly = true;
             // 
             // colRol
             // 
             colRol.HeaderText = "Rol";
+            colRol.MinimumWidth = 6;
             colRol.Name = "colRol";
             colRol.ReadOnly = true;
             // 
             // colActivo
             // 
             colActivo.HeaderText = "Activo";
+            colActivo.MinimumWidth = 6;
             colActivo.Name = "colActivo";
             colActivo.ReadOnly = true;
             // 
             // RegistrarUsuariosControl
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(243, 244, 246);
             Controls.Add(tableLayoutPanel1);
-            Margin = new Padding(3, 2, 3, 2);
             Name = "RegistrarUsuariosControl";
-            Size = new Size(520, 520);
+            Size = new Size(594, 693);
             tableLayoutPanel1.ResumeLayout(false);
             tableLayoutToolbar.ResumeLayout(false);
             tableLayoutBuscar.ResumeLayout(false);

@@ -11,28 +11,39 @@ public class Usuario : Persona
     public Rol Rol { get; private set; }
 
     [JsonConstructor]
-    public Usuario(                      
+    public Usuario(
+        Guid id,
         string nombre,
         string apellido,
         string correoElectronico,
         string telefono,
-        string direccion,               
+        string direccion,
         string nombreUsuario,
         string contrasenaEncriptada,
-        Rol rol)
-        : base(                        
-            nombre,
-            apellido,
-            correoElectronico,
-            telefono,
-            direccion,
-            true)
+        Rol rol,
+        DateTime fechaRegistro)
+        : base(id, nombre, apellido, correoElectronico, telefono, direccion, true, fechaRegistro)
     {
         NombreUsuario = nombreUsuario;
         ContrasenaEncriptada = contrasenaEncriptada;
         Rol = rol;
     }
-    
+
+    public Usuario(
+        string nombre,
+        string apellido,
+        string correoElectronico,
+        string telefono,
+        string direccion,
+        string nombreUsuario,
+        string contrasenaUsuario,
+        Rol rol)
+        : base(nombre, apellido, correoElectronico, telefono, direccion)
+    {
+        NombreUsuario = nombreUsuario;
+        ContrasenaEncriptada = HashContrasena(contrasenaUsuario);
+        Rol = rol;
+    }
     public void CambiarContrasena(string nuevaContrasena)
     {
         ContrasenaEncriptada = HashContrasena(nuevaContrasena);

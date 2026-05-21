@@ -16,20 +16,25 @@ public abstract class Persona
 
     [JsonConstructor]
     protected Persona(
-    string nombre,
-    string apellido,
-    string correoElectronico,
-    string telefono,
-    string direccion,
-    bool esActivo)
+        Guid id,
+        string nombre,
+        string apellido,
+        string correoElectronico,
+        string telefono,
+        string direccion,
+        bool esActivo,
+        DateTime fechaRegistro)
     {
+        Id = id;
         Nombre = nombre;
         Apellido = apellido;
         CorreoElectronico = correoElectronico;
         Telefono = telefono;
         Direccion = direccion;
         EsActivo = esActivo;
+        FechaRegistro = fechaRegistro;
     }
+
     protected Persona(
         string nombre,
         string apellido,
@@ -37,7 +42,6 @@ public abstract class Persona
         string telefono,
         string direccion)
     {
-        Id = Guid.NewGuid();
         Nombre = nombre;
         Apellido = apellido;
         CorreoElectronico = correoElectronico;

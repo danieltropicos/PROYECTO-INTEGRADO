@@ -29,14 +29,6 @@ namespace Proyecto_Integrador.Vistas.Login
             }
         }
 
-        private void btnCrearCuenta_Click(object sender, EventArgs e)
-        {
-            var registrarUsuariosForm = new RegistrarUsuarios();
-            registrarUsuariosForm.FormClosed += (_, _) => Show();
-            registrarUsuariosForm.Show();
-            Hide();
-        }
-
         private void picOjo_Click(object sender, EventArgs e)
         {
             if (txtContraseña.UseSystemPasswordChar)
