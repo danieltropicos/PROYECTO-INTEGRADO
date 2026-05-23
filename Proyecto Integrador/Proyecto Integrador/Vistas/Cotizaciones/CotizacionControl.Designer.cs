@@ -35,7 +35,7 @@ namespace Proyecto_Integrador.Vistas.Cotizaciones
             DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
             tableLayoutPanel1 = new TableLayoutPanel();
-            panel2 = new Panel();
+            panelGrafica = new Panel();
             tableLayoutPanel2 = new TableLayoutPanel();
             groupBox1 = new GroupBox();
             tableLayoutPanel3 = new TableLayoutPanel();
@@ -46,15 +46,35 @@ namespace Proyecto_Integrador.Vistas.Cotizaciones
             label2 = new Label();
             comboBoxMateriales = new ComboBox();
             groupBox2 = new GroupBox();
+            tableLayoutTerrenoOriginal = new TableLayoutPanel();
             dataGridView1 = new DataGridView();
             colX1 = new DataGridViewTextBoxColumn();
             colY1 = new DataGridViewTextBoxColumn();
             colZ1 = new DataGridViewTextBoxColumn();
+            flowEntradaOriginal = new FlowLayoutPanel();
+            lblOrigX = new Label();
+            txtOrigX = new TextBox();
+            lblOrigY = new Label();
+            txtOrigY = new TextBox();
+            lblOrigZ = new Label();
+            txtOrigZ = new TextBox();
+            btnAgregarOriginal = new Button();
+            btnQuitarOriginal = new Button();
             groupBox3 = new GroupBox();
+            tableLayoutTerrenoFinal = new TableLayoutPanel();
             dataGridView2 = new DataGridView();
             colX2 = new DataGridViewTextBoxColumn();
             colY2 = new DataGridViewTextBoxColumn();
             colZ2 = new DataGridViewTextBoxColumn();
+            flowEntradaFinal = new FlowLayoutPanel();
+            lblFinalX = new Label();
+            txtFinalX = new TextBox();
+            lblFinalY = new Label();
+            txtFinalY = new TextBox();
+            lblFinalZ = new Label();
+            txtFinalZ = new TextBox();
+            btnAgregarFinal = new Button();
+            btnQuitarFinal = new Button();
             groupBox4 = new GroupBox();
             tableLayoutPanel4 = new TableLayoutPanel();
             label4 = new Label();
@@ -67,9 +87,13 @@ namespace Proyecto_Integrador.Vistas.Cotizaciones
             groupBox1.SuspendLayout();
             tableLayoutPanel3.SuspendLayout();
             groupBox2.SuspendLayout();
+            tableLayoutTerrenoOriginal.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            flowEntradaOriginal.SuspendLayout();
             groupBox3.SuspendLayout();
+            tableLayoutTerrenoFinal.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
+            flowEntradaFinal.SuspendLayout();
             groupBox4.SuspendLayout();
             tableLayoutPanel4.SuspendLayout();
             SuspendLayout();
@@ -80,7 +104,7 @@ namespace Proyecto_Integrador.Vistas.Cotizaciones
             tableLayoutPanel1.ColumnCount = 2;
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 40F));
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 60F));
-            tableLayoutPanel1.Controls.Add(panel2, 1, 0);
+            tableLayoutPanel1.Controls.Add(panelGrafica, 1, 0);
             tableLayoutPanel1.Controls.Add(tableLayoutPanel2, 0, 0);
             tableLayoutPanel1.Dock = DockStyle.Fill;
             tableLayoutPanel1.Location = new Point(0, 0);
@@ -90,15 +114,15 @@ namespace Proyecto_Integrador.Vistas.Cotizaciones
             tableLayoutPanel1.Size = new Size(1069, 591);
             tableLayoutPanel1.TabIndex = 0;
             // 
-            // panel2
+            // panelGrafica
             // 
-            panel2.BackColor = Color.White;
-            panel2.Dock = DockStyle.Fill;
-            panel2.Location = new Point(430, 3);
-            panel2.Name = "panel2";
-            panel2.Padding = new Padding(10);
-            panel2.Size = new Size(636, 585);
-            panel2.TabIndex = 1;
+            panelGrafica.BackColor = Color.White;
+            panelGrafica.Dock = DockStyle.Fill;
+            panelGrafica.Location = new Point(430, 3);
+            panelGrafica.Name = "panelGrafica";
+            panelGrafica.Padding = new Padding(10);
+            panelGrafica.Size = new Size(636, 585);
+            panelGrafica.TabIndex = 1;
             // 
             // tableLayoutPanel2
             // 
@@ -186,6 +210,7 @@ namespace Proyecto_Integrador.Vistas.Cotizaciones
             textBox1.BackColor = Color.White;
             textBox1.BorderStyle = BorderStyle.FixedSingle;
             textBox1.Dock = DockStyle.Fill;
+            textBox1.Enabled = false;
             textBox1.Font = new Font("Segoe UI", 10F);
             textBox1.Location = new Point(117, 85);
             textBox1.Name = "textBox1";
@@ -225,12 +250,13 @@ namespace Proyecto_Integrador.Vistas.Cotizaciones
             comboBoxMateriales.Name = "comboBoxMateriales";
             comboBoxMateriales.Size = new Size(285, 25);
             comboBoxMateriales.TabIndex = 7;
+            comboBoxMateriales.SelectedIndexChanged += comboBoxMateriales_SelectedIndexChanged;
             // 
             // groupBox2
             // 
             groupBox2.BackColor = Color.White;
             tableLayoutPanel2.SetColumnSpan(groupBox2, 2);
-            groupBox2.Controls.Add(dataGridView1);
+            groupBox2.Controls.Add(tableLayoutTerrenoOriginal);
             groupBox2.Dock = DockStyle.Fill;
             groupBox2.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             groupBox2.ForeColor = Color.FromArgb(30, 58, 95);
@@ -240,6 +266,21 @@ namespace Proyecto_Integrador.Vistas.Cotizaciones
             groupBox2.TabIndex = 1;
             groupBox2.TabStop = false;
             groupBox2.Text = "Terreno Original";
+            // 
+            // tableLayoutTerrenoOriginal
+            // 
+            tableLayoutTerrenoOriginal.ColumnCount = 1;
+            tableLayoutTerrenoOriginal.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            tableLayoutTerrenoOriginal.Controls.Add(dataGridView1, 0, 0);
+            tableLayoutTerrenoOriginal.Controls.Add(flowEntradaOriginal, 0, 1);
+            tableLayoutTerrenoOriginal.Dock = DockStyle.Fill;
+            tableLayoutTerrenoOriginal.Location = new Point(3, 19);
+            tableLayoutTerrenoOriginal.Name = "tableLayoutTerrenoOriginal";
+            tableLayoutTerrenoOriginal.RowCount = 2;
+            tableLayoutTerrenoOriginal.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            tableLayoutTerrenoOriginal.RowStyles.Add(new RowStyle(SizeType.Absolute, 44F));
+            tableLayoutTerrenoOriginal.Size = new Size(409, 100);
+            tableLayoutTerrenoOriginal.TabIndex = 0;
             // 
             // dataGridView1
             // 
@@ -272,11 +313,11 @@ namespace Proyecto_Integrador.Vistas.Cotizaciones
             dataGridView1.Dock = DockStyle.Fill;
             dataGridView1.EnableHeadersVisualStyles = false;
             dataGridView1.GridColor = Color.FromArgb(229, 231, 235);
-            dataGridView1.Location = new Point(3, 19);
+            dataGridView1.Location = new Point(3, 3);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.ReadOnly = true;
             dataGridView1.RowHeadersVisible = false;
-            dataGridView1.Size = new Size(409, 100);
+            dataGridView1.Size = new Size(403, 50);
             dataGridView1.TabIndex = 0;
             // 
             // colX1
@@ -297,11 +338,127 @@ namespace Proyecto_Integrador.Vistas.Cotizaciones
             colZ1.Name = "colZ1";
             colZ1.ReadOnly = true;
             // 
+            // flowEntradaOriginal
+            // 
+            flowEntradaOriginal.Controls.Add(lblOrigX);
+            flowEntradaOriginal.Controls.Add(txtOrigX);
+            flowEntradaOriginal.Controls.Add(lblOrigY);
+            flowEntradaOriginal.Controls.Add(txtOrigY);
+            flowEntradaOriginal.Controls.Add(lblOrigZ);
+            flowEntradaOriginal.Controls.Add(txtOrigZ);
+            flowEntradaOriginal.Controls.Add(btnAgregarOriginal);
+            flowEntradaOriginal.Controls.Add(btnQuitarOriginal);
+            flowEntradaOriginal.Dock = DockStyle.Fill;
+            flowEntradaOriginal.Location = new Point(3, 59);
+            flowEntradaOriginal.Name = "flowEntradaOriginal";
+            flowEntradaOriginal.Padding = new Padding(0, 4, 0, 0);
+            flowEntradaOriginal.Size = new Size(403, 38);
+            flowEntradaOriginal.TabIndex = 1;
+            flowEntradaOriginal.WrapContents = false;
+            // 
+            // lblOrigX
+            // 
+            lblOrigX.AutoSize = true;
+            lblOrigX.Font = new Font("Segoe UI", 9F);
+            lblOrigX.ForeColor = Color.FromArgb(75, 85, 99);
+            lblOrigX.Location = new Point(0, 10);
+            lblOrigX.Margin = new Padding(0, 6, 4, 0);
+            lblOrigX.Name = "lblOrigX";
+            lblOrigX.Size = new Size(14, 15);
+            lblOrigX.TabIndex = 0;
+            lblOrigX.Text = "X";
+            // 
+            // txtOrigX
+            // 
+            txtOrigX.BorderStyle = BorderStyle.FixedSingle;
+            txtOrigX.Font = new Font("Segoe UI", 9F);
+            txtOrigX.Location = new Point(18, 7);
+            txtOrigX.Margin = new Padding(0, 3, 8, 0);
+            txtOrigX.Name = "txtOrigX";
+            txtOrigX.Size = new Size(58, 23);
+            txtOrigX.TabIndex = 1;
+            // 
+            // lblOrigY
+            // 
+            lblOrigY.AutoSize = true;
+            lblOrigY.Font = new Font("Segoe UI", 9F);
+            lblOrigY.ForeColor = Color.FromArgb(75, 85, 99);
+            lblOrigY.Location = new Point(84, 10);
+            lblOrigY.Margin = new Padding(0, 6, 4, 0);
+            lblOrigY.Name = "lblOrigY";
+            lblOrigY.Size = new Size(14, 15);
+            lblOrigY.TabIndex = 2;
+            lblOrigY.Text = "Y";
+            // 
+            // txtOrigY
+            // 
+            txtOrigY.BorderStyle = BorderStyle.FixedSingle;
+            txtOrigY.Font = new Font("Segoe UI", 9F);
+            txtOrigY.Location = new Point(102, 7);
+            txtOrigY.Margin = new Padding(0, 3, 8, 0);
+            txtOrigY.Name = "txtOrigY";
+            txtOrigY.Size = new Size(58, 23);
+            txtOrigY.TabIndex = 3;
+            // 
+            // lblOrigZ
+            // 
+            lblOrigZ.AutoSize = true;
+            lblOrigZ.Font = new Font("Segoe UI", 9F);
+            lblOrigZ.ForeColor = Color.FromArgb(75, 85, 99);
+            lblOrigZ.Location = new Point(168, 10);
+            lblOrigZ.Margin = new Padding(0, 6, 4, 0);
+            lblOrigZ.Name = "lblOrigZ";
+            lblOrigZ.Size = new Size(14, 15);
+            lblOrigZ.TabIndex = 4;
+            lblOrigZ.Text = "Z";
+            // 
+            // txtOrigZ
+            // 
+            txtOrigZ.BorderStyle = BorderStyle.FixedSingle;
+            txtOrigZ.Font = new Font("Segoe UI", 9F);
+            txtOrigZ.Location = new Point(186, 7);
+            txtOrigZ.Margin = new Padding(0, 3, 8, 0);
+            txtOrigZ.Name = "txtOrigZ";
+            txtOrigZ.Size = new Size(58, 23);
+            txtOrigZ.TabIndex = 5;
+            // 
+            // btnAgregarOriginal
+            // 
+            btnAgregarOriginal.BackColor = Color.FromArgb(245, 158, 11);
+            btnAgregarOriginal.FlatAppearance.BorderSize = 0;
+            btnAgregarOriginal.FlatStyle = FlatStyle.Flat;
+            btnAgregarOriginal.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            btnAgregarOriginal.ForeColor = Color.White;
+            btnAgregarOriginal.Location = new Point(252, 6);
+            btnAgregarOriginal.Margin = new Padding(0, 2, 6, 0);
+            btnAgregarOriginal.Name = "btnAgregarOriginal";
+            btnAgregarOriginal.Size = new Size(90, 26);
+            btnAgregarOriginal.TabIndex = 6;
+            btnAgregarOriginal.Text = "Agregar";
+            btnAgregarOriginal.UseVisualStyleBackColor = false;
+            btnAgregarOriginal.Click += btnAgregarOriginal_Click;
+            // 
+            // btnQuitarOriginal
+            // 
+            btnQuitarOriginal.BackColor = Color.FromArgb(229, 231, 235);
+            btnQuitarOriginal.FlatAppearance.BorderSize = 0;
+            btnQuitarOriginal.FlatStyle = FlatStyle.Flat;
+            btnQuitarOriginal.Font = new Font("Segoe UI", 9F);
+            btnQuitarOriginal.ForeColor = Color.FromArgb(17, 24, 39);
+            btnQuitarOriginal.Location = new Point(348, 6);
+            btnQuitarOriginal.Margin = new Padding(0, 2, 0, 0);
+            btnQuitarOriginal.Name = "btnQuitarOriginal";
+            btnQuitarOriginal.Size = new Size(70, 26);
+            btnQuitarOriginal.TabIndex = 7;
+            btnQuitarOriginal.Text = "Quitar";
+            btnQuitarOriginal.UseVisualStyleBackColor = false;
+            btnQuitarOriginal.Click += btnQuitarOriginal_Click;
+            // 
             // groupBox3
             // 
             groupBox3.BackColor = Color.White;
             tableLayoutPanel2.SetColumnSpan(groupBox3, 2);
-            groupBox3.Controls.Add(dataGridView2);
+            groupBox3.Controls.Add(tableLayoutTerrenoFinal);
             groupBox3.Dock = DockStyle.Fill;
             groupBox3.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             groupBox3.ForeColor = Color.FromArgb(30, 58, 95);
@@ -311,6 +468,21 @@ namespace Proyecto_Integrador.Vistas.Cotizaciones
             groupBox3.TabIndex = 2;
             groupBox3.TabStop = false;
             groupBox3.Text = "Terreno Final";
+            // 
+            // tableLayoutTerrenoFinal
+            // 
+            tableLayoutTerrenoFinal.ColumnCount = 1;
+            tableLayoutTerrenoFinal.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            tableLayoutTerrenoFinal.Controls.Add(dataGridView2, 0, 0);
+            tableLayoutTerrenoFinal.Controls.Add(flowEntradaFinal, 0, 1);
+            tableLayoutTerrenoFinal.Dock = DockStyle.Fill;
+            tableLayoutTerrenoFinal.Location = new Point(3, 19);
+            tableLayoutTerrenoFinal.Name = "tableLayoutTerrenoFinal";
+            tableLayoutTerrenoFinal.RowCount = 2;
+            tableLayoutTerrenoFinal.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            tableLayoutTerrenoFinal.RowStyles.Add(new RowStyle(SizeType.Absolute, 44F));
+            tableLayoutTerrenoFinal.Size = new Size(409, 100);
+            tableLayoutTerrenoFinal.TabIndex = 0;
             // 
             // dataGridView2
             // 
@@ -343,26 +515,146 @@ namespace Proyecto_Integrador.Vistas.Cotizaciones
             dataGridView2.Dock = DockStyle.Fill;
             dataGridView2.EnableHeadersVisualStyles = false;
             dataGridView2.GridColor = Color.FromArgb(229, 231, 235);
-            dataGridView2.Location = new Point(3, 19);
+            dataGridView2.Location = new Point(3, 3);
             dataGridView2.Name = "dataGridView2";
+            dataGridView2.ReadOnly = true;
             dataGridView2.RowHeadersVisible = false;
-            dataGridView2.Size = new Size(409, 100);
+            dataGridView2.Size = new Size(403, 50);
             dataGridView2.TabIndex = 0;
             // 
             // colX2
             // 
             colX2.HeaderText = "X";
             colX2.Name = "colX2";
+            colX2.ReadOnly = true;
             // 
             // colY2
             // 
             colY2.HeaderText = "Y";
             colY2.Name = "colY2";
+            colY2.ReadOnly = true;
             // 
             // colZ2
             // 
             colZ2.HeaderText = "Z";
             colZ2.Name = "colZ2";
+            colZ2.ReadOnly = true;
+            // 
+            // flowEntradaFinal
+            // 
+            flowEntradaFinal.Controls.Add(lblFinalX);
+            flowEntradaFinal.Controls.Add(txtFinalX);
+            flowEntradaFinal.Controls.Add(lblFinalY);
+            flowEntradaFinal.Controls.Add(txtFinalY);
+            flowEntradaFinal.Controls.Add(lblFinalZ);
+            flowEntradaFinal.Controls.Add(txtFinalZ);
+            flowEntradaFinal.Controls.Add(btnAgregarFinal);
+            flowEntradaFinal.Controls.Add(btnQuitarFinal);
+            flowEntradaFinal.Dock = DockStyle.Fill;
+            flowEntradaFinal.Location = new Point(3, 59);
+            flowEntradaFinal.Name = "flowEntradaFinal";
+            flowEntradaFinal.Padding = new Padding(0, 4, 0, 0);
+            flowEntradaFinal.Size = new Size(403, 38);
+            flowEntradaFinal.TabIndex = 1;
+            flowEntradaFinal.WrapContents = false;
+            // 
+            // lblFinalX
+            // 
+            lblFinalX.AutoSize = true;
+            lblFinalX.Font = new Font("Segoe UI", 9F);
+            lblFinalX.ForeColor = Color.FromArgb(75, 85, 99);
+            lblFinalX.Location = new Point(0, 10);
+            lblFinalX.Margin = new Padding(0, 6, 4, 0);
+            lblFinalX.Name = "lblFinalX";
+            lblFinalX.Size = new Size(14, 15);
+            lblFinalX.TabIndex = 0;
+            lblFinalX.Text = "X";
+            // 
+            // txtFinalX
+            // 
+            txtFinalX.BorderStyle = BorderStyle.FixedSingle;
+            txtFinalX.Font = new Font("Segoe UI", 9F);
+            txtFinalX.Location = new Point(18, 7);
+            txtFinalX.Margin = new Padding(0, 3, 8, 0);
+            txtFinalX.Name = "txtFinalX";
+            txtFinalX.Size = new Size(58, 23);
+            txtFinalX.TabIndex = 1;
+            // 
+            // lblFinalY
+            // 
+            lblFinalY.AutoSize = true;
+            lblFinalY.Font = new Font("Segoe UI", 9F);
+            lblFinalY.ForeColor = Color.FromArgb(75, 85, 99);
+            lblFinalY.Location = new Point(84, 10);
+            lblFinalY.Margin = new Padding(0, 6, 4, 0);
+            lblFinalY.Name = "lblFinalY";
+            lblFinalY.Size = new Size(14, 15);
+            lblFinalY.TabIndex = 2;
+            lblFinalY.Text = "Y";
+            // 
+            // txtFinalY
+            // 
+            txtFinalY.BorderStyle = BorderStyle.FixedSingle;
+            txtFinalY.Font = new Font("Segoe UI", 9F);
+            txtFinalY.Location = new Point(102, 7);
+            txtFinalY.Margin = new Padding(0, 3, 8, 0);
+            txtFinalY.Name = "txtFinalY";
+            txtFinalY.Size = new Size(58, 23);
+            txtFinalY.TabIndex = 3;
+            // 
+            // lblFinalZ
+            // 
+            lblFinalZ.AutoSize = true;
+            lblFinalZ.Font = new Font("Segoe UI", 9F);
+            lblFinalZ.ForeColor = Color.FromArgb(75, 85, 99);
+            lblFinalZ.Location = new Point(168, 10);
+            lblFinalZ.Margin = new Padding(0, 6, 4, 0);
+            lblFinalZ.Name = "lblFinalZ";
+            lblFinalZ.Size = new Size(14, 15);
+            lblFinalZ.TabIndex = 4;
+            lblFinalZ.Text = "Z";
+            // 
+            // txtFinalZ
+            // 
+            txtFinalZ.BorderStyle = BorderStyle.FixedSingle;
+            txtFinalZ.Font = new Font("Segoe UI", 9F);
+            txtFinalZ.Location = new Point(186, 7);
+            txtFinalZ.Margin = new Padding(0, 3, 8, 0);
+            txtFinalZ.Name = "txtFinalZ";
+            txtFinalZ.Size = new Size(58, 23);
+            txtFinalZ.TabIndex = 5;
+            // 
+            // btnAgregarFinal
+            // 
+            btnAgregarFinal.BackColor = Color.FromArgb(245, 158, 11);
+            btnAgregarFinal.FlatAppearance.BorderSize = 0;
+            btnAgregarFinal.FlatStyle = FlatStyle.Flat;
+            btnAgregarFinal.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            btnAgregarFinal.ForeColor = Color.White;
+            btnAgregarFinal.Location = new Point(252, 6);
+            btnAgregarFinal.Margin = new Padding(0, 2, 6, 0);
+            btnAgregarFinal.Name = "btnAgregarFinal";
+            btnAgregarFinal.Size = new Size(90, 26);
+            btnAgregarFinal.TabIndex = 6;
+            btnAgregarFinal.Text = "Agregar";
+            btnAgregarFinal.UseVisualStyleBackColor = false;
+            btnAgregarFinal.Click += btnAgregarFinal_Click;
+            // 
+            // btnQuitarFinal
+            // 
+            btnQuitarFinal.BackColor = Color.FromArgb(229, 231, 235);
+            btnQuitarFinal.FlatAppearance.BorderSize = 0;
+            btnQuitarFinal.FlatStyle = FlatStyle.Flat;
+            btnQuitarFinal.Font = new Font("Segoe UI", 9F);
+            btnQuitarFinal.ForeColor = Color.FromArgb(17, 24, 39);
+            btnQuitarFinal.Location = new Point(348, 6);
+            btnQuitarFinal.Margin = new Padding(0, 2, 0, 0);
+            btnQuitarFinal.Name = "btnQuitarFinal";
+            btnQuitarFinal.Size = new Size(70, 26);
+            btnQuitarFinal.TabIndex = 7;
+            btnQuitarFinal.Text = "Quitar";
+            btnQuitarFinal.UseVisualStyleBackColor = false;
+            btnQuitarFinal.Click += btnQuitarFinal_Click;
             // 
             // groupBox4
             // 
@@ -478,9 +770,15 @@ namespace Proyecto_Integrador.Vistas.Cotizaciones
             tableLayoutPanel3.ResumeLayout(false);
             tableLayoutPanel3.PerformLayout();
             groupBox2.ResumeLayout(false);
+            tableLayoutTerrenoOriginal.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            flowEntradaOriginal.ResumeLayout(false);
+            flowEntradaOriginal.PerformLayout();
             groupBox3.ResumeLayout(false);
+            tableLayoutTerrenoFinal.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dataGridView2).EndInit();
+            flowEntradaFinal.ResumeLayout(false);
+            flowEntradaFinal.PerformLayout();
             groupBox4.ResumeLayout(false);
             tableLayoutPanel4.ResumeLayout(false);
             tableLayoutPanel4.PerformLayout();
@@ -490,7 +788,7 @@ namespace Proyecto_Integrador.Vistas.Cotizaciones
         #endregion
 
         private TableLayoutPanel tableLayoutPanel1;
-        private Panel panel2;
+        private Panel panelGrafica;
         private TableLayoutPanel tableLayoutPanel2;
         private GroupBox groupBox1;
         private TableLayoutPanel tableLayoutPanel3;
@@ -499,11 +797,31 @@ namespace Proyecto_Integrador.Vistas.Cotizaciones
         private Label label3;
         private TextBox textBox1;
         private GroupBox groupBox2;
+        private TableLayoutPanel tableLayoutTerrenoOriginal;
+        private FlowLayoutPanel flowEntradaOriginal;
+        private Label lblOrigX;
+        private TextBox txtOrigX;
+        private Label lblOrigY;
+        private TextBox txtOrigY;
+        private Label lblOrigZ;
+        private TextBox txtOrigZ;
+        private Button btnAgregarOriginal;
+        private Button btnQuitarOriginal;
         private DataGridView dataGridView1;
         private DataGridViewTextBoxColumn colX1;
         private DataGridViewTextBoxColumn colY1;
         private DataGridViewTextBoxColumn colZ1;
         private GroupBox groupBox3;
+        private TableLayoutPanel tableLayoutTerrenoFinal;
+        private FlowLayoutPanel flowEntradaFinal;
+        private Label lblFinalX;
+        private TextBox txtFinalX;
+        private Label lblFinalY;
+        private TextBox txtFinalY;
+        private Label lblFinalZ;
+        private TextBox txtFinalZ;
+        private Button btnAgregarFinal;
+        private Button btnQuitarFinal;
         private DataGridView dataGridView2;
         private DataGridViewTextBoxColumn colX2;
         private DataGridViewTextBoxColumn colY2;

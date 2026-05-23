@@ -18,6 +18,7 @@ namespace Proyecto_Integrador.Vistas.Layout
             _usuario = usuario;
 
             button1.Visible = _usuario.Rol.Nombre == "Admin";
+            button4.Visible = _usuario.Rol.Nombre == "Admin";
 
             picLogoNavbar.ImageLocation = AppAssets.RutaLogoNavbar;
             picLogoCentro.ImageLocation = AppAssets.RutaLogoCentro;
@@ -73,6 +74,12 @@ namespace Proyecto_Integrador.Vistas.Layout
             var login = new Login.Login();
             login.Show();
             Close();
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Funcionalidad en desarrollo", "Información",
+                MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 }

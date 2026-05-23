@@ -1,4 +1,6 @@
-﻿namespace Proyecto_Integrador.Modelos.Cotizaciones;
+﻿using System.Globalization;
+
+namespace Proyecto_Integrador.Modelos.Cotizaciones;
 
 public class Material
 {
@@ -11,6 +13,6 @@ public class Material
         Nombre = nombre;
         ValorMetroCubico = valorMetroCubico;
     }
-
-    public override string ToString() => Nombre;
+    public string ValorMetroCubicoFormateado =>
+        ValorMetroCubico.ToString("C0", new CultureInfo("es-CO"));
 }

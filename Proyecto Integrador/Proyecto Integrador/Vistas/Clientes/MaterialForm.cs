@@ -1,4 +1,5 @@
 ﻿using Proyecto_Integrador.Modelos.Cotizaciones;
+using Proyecto_Integrador.Vistas.Cotizaciones.Validaciones;
 
 namespace Proyecto_Integrador.Vistas.Clientes
 {
@@ -13,7 +14,19 @@ namespace Proyecto_Integrador.Vistas.Clientes
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            var material = new Material(txtNombre.Text.Trim(), decimal.Parse(txtValor.Text));
+            var mensaje = MaterialValidaciones.ValidarEntrada(
+                txtNombre.Text,
+                txtValor.Text,
+                out var valor);
+
+            if (!string.IsNullOrEmpty(mensaje))
+            {
+                MessageBox.Show(mensaje, "Datos incompletos",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            MaterialCreado = new Material(txtNombre.Text.Trim(), valor);
             DialogResult = DialogResult.OK;
             Close();
         }

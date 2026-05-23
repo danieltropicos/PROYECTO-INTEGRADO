@@ -38,7 +38,7 @@ namespace Proyecto_Integrador.Vistas.Cotizaciones
             {
                 dgvMateriales.Rows.Add(
                     material.Nombre,
-                    material.ValorMetroCubico.ToString("N2"));
+                    material.ValorMetroCubicoFormateado);
             }
         }
     }
