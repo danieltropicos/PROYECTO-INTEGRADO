@@ -10,11 +10,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Imagenes\ojoAbierto.jpg" />
-    <None Remove="Imagenes\ojoCerrado.jpg" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Content Include="Recursos\Imagenes\ojoAbierto.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -39,10 +34,6 @@
     <None Update="Recursos\Imagenes\**\*">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Imagenes\" />
   </ItemGroup>
 
 </Project>

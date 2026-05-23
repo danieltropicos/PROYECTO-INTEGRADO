@@ -9,20 +9,32 @@ public class Cotizacion
     public Usuario UsuarioCreador { get; private set; }
     public List<PuntoTerreno> TerrenoOriginal { get; private set; } = new();
     public List<PuntoTerreno> TerrenoFinal { get; private set; } = new();
-    public decimal ValorMetroCubico { get; private set; }
+    public Material Material { get; private set; }
     public decimal VolumenCalculado { get; private set; }
-    public decimal Total => VolumenCalculado * ValorMetroCubico;
+    public string Estado { get; private set; }
+    public decimal Total => VolumenCalculado * Material.ValorMetroCubico;
 
     public DateTime FechaCreacion { get; private set; } = DateTime.Now;
 
     public Cotizacion(
         Cliente cliente,
         Usuario usuarioCreador,
-        decimal valorMetroCubico)
+        Material material)
     {
         Cliente = cliente;
         UsuarioCreador = usuarioCreador;
-        ValorMetroCubico = valorMetroCubico;
+        Material = material;
+        Estado = "Activa";
+    }
+
+    public void Activar()
+    {
+        Estado = "Activa";
+    }
+
+    public void Desactivar()
+    {
+        Estado = "Inactiva";
     }
 
     public void AgregarPuntoOriginal(PuntoTerreno punto)

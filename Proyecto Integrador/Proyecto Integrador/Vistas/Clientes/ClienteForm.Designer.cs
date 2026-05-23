@@ -89,7 +89,7 @@ namespace Proyecto_Integrador.Vistas.Clientes
             tableLayoutDatos.RowStyles.Add(new RowStyle(SizeType.Absolute, 44F));
             tableLayoutDatos.RowStyles.Add(new RowStyle(SizeType.Absolute, 44F));
             tableLayoutDatos.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            tableLayoutDatos.Size = new Size(470, 244);
+            tableLayoutDatos.Size = new Size(470, 250);
             tableLayoutDatos.TabIndex = 0;
             // 
             // label1
@@ -213,10 +213,10 @@ namespace Proyecto_Integrador.Vistas.Clientes
             flowLayoutPanelBotones.Controls.Add(btnGuardar);
             flowLayoutPanelBotones.Dock = DockStyle.Bottom;
             flowLayoutPanelBotones.FlowDirection = FlowDirection.RightToLeft;
-            flowLayoutPanelBotones.Location = new Point(12, 268);
+            flowLayoutPanelBotones.Location = new Point(12, 274);
             flowLayoutPanelBotones.Name = "flowLayoutPanelBotones";
             flowLayoutPanelBotones.Padding = new Padding(0, 8, 0, 0);
-            flowLayoutPanelBotones.Size = new Size(470, 60);
+            flowLayoutPanelBotones.Size = new Size(470, 54);
             flowLayoutPanelBotones.TabIndex = 1;
             flowLayoutPanelBotones.WrapContents = false;
             // 

@@ -255,7 +255,7 @@ namespace Proyecto_Integrador.Vistas.Layout
             button4.Font = new Font("Segoe UI", 10F);
             button4.ForeColor = Color.White;
             button4.Padding = new Padding(20, 0, 0, 0);
-            button4.Text = "  Facturas";
+            button4.Text = "  Materiales";
             button4.TextAlign = ContentAlignment.MiddleLeft;
             button4.UseVisualStyleBackColor = false;
             button4.Click += button4_Click;

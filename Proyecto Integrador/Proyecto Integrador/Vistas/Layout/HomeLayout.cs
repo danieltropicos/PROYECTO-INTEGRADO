@@ -65,10 +65,8 @@ namespace Proyecto_Integrador.Vistas.Layout
         private void button3_Click(object sender, EventArgs e) =>
             AbrirVista(new CotizacionControl(), button3);
 
-        private void button4_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show("Esto aun está en desarrollo");
-        }
+        private void button4_Click(object sender, EventArgs e) =>
+            AbrirVista(new MaterialControl(), button4);
 
         private void btnCerrarSesion_Click(object sender, EventArgs e)
         {

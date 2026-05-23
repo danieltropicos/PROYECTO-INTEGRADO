@@ -1,4 +1,5 @@
 using Proyecto_Integrador.Controladores;
+using Proyecto_Integrador.Modelos.Cotizaciones;
 
 namespace Proyecto_Integrador.Vistas.Cotizaciones;
 
@@ -24,7 +25,9 @@ public partial class CotizacionControl : UserControl
     {
         var materiales = materialControlador.ObtenerMateriales();
         comboBoxMateriales.Items.Clear();
-        comboBoxMateriales.Items.AddRange(materiales.ToArray());
+        comboBoxMateriales.DisplayMember = nameof(Material.Nombre);
+        comboBoxMateriales.ValueMember = nameof(Material.Id);
+        comboBoxMateriales.DataSource = materiales;
     }
 
     private void cargarClientes()
