@@ -36,6 +36,9 @@ namespace Proyecto_Integrador.Vistas.Cotizaciones
             DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
             tableLayoutPanel1 = new TableLayoutPanel();
             panelGrafica = new Panel();
+            tableLayoutPanel5 = new TableLayoutPanel();
+            panelGraficaOriginal = new Panel();
+            panelGraficaFinal = new Panel();
             tableLayoutPanel2 = new TableLayoutPanel();
             groupBox1 = new GroupBox();
             tableLayoutPanel3 = new TableLayoutPanel();
@@ -83,6 +86,8 @@ namespace Proyecto_Integrador.Vistas.Cotizaciones
             label7 = new Label();
             button1 = new Button();
             tableLayoutPanel1.SuspendLayout();
+            panelGrafica.SuspendLayout();
+            tableLayoutPanel5.SuspendLayout();
             tableLayoutPanel2.SuspendLayout();
             groupBox1.SuspendLayout();
             tableLayoutPanel3.SuspendLayout();
@@ -117,12 +122,45 @@ namespace Proyecto_Integrador.Vistas.Cotizaciones
             // panelGrafica
             // 
             panelGrafica.BackColor = Color.White;
+            panelGrafica.Controls.Add(tableLayoutPanel5);
             panelGrafica.Dock = DockStyle.Fill;
             panelGrafica.Location = new Point(430, 3);
             panelGrafica.Name = "panelGrafica";
             panelGrafica.Padding = new Padding(10);
             panelGrafica.Size = new Size(636, 585);
             panelGrafica.TabIndex = 1;
+            // 
+            // tableLayoutPanel5
+            // 
+            tableLayoutPanel5.ColumnCount = 1;
+            tableLayoutPanel5.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            tableLayoutPanel5.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
+            tableLayoutPanel5.Controls.Add(panelGraficaOriginal, 0, 0);
+            tableLayoutPanel5.Controls.Add(panelGraficaFinal, 0, 1);
+            tableLayoutPanel5.Dock = DockStyle.Fill;
+            tableLayoutPanel5.Location = new Point(10, 10);
+            tableLayoutPanel5.Name = "tableLayoutPanel5";
+            tableLayoutPanel5.RowCount = 2;
+            tableLayoutPanel5.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tableLayoutPanel5.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tableLayoutPanel5.Size = new Size(616, 565);
+            tableLayoutPanel5.TabIndex = 0;
+            // 
+            // panelGraficaOriginal
+            // 
+            panelGraficaOriginal.Dock = DockStyle.Fill;
+            panelGraficaOriginal.Location = new Point(3, 3);
+            panelGraficaOriginal.Name = "panelGraficaOriginal";
+            panelGraficaOriginal.Size = new Size(610, 276);
+            panelGraficaOriginal.TabIndex = 0;
+            // 
+            // panelGraficaFinal
+            // 
+            panelGraficaFinal.Dock = DockStyle.Fill;
+            panelGraficaFinal.Location = new Point(3, 285);
+            panelGraficaFinal.Name = "panelGraficaFinal";
+            panelGraficaFinal.Size = new Size(610, 277);
+            panelGraficaFinal.TabIndex = 1;
             // 
             // tableLayoutPanel2
             // 
@@ -765,6 +803,8 @@ namespace Proyecto_Integrador.Vistas.Cotizaciones
             Name = "CotizacionControl";
             Size = new Size(1069, 591);
             tableLayoutPanel1.ResumeLayout(false);
+            panelGrafica.ResumeLayout(false);
+            tableLayoutPanel5.ResumeLayout(false);
             tableLayoutPanel2.ResumeLayout(false);
             groupBox1.ResumeLayout(false);
             tableLayoutPanel3.ResumeLayout(false);
@@ -835,5 +875,8 @@ namespace Proyecto_Integrador.Vistas.Cotizaciones
         private Button button1;
         private Label label2;
         private ComboBox comboBoxMateriales;
+        private TableLayoutPanel tableLayoutPanel5;
+        private Panel panelGraficaOriginal;
+        private Panel panelGraficaFinal;
     }
 }

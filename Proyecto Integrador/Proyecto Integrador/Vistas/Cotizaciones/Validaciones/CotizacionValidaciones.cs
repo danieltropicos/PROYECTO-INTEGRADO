@@ -6,8 +6,8 @@ namespace Proyecto_Integrador.Vistas.Cotizaciones.Validaciones;
 internal static class CotizacionValidaciones
 {
     private const int MinPuntosPorTerreno = 3;
-    private const decimal CoordenadaMaxima = 1_000_000m;
-    private const decimal CoordenadaMinima = -1_000_000m;
+    private const double CoordenadaMaxima = 1_000_000;
+    private const double CoordenadaMinima = -1_000_000;
 
     public static string Validar(Cotizacion? cotizacion)
     {
@@ -68,9 +68,9 @@ internal static class CotizacionValidaciones
         string xTexto,
         string yTexto,
         string zTexto,
-        out decimal x,
-        out decimal y,
-        out decimal z)
+        out double x,
+        out double y,
+        out double z)
     {
         x = 0;
         y = 0;
@@ -123,13 +123,13 @@ internal static class CotizacionValidaciones
         return string.Empty;
     }
 
-    private static bool TryParseCoordenada(string texto, out decimal valor) =>
-        decimal.TryParse(
+    private static bool TryParseCoordenada(string texto, out double valor) =>
+        double.TryParse(
             texto.Trim(),
             NumberStyles.Number,
             CultureInfo.CurrentCulture,
             out valor);
 
-    private static bool EsCoordenadaValida(decimal valor) =>
+    private static bool EsCoordenadaValida(double valor) =>
         valor >= CoordenadaMinima && valor <= CoordenadaMaxima;
 }

@@ -16,6 +16,9 @@
     <Compile Update="Vistas\Cotizaciones\MaterialControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Update="Vistas\Cotizaciones\Terreno3DControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Update="Vistas\Usuarios\GestionUsuarios.cs">
       <SubType>Form</SubType>
     </Compile>
