@@ -40,29 +40,52 @@ public partial class FacturaControl : UserControl
     private void dgvFacturas_CellContentClick(object sender, DataGridViewCellEventArgs e)
     {
         if (e.RowIndex < 0) return;
-        if (e.ColumnIndex != dgvFacturas.Columns["colCambiarEstado"].Index) return;
 
         var factura = _facturas[e.RowIndex];
 
-        var estadoActualIndex = Array.IndexOf(Estados, factura.Estado);
-        var siguienteIndex = (estadoActualIndex + 1) % Estados.Length;
-        var nuevoEstado = Estados[siguienteIndex];
+        if (e.ColumnIndex == dgvFacturas.Columns["colCambiarEstado"].Index)
+        {
+            var estadoActualIndex = Array.IndexOf(Estados, factura.Estado);
+            var siguienteIndex = (estadoActualIndex + 1) % Estados.Length;
+            var nuevoEstado = Estados[siguienteIndex];
 
-        var confirmar = MessageBox.Show(
-            $"¿Cambiar estado de \"{factura.Estado}\" a \"{nuevoEstado}\"?",
-            "Cambiar estado",
-            MessageBoxButtons.YesNo,
-            MessageBoxIcon.Question);
+            var confirmar = MessageBox.Show(
+                $"¿Cambiar estado de \"{factura.Estado}\" a \"{nuevoEstado}\"?",
+                "Cambiar estado",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question);
 
-        if (confirmar != DialogResult.Yes) return;
+            if (confirmar != DialogResult.Yes) return;
 
-        facturaControlador.CambiarEstado(factura, nuevoEstado);
-        CargarFacturas();
+            facturaControlador.CambiarEstado(factura, nuevoEstado);
+            CargarFacturas();
 
-        MessageBox.Show(
-            $"Estado actualizado a \"{nuevoEstado}\".",
-            "Éxito",
-            MessageBoxButtons.OK,
-            MessageBoxIcon.Information);
+            MessageBox.Show(
+                $"Estado actualizado a \"{nuevoEstado}\".",
+                "Éxito",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Information);
+        }
+        else if (e.ColumnIndex == dgvFacturas.Columns["colImprimir"].Index)
+        {
+            try
+            {
+                _ = facturaControlador.ImprimirFactura(factura);
+
+                MessageBox.Show(
+                    $"Factura generada",
+                    "Factura impresa",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(
+                    $"Error al imprimir: {ex.Message}",
+                    "Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+            }
+        }
     }
 }

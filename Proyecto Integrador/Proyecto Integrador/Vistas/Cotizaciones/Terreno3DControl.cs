@@ -5,53 +5,34 @@ using Proyecto_Integrador.Modelos.Cotizaciones;
 
 namespace Proyecto_Integrador.Vistas.Cotizaciones;
 
-/// <summary>
-/// Control OpenGL 3D para visualización de terrenos.
-/// Reescrito desde cero – v5.
-///
-/// Estrategia de iluminación:
-///   • Sin GL.Lighting para el color de la superficie (evita toda saturación)
-///   • Iluminación manual por vértice: se multiplica el color base por
-///     el factor difuso calculado a mano (dot product normal · dirección luz)
-///   • Resultado: colores siempre fieles a la paleta, con sombreado suave real
-///
-/// Cámara inicial: LookAt desde (1.8, -1.8, 1.4) hacia (0,0,0)
-///   → vista isométrica estándar, terreno se ve desde arriba correctamente
-/// </summary>
+
 public partial class Terreno3DControl : UserControl
 {
     public enum TipoTerreno { Original, Final }
     private readonly TipoTerreno _tipo;
 
-    // GLControl
     private GLControl _gl = null!;
     private bool _ready;
 
-    // Datos
     private List<PuntoTerreno> _puntos = [];
-    private double[,]? _Z;         // altura en grilla [xi, yi]
-    private Vector3[,]? _N;        // normal suave por vértice
+    private double[,]? _Z;
+    private Vector3[,]? _N;
     private float[] _xs = [];
     private float[] _ys = [];
 
-    // Bounding box
     private float _xMin, _xMax, _yMin, _yMax, _zMin, _zMax;
     private float _cx, _cy, _cz, _scale;
 
-    // Cámara (esférica alrededor del centro de la escena)
-    private float _camTheta = 45f;   // yaw   en grados
-    private float _camPhi = 35f;   // pitch en grados (positivo = desde arriba)
-    private float _camDist = 4.0f;  // distancia al centro
+    private float _camTheta = 45f;
+    private float _camPhi = 35f;
+    private float _camDist = 4.0f;
     private float _panX, _panY;
 
-    // Mouse
     private Point _lastMouse;
     private bool _lmb, _rmb;
 
-    // Dirección de luz fija en espacio mundo (normalizada)
     private static readonly Vector3 LUZ = Vector3.Normalize(new Vector3(1f, 0.8f, 2f));
 
-    // ─────────────────────────────────────────────────────────────────────────
     public Terreno3DControl(TipoTerreno tipo)
     {
         _tipo = tipo;
@@ -90,9 +71,6 @@ public partial class Terreno3DControl : UserControl
         Controls.Add(titulo);
     }
 
-    // ─────────────────────────────────────────────────────────────────────────
-    // API
-    // ─────────────────────────────────────────────────────────────────────────
     public void ActualizarTerreno(IEnumerable<PuntoTerreno> puntos)
     {
         _puntos = puntos.ToList();
@@ -100,9 +78,6 @@ public partial class Terreno3DControl : UserControl
         if (_ready) _gl.Invalidate();
     }
 
-    // ─────────────────────────────────────────────────────────────────────────
-    // CONSTRUCCIÓN DE MALLA
-    // ─────────────────────────────────────────────────────────────────────────
     private void Reconstruir()
     {
         _Z = null; _N = null;
@@ -112,7 +87,6 @@ public partial class Terreno3DControl : UserControl
         var uxs = _puntos.Select(p => (float)p.X).Distinct().OrderBy(v => v).ToArray();
         var uys = _puntos.Select(p => (float)p.Y).Distinct().OrderBy(v => v).ToArray();
 
-        // Requiere grilla regular
         if ((long)uxs.Length * uys.Length != _puntos.Count) { BB(); return; }
 
         _xs = uxs; _ys = uys;
@@ -128,7 +102,6 @@ public partial class Terreno3DControl : UserControl
         BB();
     }
 
-    // Normales suaves: promedio de las normales de los 4 quads adyacentes
     private void CalcNormals()
     {
         int nx = _xs.Length, ny = _ys.Length;
@@ -189,22 +162,16 @@ public partial class Terreno3DControl : UserControl
         _scale = 1.7f / Math.Max(span, 1f);
     }
 
-    // ─────────────────────────────────────────────────────────────────────────
-    // PALETA DE COLORES
-    // Inspirada en software de topografía: azul profundo → cyan → verde → amarillo → rojo
-    // t=0 (más bajo) → azul  |  t=1 (más alto) → rojo
-    // ─────────────────────────────────────────────────────────────────────────
     private static (float r, float g, float b) Paleta(float t)
     {
         t = Math.Clamp(t, 0f, 1f);
-        // 5 colores clave, 4 segmentos
         ReadOnlySpan<(float r, float g, float b)> stops =
         [
-            (0.05f, 0.18f, 0.55f),   // azul profundo   t=0.00
-            (0.05f, 0.65f, 0.75f),   // cyan             t=0.25
-            (0.15f, 0.72f, 0.25f),   // verde            t=0.50
-            (0.95f, 0.85f, 0.10f),   // amarillo         t=0.75
-            (0.88f, 0.12f, 0.08f),   // rojo             t=1.00
+            (0.05f, 0.18f, 0.55f),
+            (0.05f, 0.65f, 0.75f),
+            (0.15f, 0.72f, 0.25f),
+            (0.95f, 0.85f, 0.10f),
+            (0.88f, 0.12f, 0.08f),
         ];
 
         float seg = t * (stops.Length - 1);
@@ -217,8 +184,6 @@ public partial class Terreno3DControl : UserControl
         );
     }
 
-    // Color con iluminación manual (sin GL.Lighting)
-    // factor = ambient + diffuse * max(0, dot(N, L))
     private (float r, float g, float b) ColorIluminado(int xi, int yi)
     {
         float z = (float)_Z![xi, yi];
@@ -238,9 +203,6 @@ public partial class Terreno3DControl : UserControl
         );
     }
 
-    // ─────────────────────────────────────────────────────────────────────────
-    // OPENGL INIT
-    // ─────────────────────────────────────────────────────────────────────────
     private void OnLoad(object? s, EventArgs e)
     {
         _ready = true;
@@ -253,7 +215,6 @@ public partial class Terreno3DControl : UserControl
         GL.BlendFunc(BlendingFactor.SrcAlpha, BlendingFactor.OneMinusSrcAlpha);
         GL.ShadeModel(ShadingModel.Smooth);
 
-        // Sin GL.Lighting — el color ya viene modulado manualmente
         GL.Disable(EnableCap.Lighting);
 
         OnResize(s, e);
@@ -273,17 +234,12 @@ public partial class Terreno3DControl : UserControl
         GL.MatrixMode(MatrixMode.Modelview);
     }
 
-    // ─────────────────────────────────────────────────────────────────────────
-    // RENDER
-    // ─────────────────────────────────────────────────────────────────────────
     private void OnPaint(object? s, PaintEventArgs e)
     {
         if (!_ready) return;
         _gl.MakeCurrent();
         GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit);
 
-        // ── Cámara esférica ──────────────────────────────────────────────────
-        // Convertir ángulos esféricos a posición cartesiana
         float thetaRad = MathHelper.DegreesToRadians(_camTheta);
         float phiRad = MathHelper.DegreesToRadians(_camPhi);
 
@@ -294,17 +250,14 @@ public partial class Terreno3DControl : UserControl
         GL.MatrixMode(MatrixMode.Modelview);
         GL.LoadIdentity();
 
-        // LookAt: ojo en (eyeX, eyeY, eyeZ), mira al origen, up = +Z
         var view = Matrix4.LookAt(
             new Vector3(eyeX, eyeY, eyeZ),
             Vector3.Zero,
             Vector3.UnitZ);
         GL.LoadMatrix(ref view);
 
-        // Pan (en espacio de pantalla)
         GL.Translate(_panX, _panY, 0f);
 
-        // Centrar y escalar la escena
         GL.Scale(_scale, _scale, _scale);
         GL.Translate(-_cx, -_cy, -_cz);
 
@@ -322,19 +275,16 @@ public partial class Terreno3DControl : UserControl
 
         _gl.SwapBuffers();
 
-        // Overlay
         using var g = _gl.CreateGraphics();
         DibujarLeyenda(g);
         DibujarHint(g);
     }
 
-    // ── BASE (paredes + piso) ─────────────────────────────────────────────────
     private void DibujarBase()
     {
         float piso = _zMin - (_zMax - _zMin) * 0.10f;
         int nx = _xs.Length, ny = _ys.Length;
 
-        // Piso
         GL.Color3(0.11f, 0.14f, 0.19f);
         GL.Begin(PrimitiveType.Quads);
         GL.Vertex3(_xMin, _yMin, piso);
@@ -343,10 +293,8 @@ public partial class Terreno3DControl : UserControl
         GL.Vertex3(_xMin, _yMax, piso);
         GL.End();
 
-        // Color paredes: un poco más claro
         GL.Color3(0.17f, 0.20f, 0.27f);
 
-        // Frente (y = yMin)
         GL.Begin(PrimitiveType.QuadStrip);
         for (int xi = 0; xi < nx; xi++)
         {
@@ -355,7 +303,6 @@ public partial class Terreno3DControl : UserControl
         }
         GL.End();
 
-        // Atrás (y = yMax)
         GL.Begin(PrimitiveType.QuadStrip);
         for (int xi = nx - 1; xi >= 0; xi--)
         {
@@ -364,7 +311,7 @@ public partial class Terreno3DControl : UserControl
         }
         GL.End();
 
-        // Izquierda (x = xMin)
+
         GL.Begin(PrimitiveType.QuadStrip);
         for (int yi = ny - 1; yi >= 0; yi--)
         {
@@ -373,7 +320,6 @@ public partial class Terreno3DControl : UserControl
         }
         GL.End();
 
-        // Derecha (x = xMax)
         GL.Begin(PrimitiveType.QuadStrip);
         for (int yi = 0; yi < ny; yi++)
         {
@@ -383,7 +329,6 @@ public partial class Terreno3DControl : UserControl
         GL.End();
     }
 
-    // ── SUPERFICIE con color+sombreado manual ─────────────────────────────────
     private void DibujarSuperficie()
     {
         GL.PolygonOffset(1f, 1f);
@@ -396,7 +341,6 @@ public partial class Terreno3DControl : UserControl
             GL.Begin(PrimitiveType.QuadStrip);
             for (int yi = 0; yi < ny; yi++)
             {
-                // Quad antihorario desde +Z: emitir (xi, yi) luego (xi+1, yi)
                 var (r0, g0, b0) = ColorIluminado(xi, yi);
                 var (r1, g1, b1) = ColorIluminado(xi + 1, yi);
 
@@ -412,7 +356,6 @@ public partial class Terreno3DControl : UserControl
         GL.Disable(EnableCap.PolygonOffsetFill);
     }
 
-    // ── WIREFRAME (solo líneas de grilla, sin diagonales) ─────────────────────
     private void DibujarWireframe()
     {
         GL.LineWidth(0.8f);
@@ -420,7 +363,6 @@ public partial class Terreno3DControl : UserControl
         const float OFF = 0.02f;
         int nx = _xs.Length, ny = _ys.Length;
 
-        // Líneas paralelas a X
         for (int yi = 0; yi < ny; yi++)
         {
             GL.Begin(PrimitiveType.LineStrip);
@@ -428,7 +370,7 @@ public partial class Terreno3DControl : UserControl
                 GL.Vertex3(_xs[xi], _ys[yi], (float)_Z![xi, yi] + OFF);
             GL.End();
         }
-        // Líneas paralelas a Y
+
         for (int xi = 0; xi < nx; xi++)
         {
             GL.Begin(PrimitiveType.LineStrip);
@@ -439,7 +381,6 @@ public partial class Terreno3DControl : UserControl
         GL.LineWidth(1f);
     }
 
-    // ── EJES ─────────────────────────────────────────────────────────────────
     private void DibujarEjes()
     {
         float piso = _zMin - (_zMax - _zMin) * 0.10f;
@@ -448,17 +389,16 @@ public partial class Terreno3DControl : UserControl
 
         GL.LineWidth(2f);
         GL.Begin(PrimitiveType.Lines);
-        GL.Color3(0.9f, 0.2f, 0.2f);  // X rojo
+        GL.Color3(0.9f, 0.2f, 0.2f);
         GL.Vertex3(_xMin, _yMin, piso); GL.Vertex3(_xMax + extXY, _yMin, piso);
-        GL.Color3(0.2f, 0.85f, 0.2f); // Y verde
+        GL.Color3(0.2f, 0.85f, 0.2f);
         GL.Vertex3(_xMin, _yMin, piso); GL.Vertex3(_xMin, _yMax + extXY, piso);
-        GL.Color3(0.35f, 0.6f, 1.0f); // Z azul
+        GL.Color3(0.35f, 0.6f, 1.0f);
         GL.Vertex3(_xMin, _yMin, piso); GL.Vertex3(_xMin, _yMin, _zMax + extZ);
         GL.End();
         GL.LineWidth(1f);
     }
 
-    // ── NUBE DE PUNTOS ────────────────────────────────────────────────────────
     private void DibujarNube()
     {
         GL.PointSize(5f);
@@ -474,9 +414,6 @@ public partial class Terreno3DControl : UserControl
         GL.PointSize(1f);
     }
 
-    // ─────────────────────────────────────────────────────────────────────────
-    // OVERLAY GDI+ – Leyenda
-    // ─────────────────────────────────────────────────────────────────────────
     private void DibujarLeyenda(Graphics g)
     {
         if (_puntos.Count == 0) return;
@@ -494,10 +431,8 @@ public partial class Terreno3DControl : UserControl
             g.DrawLine(pen, x, y + i, x + W, y + i);
         }
 
-        // Borde
         g.DrawRectangle(new Pen(Color.FromArgb(180, 255, 255, 255)), x, y, W, H);
 
-        // Etiquetas (6 niveles)
         using var fv = new Font("Segoe UI", 7f);
         using var br = new SolidBrush(Color.White);
         for (int i = 0; i <= 5; i++)
@@ -519,9 +454,6 @@ public partial class Terreno3DControl : UserControl
             f, br, 6, _gl.Height - 17);
     }
 
-    // ─────────────────────────────────────────────────────────────────────────
-    // MOUSE
-    // ─────────────────────────────────────────────────────────────────────────
     private void OnMouseDown(object? s, MouseEventArgs e)
     {
         _lastMouse = e.Location;
@@ -542,7 +474,6 @@ public partial class Terreno3DControl : UserControl
         }
         if (_rmb)
         {
-            // Pan en plano perpendicular a la vista
             _panX += dx * 0.003f;
             _panY -= dy * 0.003f;
         }
