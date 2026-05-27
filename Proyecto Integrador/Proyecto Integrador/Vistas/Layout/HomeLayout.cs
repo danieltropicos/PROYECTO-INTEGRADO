@@ -2,6 +2,7 @@ using Proyecto_Integrador.Modelos.Usuarios;
 using Proyecto_Integrador.Utilidades;
 using Proyecto_Integrador.Vistas.Clientes;
 using Proyecto_Integrador.Vistas.Cotizaciones;
+using Proyecto_Integrador.Vistas.Facturas;
 using Proyecto_Integrador.Vistas.Usuarios;
 
 namespace Proyecto_Integrador.Vistas.Layout
@@ -14,7 +15,7 @@ namespace Proyecto_Integrador.Vistas.Layout
         public HomeLayout(Usuario usuario)
         {
             InitializeComponent();
-            _botonesMenu = [btnHome, button1, button2, button3, button4];
+            _botonesMenu = [btnHome, button1, button2, button3, button4, button5];
             _usuario = usuario;
 
             button1.Visible = _usuario.Rol.Nombre == "Admin";
@@ -64,7 +65,7 @@ namespace Proyecto_Integrador.Vistas.Layout
             AbrirVista(new ClienteControl(), button2);
 
         private void button3_Click(object sender, EventArgs e) =>
-            AbrirVista(new CotizacionControl(), button3);
+            AbrirListaCotizaciones();
 
         private void button4_Click(object sender, EventArgs e) =>
             AbrirVista(new MaterialControl(), button4);
@@ -76,10 +77,21 @@ namespace Proyecto_Integrador.Vistas.Layout
             Close();
         }
 
-        private void button5_Click(object sender, EventArgs e)
+        private void button5_Click(object sender, EventArgs e) =>
+            AbrirVista(new FacturaControl(), button5);
+
+        private void AbrirListaCotizaciones()
         {
-            MessageBox.Show("Funcionalidad en desarrollo", "Información",
-                MessageBoxButtons.OK, MessageBoxIcon.Information);
+            var lista = new ListaCotizacionControl(_usuario);
+            lista.CrearCotizacionClick += (_, _) => AbrirCotizacionControl();
+            AbrirVista(lista, button3);
+        }
+
+        private void AbrirCotizacionControl()
+        {
+            var cotizacion = new CotizacionControl(_usuario);
+            cotizacion.CotizacionGuardada += (_, _) => AbrirListaCotizaciones();
+            AbrirVista(cotizacion, button3);
         }
     }
 }

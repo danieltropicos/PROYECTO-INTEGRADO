@@ -14,19 +14,23 @@ namespace Proyecto_Integrador.Vistas.Login
 
         private void btnIngresar_Click(object sender, EventArgs e)
         {
-            UsuarioControlador usuarioControlador = new();
+            Rol roltemporal = new Rol("Admin");
+            Usuario usuarioTemporal = new Usuario(
+                Guid.NewGuid(),
+                "Admin",
+                "Temporal",
+                "admin@gmail.com",
+                "3000000000",
+                "Sin direccion",
+                "admin",
+                "1234",
+                roltemporal,
+                DateTime.Now
+            );
 
-            var usuario = usuarioControlador.ObtenerUsuarioPorNombreUsuario(txtUsuario.Text);
-            if (usuario != null && usuario.ValidarContrasena(txtContraseña.Text))
-            {
-                HomeLayout homeLayout = new(usuario);
-                homeLayout.Show();
-                Hide();
-            }
-            else
-            {
-                MessageBox.Show("-- Usuario o Contraseña Incorrecto --");
-            }
+            HomeLayout homeLayout = new(usuarioTemporal);
+            homeLayout.Show();
+            Hide();
         }
 
         private void picOjo_Click(object sender, EventArgs e)

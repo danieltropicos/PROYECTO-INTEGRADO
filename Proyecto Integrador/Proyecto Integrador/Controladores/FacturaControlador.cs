@@ -1,29 +1,30 @@
 ﻿using Proyecto_Integrador.Modelos.Facturas;
 using Proyecto_Integrador.Repositorios;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
-namespace Proyecto_Integrador.Controladores
+namespace Proyecto_Integrador.Controladores;
+
+public class FacturaControlador
 {
-    internal class FacturaControlador
+    private readonly FacturasRepositorio facturaRepositorio;
+
+    public FacturaControlador()
     {
-        FacturasRepositorio facturaRepositorio;
+        facturaRepositorio = new FacturasRepositorio();
+    }
 
-        public FacturaControlador()
-        {
-            facturaRepositorio = new FacturasRepositorio();
-        }
+    public void AgregarFactura(Factura factura)
+    {
+        facturaRepositorio.Agregar(factura);
+    }
 
-        
-        public void AgregarFactura(Factura factura)
-        {
-            facturaRepositorio.Agregar(factura);
-        }
+    public List<Factura> ListarFacturas()
+    {
+        return facturaRepositorio.Listar();
+    }
 
-        public List<Factura> ListarFacturas()
-        {
-            return facturaRepositorio.Listar();
-        }
+    public void CambiarEstado(Factura factura, string nuevoEstado)
+    {
+        factura.CambiarEstado(nuevoEstado);
+        facturaRepositorio.Actualizar(factura);
     }
 }

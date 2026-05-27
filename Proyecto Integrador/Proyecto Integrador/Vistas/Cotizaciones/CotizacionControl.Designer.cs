@@ -85,6 +85,7 @@ namespace Proyecto_Integrador.Vistas.Cotizaciones
             label6 = new Label();
             label7 = new Label();
             button1 = new Button();
+            btnGuardarCotizacion = new Button();
             tableLayoutPanel1.SuspendLayout();
             panelGrafica.SuspendLayout();
             tableLayoutPanel5.SuspendLayout();
@@ -719,12 +720,14 @@ namespace Proyecto_Integrador.Vistas.Cotizaciones
             tableLayoutPanel4.Controls.Add(label6, 0, 1);
             tableLayoutPanel4.Controls.Add(label7, 1, 1);
             tableLayoutPanel4.Controls.Add(button1, 0, 2);
+            tableLayoutPanel4.Controls.Add(btnGuardarCotizacion, 0, 3);
             tableLayoutPanel4.Dock = DockStyle.Fill;
             tableLayoutPanel4.Location = new Point(3, 19);
             tableLayoutPanel4.Name = "tableLayoutPanel4";
-            tableLayoutPanel4.RowCount = 3;
+            tableLayoutPanel4.RowCount = 4;
             tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
             tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Absolute, 56F));
             tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Absolute, 56F));
             tableLayoutPanel4.Size = new Size(409, 143);
             tableLayoutPanel4.TabIndex = 0;
@@ -755,7 +758,7 @@ namespace Proyecto_Integrador.Vistas.Cotizaciones
             // 
             label6.AutoSize = true;
             label6.ForeColor = Color.FromArgb(75, 85, 99);
-            label6.Location = new Point(3, 43);
+            label6.Location = new Point(3, 15);
             label6.Name = "label6";
             label6.Size = new Size(37, 15);
             label6.TabIndex = 2;
@@ -767,7 +770,7 @@ namespace Proyecto_Integrador.Vistas.Cotizaciones
             label7.AutoSize = true;
             label7.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label7.ForeColor = Color.FromArgb(30, 58, 95);
-            label7.Location = new Point(207, 43);
+            label7.Location = new Point(207, 15);
             label7.Name = "label7";
             label7.Size = new Size(21, 15);
             label7.TabIndex = 3;
@@ -785,7 +788,7 @@ namespace Proyecto_Integrador.Vistas.Cotizaciones
             button1.FlatStyle = FlatStyle.Flat;
             button1.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             button1.ForeColor = Color.White;
-            button1.Location = new Point(3, 96);
+            button1.Location = new Point(3, 40);
             button1.Margin = new Padding(3, 10, 3, 3);
             button1.Name = "button1";
             button1.Size = new Size(403, 42);
@@ -793,6 +796,27 @@ namespace Proyecto_Integrador.Vistas.Cotizaciones
             button1.Text = "Calcular";
             button1.UseVisualStyleBackColor = false;
             button1.Click += button1_Click;
+            // 
+            // btnGuardarCotizacion
+            // 
+            btnGuardarCotizacion.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            btnGuardarCotizacion.BackColor = Color.FromArgb(30, 58, 95);
+            tableLayoutPanel4.SetColumnSpan(btnGuardarCotizacion, 2);
+            btnGuardarCotizacion.Cursor = Cursors.Hand;
+            btnGuardarCotizacion.FlatAppearance.BorderSize = 0;
+            btnGuardarCotizacion.FlatAppearance.MouseOverBackColor = Color.FromArgb(59, 93, 122);
+            btnGuardarCotizacion.FlatStyle = FlatStyle.Flat;
+            btnGuardarCotizacion.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            btnGuardarCotizacion.ForeColor = Color.White;
+            btnGuardarCotizacion.Location = new Point(3, 96);
+            btnGuardarCotizacion.Margin = new Padding(3, 10, 3, 3);
+            btnGuardarCotizacion.Name = "btnGuardarCotizacion";
+            btnGuardarCotizacion.Size = new Size(403, 42);
+            btnGuardarCotizacion.TabIndex = 5;
+            btnGuardarCotizacion.Text = "Guardar Cotización";
+            btnGuardarCotizacion.UseVisualStyleBackColor = false;
+            btnGuardarCotizacion.Visible = false;
+            btnGuardarCotizacion.Click += btnGuardarCotizacion_Click;
             // 
             // CotizacionControl
             // 
@@ -873,6 +897,7 @@ namespace Proyecto_Integrador.Vistas.Cotizaciones
         private Label label6;
         private Label label7;
         private Button button1;
+        private Button btnGuardarCotizacion;
         private Label label2;
         private ComboBox comboBoxMateriales;
         private TableLayoutPanel tableLayoutPanel5;

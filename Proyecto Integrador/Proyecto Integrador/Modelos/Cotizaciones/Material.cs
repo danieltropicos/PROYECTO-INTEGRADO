@@ -1,4 +1,5 @@
 ﻿using System.Globalization;
+using System.Text.Json.Serialization;
 
 namespace Proyecto_Integrador.Modelos.Cotizaciones;
 
@@ -13,6 +14,15 @@ public class Material
         Nombre = nombre;
         ValorMetroCubico = valorMetroCubico;
     }
+
+    [JsonConstructor]
+    public Material(Guid id, string nombre, decimal valorMetroCubico)
+    {
+        Id = id;
+        Nombre = nombre;
+        ValorMetroCubico = valorMetroCubico;
+    }
+
     public string ValorMetroCubicoFormateado =>
         ValorMetroCubico.ToString("C0", new CultureInfo("es-CO"));
 }

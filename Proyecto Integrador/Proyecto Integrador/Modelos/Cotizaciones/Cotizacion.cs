@@ -1,4 +1,5 @@
-﻿using Proyecto_Integrador.Modelos.Usuarios;
+﻿using System.Text.Json.Serialization;
+using Proyecto_Integrador.Modelos.Usuarios;
 
 namespace Proyecto_Integrador.Modelos.Cotizaciones;
 
@@ -27,6 +28,29 @@ public class Cotizacion
         Estado = "Activa";
     }
 
+    [JsonConstructor]
+    public Cotizacion(
+        Guid id,
+        Cliente cliente,
+        Usuario usuarioCreador,
+        List<PuntoTerreno> terrenoOriginal,
+        List<PuntoTerreno> terrenoFinal,
+        Material material,
+        decimal volumenCalculado,
+        string estado,
+        DateTime fechaCreacion)
+    {
+        Id = id;
+        Cliente = cliente;
+        UsuarioCreador = usuarioCreador;
+        TerrenoOriginal = terrenoOriginal ?? new();
+        TerrenoFinal = terrenoFinal ?? new();
+        Material = material;
+        VolumenCalculado = volumenCalculado;
+        Estado = estado;
+        FechaCreacion = fechaCreacion;
+    }
+
     public void Activar()
     {
         Estado = "Activa";
@@ -50,5 +74,11 @@ public class Cotizacion
     public void EstablecerVolumen(decimal volumen)
     {
         VolumenCalculado = volumen;
+    }
+
+    public void EstablecerTerrenos(List<PuntoTerreno> original, List<PuntoTerreno> final_)
+    {
+        TerrenoOriginal = new List<PuntoTerreno>(original);
+        TerrenoFinal = new List<PuntoTerreno>(final_);
     }
 }

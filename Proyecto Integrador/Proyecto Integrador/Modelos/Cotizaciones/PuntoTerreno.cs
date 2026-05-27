@@ -1,4 +1,6 @@
-﻿namespace Proyecto_Integrador.Modelos.Cotizaciones;
+﻿using System.Text.Json.Serialization;
+
+namespace Proyecto_Integrador.Modelos.Cotizaciones;
 
 public class PuntoTerreno
 {
@@ -6,6 +8,7 @@ public class PuntoTerreno
     public double Y { get; set; }
     public double Z { get; set; }
 
+    [JsonConstructor]
     public PuntoTerreno(double x, double y, double z)
     {
         X = x;
