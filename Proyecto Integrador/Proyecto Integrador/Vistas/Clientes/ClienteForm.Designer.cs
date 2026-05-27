@@ -67,7 +67,7 @@ namespace Proyecto_Integrador.Vistas.Clientes
             // tableLayoutDatos
             // 
             tableLayoutDatos.ColumnCount = 3;
-            tableLayoutDatos.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33.3333321F));
+            tableLayoutDatos.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33.33333F));
             tableLayoutDatos.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33.3333359F));
             tableLayoutDatos.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33.3333359F));
             tableLayoutDatos.Controls.Add(label1, 0, 0);
@@ -88,10 +88,8 @@ namespace Proyecto_Integrador.Vistas.Clientes
             tableLayoutDatos.RowStyles.Add(new RowStyle(SizeType.Absolute, 44F));
             tableLayoutDatos.RowStyles.Add(new RowStyle(SizeType.Absolute, 44F));
             tableLayoutDatos.RowStyles.Add(new RowStyle(SizeType.Absolute, 44F));
-            tableLayoutDatos.RowStyles.Add(new RowStyle(SizeType.Absolute, 44F));
-            tableLayoutDatos.SetColumnSpan(textBoxCorreo, 2);
-            tableLayoutDatos.SetColumnSpan(textBoxDocumento, 2);
-            tableLayoutDatos.Size = new Size(470, 244);
+            tableLayoutDatos.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
+            tableLayoutDatos.Size = new Size(470, 250);
             tableLayoutDatos.TabIndex = 0;
             // 
             // label1
@@ -101,7 +99,7 @@ namespace Proyecto_Integrador.Vistas.Clientes
             label1.ForeColor = Color.FromArgb(75, 85, 99);
             label1.Location = new Point(7, 4);
             label1.Name = "label1";
-            label1.Size = new Size(147, 38);
+            label1.Size = new Size(147, 44);
             label1.TabIndex = 0;
             label1.Text = "Nombre y Apellido";
             label1.TextAlign = ContentAlignment.MiddleLeft;
@@ -114,7 +112,7 @@ namespace Proyecto_Integrador.Vistas.Clientes
             textBoxNombre.Font = new Font("Segoe UI", 10F);
             textBoxNombre.Location = new Point(160, 7);
             textBoxNombre.Name = "textBoxNombre";
-            textBoxNombre.Size = new Size(147, 25);
+            textBoxNombre.Size = new Size(148, 25);
             textBoxNombre.TabIndex = 1;
             // 
             // textBoxApellido
@@ -123,9 +121,9 @@ namespace Proyecto_Integrador.Vistas.Clientes
             textBoxApellido.BorderStyle = BorderStyle.FixedSingle;
             textBoxApellido.Dock = DockStyle.Fill;
             textBoxApellido.Font = new Font("Segoe UI", 10F);
-            textBoxApellido.Location = new Point(313, 7);
+            textBoxApellido.Location = new Point(314, 7);
             textBoxApellido.Name = "textBoxApellido";
-            textBoxApellido.Size = new Size(150, 25);
+            textBoxApellido.Size = new Size(149, 25);
             textBoxApellido.TabIndex = 2;
             // 
             // label2
@@ -135,7 +133,7 @@ namespace Proyecto_Integrador.Vistas.Clientes
             label2.ForeColor = Color.FromArgb(75, 85, 99);
             label2.Location = new Point(7, 48);
             label2.Name = "label2";
-            label2.Size = new Size(147, 38);
+            label2.Size = new Size(147, 44);
             label2.TabIndex = 3;
             label2.Text = "Correo";
             label2.TextAlign = ContentAlignment.MiddleLeft;
@@ -147,7 +145,7 @@ namespace Proyecto_Integrador.Vistas.Clientes
             label3.ForeColor = Color.FromArgb(75, 85, 99);
             label3.Location = new Point(7, 92);
             label3.Name = "label3";
-            label3.Size = new Size(147, 38);
+            label3.Size = new Size(147, 44);
             label3.TabIndex = 6;
             label3.Text = "Teléfono y Dirección";
             label3.TextAlign = ContentAlignment.MiddleLeft;
@@ -160,7 +158,7 @@ namespace Proyecto_Integrador.Vistas.Clientes
             textBoxTelefono.Font = new Font("Segoe UI", 10F);
             textBoxTelefono.Location = new Point(160, 95);
             textBoxTelefono.Name = "textBoxTelefono";
-            textBoxTelefono.Size = new Size(147, 25);
+            textBoxTelefono.Size = new Size(148, 25);
             textBoxTelefono.TabIndex = 7;
             // 
             // textBoxDireccion
@@ -169,19 +167,18 @@ namespace Proyecto_Integrador.Vistas.Clientes
             textBoxDireccion.BorderStyle = BorderStyle.FixedSingle;
             textBoxDireccion.Dock = DockStyle.Fill;
             textBoxDireccion.Font = new Font("Segoe UI", 10F);
-            textBoxDireccion.Location = new Point(313, 95);
+            textBoxDireccion.Location = new Point(314, 95);
             textBoxDireccion.Name = "textBoxDireccion";
-            textBoxDireccion.Size = new Size(150, 25);
+            textBoxDireccion.Size = new Size(149, 25);
             textBoxDireccion.TabIndex = 8;
             // 
             // label4
             // 
-            label4.Dock = DockStyle.Fill;
             label4.Font = new Font("Segoe UI", 9F);
             label4.ForeColor = Color.FromArgb(75, 85, 99);
             label4.Location = new Point(7, 136);
             label4.Name = "label4";
-            label4.Size = new Size(147, 38);
+            label4.Size = new Size(147, 28);
             label4.TabIndex = 11;
             label4.Text = "Documento";
             label4.TextAlign = ContentAlignment.MiddleLeft;
@@ -190,6 +187,7 @@ namespace Proyecto_Integrador.Vistas.Clientes
             // 
             textBoxCorreo.BackColor = Color.White;
             textBoxCorreo.BorderStyle = BorderStyle.FixedSingle;
+            tableLayoutDatos.SetColumnSpan(textBoxCorreo, 2);
             textBoxCorreo.Dock = DockStyle.Fill;
             textBoxCorreo.Font = new Font("Segoe UI", 10F);
             textBoxCorreo.Location = new Point(160, 51);
@@ -201,6 +199,7 @@ namespace Proyecto_Integrador.Vistas.Clientes
             // 
             textBoxDocumento.BackColor = Color.White;
             textBoxDocumento.BorderStyle = BorderStyle.FixedSingle;
+            tableLayoutDatos.SetColumnSpan(textBoxDocumento, 2);
             textBoxDocumento.Dock = DockStyle.Fill;
             textBoxDocumento.Font = new Font("Segoe UI", 10F);
             textBoxDocumento.Location = new Point(160, 139);
@@ -214,10 +213,10 @@ namespace Proyecto_Integrador.Vistas.Clientes
             flowLayoutPanelBotones.Controls.Add(btnGuardar);
             flowLayoutPanelBotones.Dock = DockStyle.Bottom;
             flowLayoutPanelBotones.FlowDirection = FlowDirection.RightToLeft;
-            flowLayoutPanelBotones.Location = new Point(12, 268);
+            flowLayoutPanelBotones.Location = new Point(12, 274);
             flowLayoutPanelBotones.Name = "flowLayoutPanelBotones";
             flowLayoutPanelBotones.Padding = new Padding(0, 8, 0, 0);
-            flowLayoutPanelBotones.Size = new Size(470, 60);
+            flowLayoutPanelBotones.Size = new Size(470, 54);
             flowLayoutPanelBotones.TabIndex = 1;
             flowLayoutPanelBotones.WrapContents = false;
             // 
@@ -231,7 +230,7 @@ namespace Proyecto_Integrador.Vistas.Clientes
             btnCancelar.FlatStyle = FlatStyle.Flat;
             btnCancelar.Font = new Font("Segoe UI", 10F);
             btnCancelar.ForeColor = Color.FromArgb(17, 24, 39);
-            btnCancelar.Location = new Point(317, 11);
+            btnCancelar.Location = new Point(325, 8);
             btnCancelar.Margin = new Padding(8, 0, 0, 0);
             btnCancelar.Name = "btnCancelar";
             btnCancelar.Size = new Size(145, 40);
@@ -248,7 +247,7 @@ namespace Proyecto_Integrador.Vistas.Clientes
             btnGuardar.FlatStyle = FlatStyle.Flat;
             btnGuardar.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             btnGuardar.ForeColor = Color.White;
-            btnGuardar.Location = new Point(164, 11);
+            btnGuardar.Location = new Point(172, 8);
             btnGuardar.Margin = new Padding(8, 0, 0, 0);
             btnGuardar.Name = "btnGuardar";
             btnGuardar.Size = new Size(145, 40);

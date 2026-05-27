@@ -15,4 +15,9 @@ public class CotizacionControlador
     {
         cotizacionRepositorio.AgregarCotizacion(cotizacion);
     }
+
+    public List<Cotizacion> ObtenerCotizaciones()
+    {
+        return cotizacionRepositorio.ObtenerCotizaciones();
+    }
 }
