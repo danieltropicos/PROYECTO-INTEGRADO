@@ -27,4 +27,9 @@ public class FacturaControlador
         factura.CambiarEstado(nuevoEstado);
         facturaRepositorio.Actualizar(factura);
     }
+
+    public string ImprimirFactura(Factura factura)
+    {
+        return facturaRepositorio.ImprimirFactura(factura);
+    }
 }

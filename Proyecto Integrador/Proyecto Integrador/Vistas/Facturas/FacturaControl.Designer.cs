@@ -27,6 +27,7 @@
             colFechaEmision = new DataGridViewTextBoxColumn();
             colEstado = new DataGridViewTextBoxColumn();
             colCambiarEstado = new DataGridViewButtonColumn();
+            colImprimir = new DataGridViewButtonColumn();
             tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvFacturas).BeginInit();
             SuspendLayout();
@@ -79,7 +80,7 @@
             dgvFacturas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             dgvFacturas.ColumnHeadersHeight = 36;
             dgvFacturas.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dgvFacturas.Columns.AddRange(new DataGridViewColumn[] { colId, colCliente, colTotal, colFechaEmision, colEstado, colCambiarEstado });
+            dgvFacturas.Columns.AddRange(new DataGridViewColumn[] { colId, colCliente, colTotal, colFechaEmision, colEstado, colCambiarEstado, colImprimir });
             dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = Color.White;
             dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F);
@@ -133,10 +134,17 @@
             // 
             // colCambiarEstado
             // 
-            colCambiarEstado.HeaderText = "Acción";
+            colCambiarEstado.HeaderText = "Estado";
             colCambiarEstado.Name = "colCambiarEstado";
             colCambiarEstado.Text = "Cambiar Estado";
             colCambiarEstado.UseColumnTextForButtonValue = true;
+            // 
+            // colImprimir
+            // 
+            colImprimir.HeaderText = "Imprimir";
+            colImprimir.Name = "colImprimir";
+            colImprimir.Text = "Imprimir";
+            colImprimir.UseColumnTextForButtonValue = true;
             // 
             // FacturaControl
             // 
@@ -162,5 +170,6 @@
         private DataGridViewTextBoxColumn colFechaEmision;
         private DataGridViewTextBoxColumn colEstado;
         private DataGridViewButtonColumn colCambiarEstado;
+        private DataGridViewButtonColumn colImprimir;
     }
 }
