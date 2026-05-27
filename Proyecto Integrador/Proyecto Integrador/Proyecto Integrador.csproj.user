@@ -7,7 +7,22 @@
     <Compile Update="Vistas\Clientes\ClienteForm.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Vistas\Clientes\MaterialForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Vistas\Cotizaciones\CotizacionControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="Vistas\Cotizaciones\ListaCotizacionControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="Vistas\Cotizaciones\MaterialControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="Vistas\Cotizaciones\Terreno3DControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="Vistas\Facturas\FacturaControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Update="Vistas\Usuarios\GestionUsuarios.cs">

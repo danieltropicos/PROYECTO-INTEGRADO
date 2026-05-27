@@ -1,4 +1,5 @@
-﻿using Proyecto_Integrador.Modelos.Usuarios;
+﻿using System.Text.Json.Serialization;
+using Proyecto_Integrador.Modelos.Usuarios;
 
 namespace Proyecto_Integrador.Modelos.Cotizaciones;
 
@@ -9,20 +10,55 @@ public class Cotizacion
     public Usuario UsuarioCreador { get; private set; }
     public List<PuntoTerreno> TerrenoOriginal { get; private set; } = new();
     public List<PuntoTerreno> TerrenoFinal { get; private set; } = new();
-    public decimal ValorMetroCubico { get; private set; }
+    public Material Material { get; private set; }
     public decimal VolumenCalculado { get; private set; }
-    public decimal Total => VolumenCalculado * ValorMetroCubico;
+    public string Estado { get; private set; }
+    public decimal Total => VolumenCalculado * Material.ValorMetroCubico;
 
     public DateTime FechaCreacion { get; private set; } = DateTime.Now;
 
     public Cotizacion(
         Cliente cliente,
         Usuario usuarioCreador,
-        decimal valorMetroCubico)
+        Material material)
     {
         Cliente = cliente;
         UsuarioCreador = usuarioCreador;
-        ValorMetroCubico = valorMetroCubico;
+        Material = material;
+        Estado = "Activa";
+    }
+
+    [JsonConstructor]
+    public Cotizacion(
+        Guid id,
+        Cliente cliente,
+        Usuario usuarioCreador,
+        List<PuntoTerreno> terrenoOriginal,
+        List<PuntoTerreno> terrenoFinal,
+        Material material,
+        decimal volumenCalculado,
+        string estado,
+        DateTime fechaCreacion)
+    {
+        Id = id;
+        Cliente = cliente;
+        UsuarioCreador = usuarioCreador;
+        TerrenoOriginal = terrenoOriginal ?? new();
+        TerrenoFinal = terrenoFinal ?? new();
+        Material = material;
+        VolumenCalculado = volumenCalculado;
+        Estado = estado;
+        FechaCreacion = fechaCreacion;
+    }
+
+    public void Activar()
+    {
+        Estado = "Activa";
+    }
+
+    public void Desactivar()
+    {
+        Estado = "Inactiva";
     }
 
     public void AgregarPuntoOriginal(PuntoTerreno punto)
@@ -38,5 +74,11 @@ public class Cotizacion
     public void EstablecerVolumen(decimal volumen)
     {
         VolumenCalculado = volumen;
+    }
+
+    public void EstablecerTerrenos(List<PuntoTerreno> original, List<PuntoTerreno> final_)
+    {
+        TerrenoOriginal = new List<PuntoTerreno>(original);
+        TerrenoFinal = new List<PuntoTerreno>(final_);
     }
 }

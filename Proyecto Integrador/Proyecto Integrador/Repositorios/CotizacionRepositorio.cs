@@ -42,7 +42,7 @@ public class CotizacionRepositorio
 
     private void CargarCotizaciones()
     {
-        if (File.Exists(RutaArchivo)) return;
+        if (!File.Exists(RutaArchivo)) return;
 
         var opciones = new JsonSerializerOptions
         {

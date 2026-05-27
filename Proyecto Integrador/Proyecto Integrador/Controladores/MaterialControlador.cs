@@ -1,4 +1,5 @@
-﻿using Proyecto_Integrador.Repositorios;
+﻿using Proyecto_Integrador.Modelos.Cotizaciones;
+using Proyecto_Integrador.Repositorios;
 
 namespace Proyecto_Integrador.Controladores;
 
@@ -9,5 +10,12 @@ public class MaterialControlador
     {
         materialRespositorio = new MaterialRepositorio();
     }
-    public List<string> ObtenerMateriales() => materialRespositorio.ObtenerMateriales();
+
+    public List<Material> ObtenerMateriales(string? filtro = null) =>
+        materialRespositorio.ObtenerMateriales(filtro);
+
+    public void AgregarMaterial(Material material)
+    {
+        materialRespositorio.AgregarMaterial(material);
+    }
 }
