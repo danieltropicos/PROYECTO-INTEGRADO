@@ -68,24 +68,13 @@ public partial class FacturaControl : UserControl
         }
         else if (e.ColumnIndex == dgvFacturas.Columns["colImprimir"].Index)
         {
-            try
-            {
-                _ = facturaControlador.ImprimirFactura(factura);
+            facturaControlador.ImprimirFactura(factura);
 
-                MessageBox.Show(
-                    $"Factura generada",
-                    "Factura impresa",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Information);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(
-                    $"Error al imprimir: {ex.Message}",
-                    "Error",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
-            }
+            MessageBox.Show(
+                $"Factura generada",
+                "Factura impresa",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Information);            
         }
     }
 }

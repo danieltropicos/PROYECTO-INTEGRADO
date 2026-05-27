@@ -60,7 +60,7 @@ public class FacturasRepositorio
         }
     }
 
-    public string ImprimirFactura(Factura factura)
+    public void ImprimirFactura(Factura factura)
     {
         var carpetaFacturas = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Facturas");
         Directory.CreateDirectory(carpetaFacturas);
@@ -103,6 +103,5 @@ public class FacturasRepositorio
         """;
 
         File.WriteAllText(rutaArchivo, contenido);
-        return rutaArchivo;
     }
 }

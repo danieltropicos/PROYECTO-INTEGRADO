@@ -28,8 +28,8 @@ public class FacturaControlador
         facturaRepositorio.Actualizar(factura);
     }
 
-    public string ImprimirFactura(Factura factura)
+    public void ImprimirFactura(Factura factura)
     {
-        return facturaRepositorio.ImprimirFactura(factura);
+        facturaRepositorio.ImprimirFactura(factura);
     }
 }
