@@ -71,6 +71,8 @@ public partial class Terreno3DControl : UserControl
         Controls.Add(titulo);
     }
 
+    public bool EstaListo => _ready;
+
     public void ActualizarTerreno(IEnumerable<PuntoTerreno> puntos)
     {
         _puntos = puntos.ToList();
@@ -217,7 +219,11 @@ public partial class Terreno3DControl : UserControl
 
         GL.Disable(EnableCap.Lighting);
 
+        if (_puntos.Count > 0)
+            Reconstruir();
+
         OnResize(s, e);
+        _gl.Invalidate();
     }
 
     private void OnResize(object? s, EventArgs e)
@@ -237,7 +243,19 @@ public partial class Terreno3DControl : UserControl
     private void OnPaint(object? s, PaintEventArgs e)
     {
         if (!_ready) return;
+
+        RenderEscenaGl(_gl.Width, _gl.Height);
+        _gl.SwapBuffers();
+
+        using var g = _gl.CreateGraphics();
+        DibujarLeyenda(g);
+        DibujarHint(g);
+    }
+
+    private void RenderEscenaGl(int ancho, int alto)
+    {
         _gl.MakeCurrent();
+        GL.Viewport(0, 0, Math.Max(ancho, 1), Math.Max(alto, 1));
         GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit);
 
         float thetaRad = MathHelper.DegreesToRadians(_camTheta);
@@ -246,6 +264,15 @@ public partial class Terreno3DControl : UserControl
         float eyeX = _camDist * (float)(Math.Cos(phiRad) * Math.Cos(thetaRad));
         float eyeY = _camDist * (float)(Math.Cos(phiRad) * Math.Sin(thetaRad));
         float eyeZ = _camDist * (float)Math.Sin(phiRad);
+
+        GL.MatrixMode(MatrixMode.Projection);
+        GL.LoadIdentity();
+        var proj = Matrix4.CreatePerspectiveFieldOfView(
+            MathHelper.DegreesToRadians(40f),
+            (float)Math.Max(ancho, 1) / Math.Max(alto, 1),
+            0.001f,
+            200f);
+        GL.LoadMatrix(ref proj);
 
         GL.MatrixMode(MatrixMode.Modelview);
         GL.LoadIdentity();
@@ -257,7 +284,6 @@ public partial class Terreno3DControl : UserControl
         GL.LoadMatrix(ref view);
 
         GL.Translate(_panX, _panY, 0f);
-
         GL.Scale(_scale, _scale, _scale);
         GL.Translate(-_cx, -_cy, -_cz);
 
@@ -272,12 +298,6 @@ public partial class Terreno3DControl : UserControl
         {
             DibujarNube();
         }
-
-        _gl.SwapBuffers();
-
-        using var g = _gl.CreateGraphics();
-        DibujarLeyenda(g);
-        DibujarHint(g);
     }
 
     private void DibujarBase()
@@ -498,5 +518,31 @@ public partial class Terreno3DControl : UserControl
     {
         if (disposing) _gl?.Dispose();
         base.Dispose(disposing);
+    }
+    public byte[] CapturarImagen(int ancho = 0, int alto = 0)
+    {
+        if (!_ready)
+            throw new InvalidOperationException("El visor 3D aún no está listo.");
+
+        int w = ancho > 0 ? ancho : Math.Max(_gl.Width, 1);
+        int h = alto > 0 ? alto : Math.Max(_gl.Height, 1);
+
+        _gl.MakeCurrent();
+        RenderEscenaGl(w, h);
+
+        byte[] pixels = new byte[w * h * 3];
+        GL.ReadPixels(0, 0, w, h, PixelFormat.Rgb, PixelType.UnsignedByte, pixels);
+
+        using var bmp = new Bitmap(w, h, System.Drawing.Imaging.PixelFormat.Format24bppRgb);
+        for (int y = 0; y < h; y++)
+            for (int x = 0; x < w; x++)
+            {
+                int src = ((h - 1 - y) * w + x) * 3;
+                bmp.SetPixel(x, y, Color.FromArgb(pixels[src], pixels[src + 1], pixels[src + 2]));
+            }
+
+        using var ms = new MemoryStream();
+        bmp.Save(ms, System.Drawing.Imaging.ImageFormat.Png);
+        return ms.ToArray();
     }
 }

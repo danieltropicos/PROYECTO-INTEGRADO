@@ -1,6 +1,6 @@
 using System.Drawing.Drawing2D;
 
-namespace Proyecto_Integrador.Utilidades
+namespace Proyecto_Integrador.Vistas.Utilidades
 {
     public static class UiHelper
     {

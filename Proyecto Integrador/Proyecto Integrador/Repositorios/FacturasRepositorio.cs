@@ -1,4 +1,6 @@
 ﻿using Proyecto_Integrador.Modelos.Facturas;
+using Proyecto_Integrador.Services;
+using Proyecto_Integrador.Vistas.Cotizaciones;
 using System.Globalization;
 using System.Text.Json;
 
@@ -60,48 +62,26 @@ public class FacturasRepositorio
         }
     }
 
-    public void ImprimirFactura(Factura factura)
+    public string ImprimirFactura(
+        Factura factura,
+        byte[]? imgTerrenoOriginal = null,
+        byte[]? imgTerrenoFinal = null,
+        string? rutaLogo = null)
     {
-        var carpetaFacturas = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Facturas");
-        Directory.CreateDirectory(carpetaFacturas);
+        var cotizacion = factura.Cotizacion;
 
-        var nombreArchivo = $"Factura_{factura.Id.ToString()[..8]}_{factura.FechaEmision:yyyyMMdd}.txt";
-        var rutaArchivo = Path.Combine(carpetaFacturas, nombreArchivo);
+        imgTerrenoOriginal ??= cotizacion?.TerrenoOriginal is { Count: >= 3 } original
+            ? TerrenoImagenCapturaService.Capturar(original, Terreno3DControl.TipoTerreno.Original)
+            : null;
 
-        var cultura = new CultureInfo("es-CO");
+        imgTerrenoFinal ??= cotizacion?.TerrenoFinal is { Count: >= 3 } final
+            ? TerrenoImagenCapturaService.Capturar(final, Terreno3DControl.TipoTerreno.Final)
+            : null;
 
-        var contenido = $"""
-        ══════════════════════════════════════════
-                       FACTURA
-        ══════════════════════════════════════════
-
-        N° Factura:     {factura.Id}
-        Fecha Emisión:  {factura.FechaEmision:dd/MM/yyyy HH:mm}
-        Estado:         {factura.Estado}
-
-        ──────────────────────────────────────────
-        CLIENTE
-        ──────────────────────────────────────────
-        Nombre:         {factura.Cliente?.NombreCompleto ?? "N/A"}
-        Documento:      {factura.Cliente?.Documento ?? "N/A"}
-        Teléfono:       {factura.Cliente?.Telefono ?? "N/A"}
-        Dirección:      {factura.Cliente?.Direccion ?? "N/A"}
-
-        ──────────────────────────────────────────
-        DETALLE DE COTIZACIÓN
-        ──────────────────────────────────────────
-        Material:       {factura.Cotizacion?.Material?.Nombre ?? "N/A"}
-        Valor m³:       {factura.Cotizacion?.Material?.ValorMetroCubico.ToString("C0", cultura) ?? "$0"}
-        Volumen:        {factura.Cotizacion?.VolumenCalculado.ToString("F4") ?? "0"} m³
-
-        ──────────────────────────────────────────
-        TOTAL
-        ──────────────────────────────────────────
-        Total:          {factura.Total.ToString("C0", cultura)}
-
-        ══════════════════════════════════════════
-        """;
-
-        File.WriteAllText(rutaArchivo, contenido);
+        return FacturaPdfGeneradorService.Generar(
+            factura,
+            imgTerrenoOriginal,
+            imgTerrenoFinal,
+            rutaLogo);
     }
 }

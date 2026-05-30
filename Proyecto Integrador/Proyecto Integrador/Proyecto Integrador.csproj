@@ -20,6 +20,7 @@
 
   <ItemGroup>
     <PackageReference Include="OpenTK" Version="3.3.3" />
+    <PackageReference Include="QuestPDF" Version="2026.5.0" />
     <PackageReference Include="ScottPlot.WinForms" Version="5.1.58" />
   </ItemGroup>
 

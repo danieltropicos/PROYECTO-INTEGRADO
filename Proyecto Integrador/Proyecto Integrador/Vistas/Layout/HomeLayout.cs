@@ -1,9 +1,9 @@
 using Proyecto_Integrador.Modelos.Usuarios;
-using Proyecto_Integrador.Utilidades;
 using Proyecto_Integrador.Vistas.Clientes;
 using Proyecto_Integrador.Vistas.Cotizaciones;
 using Proyecto_Integrador.Vistas.Facturas;
 using Proyecto_Integrador.Vistas.Usuarios;
+using Proyecto_Integrador.Vistas.Utilidades;
 
 namespace Proyecto_Integrador.Vistas.Layout
 {

@@ -1,7 +1,5 @@
-using Proyecto_Integrador.Vistas;
-using Proyecto_Integrador.Vistas.Cotizaciones;
-using Proyecto_Integrador.Vistas.Layout;
 using Proyecto_Integrador.Vistas.Login;
+using QuestPDF.Infrastructure;
 
 namespace Proyecto_Integrador
 {
@@ -13,8 +11,7 @@ namespace Proyecto_Integrador
         [STAThread]
         static void Main()
         {
-            // To customize application configuration such as set high DPI settings or default font,
-            // see https://aka.ms/applicationconfiguration.
+            QuestPDF.Settings.License = LicenseType.Community;
             ApplicationConfiguration.Initialize();
             Application.Run(new Login());
         }
