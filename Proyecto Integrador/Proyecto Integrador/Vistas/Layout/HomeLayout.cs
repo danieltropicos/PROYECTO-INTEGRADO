@@ -59,7 +59,7 @@ namespace Proyecto_Integrador.Vistas.Layout
             AbrirVista(new PerfilUsuarioControl(_usuario), null);
 
         private void button1_Click(object sender, EventArgs e) =>
-            AbrirVista(new RegistrarUsuariosControl(), button1);
+            AbrirVista(new RegistrarUsuariosControl(_usuario), button1);
 
         private void button2_Click(object sender, EventArgs e) =>
             AbrirVista(new ClienteControl(), button2);
@@ -78,7 +78,7 @@ namespace Proyecto_Integrador.Vistas.Layout
         }
 
         private void button5_Click(object sender, EventArgs e) =>
-            AbrirVista(new FacturaControl(), button5);
+            AbrirVista(new FacturaControl(_usuario), button5);
 
         private void AbrirListaCotizaciones()
         {

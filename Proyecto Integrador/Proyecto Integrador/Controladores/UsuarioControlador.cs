@@ -1,33 +1,30 @@
 ﻿using Proyecto_Integrador.Modelos.Usuarios;
 using Proyecto_Integrador.Repositorios;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
-namespace Proyecto_Integrador.Controladores
+namespace Proyecto_Integrador.Controladores;
+
+public class UsuarioControlador
 {
-    internal class UsuarioControlador
+    private readonly UsuarioRepositorio usuarioRepositorio;
+
+    public UsuarioControlador()
     {
-        private UsuarioRepositorio usuarioRepositorio;
+        usuarioRepositorio = new UsuarioRepositorio();
+    }
 
-        public UsuarioControlador()
-        {
-            usuarioRepositorio = new UsuarioRepositorio();
-        }
+    public List<Usuario> ObtenerUsuarios(string? filtro = null) =>
+        usuarioRepositorio.Leer(filtro);
 
-        public List<Usuario> ObtenerUsuarios(string? filtro = null) =>
-            usuarioRepositorio.Leer(filtro);
+    public Usuario? ObtenerUsuarioPorNombreUsuario(string nombreDeUsuario) =>
+        usuarioRepositorio.ObtenerUsuarioPorNombreUsuario(nombreDeUsuario);
 
-        public Usuario? ObtenerUsuarioPorNombreUsuario(string nombreDeUsuario) => 
-            usuarioRepositorio.ObtenerUsuarioPorNombreUsuario(nombreDeUsuario);
+    public void AgregarUsuario(Usuario usuario)
+    {
+        usuarioRepositorio.Agregar(usuario);
+    }
 
-        public void AgregarUsuario(Usuario usuario)
-        {
-            usuarioRepositorio.Agregar(usuario);
-        }
-        public void ActualizarUsuario(Usuario usuario)
-        {
-            usuarioRepositorio.Actualizar(usuario);
-        }
+    public void ActualizarUsuario(Usuario usuario)
+    {
+        usuarioRepositorio.Actualizar(usuario);
     }
 }

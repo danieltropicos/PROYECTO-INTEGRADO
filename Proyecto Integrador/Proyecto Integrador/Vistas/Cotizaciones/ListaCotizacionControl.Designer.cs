@@ -32,6 +32,7 @@
             colTotal = new DataGridViewTextBoxColumn();
             colFecha = new DataGridViewTextBoxColumn();
             colEstado = new DataGridViewTextBoxColumn();
+            colInactivar = new DataGridViewButtonColumn();
             colAccion = new DataGridViewButtonColumn();
             tableLayoutPanel1.SuspendLayout();
             tableLayoutToolbar.SuspendLayout();
@@ -151,7 +152,7 @@
             dgvCotizaciones.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             dgvCotizaciones.ColumnHeadersHeight = 36;
             dgvCotizaciones.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dgvCotizaciones.Columns.AddRange(new DataGridViewColumn[] { colId, colCliente, colMaterial, colVolumen, colTotal, colFecha, colEstado, colAccion });
+            dgvCotizaciones.Columns.AddRange(new DataGridViewColumn[] { colId, colCliente, colMaterial, colVolumen, colTotal, colFecha, colEstado, colInactivar, colAccion });
             dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = Color.White;
             dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F);
@@ -171,6 +172,7 @@
             dgvCotizaciones.Size = new Size(894, 510);
             dgvCotizaciones.TabIndex = 1;
             dgvCotizaciones.CellContentClick += dgvCotizaciones_CellContentClick;
+            dgvCotizaciones.CellPainting += dgvCotizaciones_CellPainting;
             // 
             // colId
             // 
@@ -215,13 +217,19 @@
             colEstado.Name = "colEstado";
             colEstado.ReadOnly = true;
             // 
+            // colInactivar
+            // 
+            colInactivar.HeaderText = "Activar/Inactivar";
+            colInactivar.Name = "colInactivar";
+            colInactivar.ReadOnly = true;
+            colInactivar.Text = "Inactivar";
+            // 
             // colAccion
             // 
             colAccion.HeaderText = "Acción";
             colAccion.Name = "colAccion";
             colAccion.ReadOnly = true;
             colAccion.Text = "Generar Factura";
-            colAccion.UseColumnTextForButtonValue = true;
             // 
             // ListaCotizacionControl
             // 
@@ -255,6 +263,7 @@
         private DataGridViewTextBoxColumn colTotal;
         private DataGridViewTextBoxColumn colFecha;
         private DataGridViewTextBoxColumn colEstado;
+        private DataGridViewButtonColumn colInactivar;
         private DataGridViewButtonColumn colAccion;
     }
 }

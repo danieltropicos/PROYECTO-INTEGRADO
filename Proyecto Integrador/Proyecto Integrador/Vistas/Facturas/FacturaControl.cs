@@ -1,5 +1,6 @@
 ﻿using Proyecto_Integrador.Controladores;
 using Proyecto_Integrador.Modelos.Facturas;
+using Proyecto_Integrador.Modelos.Usuarios;
 using Proyecto_Integrador.Vistas.Utilidades;
 using System.Diagnostics;
 using System.Globalization;
@@ -9,16 +10,21 @@ namespace Proyecto_Integrador.Vistas.Facturas;
 public partial class FacturaControl : UserControl
 {
     private readonly FacturaControlador facturaControlador;
+    private readonly Usuario _usuario;
     private List<Factura> _facturas = [];
 
     private static readonly string[] Estados = ["Pendiente", "Pagada", "Cancelada"];
 
-    public FacturaControl()
+    public FacturaControl(Usuario usuario)
     {
+        _usuario = usuario;
         facturaControlador = new FacturaControlador();
         InitializeComponent();
+        colCambiarEstado.Visible = EsAdmin;
         CargarFacturas();
     }
+
+    private bool EsAdmin => _usuario.Rol.Nombre == "Admin";
 
     private void CargarFacturas()
     {
@@ -47,6 +53,8 @@ public partial class FacturaControl : UserControl
 
         if (e.ColumnIndex == dgvFacturas.Columns["colCambiarEstado"]!.Index)
         {
+            if (!EsAdmin) return;
+
             var estadoActualIndex = Array.IndexOf(Estados, factura.Estado);
             var siguienteIndex = (estadoActualIndex + 1) % Estados.Length;
             var nuevoEstado = Estados[siguienteIndex];

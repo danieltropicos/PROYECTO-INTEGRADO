@@ -20,4 +20,16 @@ public class CotizacionControlador
     {
         return cotizacionRepositorio.ObtenerCotizaciones();
     }
+
+    public void DesactivarCotizacion(Cotizacion cotizacion)
+    {
+        cotizacion.Desactivar();
+        cotizacionRepositorio.ActualizarCotizacion(cotizacion);
+    }
+
+    public void ActivarCotizacion(Cotizacion cotizacion)
+    {
+        cotizacion.Activar();
+        cotizacionRepositorio.ActualizarCotizacion(cotizacion);
+    }
 }
