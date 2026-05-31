@@ -61,7 +61,7 @@ namespace Proyecto_Integrador.Vistas.Login
 
         private static Usuario ObtenerUsuarioPrueba()
         {
-            var rol = new Rol("Usuario");
+            var rol = new Rol("Admin");
             return new Usuario(
                 Guid.NewGuid(),
                 "Admin",
