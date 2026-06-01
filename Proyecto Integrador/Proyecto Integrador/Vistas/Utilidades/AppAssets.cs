@@ -1,4 +1,4 @@
-namespace Proyecto_Integrador.Utilidades
+namespace Proyecto_Integrador.Vistas.Utilidades
 {
     public static class AppAssets
     {

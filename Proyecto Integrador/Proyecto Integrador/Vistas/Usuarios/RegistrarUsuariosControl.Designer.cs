@@ -31,6 +31,8 @@ namespace Proyecto_Integrador.Vistas.Usuarios
             colTelefono = new DataGridViewTextBoxColumn();
             colRol = new DataGridViewTextBoxColumn();
             colActivo = new DataGridViewTextBoxColumn();
+            colId = new DataGridViewTextBoxColumn();
+            colCambiarEstado = new DataGridViewButtonColumn();
             tableLayoutPanel1.SuspendLayout();
             tableLayoutToolbar.SuspendLayout();
             tableLayoutBuscar.SuspendLayout();
@@ -149,7 +151,7 @@ namespace Proyecto_Integrador.Vistas.Usuarios
             dgvUsuarios.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             dgvUsuarios.ColumnHeadersHeight = 36;
             dgvUsuarios.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dgvUsuarios.Columns.AddRange(new DataGridViewColumn[] { colNombre, colUsuario, colCorreo, colTelefono, colRol, colActivo });
+            dgvUsuarios.Columns.AddRange(new DataGridViewColumn[] { colId, colNombre, colUsuario, colCorreo, colTelefono, colRol, colActivo, colCambiarEstado });
             dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = Color.White;
             dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F);
@@ -169,6 +171,14 @@ namespace Proyecto_Integrador.Vistas.Usuarios
             dgvUsuarios.RowHeadersWidth = 51;
             dgvUsuarios.Size = new Size(588, 623);
             dgvUsuarios.TabIndex = 1;
+            dgvUsuarios.CellContentClick += dgvUsuarios_CellContentClick;
+            // 
+            // colId
+            // 
+            colId.HeaderText = "Id";
+            colId.Name = "colId";
+            colId.ReadOnly = true;
+            colId.Visible = false;
             // 
             // colNombre
             // 
@@ -212,6 +222,14 @@ namespace Proyecto_Integrador.Vistas.Usuarios
             colActivo.Name = "colActivo";
             colActivo.ReadOnly = true;
             // 
+            // colCambiarEstado
+            // 
+            colCambiarEstado.HeaderText = "Activar/Inactivar";
+            colCambiarEstado.Name = "colCambiarEstado";
+            colCambiarEstado.ReadOnly = true;
+            colCambiarEstado.Text = "Cambiar";
+            colCambiarEstado.UseColumnTextForButtonValue = false;
+            // 
             // RegistrarUsuariosControl
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -243,5 +261,7 @@ namespace Proyecto_Integrador.Vistas.Usuarios
         private DataGridViewTextBoxColumn colTelefono;
         private DataGridViewTextBoxColumn colRol;
         private DataGridViewTextBoxColumn colActivo;
+        private DataGridViewTextBoxColumn colId;
+        private DataGridViewButtonColumn colCambiarEstado;
     }
 }

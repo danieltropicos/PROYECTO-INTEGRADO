@@ -1,5 +1,8 @@
 ﻿using Proyecto_Integrador.Controladores;
 using Proyecto_Integrador.Modelos.Facturas;
+using Proyecto_Integrador.Modelos.Usuarios;
+using Proyecto_Integrador.Vistas.Utilidades;
+using System.Diagnostics;
 using System.Globalization;
 
 namespace Proyecto_Integrador.Vistas.Facturas;
@@ -7,16 +10,21 @@ namespace Proyecto_Integrador.Vistas.Facturas;
 public partial class FacturaControl : UserControl
 {
     private readonly FacturaControlador facturaControlador;
-    private List<Factura> _facturas;
+    private readonly Usuario _usuario;
+    private List<Factura> _facturas = [];
 
     private static readonly string[] Estados = ["Pendiente", "Pagada", "Cancelada"];
 
-    public FacturaControl()
+    public FacturaControl(Usuario usuario)
     {
+        _usuario = usuario;
         facturaControlador = new FacturaControlador();
         InitializeComponent();
+        colCambiarEstado.Visible = EsAdmin;
         CargarFacturas();
     }
+
+    private bool EsAdmin => _usuario.Rol.Nombre == "Admin";
 
     private void CargarFacturas()
     {
@@ -43,8 +51,10 @@ public partial class FacturaControl : UserControl
 
         var factura = _facturas[e.RowIndex];
 
-        if (e.ColumnIndex == dgvFacturas.Columns["colCambiarEstado"].Index)
+        if (e.ColumnIndex == dgvFacturas.Columns["colCambiarEstado"]!.Index)
         {
+            if (!EsAdmin) return;
+
             var estadoActualIndex = Array.IndexOf(Estados, factura.Estado);
             var siguienteIndex = (estadoActualIndex + 1) % Estados.Length;
             var nuevoEstado = Estados[siguienteIndex];
@@ -66,15 +76,42 @@ public partial class FacturaControl : UserControl
                 MessageBoxButtons.OK,
                 MessageBoxIcon.Information);
         }
-        else if (e.ColumnIndex == dgvFacturas.Columns["colImprimir"].Index)
+        else if (e.ColumnIndex == dgvFacturas.Columns["colImprimir"]!.Index)
         {
-            facturaControlador.ImprimirFactura(factura);
+            try
+            {
+                UseWaitCursor = true;
+                dgvFacturas.Enabled = false;
 
-            MessageBox.Show(
-                $"Factura generada",
-                "Factura impresa",
-                MessageBoxButtons.OK,
-                MessageBoxIcon.Information);            
+                var ruta = facturaControlador.ImprimirFactura(factura, rutaLogo: AppAssets.RutaLogoNavbar);
+
+                var abrir = MessageBox.Show(
+                    $"Factura PDF generada. ¿Desea abrirla?",
+                    "Factura impresa",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Information);
+
+                if (abrir == DialogResult.Yes)
+                {
+                    Process.Start(new ProcessStartInfo(ruta)
+                    {
+                        UseShellExecute = true
+                    });
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(
+                    $"Error al generar la factura: {ex.Message}",
+                    "Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+            }
+            finally
+            {
+                UseWaitCursor = false;
+                dgvFacturas.Enabled = true;
+            }
         }
     }
 }

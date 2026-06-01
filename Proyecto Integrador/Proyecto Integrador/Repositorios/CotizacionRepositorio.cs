@@ -24,6 +24,16 @@ public class CotizacionRepositorio
 
     public List<Cotizacion> ObtenerCotizaciones() => cotizaciones;
 
+    public void ActualizarCotizacion(Cotizacion cotizacion)
+    {
+        var index = cotizaciones.FindIndex(c => c.Id == cotizacion.Id);
+        if (index >= 0)
+        {
+            cotizaciones[index] = cotizacion;
+            GuardarCotizaciones();
+        }
+    }
+
     private void GuardarCotizaciones()
     {
         Directory.CreateDirectory(CarpetaData);

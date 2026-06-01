@@ -1,12 +1,13 @@
 ﻿using Proyecto_Integrador.Controladores;
 using Proyecto_Integrador.Modelos.Usuarios;
 using Proyecto_Integrador.Vistas.Layout;
-using Proyecto_Integrador.Vistas.Usuarios;
 
 namespace Proyecto_Integrador.Vistas.Login
 {
     public partial class Login : Form
     {
+        private readonly UsuarioControlador usuarioControlador = new();
+
         public Login()
         {
             InitializeComponent();
@@ -14,8 +15,54 @@ namespace Proyecto_Integrador.Vistas.Login
 
         private void btnIngresar_Click(object sender, EventArgs e)
         {
-            Rol roltemporal = new Rol("Admin");
-            Usuario usuarioTemporal = new Usuario(
+            var nombreUsuario = txtUsuario.Text.Trim();
+            var contrasena = txtContraseña.Text;
+
+            if (string.IsNullOrEmpty(nombreUsuario) && string.IsNullOrEmpty(contrasena))
+            {
+                Ingresar(ObtenerUsuarioPrueba());
+                return;
+            }
+
+            if (string.IsNullOrEmpty(nombreUsuario) || string.IsNullOrEmpty(contrasena))
+            {
+                MessageBox.Show(
+                    "Ingrese usuario y contraseña.",
+                    "Login",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
+                return;
+            }
+
+            var usuario = usuarioControlador.ObtenerUsuarioPorNombreUsuario(nombreUsuario);
+
+            if (usuario is null || !usuario.ValidarContrasena(contrasena))
+            {
+                MessageBox.Show(
+                    "Usuario o contraseña incorrectos.",
+                    "Login",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (!usuario.EsActivo)
+            {
+                MessageBox.Show(
+                    "El usuario está inactivo. Contacte al administrador.",
+                    "Acceso denegado",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
+                return;
+            }
+
+            Ingresar(usuario);
+        }
+
+        private static Usuario ObtenerUsuarioPrueba()
+        {
+            var rol = new Rol("Admin");
+            return new Usuario(
                 Guid.NewGuid(),
                 "Admin",
                 "Temporal",
@@ -24,11 +71,13 @@ namespace Proyecto_Integrador.Vistas.Login
                 "Sin direccion",
                 "admin",
                 "1234",
-                roltemporal,
-                DateTime.Now
-            );
+                rol,
+                DateTime.Now);
+        }
 
-            HomeLayout homeLayout = new(usuarioTemporal);
+        private void Ingresar(Usuario usuario)
+        {
+            var homeLayout = new HomeLayout(usuario);
             homeLayout.Show();
             Hide();
         }

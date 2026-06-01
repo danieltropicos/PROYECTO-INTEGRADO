@@ -1,5 +1,5 @@
 ﻿using Proyecto_Integrador.Modelos.Usuarios;
-using Proyecto_Integrador.Utilidades;
+using Proyecto_Integrador.Vistas.Utilidades;
 
 namespace Proyecto_Integrador.Vistas.Usuarios
 {

@@ -28,8 +28,13 @@ public class FacturaControlador
         facturaRepositorio.Actualizar(factura);
     }
 
-    public void ImprimirFactura(Factura factura)
-    {
-        facturaRepositorio.ImprimirFactura(factura);
+    public string ImprimirFactura(
+        Factura factura,
+        byte[]? imgTerrenoOriginal = null,
+        byte[]? imgTerrenoFinal = null,
+        string? rutaLogo = null)
+    { 
+        return facturaRepositorio.ImprimirFactura(factura, imgTerrenoOriginal, imgTerrenoFinal, rutaLogo);
     }
 }
+    
