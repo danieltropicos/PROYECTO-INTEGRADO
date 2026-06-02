@@ -5,39 +5,72 @@ namespace Proyecto_Integrador.Repositorios;
 
 public class RolRepositorio
 {
-    private static readonly string Carpeta = "Data";
-    private static readonly string RutaArchivo = Path.Combine(Carpeta, "Roles.json");
+    const string CarpetaData = "Data";
+    private static readonly string RutaArchivo =
+        Path.Combine(AppDomain.CurrentDomain.BaseDirectory, CarpetaData, "roles.json");
 
-    public List<Rol> ObtenerRoles()
+    private readonly List<Rol> roles = [];
+
+    public RolRepositorio()
+    {
+        CargarRoles();
+    }
+
+    public List<Rol> ObtenerRoles(string? filtro = null)
+    {
+        IEnumerable<Rol> resultado = roles;
+
+        if (!string.IsNullOrWhiteSpace(filtro))
+        {
+            resultado = resultado.Where(r =>
+                r.Nombre.Contains(filtro, StringComparison.OrdinalIgnoreCase));
+        }
+
+        return resultado
+            .OrderBy(r => r.Nombre, StringComparer.OrdinalIgnoreCase)
+            .ToList();
+    }
+
+    private void GuardarRoles()
+    {
+        Directory.CreateDirectory(CarpetaData);
+        var options = new JsonSerializerOptions
+        {
+            WriteIndented = true
+        };
+        using (var writer = new StreamWriter(RutaArchivo))
+        {
+            var json = JsonSerializer.Serialize(roles, options);
+            writer.Write(json);
+        }
+    }
+
+    private void CargarRoles()
     {
         if (!File.Exists(RutaArchivo))
         {
-            Directory.CreateDirectory(Carpeta);
-            var rolesIniciales = new List<Rol>
-            {
-                new("Admin"),
-                new("Usuario")
-            };
-            Guardar(rolesIniciales);
-            return Ordenar(rolesIniciales);
+            roles.AddRange(
+            [
+                new Rol("Admin"),
+                new Rol("Usuario")
+            ]);
+            GuardarRoles();
+            return;
         }
 
-        using var reader = new StreamReader(RutaArchivo);
-        var json = reader.ReadToEnd();
-        if (string.IsNullOrWhiteSpace(json))
-            return [];
+        var opciones = new JsonSerializerOptions
+        {
+            PropertyNameCaseInsensitive = true
+        };
 
-        var roles = JsonSerializer.Deserialize<List<Rol>>(json) ?? [];
-        return Ordenar(roles);
-    }
-
-    private static List<Rol> Ordenar(List<Rol> roles) =>
-        roles.OrderBy(r => r.Nombre, StringComparer.OrdinalIgnoreCase).ToList();
-
-    private static void Guardar(List<Rol> roles)
-    {
-        var opciones = new JsonSerializerOptions { WriteIndented = true };
-        using var writer = new StreamWriter(RutaArchivo);
-        writer.Write(JsonSerializer.Serialize(roles, opciones));
+        using (var reader = new StreamReader(RutaArchivo))
+        {
+            var json = reader.ReadToEnd();
+            var rolesCargados = JsonSerializer.Deserialize<List<Rol>>(json, opciones);
+            if (rolesCargados != null)
+            {
+                roles.AddRange(rolesCargados);
+            }
+        }
     }
 }

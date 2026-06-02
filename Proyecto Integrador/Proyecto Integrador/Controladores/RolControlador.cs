@@ -5,7 +5,13 @@ namespace Proyecto_Integrador.Controladores;
 
 public class RolControlador
 {
-    private readonly RolRepositorio _repositorio = new();
+    private readonly RolRepositorio rolRepositorio;
 
-    public List<Rol> ObtenerRoles() => _repositorio.ObtenerRoles();
+    public RolControlador()
+    {
+        rolRepositorio = new RolRepositorio();
+    }
+
+    public List<Rol> ObtenerRoles(string? filtro = null) =>
+        rolRepositorio.ObtenerRoles(filtro);
 }
