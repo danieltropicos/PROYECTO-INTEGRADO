@@ -18,4 +18,12 @@ public class ClienteControlador
 
     public List<Cliente> ObtenerClientes(string? filtro = null) =>
         clienteRepositorio.ObtenerClientes(filtro);
+
+    public List<Cliente> ObtenerTodosClientes(string? filtro = null) =>
+        clienteRepositorio.ObtenerTodosClientes(filtro);
+
+    public void ActualizarCliente(Cliente cliente)
+    {
+        clienteRepositorio.ActualizarCliente(cliente);
+    }
 }

@@ -62,7 +62,7 @@ namespace Proyecto_Integrador.Vistas.Layout
             AbrirVista(new RegistrarUsuariosControl(_usuario), button1);
 
         private void button2_Click(object sender, EventArgs e) =>
-            AbrirVista(new ClienteControl(), button2);
+            AbrirVista(new ClienteControl(_usuario), button2);
 
         private void button3_Click(object sender, EventArgs e) =>
             AbrirListaCotizaciones();

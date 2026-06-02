@@ -24,6 +24,24 @@ public class ClienteRepositorio
 
     public List<Cliente> ObtenerClientes(string? filtro = null)
     {
+        IEnumerable<Cliente> resultado = clientes.Where(c => c.EsActivo);
+
+        if (!string.IsNullOrWhiteSpace(filtro))
+        {
+            resultado = resultado.Where(c =>
+                c.NombreCompleto.Contains(filtro, StringComparison.OrdinalIgnoreCase) ||
+                c.Nombre.Contains(filtro, StringComparison.OrdinalIgnoreCase) ||
+                c.Apellido.Contains(filtro, StringComparison.OrdinalIgnoreCase) ||
+                c.Documento.Contains(filtro, StringComparison.OrdinalIgnoreCase));
+        }
+
+        return resultado
+            .OrderBy(c => c.NombreCompleto, StringComparer.OrdinalIgnoreCase)
+            .ToList();
+    }
+
+    public List<Cliente> ObtenerTodosClientes(string? filtro = null)
+    {
         IEnumerable<Cliente> resultado = clientes;
 
         if (!string.IsNullOrWhiteSpace(filtro))
@@ -38,6 +56,16 @@ public class ClienteRepositorio
         return resultado
             .OrderBy(c => c.NombreCompleto, StringComparer.OrdinalIgnoreCase)
             .ToList();
+    }
+
+    public void ActualizarCliente(Cliente cliente)
+    {
+        var index = clientes.FindIndex(c => c.Id == cliente.Id);
+        if (index >= 0)
+        {
+            clientes[index].CambiarEstado(cliente.EsActivo);
+            GuardarClientes();
+        }
     }
 
     private void GuardarClientes()

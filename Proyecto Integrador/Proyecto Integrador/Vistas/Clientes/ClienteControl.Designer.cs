@@ -30,7 +30,9 @@ namespace Proyecto_Integrador.Vistas.Clientes
             colTelefono = new DataGridViewTextBoxColumn();
             colDireccion = new DataGridViewTextBoxColumn();
             colDocumento = new DataGridViewTextBoxColumn();
-            colAcciones = new DataGridViewTextBoxColumn();
+            colActivo = new DataGridViewTextBoxColumn();
+            colId = new DataGridViewTextBoxColumn();
+            colCambiarEstado = new DataGridViewButtonColumn();
             tableLayoutPanel1.SuspendLayout();
             tableLayoutToolbar.SuspendLayout();
             tableLayoutBuscar.SuspendLayout();
@@ -149,7 +151,7 @@ namespace Proyecto_Integrador.Vistas.Clientes
             dgvClientes.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             dgvClientes.ColumnHeadersHeight = 36;
             dgvClientes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dgvClientes.Columns.AddRange(new DataGridViewColumn[] { colNombre, colCorreo, colTelefono, colDireccion, colDocumento, colAcciones });
+            dgvClientes.Columns.AddRange(new DataGridViewColumn[] { colId, colNombre, colCorreo, colTelefono, colDireccion, colDocumento, colActivo, colCambiarEstado });
             dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = Color.White;
             dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F);
@@ -168,6 +170,14 @@ namespace Proyecto_Integrador.Vistas.Clientes
             dgvClientes.RowHeadersVisible = false;
             dgvClientes.Size = new Size(539, 511);
             dgvClientes.TabIndex = 1;
+            dgvClientes.CellContentClick += dgvClientes_CellContentClick;
+            // 
+            // colId
+            // 
+            colId.HeaderText = "Id";
+            colId.Name = "colId";
+            colId.ReadOnly = true;
+            colId.Visible = false;
             // 
             // colNombre
             // 
@@ -199,11 +209,19 @@ namespace Proyecto_Integrador.Vistas.Clientes
             colDocumento.Name = "colDocumento";
             colDocumento.ReadOnly = true;
             // 
-            // colAcciones
+            // colActivo
             // 
-            colAcciones.HeaderText = "Activo";
-            colAcciones.Name = "colAcciones";
-            colAcciones.ReadOnly = true;
+            colActivo.HeaderText = "Activo";
+            colActivo.Name = "colActivo";
+            colActivo.ReadOnly = true;
+            // 
+            // colCambiarEstado
+            // 
+            colCambiarEstado.HeaderText = "Activar/Inactivar";
+            colCambiarEstado.Name = "colCambiarEstado";
+            colCambiarEstado.ReadOnly = true;
+            colCambiarEstado.Text = "Cambiar";
+            colCambiarEstado.UseColumnTextForButtonValue = false;
             // 
             // ClienteControl
             // 
@@ -235,6 +253,8 @@ namespace Proyecto_Integrador.Vistas.Clientes
         private DataGridViewTextBoxColumn colTelefono;
         private DataGridViewTextBoxColumn colDireccion;
         private DataGridViewTextBoxColumn colDocumento;
-        private DataGridViewTextBoxColumn colAcciones;
+        private DataGridViewTextBoxColumn colActivo;
+        private DataGridViewTextBoxColumn colId;
+        private DataGridViewButtonColumn colCambiarEstado;
     }
 }
