@@ -23,8 +23,6 @@ public class UsuarioControlador
         usuarioRepositorio.Agregar(usuario);
     }
 
-    public void ActualizarUsuario(Usuario usuario)
-    {
-        usuarioRepositorio.Actualizar(usuario);
-    }
+    public void ActualizarUsuario(Guid id, Usuario usuario, string? contrasenaPlana = null) =>
+        usuarioRepositorio.Actualizar(id, usuario, contrasenaPlana);
 }

@@ -32,15 +32,16 @@ namespace Proyecto_Integrador.Vistas.Usuarios
             colRol = new DataGridViewTextBoxColumn();
             colActivo = new DataGridViewTextBoxColumn();
             colId = new DataGridViewTextBoxColumn();
-            colCambiarEstado = new DataGridViewButtonColumn();
+            colIconoEditar = new DataGridViewImageColumn();
+            colIconoEstado = new DataGridViewImageColumn();
             tableLayoutPanel1.SuspendLayout();
             tableLayoutToolbar.SuspendLayout();
             tableLayoutBuscar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvUsuarios).BeginInit();
             SuspendLayout();
-            // 
+            //
             // tableLayoutPanel1
-            // 
+            //
             tableLayoutPanel1.BackColor = Color.FromArgb(243, 244, 246);
             tableLayoutPanel1.ColumnCount = 1;
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
@@ -54,9 +55,9 @@ namespace Proyecto_Integrador.Vistas.Usuarios
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
             tableLayoutPanel1.Size = new Size(594, 693);
             tableLayoutPanel1.TabIndex = 0;
-            // 
+            //
             // tableLayoutToolbar
-            // 
+            //
             tableLayoutToolbar.BackColor = Color.FromArgb(243, 244, 246);
             tableLayoutToolbar.ColumnCount = 3;
             tableLayoutToolbar.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 395F));
@@ -71,9 +72,9 @@ namespace Proyecto_Integrador.Vistas.Usuarios
             tableLayoutToolbar.RowStyles.Add(new RowStyle(SizeType.Absolute, 59F));
             tableLayoutToolbar.Size = new Size(588, 58);
             tableLayoutToolbar.TabIndex = 0;
-            // 
+            //
             // tableLayoutBuscar
-            // 
+            //
             tableLayoutBuscar.ColumnCount = 2;
             tableLayoutBuscar.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 125F));
             tableLayoutBuscar.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 264F));
@@ -87,9 +88,9 @@ namespace Proyecto_Integrador.Vistas.Usuarios
             tableLayoutBuscar.RowStyles.Add(new RowStyle(SizeType.Absolute, 59F));
             tableLayoutBuscar.Size = new Size(389, 59);
             tableLayoutBuscar.TabIndex = 0;
-            // 
+            //
             // lblBuscar
-            // 
+            //
             lblBuscar.Font = new Font("Segoe UI", 10F);
             lblBuscar.ForeColor = Color.FromArgb(75, 85, 99);
             lblBuscar.Location = new Point(3, 8);
@@ -99,9 +100,9 @@ namespace Proyecto_Integrador.Vistas.Usuarios
             lblBuscar.TabIndex = 0;
             lblBuscar.Text = "Buscar usuarios:";
             lblBuscar.TextAlign = ContentAlignment.MiddleLeft;
-            // 
+            //
             // txtBuscar
-            // 
+            //
             txtBuscar.BorderStyle = BorderStyle.FixedSingle;
             txtBuscar.Dock = DockStyle.Fill;
             txtBuscar.Font = new Font("Segoe UI", 10F);
@@ -112,9 +113,9 @@ namespace Proyecto_Integrador.Vistas.Usuarios
             txtBuscar.Size = new Size(258, 30);
             txtBuscar.TabIndex = 1;
             txtBuscar.TextChanged += txtBuscar_TextChanged;
-            // 
+            //
             // btnNuevoUsuario
-            // 
+            //
             btnNuevoUsuario.BackColor = Color.FromArgb(245, 158, 11);
             btnNuevoUsuario.Cursor = Cursors.Hand;
             btnNuevoUsuario.Dock = DockStyle.Fill;
@@ -131,14 +132,14 @@ namespace Proyecto_Integrador.Vistas.Usuarios
             btnNuevoUsuario.Text = "+ Nuevo usuario";
             btnNuevoUsuario.UseVisualStyleBackColor = false;
             btnNuevoUsuario.Click += btnNuevoUsuario_Click;
-            // 
+            //
             // dgvUsuarios
-            // 
+            //
             dgvUsuarios.AllowUserToAddRows = false;
             dgvUsuarios.AllowUserToDeleteRows = false;
             dataGridViewCellStyle1.BackColor = Color.FromArgb(243, 244, 246);
             dgvUsuarios.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            dgvUsuarios.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvUsuarios.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None;
             dgvUsuarios.BackgroundColor = Color.White;
             dgvUsuarios.BorderStyle = BorderStyle.None;
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
@@ -151,7 +152,7 @@ namespace Proyecto_Integrador.Vistas.Usuarios
             dgvUsuarios.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             dgvUsuarios.ColumnHeadersHeight = 36;
             dgvUsuarios.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dgvUsuarios.Columns.AddRange(new DataGridViewColumn[] { colId, colNombre, colUsuario, colCorreo, colTelefono, colRol, colActivo, colCambiarEstado });
+            dgvUsuarios.Columns.AddRange(new DataGridViewColumn[] { colId, colNombre, colUsuario, colCorreo, colTelefono, colRol, colActivo, colIconoEditar, colIconoEstado });
             dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = Color.White;
             dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F);
@@ -161,6 +162,7 @@ namespace Proyecto_Integrador.Vistas.Usuarios
             dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
             dgvUsuarios.DefaultCellStyle = dataGridViewCellStyle3;
             dgvUsuarios.Dock = DockStyle.Fill;
+            dgvUsuarios.Margin = new Padding(10, 0, 12, 10);
             dgvUsuarios.EnableHeadersVisualStyles = false;
             dgvUsuarios.GridColor = Color.FromArgb(229, 231, 235);
             dgvUsuarios.Location = new Point(3, 67);
@@ -171,67 +173,78 @@ namespace Proyecto_Integrador.Vistas.Usuarios
             dgvUsuarios.RowHeadersWidth = 51;
             dgvUsuarios.Size = new Size(588, 623);
             dgvUsuarios.TabIndex = 1;
-            dgvUsuarios.CellContentClick += dgvUsuarios_CellContentClick;
-            // 
+            dgvUsuarios.CellClick += dgvUsuarios_CellClick;
+            dgvUsuarios.CellMouseMove += dgvUsuarios_CellMouseMove;
+            //
             // colId
-            // 
+            //
             colId.HeaderText = "Id";
             colId.Name = "colId";
             colId.ReadOnly = true;
             colId.Visible = false;
-            // 
+            //
             // colNombre
-            // 
+            //
             colNombre.HeaderText = "Nombre";
             colNombre.MinimumWidth = 6;
             colNombre.Name = "colNombre";
             colNombre.ReadOnly = true;
-            // 
+            //
             // colUsuario
-            // 
+            //
             colUsuario.HeaderText = "Usuario";
             colUsuario.MinimumWidth = 6;
             colUsuario.Name = "colUsuario";
             colUsuario.ReadOnly = true;
-            // 
+            //
             // colCorreo
-            // 
+            //
             colCorreo.HeaderText = "Correo";
             colCorreo.MinimumWidth = 6;
             colCorreo.Name = "colCorreo";
             colCorreo.ReadOnly = true;
-            // 
+            //
             // colTelefono
-            // 
+            //
             colTelefono.HeaderText = "Teléfono";
             colTelefono.MinimumWidth = 6;
             colTelefono.Name = "colTelefono";
             colTelefono.ReadOnly = true;
-            // 
+            //
             // colRol
-            // 
+            //
             colRol.HeaderText = "Rol";
             colRol.MinimumWidth = 6;
             colRol.Name = "colRol";
             colRol.ReadOnly = true;
-            // 
+            //
             // colActivo
-            // 
+            //
             colActivo.HeaderText = "Activo";
             colActivo.MinimumWidth = 6;
             colActivo.Name = "colActivo";
             colActivo.ReadOnly = true;
+            //
+            // colIconoEditar
             // 
-            // colCambiarEstado
+            colIconoEditar.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            colIconoEditar.HeaderText = "Editar";
+            colIconoEditar.ImageLayout = DataGridViewImageCellLayout.Zoom;
+            colIconoEditar.MinimumWidth = 50;
+            colIconoEditar.Name = "colIconoEditar";
+            colIconoEditar.Width = 50;
             // 
-            colCambiarEstado.HeaderText = "Activar/Inactivar";
-            colCambiarEstado.Name = "colCambiarEstado";
-            colCambiarEstado.ReadOnly = true;
-            colCambiarEstado.Text = "Cambiar";
-            colCambiarEstado.UseColumnTextForButtonValue = false;
+            // colIconoEstado
             // 
+            colIconoEstado.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            colIconoEstado.HeaderText = "Estado";
+            colIconoEstado.ImageLayout = DataGridViewImageCellLayout.Zoom;
+            colIconoEstado.MinimumWidth = 50;
+            colIconoEstado.Name = "colIconoEstado";
+            colIconoEstado.Width = 50;
+            //
             // RegistrarUsuariosControl
-            // 
+            //
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(243, 244, 246);
@@ -262,6 +275,7 @@ namespace Proyecto_Integrador.Vistas.Usuarios
         private DataGridViewTextBoxColumn colRol;
         private DataGridViewTextBoxColumn colActivo;
         private DataGridViewTextBoxColumn colId;
-        private DataGridViewButtonColumn colCambiarEstado;
+        private DataGridViewImageColumn colIconoEditar;
+        private DataGridViewImageColumn colIconoEstado;
     }
 }

@@ -30,17 +30,16 @@ namespace Proyecto_Integrador.Vistas.Clientes
             colTelefono = new DataGridViewTextBoxColumn();
             colDireccion = new DataGridViewTextBoxColumn();
             colDocumento = new DataGridViewTextBoxColumn();
-            colActivo = new DataGridViewTextBoxColumn();
             colId = new DataGridViewTextBoxColumn();
-            colCambiarEstado = new DataGridViewButtonColumn();
+            colIconoEditar = new DataGridViewImageColumn();
             tableLayoutPanel1.SuspendLayout();
             tableLayoutToolbar.SuspendLayout();
             tableLayoutBuscar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvClientes).BeginInit();
             SuspendLayout();
-            // 
+            //
             // tableLayoutPanel1
-            // 
+            //
             tableLayoutPanel1.BackColor = Color.FromArgb(243, 244, 246);
             tableLayoutPanel1.ColumnCount = 1;
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
@@ -54,9 +53,9 @@ namespace Proyecto_Integrador.Vistas.Clientes
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
             tableLayoutPanel1.Size = new Size(545, 581);
             tableLayoutPanel1.TabIndex = 0;
-            // 
+            //
             // tableLayoutToolbar
-            // 
+            //
             tableLayoutToolbar.BackColor = Color.FromArgb(243, 244, 246);
             tableLayoutToolbar.ColumnCount = 3;
             tableLayoutToolbar.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 395F));
@@ -71,9 +70,9 @@ namespace Proyecto_Integrador.Vistas.Clientes
             tableLayoutToolbar.RowStyles.Add(new RowStyle(SizeType.Absolute, 40F));
             tableLayoutToolbar.Size = new Size(539, 58);
             tableLayoutToolbar.TabIndex = 0;
-            // 
+            //
             // tableLayoutBuscar
-            // 
+            //
             tableLayoutBuscar.ColumnCount = 2;
             tableLayoutBuscar.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 125F));
             tableLayoutBuscar.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 260F));
@@ -87,9 +86,9 @@ namespace Proyecto_Integrador.Vistas.Clientes
             tableLayoutBuscar.RowStyles.Add(new RowStyle(SizeType.Absolute, 5F));
             tableLayoutBuscar.Size = new Size(389, 58);
             tableLayoutBuscar.TabIndex = 0;
-            // 
+            //
             // lblBuscar
-            // 
+            //
             lblBuscar.Font = new Font("Segoe UI", 10F);
             lblBuscar.ForeColor = Color.FromArgb(75, 85, 99);
             lblBuscar.Location = new Point(3, 8);
@@ -99,9 +98,9 @@ namespace Proyecto_Integrador.Vistas.Clientes
             lblBuscar.TabIndex = 0;
             lblBuscar.Text = "Buscar clientes:";
             lblBuscar.TextAlign = ContentAlignment.MiddleLeft;
-            // 
+            //
             // txtBuscar
-            // 
+            //
             txtBuscar.BorderStyle = BorderStyle.FixedSingle;
             txtBuscar.Dock = DockStyle.Fill;
             txtBuscar.Font = new Font("Segoe UI", 10F);
@@ -112,9 +111,9 @@ namespace Proyecto_Integrador.Vistas.Clientes
             txtBuscar.Size = new Size(258, 25);
             txtBuscar.TabIndex = 1;
             txtBuscar.TextChanged += txtBuscar_TextChanged;
-            // 
+            //
             // btnNuevoCliente
-            // 
+            //
             btnNuevoCliente.BackColor = Color.FromArgb(245, 158, 11);
             btnNuevoCliente.Cursor = Cursors.Hand;
             btnNuevoCliente.Dock = DockStyle.Fill;
@@ -131,14 +130,14 @@ namespace Proyecto_Integrador.Vistas.Clientes
             btnNuevoCliente.Text = "+ Nuevo cliente";
             btnNuevoCliente.UseVisualStyleBackColor = false;
             btnNuevoCliente.Click += btnNuevoCliente_Click;
-            // 
+            //
             // dgvClientes
-            // 
+            //
             dgvClientes.AllowUserToAddRows = false;
             dgvClientes.AllowUserToDeleteRows = false;
             dataGridViewCellStyle1.BackColor = Color.FromArgb(243, 244, 246);
             dgvClientes.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            dgvClientes.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvClientes.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None;
             dgvClientes.BackgroundColor = Color.White;
             dgvClientes.BorderStyle = BorderStyle.None;
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
@@ -151,7 +150,7 @@ namespace Proyecto_Integrador.Vistas.Clientes
             dgvClientes.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             dgvClientes.ColumnHeadersHeight = 36;
             dgvClientes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dgvClientes.Columns.AddRange(new DataGridViewColumn[] { colId, colNombre, colCorreo, colTelefono, colDireccion, colDocumento, colActivo, colCambiarEstado });
+            dgvClientes.Columns.AddRange(new DataGridViewColumn[] { colId, colNombre, colCorreo, colTelefono, colDireccion, colDocumento, colIconoEditar });
             dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = Color.White;
             dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F);
@@ -161,6 +160,7 @@ namespace Proyecto_Integrador.Vistas.Clientes
             dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
             dgvClientes.DefaultCellStyle = dataGridViewCellStyle3;
             dgvClientes.Dock = DockStyle.Fill;
+            dgvClientes.Margin = new Padding(10, 0, 12, 10);
             dgvClientes.EnableHeadersVisualStyles = false;
             dgvClientes.GridColor = Color.FromArgb(229, 231, 235);
             dgvClientes.Location = new Point(3, 67);
@@ -170,61 +170,57 @@ namespace Proyecto_Integrador.Vistas.Clientes
             dgvClientes.RowHeadersVisible = false;
             dgvClientes.Size = new Size(539, 511);
             dgvClientes.TabIndex = 1;
-            dgvClientes.CellContentClick += dgvClientes_CellContentClick;
-            // 
+            dgvClientes.CellClick += dgvClientes_CellClick;
+            dgvClientes.CellMouseMove += dgvClientes_CellMouseMove;
+            //
             // colId
-            // 
+            //
             colId.HeaderText = "Id";
             colId.Name = "colId";
             colId.ReadOnly = true;
             colId.Visible = false;
-            // 
+            //
             // colNombre
-            // 
+            //
             colNombre.HeaderText = "Nombre";
             colNombre.Name = "colNombre";
             colNombre.ReadOnly = true;
-            // 
+            //
             // colCorreo
-            // 
+            //
             colCorreo.HeaderText = "Correo";
             colCorreo.Name = "colCorreo";
             colCorreo.ReadOnly = true;
-            // 
+            //
             // colTelefono
-            // 
+            //
             colTelefono.HeaderText = "Teléfono";
             colTelefono.Name = "colTelefono";
             colTelefono.ReadOnly = true;
-            // 
+            //
             // colDireccion
-            // 
+            //
             colDireccion.HeaderText = "Dirección";
             colDireccion.Name = "colDireccion";
             colDireccion.ReadOnly = true;
-            // 
+            //
             // colDocumento
-            // 
+            //
             colDocumento.HeaderText = "Documento";
             colDocumento.Name = "colDocumento";
             colDocumento.ReadOnly = true;
+            //
+            // colIconoEditar
             // 
-            // colActivo
-            // 
-            colActivo.HeaderText = "Activo";
-            colActivo.Name = "colActivo";
-            colActivo.ReadOnly = true;
-            // 
-            // colCambiarEstado
-            // 
-            colCambiarEstado.HeaderText = "Activar/Inactivar";
-            colCambiarEstado.Name = "colCambiarEstado";
-            colCambiarEstado.ReadOnly = true;
-            colCambiarEstado.Text = "Cambiar";
-            colCambiarEstado.UseColumnTextForButtonValue = false;
-            // 
+            colIconoEditar.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            colIconoEditar.HeaderText = "Acciones";
+            colIconoEditar.ImageLayout = DataGridViewImageCellLayout.Zoom;
+            colIconoEditar.MinimumWidth = 50;
+            colIconoEditar.Name = "colIconoEditar";
+            colIconoEditar.Width = 50;
+            //
             // ClienteControl
-            // 
+            //
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(243, 244, 246);
@@ -253,8 +249,7 @@ namespace Proyecto_Integrador.Vistas.Clientes
         private DataGridViewTextBoxColumn colTelefono;
         private DataGridViewTextBoxColumn colDireccion;
         private DataGridViewTextBoxColumn colDocumento;
-        private DataGridViewTextBoxColumn colActivo;
         private DataGridViewTextBoxColumn colId;
-        private DataGridViewButtonColumn colCambiarEstado;
+        private DataGridViewImageColumn colIconoEditar;
     }
 }

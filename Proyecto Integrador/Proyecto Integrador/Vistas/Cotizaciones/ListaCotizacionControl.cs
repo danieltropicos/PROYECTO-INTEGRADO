@@ -2,6 +2,7 @@
 using Proyecto_Integrador.Modelos.Cotizaciones;
 using Proyecto_Integrador.Modelos.Facturas;
 using Proyecto_Integrador.Modelos.Usuarios;
+using Proyecto_Integrador.Vistas.Utilidades;
 using System.Globalization;
 
 namespace Proyecto_Integrador.Vistas.Cotizaciones;
@@ -11,6 +12,7 @@ public partial class ListaCotizacionControl : UserControl
     private readonly CotizacionControlador cotizacionControlador;
     private readonly FacturaControlador facturaControlador;
     private readonly Usuario _usuario;
+    private readonly ToolTip _toolTip = new();
     private List<Cotizacion> _cotizaciones = [];
 
     public event EventHandler? CrearCotizacionClick;
@@ -22,7 +24,9 @@ public partial class ListaCotizacionControl : UserControl
         _usuario = usuario;
 
         InitializeComponent();
-        colInactivar.Visible = EsAdmin;
+        UiHelper.ConfigurarColumnasGrid(dgvCotizaciones, colIconoEstado, colIconoFactura);
+        colIconoEstado.Visible = EsAdmin;
+        UiHelper.AjustarAnchosColumnas(dgvCotizaciones, colIconoEstado, colIconoFactura);
         CargarCotizaciones();
     }
 
@@ -47,112 +51,86 @@ public partial class ListaCotizacionControl : UserControl
         foreach (var c in _cotizaciones)
         {
             var activa = c.Estado == "Activa";
-
-            dgvCotizaciones.Rows.Add(
+            var indice = dgvCotizaciones.Rows.Add(
                 c.Id,
                 c.Cliente?.NombreCompleto ?? "N/A",
                 c.Material?.Nombre ?? "N/A",
                 $"{c.VolumenCalculado:F2} m³",
                 c.Total.ToString("C0", cultura),
                 c.FechaCreacion.ToString("dd/MM/yyyy"),
-                c.Estado,
-                activa ? "Inactivar" : "Activar",
-                activa ? "Generar Factura" : ""
-            );
+                c.Estado);
+
+            if (EsAdmin)
+            {
+                dgvCotizaciones.Rows[indice].Cells[colIconoEstado.Index].Value =
+                    activa ? IconosAcciones.Inactivar : IconosAcciones.Activar;
+            }
+
+            dgvCotizaciones.Rows[indice].Cells[colIconoFactura.Index].Value =
+                activa ? IconosAcciones.GenerarFactura : null;
         }
     }
 
-    private void btnCrearCotizacion_Click(object sender, EventArgs e)
-    {
+    private void btnCrearCotizacion_Click(object sender, EventArgs e) =>
         CrearCotizacionClick?.Invoke(this, EventArgs.Empty);
-    }
 
     private void txtBuscar_TextChanged(object sender, EventArgs e) => CargarCotizaciones();
 
-    private void dgvCotizaciones_CellPainting(object? sender, DataGridViewCellPaintingEventArgs e)
-    {
-        if (e.RowIndex < 0) return;
-        if (dgvCotizaciones.Columns[e.ColumnIndex].Name != "colAccion") return;
-
-        var valor = e.FormattedValue?.ToString();
-        if (!string.IsNullOrEmpty(valor)) return;
-
-        e.Paint(
-            e.ClipBounds,
-            DataGridViewPaintParts.Background |
-            DataGridViewPaintParts.Border |
-            DataGridViewPaintParts.SelectionBackground);
-
-        e.Handled = true;
-    }
-
-    private void dgvCotizaciones_CellContentClick(object sender, DataGridViewCellEventArgs e)
+    private void dgvCotizaciones_CellClick(object sender, DataGridViewCellEventArgs e)
     {
         if (e.RowIndex < 0) return;
 
         var cotizacion = _cotizaciones[e.RowIndex];
 
-        if (e.ColumnIndex == dgvCotizaciones.Columns["colInactivar"]!.Index)
+        if (e.ColumnIndex == colIconoEstado.Index && EsAdmin)
         {
-            if (!EsAdmin) return;
-
             if (cotizacion.Estado == "Activa")
             {
-                var confirmar = MessageBox.Show(
-                    $"¿Inactivar la cotización de {cotizacion.Cliente?.NombreCompleto}?",
-                    "Confirmar",
-                    MessageBoxButtons.YesNo,
-                    MessageBoxIcon.Question);
-
-                if (confirmar != DialogResult.Yes) return;
+                if (MessageBox.Show(
+                        $"¿Inactivar la cotización de {cotizacion.Cliente?.NombreCompleto}?",
+                        "Confirmar", MessageBoxButtons.YesNo, MessageBoxIcon.Question) != DialogResult.Yes)
+                    return;
 
                 cotizacionControlador.DesactivarCotizacion(cotizacion);
-                MessageBox.Show(
-                    "Cotización inactivada.",
-                    "Listo",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Information);
+                MessageBox.Show("Cotización inactivada.", "Listo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {
-                var confirmar = MessageBox.Show(
-                    $"¿Activar la cotización de {cotizacion.Cliente?.NombreCompleto}?",
-                    "Confirmar",
-                    MessageBoxButtons.YesNo,
-                    MessageBoxIcon.Question);
-
-                if (confirmar != DialogResult.Yes) return;
+                if (MessageBox.Show(
+                        $"¿Activar la cotización de {cotizacion.Cliente?.NombreCompleto}?",
+                        "Confirmar", MessageBoxButtons.YesNo, MessageBoxIcon.Question) != DialogResult.Yes)
+                    return;
 
                 cotizacionControlador.ActivarCotizacion(cotizacion);
-                MessageBox.Show(
-                    "Cotización activada.",
-                    "Listo",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Information);
+                MessageBox.Show("Cotización activada.", "Listo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
 
             CargarCotizaciones();
         }
-        else if (e.ColumnIndex == dgvCotizaciones.Columns["colAccion"]!.Index)
+        else if (e.ColumnIndex == colIconoFactura.Index && cotizacion.Estado == "Activa")
         {
-            if (cotizacion.Estado != "Activa") return;
+            if (MessageBox.Show(
+                    $"¿Generar factura para la cotización de {cotizacion.Cliente?.NombreCompleto}?",
+                    "Confirmar", MessageBoxButtons.YesNo, MessageBoxIcon.Question) != DialogResult.Yes)
+                return;
 
-            var confirmar = MessageBox.Show(
-                $"¿Generar factura para la cotización de {cotizacion.Cliente?.NombreCompleto}?",
-                "Confirmar",
-                MessageBoxButtons.YesNo,
-                MessageBoxIcon.Question);
-
-            if (confirmar != DialogResult.Yes) return;
-
-            var factura = new Factura(cotizacion);
-            facturaControlador.AgregarFactura(factura);
-
-            MessageBox.Show(
-                "Factura generada en estado Pendiente.",
-                "Factura creada",
-                MessageBoxButtons.OK,
-                MessageBoxIcon.Information);
+            facturaControlador.AgregarFactura(new Factura(cotizacion));
+            MessageBox.Show("Factura generada en estado Pendiente.", "Factura creada",
+                MessageBoxButtons.OK, MessageBoxIcon.Information);
+            CargarCotizaciones();
         }
+    }
+
+    private void dgvCotizaciones_CellMouseMove(object sender, DataGridViewCellMouseEventArgs e)
+    {
+        string ayuda = "";
+        if (e.RowIndex >= 0)
+        {
+            if (e.ColumnIndex == colIconoEstado.Index) ayuda = "Activar o inactivar";
+            else if (e.ColumnIndex == colIconoFactura.Index) ayuda = "Generar factura";
+        }
+
+        _toolTip.SetToolTip(dgvCotizaciones, ayuda);
+        dgvCotizaciones.Cursor = ayuda.Length > 0 ? Cursors.Hand : Cursors.Default;
     }
 }

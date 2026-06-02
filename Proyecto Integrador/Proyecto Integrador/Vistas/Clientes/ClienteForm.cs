@@ -4,11 +4,28 @@ namespace Proyecto_Integrador.Vistas.Clientes
 {
     public partial class ClienteForm : Form
     {
-        public Cliente? ClienteCreado { get; private set; }
+        public bool EsEditar { get; private set; }
+        public Cliente? Entidad { get; private set; }
 
         public ClienteForm()
         {
             InitializeComponent();
+            Text = "Nuevo cliente";
+            btnGuardar.Text = "Guardar";
+        }
+
+        public ClienteForm(Cliente cliente) : this()
+        {
+            EsEditar = true;
+            Text = "Editar cliente";
+            btnGuardar.Text = "Actualizar";
+
+            textBoxNombre.Text = cliente.Nombre;
+            textBoxApellido.Text = cliente.Apellido;
+            textBoxCorreo.Text = cliente.CorreoElectronico;
+            textBoxTelefono.Text = cliente.Telefono;
+            textBoxDireccion.Text = cliente.Direccion;
+            textBoxDocumento.Text = cliente.Documento;
         }
 
         private void btnGuardar_Click(object sender, EventArgs e)
@@ -22,7 +39,7 @@ namespace Proyecto_Integrador.Vistas.Clientes
                 return;
             }
 
-            ClienteCreado = new Cliente(
+            Entidad = new Cliente(
                 textBoxNombre.Text.Trim(),
                 textBoxApellido.Text.Trim(),
                 textBoxCorreo.Text.Trim(),

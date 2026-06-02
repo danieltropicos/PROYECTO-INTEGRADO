@@ -11,19 +11,12 @@ public class ClienteControlador
         clienteRepositorio = new ClienteRepositorio();
     }
 
-    public void AgregarCliente(Cliente cliente)
-    {
+    public void AgregarCliente(Cliente cliente) =>
         clienteRepositorio.AgregarCliente(cliente);
-    }
 
     public List<Cliente> ObtenerClientes(string? filtro = null) =>
         clienteRepositorio.ObtenerClientes(filtro);
 
-    public List<Cliente> ObtenerTodosClientes(string? filtro = null) =>
-        clienteRepositorio.ObtenerTodosClientes(filtro);
-
-    public void ActualizarCliente(Cliente cliente)
-    {
-        clienteRepositorio.ActualizarCliente(cliente);
-    }
+    public void ActualizarCliente(Guid id, Cliente cliente) =>
+        clienteRepositorio.Actualizar(id, cliente);
 }

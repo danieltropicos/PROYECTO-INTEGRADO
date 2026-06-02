@@ -25,16 +25,18 @@
             txtBuscar = new TextBox();
             btnNuevoMaterial = new Button();
             dgvMateriales = new DataGridView();
+            colId = new DataGridViewTextBoxColumn();
             colNombre = new DataGridViewTextBoxColumn();
             colValor = new DataGridViewTextBoxColumn();
+            colIconoEditar = new DataGridViewImageColumn();
             tableLayoutPanel1.SuspendLayout();
             tableLayoutToolbar.SuspendLayout();
             tableLayoutBuscar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvMateriales).BeginInit();
             SuspendLayout();
-            // 
+            //
             // tableLayoutPanel1
-            // 
+            //
             tableLayoutPanel1.BackColor = Color.FromArgb(243, 244, 246);
             tableLayoutPanel1.ColumnCount = 1;
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
@@ -48,9 +50,9 @@
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
             tableLayoutPanel1.Size = new Size(545, 581);
             tableLayoutPanel1.TabIndex = 0;
-            // 
+            //
             // tableLayoutToolbar
-            // 
+            //
             tableLayoutToolbar.BackColor = Color.FromArgb(243, 244, 246);
             tableLayoutToolbar.ColumnCount = 3;
             tableLayoutToolbar.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 395F));
@@ -65,9 +67,9 @@
             tableLayoutToolbar.RowStyles.Add(new RowStyle(SizeType.Absolute, 40F));
             tableLayoutToolbar.Size = new Size(539, 58);
             tableLayoutToolbar.TabIndex = 0;
-            // 
+            //
             // tableLayoutBuscar
-            // 
+            //
             tableLayoutBuscar.ColumnCount = 2;
             tableLayoutBuscar.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 142F));
             tableLayoutBuscar.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 243F));
@@ -81,9 +83,9 @@
             tableLayoutBuscar.RowStyles.Add(new RowStyle(SizeType.Absolute, 40F));
             tableLayoutBuscar.Size = new Size(389, 58);
             tableLayoutBuscar.TabIndex = 0;
-            // 
+            //
             // lblBuscar
-            // 
+            //
             lblBuscar.Dock = DockStyle.Top;
             lblBuscar.Font = new Font("Segoe UI", 10F);
             lblBuscar.ForeColor = Color.FromArgb(75, 85, 99);
@@ -94,9 +96,9 @@
             lblBuscar.TabIndex = 0;
             lblBuscar.Text = "Buscar materiales:";
             lblBuscar.TextAlign = ContentAlignment.MiddleLeft;
-            // 
+            //
             // txtBuscar
-            // 
+            //
             txtBuscar.BorderStyle = BorderStyle.FixedSingle;
             txtBuscar.Dock = DockStyle.Fill;
             txtBuscar.Font = new Font("Segoe UI", 10F);
@@ -107,9 +109,9 @@
             txtBuscar.Size = new Size(241, 25);
             txtBuscar.TabIndex = 1;
             txtBuscar.TextChanged += txtBuscar_TextChanged;
-            // 
+            //
             // btnNuevoMaterial
-            // 
+            //
             btnNuevoMaterial.BackColor = Color.FromArgb(245, 158, 11);
             btnNuevoMaterial.Cursor = Cursors.Hand;
             btnNuevoMaterial.Dock = DockStyle.Fill;
@@ -126,14 +128,14 @@
             btnNuevoMaterial.Text = "+ Nuevo material";
             btnNuevoMaterial.UseVisualStyleBackColor = false;
             btnNuevoMaterial.Click += btnNuevoMaterial_Click;
-            // 
+            //
             // dgvMateriales
-            // 
+            //
             dgvMateriales.AllowUserToAddRows = false;
             dgvMateriales.AllowUserToDeleteRows = false;
             dataGridViewCellStyle1.BackColor = Color.FromArgb(243, 244, 246);
             dgvMateriales.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            dgvMateriales.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvMateriales.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None;
             dgvMateriales.BackgroundColor = Color.White;
             dgvMateriales.BorderStyle = BorderStyle.None;
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
@@ -146,7 +148,7 @@
             dgvMateriales.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             dgvMateriales.ColumnHeadersHeight = 36;
             dgvMateriales.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dgvMateriales.Columns.AddRange(new DataGridViewColumn[] { colNombre, colValor });
+            dgvMateriales.Columns.AddRange(new DataGridViewColumn[] { colId, colNombre, colValor, colIconoEditar });
             dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = Color.White;
             dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F);
@@ -156,6 +158,7 @@
             dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
             dgvMateriales.DefaultCellStyle = dataGridViewCellStyle3;
             dgvMateriales.Dock = DockStyle.Fill;
+            dgvMateriales.Margin = new Padding(10, 0, 12, 10);
             dgvMateriales.EnableHeadersVisualStyles = false;
             dgvMateriales.GridColor = Color.FromArgb(229, 231, 235);
             dgvMateriales.Location = new Point(3, 67);
@@ -165,21 +168,39 @@
             dgvMateriales.RowHeadersVisible = false;
             dgvMateriales.Size = new Size(539, 511);
             dgvMateriales.TabIndex = 1;
-            // 
+            dgvMateriales.CellClick += dgvMateriales_CellClick;
+            dgvMateriales.CellMouseMove += dgvMateriales_CellMouseMove;
+            //
+            // colId
+            //
+            colId.HeaderText = "Id";
+            colId.Name = "colId";
+            colId.ReadOnly = true;
+            colId.Visible = false;
+            //
             // colNombre
-            // 
+            //
             colNombre.HeaderText = "Nombre";
             colNombre.Name = "colNombre";
             colNombre.ReadOnly = true;
-            // 
+            //
             // colValor
-            // 
+            //
             colValor.HeaderText = "Valor m³";
             colValor.Name = "colValor";
             colValor.ReadOnly = true;
+            //
+            // colIconoEditar
             // 
+            colIconoEditar.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            colIconoEditar.HeaderText = "Acciones";
+            colIconoEditar.ImageLayout = DataGridViewImageCellLayout.Zoom;
+            colIconoEditar.MinimumWidth = 50;
+            colIconoEditar.Name = "colIconoEditar";
+            colIconoEditar.Width = 50;
+            //
             // MaterialControl
-            // 
+            //
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(243, 244, 246);
@@ -203,7 +224,9 @@
         private TextBox txtBuscar;
         private Button btnNuevoMaterial;
         private DataGridView dgvMateriales;
+        private DataGridViewTextBoxColumn colId;
         private DataGridViewTextBoxColumn colNombre;
         private DataGridViewTextBoxColumn colValor;
+        private DataGridViewImageColumn colIconoEditar;
     }
 }

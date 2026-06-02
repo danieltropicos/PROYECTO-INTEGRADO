@@ -72,19 +72,28 @@ public class UsuarioRepositorio
         lista.Add(usuario);
         Guardar(lista);
     }
-    public void Actualizar(Usuario usuarioActualizado)
+    public void Actualizar(Guid id, Usuario nuevoModelo, string? contrasenaPlana = null)
     {
-        List<Usuario> lista = Leer();
+        var lista = Leer();
+        var index = lista.FindIndex(u => u.Id == id);
+        if (index < 0) return;
 
-        for (int i = 0; i < lista.Count; i++)
-        {
-            if (lista[i].Id == usuarioActualizado.Id)
-            {
-                lista[i].CambiarEstado(usuarioActualizado.EsActivo);
+        var actual = lista[index];
+        lista[index] = new Usuario(
+            id,
+            nuevoModelo.Nombre,
+            nuevoModelo.Apellido,
+            nuevoModelo.CorreoElectronico,
+            nuevoModelo.Telefono,
+            nuevoModelo.Direccion,
+            nuevoModelo.NombreUsuario,
+            actual.ContrasenaEncriptada,
+            nuevoModelo.Rol,
+            nuevoModelo.EsActivo,
+            actual.FechaRegistro);
 
-                break;
-            }
-        }
+        if (!string.IsNullOrWhiteSpace(contrasenaPlana))
+            lista[index].CambiarContrasena(contrasenaPlana);
 
         Guardar(lista);
     }

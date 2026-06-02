@@ -1,34 +1,49 @@
 using Proyecto_Integrador.Controladores;
 using Proyecto_Integrador.Modelos.Usuarios;
+using Proyecto_Integrador.Vistas.Utilidades;
 
 namespace Proyecto_Integrador.Vistas.Clientes
 {
     public partial class ClienteControl : UserControl
     {
         private readonly ClienteControlador _clienteControlador = new();
-        private readonly Usuario _usuario;
+        private readonly ToolTip _toolTip = new();
         private List<Cliente> _clientes = [];
 
-        public ClienteControl(Usuario usuario)
+        public ClienteControl(Usuario _)
         {
-            _usuario = usuario;
             InitializeComponent();
-            colCambiarEstado.Visible = EsAdmin;
+            UiHelper.ConfigurarColumnasGrid(dgvClientes, colIconoEditar);
             CargarClientes();
         }
 
-        private bool EsAdmin => _usuario.Rol.Nombre == "Admin";
+        private void btnNuevoCliente_Click(object sender, EventArgs e) =>
+            AbrirFormularioCliente();
 
-        private void btnNuevoCliente_Click(object sender, EventArgs e)
+        private void AbrirFormularioCliente(Cliente? cliente = null)
         {
-            using var form = new ClienteForm();
-            if (form.ShowDialog(FindForm()) != DialogResult.OK || form.ClienteCreado is null)
+            var esEditar = cliente is not null;
+            using var form = esEditar ? new ClienteForm(cliente!) : new ClienteForm();
+
+            if (form.ShowDialog(FindForm()) != DialogResult.OK || form.Entidad is null)
                 return;
 
-            _clienteControlador.AgregarCliente(form.ClienteCreado);
+            if (esEditar)
+            {
+                var actualizado = form.Entidad;
+                actualizado.CambiarEstado(cliente!.EsActivo);
+                _clienteControlador.ActualizarCliente(cliente.Id, actualizado);
+                MessageBox.Show("Cliente actualizado exitosamente", "Éxito",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                _clienteControlador.AgregarCliente(form.Entidad);
+                MessageBox.Show("Cliente agregado exitosamente", "Éxito",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+
             CargarClientes();
-            MessageBox.Show("Cliente agregado exitosamente", "Éxito",
-                MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void txtBuscar_TextChanged(object sender, EventArgs e) => CargarClientes();
@@ -36,51 +51,40 @@ namespace Proyecto_Integrador.Vistas.Clientes
         private void CargarClientes()
         {
             var filtro = txtBuscar.Text.Trim();
-            _clientes = _clienteControlador.ObtenerTodosClientes(
+            _clientes = _clienteControlador.ObtenerClientes(
                 string.IsNullOrEmpty(filtro) ? null : filtro);
 
             dgvClientes.Rows.Clear();
             foreach (var cliente in _clientes)
             {
-                dgvClientes.Rows.Add(
+                var indice = dgvClientes.Rows.Add(
                     cliente.Id,
                     cliente.NombreCompleto,
                     cliente.CorreoElectronico,
                     cliente.Telefono,
                     cliente.Direccion,
-                    cliente.Documento,
-                    cliente.EsActivo ? "Activo" : "Inactivo",
-                    cliente.EsActivo ? "Inactivar" : "Activar"
-                );
+                    cliente.Documento);
+
+                dgvClientes.Rows[indice].Cells[colIconoEditar.Index].Value = IconosAcciones.Editar;
             }
         }
 
-        private void dgvClientes_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void dgvClientes_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex < 0) return;
-            if (!EsAdmin) return;
-            if (e.ColumnIndex != dgvClientes.Columns["colCambiarEstado"]!.Index) return;
 
-            var cliente = _clientes[e.RowIndex];
-            var accion = cliente.EsActivo ? "inactivar" : "activar";
+            if (e.ColumnIndex == colIconoEditar.Index)
+                AbrirFormularioCliente(_clientes[e.RowIndex]);
+        }
 
-            var confirmar = MessageBox.Show(
-                $"¿Desea {accion} a {cliente.NombreCompleto}?",
-                "Confirmar",
-                MessageBoxButtons.YesNo,
-                MessageBoxIcon.Question);
+        private void dgvClientes_CellMouseMove(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            string ayuda = "";
+            if (e.RowIndex >= 0 && e.ColumnIndex == colIconoEditar.Index)
+                ayuda = "Editar cliente";
 
-            if (confirmar != DialogResult.Yes) return;
-
-            cliente.CambiarEstado(!cliente.EsActivo);
-            _clienteControlador.ActualizarCliente(cliente);
-            CargarClientes();
-
-            MessageBox.Show(
-                $"Cliente {(cliente.EsActivo ? "activado" : "inactivado")}.",
-                "Listo",
-                MessageBoxButtons.OK,
-                MessageBoxIcon.Information);
+            _toolTip.SetToolTip(dgvClientes, ayuda);
+            dgvClientes.Cursor = ayuda.Length > 0 ? Cursors.Hand : Cursors.Default;
         }
     }
 }

@@ -26,14 +26,14 @@
             colTotal = new DataGridViewTextBoxColumn();
             colFechaEmision = new DataGridViewTextBoxColumn();
             colEstado = new DataGridViewTextBoxColumn();
-            colCambiarEstado = new DataGridViewButtonColumn();
-            colImprimir = new DataGridViewButtonColumn();
+            colIconoEstado = new DataGridViewImageColumn();
+            colIconoImprimir = new DataGridViewImageColumn();
             tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvFacturas).BeginInit();
             SuspendLayout();
-            // 
+            //
             // tableLayoutPanel1
-            // 
+            //
             tableLayoutPanel1.BackColor = Color.FromArgb(243, 244, 246);
             tableLayoutPanel1.ColumnCount = 1;
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
@@ -47,9 +47,9 @@
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
             tableLayoutPanel1.Size = new Size(900, 580);
             tableLayoutPanel1.TabIndex = 0;
-            // 
+            //
             // lblTitulo
-            // 
+            //
             lblTitulo.Dock = DockStyle.Fill;
             lblTitulo.Font = new Font("Segoe UI", 14F, FontStyle.Bold);
             lblTitulo.ForeColor = Color.FromArgb(30, 58, 95);
@@ -60,14 +60,14 @@
             lblTitulo.TabIndex = 0;
             lblTitulo.Text = "Facturas";
             lblTitulo.TextAlign = ContentAlignment.MiddleLeft;
-            // 
+            //
             // dgvFacturas
-            // 
+            //
             dgvFacturas.AllowUserToAddRows = false;
             dgvFacturas.AllowUserToDeleteRows = false;
             dataGridViewCellStyle1.BackColor = Color.FromArgb(243, 244, 246);
             dgvFacturas.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            dgvFacturas.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvFacturas.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None;
             dgvFacturas.BackgroundColor = Color.White;
             dgvFacturas.BorderStyle = BorderStyle.None;
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
@@ -80,7 +80,7 @@
             dgvFacturas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             dgvFacturas.ColumnHeadersHeight = 36;
             dgvFacturas.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dgvFacturas.Columns.AddRange(new DataGridViewColumn[] { colId, colCliente, colTotal, colFechaEmision, colEstado, colCambiarEstado, colImprimir });
+            dgvFacturas.Columns.AddRange(new DataGridViewColumn[] { colId, colCliente, colTotal, colFechaEmision, colEstado, colIconoEstado, colIconoImprimir });
             dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = Color.White;
             dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F);
@@ -90,6 +90,7 @@
             dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
             dgvFacturas.DefaultCellStyle = dataGridViewCellStyle3;
             dgvFacturas.Dock = DockStyle.Fill;
+            dgvFacturas.Margin = new Padding(10, 0, 12, 10);
             dgvFacturas.EnableHeadersVisualStyles = false;
             dgvFacturas.GridColor = Color.FromArgb(229, 231, 235);
             dgvFacturas.Location = new Point(3, 67);
@@ -99,55 +100,60 @@
             dgvFacturas.RowHeadersVisible = false;
             dgvFacturas.Size = new Size(894, 510);
             dgvFacturas.TabIndex = 1;
-            dgvFacturas.CellContentClick += dgvFacturas_CellContentClick;
-            // 
+            dgvFacturas.CellClick += dgvFacturas_CellClick;
+            dgvFacturas.CellMouseMove += dgvFacturas_CellMouseMove;
+            //
             // colId
-            // 
+            //
             colId.HeaderText = "Id";
             colId.Name = "colId";
             colId.ReadOnly = true;
             colId.Visible = false;
-            // 
+            //
             // colCliente
-            // 
+            //
             colCliente.HeaderText = "Cliente";
             colCliente.Name = "colCliente";
             colCliente.ReadOnly = true;
-            // 
+            //
             // colTotal
-            // 
+            //
             colTotal.HeaderText = "Total";
             colTotal.Name = "colTotal";
             colTotal.ReadOnly = true;
-            // 
+            //
             // colFechaEmision
-            // 
+            //
             colFechaEmision.HeaderText = "Fecha Emisión";
             colFechaEmision.Name = "colFechaEmision";
             colFechaEmision.ReadOnly = true;
-            // 
+            //
             // colEstado
-            // 
+            //
             colEstado.HeaderText = "Estado";
             colEstado.Name = "colEstado";
             colEstado.ReadOnly = true;
+            //
+            // colIconoEstado
             // 
-            // colCambiarEstado
-            // 
-            colCambiarEstado.HeaderText = "Estado";
-            colCambiarEstado.Name = "colCambiarEstado";
-            colCambiarEstado.Text = "Cambiar Estado";
-            colCambiarEstado.UseColumnTextForButtonValue = true;
-            // 
-            // colImprimir
-            // 
-            colImprimir.HeaderText = "Imprimir";
-            colImprimir.Name = "colImprimir";
-            colImprimir.Text = "Imprimir";
-            colImprimir.UseColumnTextForButtonValue = true;
-            // 
+            colIconoEstado.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            colIconoEstado.HeaderText = "Cambiar estado";
+            colIconoEstado.ImageLayout = DataGridViewImageCellLayout.Zoom;
+            colIconoEstado.MinimumWidth = 56;
+            colIconoEstado.Name = "colIconoEstado";
+            colIconoEstado.Width = 56;
+            //
+            // colIconoImprimir
+            //
+            colIconoImprimir.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            colIconoImprimir.HeaderText = "Imprimir";
+            colIconoImprimir.ImageLayout = DataGridViewImageCellLayout.Zoom;
+            colIconoImprimir.MinimumWidth = 56;
+            colIconoImprimir.Name = "colIconoImprimir";
+            colIconoImprimir.Width = 56;
+            //
             // FacturaControl
-            // 
+            //
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(243, 244, 246);
@@ -169,7 +175,7 @@
         private DataGridViewTextBoxColumn colTotal;
         private DataGridViewTextBoxColumn colFechaEmision;
         private DataGridViewTextBoxColumn colEstado;
-        private DataGridViewButtonColumn colCambiarEstado;
-        private DataGridViewButtonColumn colImprimir;
+        private DataGridViewImageColumn colIconoEstado;
+        private DataGridViewImageColumn colIconoImprimir;
     }
 }

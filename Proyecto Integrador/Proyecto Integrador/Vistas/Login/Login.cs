@@ -1,6 +1,7 @@
 ﻿using Proyecto_Integrador.Controladores;
 using Proyecto_Integrador.Modelos.Usuarios;
 using Proyecto_Integrador.Vistas.Layout;
+using Proyecto_Integrador.Vistas.Utilidades;
 
 namespace Proyecto_Integrador.Vistas.Login
 {
@@ -11,6 +12,7 @@ namespace Proyecto_Integrador.Vistas.Login
         public Login()
         {
             InitializeComponent();
+            picOjo.ImageLocation = AppAssets.Ruta(AppAssets.ArchivoOjoCerrado);
         }
 
         private void btnIngresar_Click(object sender, EventArgs e)
@@ -63,7 +65,6 @@ namespace Proyecto_Integrador.Vistas.Login
         {
             var rol = new Rol("Admin");
             return new Usuario(
-                Guid.NewGuid(),
                 "Admin",
                 "Temporal",
                 "admin@gmail.com",
@@ -71,8 +72,7 @@ namespace Proyecto_Integrador.Vistas.Login
                 "Sin direccion",
                 "admin",
                 "1234",
-                rol,
-                DateTime.Now);
+                rol);
         }
 
         private void Ingresar(Usuario usuario)
@@ -84,16 +84,9 @@ namespace Proyecto_Integrador.Vistas.Login
 
         private void picOjo_Click(object sender, EventArgs e)
         {
-            if (txtContraseña.UseSystemPasswordChar)
-            {
-                txtContraseña.UseSystemPasswordChar = false;
-                picOjo.ImageLocation = "Recursos\\Imagenes\\ojoAbierto.jpg";
-            }
-            else
-            {
-                txtContraseña.UseSystemPasswordChar = true;
-                picOjo.ImageLocation = "Recursos\\Imagenes\\ojoCerrado.jpg";
-            }
+            var mostrar = txtContraseña.UseSystemPasswordChar;
+            txtContraseña.UseSystemPasswordChar = !mostrar;
+            picOjo.ImageLocation = AppAssets.Ruta(mostrar ? AppAssets.ArchivoOjoAbierto : AppAssets.ArchivoOjoCerrado);
         }
     }
 }

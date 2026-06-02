@@ -1,5 +1,3 @@
-using System.Drawing.Drawing2D;
-
 namespace Proyecto_Integrador.Vistas.Utilidades
 {
     public static class UiHelper
@@ -7,10 +5,8 @@ namespace Proyecto_Integrador.Vistas.Utilidades
         private static readonly Color AzulPrincipal = Color.FromArgb(30, 58, 95);
         private static readonly Color AzulSecundario = Color.FromArgb(59, 93, 122);
         private static readonly Color NaranjaPrincipal = Color.FromArgb(245, 158, 11);
-        private static readonly Color NaranjaOscuro = Color.FromArgb(217, 119, 6);
-        private static readonly Color GrisBoton = Color.FromArgb(229, 231, 235);
-        private static readonly Color GrisBotonHover = Color.FromArgb(209, 213, 219);
         private static readonly Font FuenteBoton = new("Segoe UI", 10F);
+        private const int AnchoMinimoAccion = 56;
 
         public static void MarcarBotonSidebarActivo(Button? activo, params Button[] todos)
         {
@@ -22,33 +18,7 @@ namespace Proyecto_Integrador.Vistas.Utilidades
             }
         }
 
-        public static void EstilizarBotonPrimario(Button boton, int radio = 10)
-        {
-            boton.FlatStyle = FlatStyle.Flat;
-            boton.FlatAppearance.BorderSize = 0;
-            boton.BackColor = NaranjaPrincipal;
-            boton.ForeColor = Color.White;
-            boton.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            boton.Cursor = Cursors.Hand;
-            boton.UseVisualStyleBackColor = false;
-            boton.FlatAppearance.MouseOverBackColor = NaranjaOscuro;
-            AplicarEsquinasRedondeadas(boton, radio);
-        }
-
-        public static void EstilizarBotonSecundario(Button boton, int radio = 10)
-        {
-            boton.FlatStyle = FlatStyle.Flat;
-            boton.FlatAppearance.BorderSize = 0;
-            boton.BackColor = GrisBoton;
-            boton.ForeColor = Color.FromArgb(17, 24, 39);
-            boton.Font = new Font("Segoe UI", 10F);
-            boton.Cursor = Cursors.Hand;
-            boton.UseVisualStyleBackColor = false;
-            boton.FlatAppearance.MouseOverBackColor = GrisBotonHover;
-            AplicarEsquinasRedondeadas(boton, radio);
-        }
-
-        public static void EstilizarBotonNavbar(Button boton, int radio = 8)
+        public static void EstilizarBotonNavbar(Button boton)
         {
             boton.FlatStyle = FlatStyle.Flat;
             boton.FlatAppearance.BorderSize = 0;
@@ -56,60 +26,110 @@ namespace Proyecto_Integrador.Vistas.Utilidades
             boton.ForeColor = Color.White;
             boton.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             boton.Cursor = Cursors.Hand;
-            boton.UseVisualStyleBackColor = false;
-            boton.FlatAppearance.MouseOverBackColor = Color.FromArgb(75, 110, 140);
-            AplicarEsquinasRedondeadas(boton, radio);
         }
 
-        public static void EstilizarPanelTarjeta(Panel panel, int radio = 12)
-        {
+        public static void EstilizarPanelTarjeta(Panel panel) =>
             panel.BackColor = Color.White;
-            AplicarEsquinasRedondeadas(panel, radio);
-        }
 
-        public static void EstilizarEtiquetaRol(Label label, int radio = 8)
+        public static void EstilizarEtiquetaRol(Label label)
         {
             label.BackColor = NaranjaPrincipal;
             label.ForeColor = Color.White;
             label.Padding = new Padding(12, 6, 12, 6);
             label.AutoSize = true;
-            AplicarEsquinasRedondeadas(label, radio);
         }
 
-        public static void AplicarEsquinasRedondeadas(Control control, int radio)
+        /// <summary>
+        /// Columnas de datos reparten el ancho disponible; las de iconos quedan fijas al final (sin cortarse).
+        /// </summary>
+        public static void ConfigurarColumnasGrid(DataGridView grid, params DataGridViewColumn[] columnasAccion)
         {
-            void Actualizar()
-            {
-                if (control.Width <= 0 || control.Height <= 0)
-                    return;
+            grid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None;
+            grid.ScrollBars = ScrollBars.Both;
 
-                using var path = CrearRutaRedondeada(control.ClientRectangle, radio);
-                control.Region = new Region(path);
+            foreach (var col in columnasAccion)
+            {
+                col.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+                var ancho = AnchoColumnaAccion(grid, col);
+                col.Width = ancho;
+                col.MinimumWidth = ancho;
             }
 
-            control.Resize += (_, _) => Actualizar();
-            control.HandleCreated += (_, _) => Actualizar();
-            if (control.IsHandleCreated)
-                Actualizar();
+            foreach (DataGridViewColumn col in grid.Columns)
+            {
+                if (!col.Visible || columnasAccion.Contains(col)) continue;
+                col.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+                col.MinimumWidth = 70;
+            }
+
+            void Ajustar(object? s, EventArgs e) => AjustarAnchosColumnas(grid, columnasAccion);
+
+            grid.Resize += Ajustar;
+            grid.RowsAdded += Ajustar;
+            grid.RowsRemoved += Ajustar;
+            Ajustar(null, EventArgs.Empty);
         }
 
-        private static GraphicsPath CrearRutaRedondeada(Rectangle bounds, int radio)
+        public static void AjustarAnchosColumnas(DataGridView grid, params DataGridViewColumn[] columnasAccion)
         {
-            int diametro = radio * 2;
-            var path = new GraphicsPath();
+            var acciones = columnasAccion.Where(c => c.Visible).ToList();
+            var datos = grid.Columns.Cast<DataGridViewColumn>()
+                .Where(c => c.Visible && !acciones.Contains(c))
+                .ToList();
 
-            if (bounds.Width < diametro || bounds.Height < diametro)
+            if (datos.Count == 0) return;
+
+            int anchoAcciones = 0;
+            foreach (var col in acciones)
             {
-                path.AddRectangle(bounds);
-                return path;
+                var ancho = AnchoColumnaAccion(grid, col);
+                col.Width = ancho;
+                anchoAcciones += ancho;
+            }
+            int anchoBarra = AnchoBarraVertical(grid);
+            int disponible = grid.ClientSize.Width - anchoAcciones - anchoBarra - 3;
+
+            if (disponible <= 0)
+            {
+                foreach (var col in datos)
+                    col.Width = col.MinimumWidth;
+                return;
             }
 
-            path.AddArc(bounds.Left, bounds.Top, diametro, diametro, 180, 90);
-            path.AddArc(bounds.Right - diametro, bounds.Top, diametro, diametro, 270, 90);
-            path.AddArc(bounds.Right - diametro, bounds.Bottom - diametro, diametro, diametro, 0, 90);
-            path.AddArc(bounds.Left, bounds.Bottom - diametro, diametro, diametro, 90, 90);
-            path.CloseFigure();
-            return path;
+            int minimoTotal = datos.Sum(c => c.MinimumWidth);
+            if (disponible <= minimoTotal)
+            {
+                foreach (var col in datos)
+                    col.Width = col.MinimumWidth;
+                return;
+            }
+
+            int extra = disponible - minimoTotal;
+            int extraPorColumna = extra / datos.Count;
+            int resto = extra % datos.Count;
+
+            for (int i = 0; i < datos.Count; i++)
+                datos[i].Width = datos[i].MinimumWidth + extraPorColumna + (i < resto ? 1 : 0);
+        }
+
+        private static int AnchoColumnaAccion(DataGridView grid, DataGridViewColumn col)
+        {
+            var fuente = grid.ColumnHeadersDefaultCellStyle.Font ?? grid.Font;
+            var texto = string.IsNullOrEmpty(col.HeaderText) ? "Acciones" : col.HeaderText;
+            var anchoTexto = TextRenderer.MeasureText(texto, fuente).Width + 24;
+            return Math.Max(AnchoMinimoAccion, anchoTexto);
+        }
+
+        private static int AnchoBarraVertical(DataGridView grid)
+        {
+            foreach (Control control in grid.Controls)
+            {
+                if (control is VScrollBar barra && barra.Visible)
+                    return barra.Width;
+            }
+
+            return 0;
         }
     }
 }
+

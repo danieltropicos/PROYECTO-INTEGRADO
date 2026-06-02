@@ -40,32 +40,24 @@ public class ClienteRepositorio
             .ToList();
     }
 
-    public List<Cliente> ObtenerTodosClientes(string? filtro = null)
+    public void Actualizar(Guid id, Cliente nuevoModelo)
     {
-        IEnumerable<Cliente> resultado = clientes;
+        var index = clientes.FindIndex(c => c.Id == id);
+        if (index < 0) return;
 
-        if (!string.IsNullOrWhiteSpace(filtro))
-        {
-            resultado = resultado.Where(c =>
-                c.NombreCompleto.Contains(filtro, StringComparison.OrdinalIgnoreCase) ||
-                c.Nombre.Contains(filtro, StringComparison.OrdinalIgnoreCase) ||
-                c.Apellido.Contains(filtro, StringComparison.OrdinalIgnoreCase) ||
-                c.Documento.Contains(filtro, StringComparison.OrdinalIgnoreCase));
-        }
+        var actual = clientes[index];
+        clientes[index] = new Cliente(
+            id,
+            nuevoModelo.Nombre,
+            nuevoModelo.Apellido,
+            nuevoModelo.CorreoElectronico,
+            nuevoModelo.Telefono,
+            nuevoModelo.Direccion,
+            nuevoModelo.Documento,
+            nuevoModelo.EsActivo,
+            actual.FechaRegistro);
 
-        return resultado
-            .OrderBy(c => c.NombreCompleto, StringComparer.OrdinalIgnoreCase)
-            .ToList();
-    }
-
-    public void ActualizarCliente(Cliente cliente)
-    {
-        var index = clientes.FindIndex(c => c.Id == cliente.Id);
-        if (index >= 0)
-        {
-            clientes[index].CambiarEstado(cliente.EsActivo);
-            GuardarClientes();
-        }
+        GuardarClientes();
     }
 
     private void GuardarClientes()

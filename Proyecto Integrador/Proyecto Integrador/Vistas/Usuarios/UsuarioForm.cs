@@ -1,5 +1,6 @@
 using Proyecto_Integrador.Controladores;
 using Proyecto_Integrador.Modelos.Usuarios;
+using Proyecto_Integrador.Vistas.Utilidades;
 
 namespace Proyecto_Integrador.Vistas.Usuarios
 {
@@ -7,13 +8,37 @@ namespace Proyecto_Integrador.Vistas.Usuarios
     {
         private readonly RolControlador _rolControlador = new();
 
-        public Usuario? UsuarioCreado { get; private set; }
+        public bool EsEditar { get; private set; }
+        public Usuario? Entidad { get; private set; }
+        public string? ContrasenaPlana { get; private set; }
 
         public UsuarioForm()
         {
             InitializeComponent();
+            Text = "Nuevo usuario";
+            btnGuardar.Text = "Guardar";
             comboBoxRol.DisplayMember = nameof(Rol.Nombre);
             comboBoxRol.DataSource = _rolControlador.ObtenerRoles();
+            picOjo.ImageLocation = AppAssets.Ruta(AppAssets.ArchivoOjoCerrado);
+        }
+
+        public UsuarioForm(Usuario usuario) : this()
+        {
+            EsEditar = true;
+            Text = "Editar usuario";
+            btnGuardar.Text = "Actualizar";
+
+            txtNombre.Text = usuario.Nombre;
+            txtApellido.Text = usuario.Apellido;
+            txtCorreo.Text = usuario.CorreoElectronico;
+            txtTelefono.Text = usuario.Telefono;
+            txtDireccion.Text = usuario.Direccion;
+            txtUsuario.Text = usuario.NombreUsuario;
+
+            var rol = _rolControlador.ObtenerRoles()
+                .FirstOrDefault(r => r.Nombre == usuario.Rol.Nombre);
+            if (rol is not null)
+                comboBoxRol.SelectedItem = rol;
         }
 
         private void btnGuardar_Click(object sender, EventArgs e)
@@ -21,7 +46,6 @@ namespace Proyecto_Integrador.Vistas.Usuarios
             if (string.IsNullOrWhiteSpace(txtNombre.Text) ||
                 string.IsNullOrWhiteSpace(txtApellido.Text) ||
                 string.IsNullOrWhiteSpace(txtUsuario.Text) ||
-                string.IsNullOrWhiteSpace(txtContrasena.Text) ||
                 comboBoxRol.SelectedItem is not Rol rolSeleccionado)
             {
                 MessageBox.Show("Complete los campos obligatorios.", "Datos incompletos",
@@ -29,14 +53,26 @@ namespace Proyecto_Integrador.Vistas.Usuarios
                 return;
             }
 
-            UsuarioCreado = new Usuario(
+            if (!EsEditar && string.IsNullOrWhiteSpace(txtContrasena.Text))
+            {
+                MessageBox.Show("Ingrese la contraseña.", "Datos incompletos",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            var contrasena = txtContrasena.Text;
+            ContrasenaPlana = string.IsNullOrWhiteSpace(contrasena) ? null : contrasena;
+
+            // En edición sin contraseña nueva, el repositorio conserva la anterior.
+            var contrasenaParaModelo = ContrasenaPlana ?? "no-cambiar";
+            Entidad = new Usuario(
                 txtNombre.Text.Trim(),
                 txtApellido.Text.Trim(),
                 txtCorreo.Text.Trim(),
                 txtTelefono.Text.Trim(),
                 txtDireccion.Text.Trim(),
                 txtUsuario.Text.Trim(),
-                txtContrasena.Text,
+                contrasenaParaModelo,
                 rolSeleccionado);
 
             DialogResult = DialogResult.OK;
@@ -54,12 +90,12 @@ namespace Proyecto_Integrador.Vistas.Usuarios
             if (txtContrasena.UseSystemPasswordChar)
             {
                 txtContrasena.UseSystemPasswordChar = false;
-                picOjo.ImageLocation = "Recursos\\Imagenes\\ojoAbierto.jpg";
+                picOjo.ImageLocation = AppAssets.Ruta(AppAssets.ArchivoOjoAbierto);
             }
             else
             {
                 txtContrasena.UseSystemPasswordChar = true;
-                picOjo.ImageLocation = "Recursos\\Imagenes\\ojoCerrado.jpg";
+                picOjo.ImageLocation = AppAssets.Ruta(AppAssets.ArchivoOjoCerrado);
             }
         }
     }

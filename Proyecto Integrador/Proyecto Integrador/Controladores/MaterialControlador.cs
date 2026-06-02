@@ -14,8 +14,9 @@ public class MaterialControlador
     public List<Material> ObtenerMateriales(string? filtro = null) =>
         materialRespositorio.ObtenerMateriales(filtro);
 
-    public void AgregarMaterial(Material material)
-    {
+    public void AgregarMaterial(Material material) =>
         materialRespositorio.AgregarMaterial(material);
-    }
+
+    public void ActualizarMaterial(Guid id, Material material) =>
+        materialRespositorio.Actualizar(id, material);
 }

@@ -25,9 +25,6 @@
     <Compile Update="Vistas\Facturas\FacturaControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="Vistas\Usuarios\GestionUsuarios.cs">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Update="Vistas\Layout\HomeLayout.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -36,12 +33,6 @@
     </Compile>
     <Compile Update="Vistas\Usuarios\PerfilUsuarioControl.cs">
       <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Update="Vistas\Usuarios\RegistrarAdministradores.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Update="Vistas\Usuarios\RegistrarUsuarios.cs">
-      <SubType>Form</SubType>
     </Compile>
     <Compile Update="Vistas\Usuarios\RegistrarUsuariosControl.cs">
       <SubType>UserControl</SubType>

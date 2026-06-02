@@ -38,6 +38,15 @@ public class MaterialRepositorio
         GuardarMateriales();
     }
 
+    public void Actualizar(Guid id, Material nuevoModelo)
+    {
+        var index = materiales.FindIndex(m => m.Id == id);
+        if (index < 0) return;
+
+        materiales[index] = new Material(id, nuevoModelo.Nombre, nuevoModelo.ValorMetroCubico);
+        GuardarMateriales();
+    }
+
     private void GuardarMateriales()
     {
         Directory.CreateDirectory(CarpetaData);

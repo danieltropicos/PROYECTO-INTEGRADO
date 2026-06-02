@@ -21,8 +21,9 @@ public class Usuario : Persona
         string nombreUsuario,
         string contrasenaEncriptada,
         Rol rol,
+        bool esActivo,
         DateTime fechaRegistro)
-        : base(id, nombre, apellido, correoElectronico, telefono, direccion, true, fechaRegistro)
+        : base(id, nombre, apellido, correoElectronico, telefono, direccion, esActivo, fechaRegistro)
     {
         NombreUsuario = nombreUsuario;
         ContrasenaEncriptada = contrasenaEncriptada;
