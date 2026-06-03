@@ -289,7 +289,7 @@ public partial class Terreno3DControl : UserControl
 
         if (_Z != null)
         {
-            DibujarBase();
+            // DibujarBase(); Desactivada para poder visualizar hundiduras
             DibujarSuperficie();
             DibujarWireframe();
             DibujarEjes();

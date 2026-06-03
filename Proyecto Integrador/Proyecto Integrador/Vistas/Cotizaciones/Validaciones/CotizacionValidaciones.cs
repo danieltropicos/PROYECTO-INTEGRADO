@@ -42,10 +42,9 @@ internal static class CotizacionValidaciones
     }
 
     public static string ValidarAntesDeCalcular(
-        int indiceCliente,
-        int indiceMaterial,
-        IReadOnlyList<PuntoTerreno> terrenoOriginal,
-        IReadOnlyList<PuntoTerreno> terrenoFinal)
+    int indiceCliente,
+    int indiceMaterial,
+    IReadOnlyList<PuntoTerreno> terrenoOriginal)
     {
         if (indiceCliente < 0)
             return "Debe seleccionar un cliente.";
@@ -56,10 +55,6 @@ internal static class CotizacionValidaciones
         var errorOriginal = ValidarTerreno(terrenoOriginal, "terreno original");
         if (!string.IsNullOrEmpty(errorOriginal))
             return errorOriginal;
-
-        var errorFinal = ValidarTerreno(terrenoFinal, "terreno final");
-        if (!string.IsNullOrEmpty(errorFinal))
-            return errorFinal;
 
         return string.Empty;
     }

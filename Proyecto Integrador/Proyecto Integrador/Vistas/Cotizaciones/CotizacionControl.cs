@@ -1,3 +1,4 @@
+using Proyecto_Integrador.Calculo_Volumen;
 using Proyecto_Integrador.Controladores;
 using Proyecto_Integrador.Modelos.Cotizaciones;
 using Proyecto_Integrador.Modelos.Usuarios;
@@ -22,6 +23,8 @@ public partial class CotizacionControl : UserControl
     private double _ultimoVolumen;
 
     public event EventHandler? CotizacionGuardada;
+    CalculoVolumenCodigo _calculo = new CalculoVolumenCodigo();
+
 
     public CotizacionControl()
     {
@@ -67,8 +70,7 @@ public partial class CotizacionControl : UserControl
         var mensaje = CotizacionValidaciones.ValidarAntesDeCalcular(
             comboBoxClientes.SelectedIndex,
             comboBoxMateriales.SelectedIndex,
-            _terrenoOriginal,
-            _terrenoFinal);
+            _terrenoOriginal); 
 
         if (!string.IsNullOrEmpty(mensaje))
         {
@@ -77,16 +79,13 @@ public partial class CotizacionControl : UserControl
                 "Cotización incompleta",
                 MessageBoxButtons.OK,
                 MessageBoxIcon.Warning);
-
             return;
         }
 
         try
         {
             List<double[]> puntosInicio = ObtenerPuntosTerreno(dataGridView1);
-            List<double[]> puntosFinal = ObtenerPuntosTerreno(dataGridView2);
-
-            double volumen = CalcularVolumenExcavacion(puntosInicio, puntosFinal);
+            double volumen = _calculo.CalcularVolumenExcavacion(puntosInicio);
             _ultimoVolumen = volumen;
 
             MessageBox.Show(
@@ -94,6 +93,7 @@ public partial class CotizacionControl : UserControl
                 "Resultado",
                 MessageBoxButtons.OK,
                 MessageBoxIcon.Information);
+
             label5.Text = $"{volumen.ToString("F4", CultureInfo.CurrentCulture)} m³";
 
             var materialSeleccionado = comboBoxMateriales.SelectedItem as Material;
@@ -257,80 +257,42 @@ public partial class CotizacionControl : UserControl
         return puntos;
     }
 
-    private double CalcularVolumenExcavacion(
-        List<double[]> puntosInicio,
-        List<double[]> puntosFinal)
-    {
-        var xs = puntosInicio.Select(p => p[0]).Distinct().OrderBy(v => v).ToList();
-        var ys = puntosInicio.Select(p => p[1]).Distinct().OrderBy(v => v).ToList();
-
-        if (xs.Count < 2 || ys.Count < 2)
-            throw new InvalidOperationException(
-                "Se necesitan al menos 2 valores distintos de X e Y para integrar.");
-
-        var zInicio = puntosInicio.ToDictionary(
-            p => $"{p[0].ToString(CultureInfo.InvariantCulture)}_{p[1].ToString(CultureInfo.InvariantCulture)}",
-            p => p[2]);
-
-        var zFinal = puntosFinal.ToDictionary(
-            p => $"{p[0].ToString(CultureInfo.InvariantCulture)}_{p[1].ToString(CultureInfo.InvariantCulture)}",
-            p => p[2]);
-
-        double ObtenerDeltaZ(double x, double y)
-        {
-            string clave = $"{x.ToString(CultureInfo.InvariantCulture)}_{y.ToString(CultureInfo.InvariantCulture)}";
-
-            if (!zInicio.TryGetValue(clave, out double zi))
-                throw new KeyNotFoundException(
-                    $"No se encontró punto de inicio para ({x}, {y})");
-            if (!zFinal.TryGetValue(clave, out double zf))
-                throw new KeyNotFoundException(
-                    $"No se encontró punto final para ({x}, {y})");
-
-            double delta = zi - zf;
-            return delta < 0 ? 0 : delta;
-        }
-
-        double volumenTotal = 0.0;
-
-        for (int i = 0; i < xs.Count - 1; i++)
-        {
-            for (int j = 0; j < ys.Count - 1; j++)
-            {
-                double x0 = xs[i], x1 = xs[i + 1];
-                double y0 = ys[j], y1 = ys[j + 1];
-
-                double dx = x1 - x0;
-                double dy = y1 - y0;
-
-                double z00 = ObtenerDeltaZ(x0, y0);
-                double z10 = ObtenerDeltaZ(x1, y0);
-                double z01 = ObtenerDeltaZ(x0, y1);
-                double z11 = ObtenerDeltaZ(x1, y1);
-
-                double zPromedio = (z00 + z10 + z01 + z11) / 4.0;
-                double volumenCelda = zPromedio * dx * dy;
-
-                volumenTotal += volumenCelda;
-            }
-        }
-
-        return volumenTotal;
-    }
 
     private void CargarDatosPrueba()
     {
         _terrenoOriginal.Clear();
         _terrenoFinal.Clear();
 
-        _terrenoOriginal.AddRange(new[]
+        _terrenoOriginal.Clear();
+
+        for (int y = 0; y <= 200; y += 10)
         {
-            new PuntoTerreno(-40, -40,  3), new PuntoTerreno(-20, -40,  5), new PuntoTerreno(0, -40,  4), new PuntoTerreno(20, -40,  5), new PuntoTerreno(40, -40,  3),
-            new PuntoTerreno(-40, -20,  6), new PuntoTerreno(-20, -20,  9), new PuntoTerreno(0, -20,  8), new PuntoTerreno(20, -20, 10), new PuntoTerreno(40, -20,  5),
-            new PuntoTerreno(-40,   0,  7), new PuntoTerreno(-20,   0, 12), new PuntoTerreno(0,   0, 14), new PuntoTerreno(20,   0, 11), new PuntoTerreno(40,   0,  6),
-            new PuntoTerreno(-40,  20,  5), new PuntoTerreno(-20,  20,  8), new PuntoTerreno(0,  20,  9), new PuntoTerreno(20,  20,  7), new PuntoTerreno(40,  20,  4),
-            new PuntoTerreno(-40,  40,  3), new PuntoTerreno(-20,  40,  4), new PuntoTerreno(0,  40,  5), new PuntoTerreno(20,  40,  4), new PuntoTerreno(40,  40,  3),
-        });
+            for (int x = 0; x <= 200; x += 10)
+            {
+                double cx = 100;
+                double cy = 100;
+
+                double d = Math.Sqrt(
+                    Math.Pow(x - cx, 2) +
+                    Math.Pow(y - cy, 2));
+
+                // Montañas suaves
+                double borde = 20 - (d * 0.05);
+
+                // Cráter gigante
+                double crater = -80 * Math.Exp(-(d * d) / 1500);
+
+                // Ondulaciones
+                double ondulacion =
+                    4 * Math.Sin(x * 0.08) +
+                    3 * Math.Cos(y * 0.06);
+
+                double z = borde + crater + ondulacion;
+
+                _terrenoOriginal.Add(
+                    new PuntoTerreno(x, y, Math.Round(z, 2)));
+            }
+        }
 
         _terrenoFinal.Clear();
 
@@ -350,6 +312,7 @@ public partial class CotizacionControl : UserControl
                     new PuntoTerreno(x, y, z));
             }
         }
+        _terrenoFinal.Clear();
 
         RefrescarGrid(_terrenoOriginal, dataGridView1);
         RefrescarGrid(_terrenoFinal, dataGridView2);
