@@ -16,12 +16,12 @@ namespace Proyecto_Integrador.Calculo_Volumen
                 throw new InvalidOperationException(
                     "Se necesitan al menos 2 valores distintos de X e Y para integrar.");
 
-            // ─── 2. Diccionario solo del terreno inicial ──────────────────────────────
+            // ─── 2. Diccionario del terreno ───────────────────────────────────────────
             var zInicio = new Dictionary<(double, double), double>();
             foreach (var p in puntosInicio)
                 zInicio[(p[0], p[1])] = p[2];
 
-            // ─── 3. Integración doble — Terreno final es Z=0 siempre ─────────────────
+            // ─── 3. Integración doble — nivel de referencia Z=0 ──────────────────────
             //
             //   V = ∫∫ Z(x,y) dA  ≈  Σᵢ Σⱼ [ (Z₀₀ + Z₁₀ + Z₀₁ + Z₁₁) / 4 ] · Δx · Δy
 

@@ -7,8 +7,8 @@ namespace Proyecto_Integrador.Vistas.Utilidades
         public const string ArchivoLogoCentro = "logo-center.png";
         public const string ArchivoIconoCerrarSesion = "icono-cerrar-sesion.png";
         public const string ArchivoIconoEditar = "icono-editar.png";
-        public const string ArchivoIconoActivar = "icono-activar.png";
-        public const string ArchivoIconoInactivar = "icono-inactivar.png";
+        public const string ArchivoIconoActivo = "icono-activo.png";
+        public const string ArchivoIconoInactivo = "icono-inactivo.png";
         public const string ArchivoIconoGenerarFactura = "icono-generar-factura.png";
         public const string ArchivoIconoImprimir = "icono-imprimir.png";
         public const string ArchivoIconoCambiarEstado = "icono-cambiar-estado.png";

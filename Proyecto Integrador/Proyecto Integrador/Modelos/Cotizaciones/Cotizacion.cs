@@ -8,8 +8,10 @@ public class Cotizacion
     public Guid Id { get; private set; } = Guid.NewGuid();
     public Cliente Cliente { get; private set; }
     public Usuario UsuarioCreador { get; private set; }
-    public List<PuntoTerreno> TerrenoOriginal { get; private set; } = new();
-    public List<PuntoTerreno> TerrenoFinal { get; private set; } = new();
+
+    [JsonPropertyName("TerrenoOriginal")]
+    public List<PuntoTerreno> Terreno { get; private set; } = new();
+
     public Material Material { get; private set; }
     public decimal VolumenCalculado { get; private set; }
     public string Estado { get; private set; }
@@ -33,8 +35,7 @@ public class Cotizacion
         Guid id,
         Cliente cliente,
         Usuario usuarioCreador,
-        List<PuntoTerreno> terrenoOriginal,
-        List<PuntoTerreno> terrenoFinal,
+        List<PuntoTerreno> terreno,
         Material material,
         decimal volumenCalculado,
         string estado,
@@ -43,8 +44,7 @@ public class Cotizacion
         Id = id;
         Cliente = cliente;
         UsuarioCreador = usuarioCreador;
-        TerrenoOriginal = terrenoOriginal ?? new();
-        TerrenoFinal = terrenoFinal ?? new();
+        Terreno = terreno ?? new();
         Material = material;
         VolumenCalculado = volumenCalculado;
         Estado = estado;
@@ -61,14 +61,9 @@ public class Cotizacion
         Estado = "Inactiva";
     }
 
-    public void AgregarPuntoOriginal(PuntoTerreno punto)
+    public void AgregarPunto(PuntoTerreno punto)
     {
-        TerrenoOriginal.Add(punto);
-    }
-
-    public void AgregarPuntoFinal(PuntoTerreno punto)
-    {
-        TerrenoFinal.Add(punto);
+        Terreno.Add(punto);
     }
 
     public void EstablecerVolumen(decimal volumen)
@@ -76,9 +71,8 @@ public class Cotizacion
         VolumenCalculado = volumen;
     }
 
-    public void EstablecerTerrenos(List<PuntoTerreno> original, List<PuntoTerreno> final_)
+    public void EstablecerTerreno(List<PuntoTerreno> terreno)
     {
-        TerrenoOriginal = new List<PuntoTerreno>(original);
-        TerrenoFinal = new List<PuntoTerreno>(final_);
+        Terreno = new List<PuntoTerreno>(terreno);
     }
 }

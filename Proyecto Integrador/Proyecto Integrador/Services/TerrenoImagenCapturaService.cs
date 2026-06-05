@@ -5,9 +5,7 @@ namespace Proyecto_Integrador.Services;
 
 public static class TerrenoImagenCapturaService
 {
-    public static byte[]? Capturar(
-        IReadOnlyList<PuntoTerreno> puntos,
-        Terreno3DControl.TipoTerreno tipo)
+    public static byte[]? Capturar(IReadOnlyList<PuntoTerreno> puntos)
     {
         if (puntos.Count < 3)
             return null;
@@ -31,7 +29,7 @@ public static class TerrenoImagenCapturaService
                     Location = new Point(-5000, -5000)
                 };
 
-                control = new Terreno3DControl(tipo)
+                control = new Terreno3DControl
                 {
                     Size = new Size(640, 430),
                     Location = new Point(10, 10)

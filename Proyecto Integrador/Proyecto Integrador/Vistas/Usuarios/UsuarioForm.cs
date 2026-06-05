@@ -71,7 +71,7 @@ namespace Proyecto_Integrador.Vistas.Usuarios
                 txtCorreo.Text.Trim(),
                 txtTelefono.Text.Trim(),
                 txtDireccion.Text.Trim(),
-                txtUsuario.Text.Trim(),
+                txtUsuario.Text.Trim(),     
                 contrasenaParaModelo,
                 rolSeleccionado);
 

@@ -1,6 +1,5 @@
 ﻿using Proyecto_Integrador.Modelos.Facturas;
 using Proyecto_Integrador.Services;
-using Proyecto_Integrador.Vistas.Cotizaciones;
 using System.Globalization;
 using System.Text.Json;
 
@@ -64,24 +63,18 @@ public class FacturasRepositorio
 
     public string ImprimirFactura(
         Factura factura,
-        byte[]? imgTerrenoOriginal = null,
-        byte[]? imgTerrenoFinal = null,
+        byte[]? imgTerreno = null,
         string? rutaLogo = null)
     {
         var cotizacion = factura.Cotizacion;
 
-        imgTerrenoOriginal ??= cotizacion?.TerrenoOriginal is { Count: >= 3 } original
-            ? TerrenoImagenCapturaService.Capturar(original, Terreno3DControl.TipoTerreno.Original)
-            : null;
-
-        imgTerrenoFinal ??= cotizacion?.TerrenoFinal is { Count: >= 3 } final
-            ? TerrenoImagenCapturaService.Capturar(final, Terreno3DControl.TipoTerreno.Final)
+        imgTerreno ??= cotizacion?.Terreno is { Count: >= 3 } terreno
+            ? TerrenoImagenCapturaService.Capturar(terreno)
             : null;
 
         return FacturaPdfGeneradorService.Generar(
             factura,
-            imgTerrenoOriginal,
-            imgTerrenoFinal,
+            imgTerreno,
             rutaLogo);
     }
 }

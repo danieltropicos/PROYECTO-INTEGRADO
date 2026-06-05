@@ -31,14 +31,8 @@ namespace Proyecto_Integrador.Vistas.Cotizaciones
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
             tableLayoutPanel1 = new TableLayoutPanel();
             panelGrafica = new Panel();
-            tableLayoutPanel5 = new TableLayoutPanel();
-            panelGraficaOriginal = new Panel();
-            panelGraficaFinal = new Panel();
             tableLayoutPanel2 = new TableLayoutPanel();
             groupBox1 = new GroupBox();
             tableLayoutPanel3 = new TableLayoutPanel();
@@ -49,7 +43,7 @@ namespace Proyecto_Integrador.Vistas.Cotizaciones
             label2 = new Label();
             comboBoxMateriales = new ComboBox();
             groupBox2 = new GroupBox();
-            tableLayoutTerrenoOriginal = new TableLayoutPanel();
+            tableLayoutTerreno = new TableLayoutPanel();
             dataGridView1 = new DataGridView();
             colX1 = new DataGridViewTextBoxColumn();
             colY1 = new DataGridViewTextBoxColumn();
@@ -63,21 +57,6 @@ namespace Proyecto_Integrador.Vistas.Cotizaciones
             txtOrigZ = new TextBox();
             btnAgregarOriginal = new Button();
             btnQuitarOriginal = new Button();
-            groupBox3 = new GroupBox();
-            tableLayoutTerrenoFinal = new TableLayoutPanel();
-            dataGridView2 = new DataGridView();
-            colX2 = new DataGridViewTextBoxColumn();
-            colY2 = new DataGridViewTextBoxColumn();
-            colZ2 = new DataGridViewTextBoxColumn();
-            flowEntradaFinal = new FlowLayoutPanel();
-            lblFinalX = new Label();
-            txtFinalX = new TextBox();
-            lblFinalY = new Label();
-            txtFinalY = new TextBox();
-            lblFinalZ = new Label();
-            txtFinalZ = new TextBox();
-            btnAgregarFinal = new Button();
-            btnQuitarFinal = new Button();
             groupBox4 = new GroupBox();
             tableLayoutPanel4 = new TableLayoutPanel();
             label4 = new Label();
@@ -87,19 +66,13 @@ namespace Proyecto_Integrador.Vistas.Cotizaciones
             button1 = new Button();
             btnGuardarCotizacion = new Button();
             tableLayoutPanel1.SuspendLayout();
-            panelGrafica.SuspendLayout();
-            tableLayoutPanel5.SuspendLayout();
             tableLayoutPanel2.SuspendLayout();
             groupBox1.SuspendLayout();
             tableLayoutPanel3.SuspendLayout();
             groupBox2.SuspendLayout();
-            tableLayoutTerrenoOriginal.SuspendLayout();
+            tableLayoutTerreno.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             flowEntradaOriginal.SuspendLayout();
-            groupBox3.SuspendLayout();
-            tableLayoutTerrenoFinal.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
-            flowEntradaFinal.SuspendLayout();
             groupBox4.SuspendLayout();
             tableLayoutPanel4.SuspendLayout();
             SuspendLayout();
@@ -124,7 +97,6 @@ namespace Proyecto_Integrador.Vistas.Cotizaciones
             // panelGrafica
             // 
             panelGrafica.BackColor = Color.White;
-            panelGrafica.Controls.Add(tableLayoutPanel5);
             panelGrafica.Dock = DockStyle.Fill;
             panelGrafica.Location = new Point(491, 4);
             panelGrafica.Margin = new Padding(3, 4, 3, 4);
@@ -132,41 +104,6 @@ namespace Proyecto_Integrador.Vistas.Cotizaciones
             panelGrafica.Padding = new Padding(11, 13, 11, 13);
             panelGrafica.Size = new Size(728, 780);
             panelGrafica.TabIndex = 1;
-            // 
-            // tableLayoutPanel5
-            // 
-            tableLayoutPanel5.ColumnCount = 1;
-            tableLayoutPanel5.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
-            tableLayoutPanel5.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 23F));
-            tableLayoutPanel5.Controls.Add(panelGraficaOriginal, 0, 0);
-            tableLayoutPanel5.Controls.Add(panelGraficaFinal, 0, 1);
-            tableLayoutPanel5.Dock = DockStyle.Fill;
-            tableLayoutPanel5.Location = new Point(11, 13);
-            tableLayoutPanel5.Margin = new Padding(3, 4, 3, 4);
-            tableLayoutPanel5.Name = "tableLayoutPanel5";
-            tableLayoutPanel5.RowCount = 2;
-            tableLayoutPanel5.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel5.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel5.Size = new Size(706, 754);
-            tableLayoutPanel5.TabIndex = 0;
-            // 
-            // panelGraficaOriginal
-            // 
-            panelGraficaOriginal.Dock = DockStyle.Fill;
-            panelGraficaOriginal.Location = new Point(3, 4);
-            panelGraficaOriginal.Margin = new Padding(3, 4, 3, 4);
-            panelGraficaOriginal.Name = "panelGraficaOriginal";
-            panelGraficaOriginal.Size = new Size(700, 369);
-            panelGraficaOriginal.TabIndex = 0;
-            // 
-            // panelGraficaFinal
-            // 
-            panelGraficaFinal.Dock = DockStyle.Fill;
-            panelGraficaFinal.Location = new Point(3, 381);
-            panelGraficaFinal.Margin = new Padding(3, 4, 3, 4);
-            panelGraficaFinal.Name = "panelGraficaFinal";
-            panelGraficaFinal.Size = new Size(700, 369);
-            panelGraficaFinal.TabIndex = 1;
             // 
             // tableLayoutPanel2
             // 
@@ -176,16 +113,14 @@ namespace Proyecto_Integrador.Vistas.Cotizaciones
             tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 60F));
             tableLayoutPanel2.Controls.Add(groupBox1, 0, 0);
             tableLayoutPanel2.Controls.Add(groupBox2, 0, 1);
-            tableLayoutPanel2.Controls.Add(groupBox3, 0, 2);
-            tableLayoutPanel2.Controls.Add(groupBox4, 0, 3);
+            tableLayoutPanel2.Controls.Add(groupBox4, 0, 2);
             tableLayoutPanel2.Dock = DockStyle.Fill;
             tableLayoutPanel2.Location = new Point(3, 4);
             tableLayoutPanel2.Margin = new Padding(3, 4, 3, 4);
             tableLayoutPanel2.Name = "tableLayoutPanel2";
-            tableLayoutPanel2.RowCount = 4;
+            tableLayoutPanel2.RowCount = 3;
             tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Absolute, 211F));
-            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 30F));
-            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 30F));
+            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 60F));
             tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 40F));
             tableLayoutPanel2.Size = new Size(482, 780);
             tableLayoutPanel2.TabIndex = 2;
@@ -307,7 +242,7 @@ namespace Proyecto_Integrador.Vistas.Cotizaciones
             // 
             groupBox2.BackColor = Color.White;
             tableLayoutPanel2.SetColumnSpan(groupBox2, 2);
-            groupBox2.Controls.Add(tableLayoutTerrenoOriginal);
+            groupBox2.Controls.Add(tableLayoutTerreno);
             groupBox2.Dock = DockStyle.Fill;
             groupBox2.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             groupBox2.ForeColor = Color.FromArgb(30, 58, 95);
@@ -315,26 +250,26 @@ namespace Proyecto_Integrador.Vistas.Cotizaciones
             groupBox2.Margin = new Padding(3, 4, 3, 4);
             groupBox2.Name = "groupBox2";
             groupBox2.Padding = new Padding(3, 4, 3, 4);
-            groupBox2.Size = new Size(476, 162);
+            groupBox2.Size = new Size(476, 334);
             groupBox2.TabIndex = 1;
             groupBox2.TabStop = false;
-            groupBox2.Text = "Terreno Original";
+            groupBox2.Text = "Coordenadas del Terreno";
             // 
-            // tableLayoutTerrenoOriginal
+            // tableLayoutTerreno
             // 
-            tableLayoutTerrenoOriginal.ColumnCount = 1;
-            tableLayoutTerrenoOriginal.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
-            tableLayoutTerrenoOriginal.Controls.Add(dataGridView1, 0, 0);
-            tableLayoutTerrenoOriginal.Controls.Add(flowEntradaOriginal, 0, 1);
-            tableLayoutTerrenoOriginal.Dock = DockStyle.Fill;
-            tableLayoutTerrenoOriginal.Location = new Point(3, 24);
-            tableLayoutTerrenoOriginal.Margin = new Padding(3, 4, 3, 4);
-            tableLayoutTerrenoOriginal.Name = "tableLayoutTerrenoOriginal";
-            tableLayoutTerrenoOriginal.RowCount = 2;
-            tableLayoutTerrenoOriginal.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutTerrenoOriginal.RowStyles.Add(new RowStyle(SizeType.Absolute, 59F));
-            tableLayoutTerrenoOriginal.Size = new Size(470, 134);
-            tableLayoutTerrenoOriginal.TabIndex = 0;
+            tableLayoutTerreno.ColumnCount = 1;
+            tableLayoutTerreno.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            tableLayoutTerreno.Controls.Add(dataGridView1, 0, 0);
+            tableLayoutTerreno.Controls.Add(flowEntradaOriginal, 0, 1);
+            tableLayoutTerreno.Dock = DockStyle.Fill;
+            tableLayoutTerreno.Location = new Point(3, 24);
+            tableLayoutTerreno.Margin = new Padding(3, 4, 3, 4);
+            tableLayoutTerreno.Name = "tableLayoutTerreno";
+            tableLayoutTerreno.RowCount = 2;
+            tableLayoutTerreno.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            tableLayoutTerreno.RowStyles.Add(new RowStyle(SizeType.Absolute, 59F));
+            tableLayoutTerreno.Size = new Size(470, 306);
+            tableLayoutTerreno.TabIndex = 0;
             // 
             // dataGridView1
             // 
@@ -373,7 +308,7 @@ namespace Proyecto_Integrador.Vistas.Cotizaciones
             dataGridView1.ReadOnly = true;
             dataGridView1.RowHeadersVisible = false;
             dataGridView1.RowHeadersWidth = 51;
-            dataGridView1.Size = new Size(464, 67);
+            dataGridView1.Size = new Size(464, 239);
             dataGridView1.TabIndex = 0;
             // 
             // colX1
@@ -408,7 +343,7 @@ namespace Proyecto_Integrador.Vistas.Cotizaciones
             flowEntradaOriginal.Controls.Add(btnAgregarOriginal);
             flowEntradaOriginal.Controls.Add(btnQuitarOriginal);
             flowEntradaOriginal.Dock = DockStyle.Fill;
-            flowEntradaOriginal.Location = new Point(3, 79);
+            flowEntradaOriginal.Location = new Point(3, 251);
             flowEntradaOriginal.Margin = new Padding(3, 4, 3, 4);
             flowEntradaOriginal.Name = "flowEntradaOriginal";
             flowEntradaOriginal.Padding = new Padding(0, 5, 0, 0);
@@ -514,217 +449,6 @@ namespace Proyecto_Integrador.Vistas.Cotizaciones
             btnQuitarOriginal.UseVisualStyleBackColor = false;
             btnQuitarOriginal.Click += btnQuitarOriginal_Click;
             // 
-            // groupBox3
-            // 
-            groupBox3.BackColor = Color.White;
-            tableLayoutPanel2.SetColumnSpan(groupBox3, 2);
-            groupBox3.Controls.Add(tableLayoutTerrenoFinal);
-            groupBox3.Dock = DockStyle.Fill;
-            groupBox3.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            groupBox3.ForeColor = Color.FromArgb(30, 58, 95);
-            groupBox3.Location = new Point(3, 385);
-            groupBox3.Margin = new Padding(3, 4, 3, 4);
-            groupBox3.Name = "groupBox3";
-            groupBox3.Padding = new Padding(3, 4, 3, 4);
-            groupBox3.Size = new Size(476, 162);
-            groupBox3.TabIndex = 2;
-            groupBox3.TabStop = false;
-            groupBox3.Text = "Terreno Final";
-            // 
-            // tableLayoutTerrenoFinal
-            // 
-            tableLayoutTerrenoFinal.ColumnCount = 1;
-            tableLayoutTerrenoFinal.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
-            tableLayoutTerrenoFinal.Controls.Add(dataGridView2, 0, 0);
-            tableLayoutTerrenoFinal.Controls.Add(flowEntradaFinal, 0, 1);
-            tableLayoutTerrenoFinal.Dock = DockStyle.Fill;
-            tableLayoutTerrenoFinal.Location = new Point(3, 24);
-            tableLayoutTerrenoFinal.Margin = new Padding(3, 4, 3, 4);
-            tableLayoutTerrenoFinal.Name = "tableLayoutTerrenoFinal";
-            tableLayoutTerrenoFinal.RowCount = 2;
-            tableLayoutTerrenoFinal.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutTerrenoFinal.RowStyles.Add(new RowStyle(SizeType.Absolute, 59F));
-            tableLayoutTerrenoFinal.Size = new Size(470, 134);
-            tableLayoutTerrenoFinal.TabIndex = 0;
-            // 
-            // dataGridView2
-            // 
-            dataGridView2.AllowUserToAddRows = false;
-            dataGridView2.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle4.BackColor = Color.FromArgb(243, 244, 246);
-            dataGridView2.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
-            dataGridView2.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridView2.BackgroundColor = Color.White;
-            dataGridView2.BorderStyle = BorderStyle.None;
-            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = Color.FromArgb(30, 58, 95);
-            dataGridViewCellStyle5.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            dataGridViewCellStyle5.ForeColor = Color.White;
-            dataGridViewCellStyle5.SelectionBackColor = Color.FromArgb(30, 58, 95);
-            dataGridViewCellStyle5.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.True;
-            dataGridView2.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
-            dataGridView2.ColumnHeadersHeight = 36;
-            dataGridView2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dataGridView2.Columns.AddRange(new DataGridViewColumn[] { colX2, colY2, colZ2 });
-            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = Color.White;
-            dataGridViewCellStyle6.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            dataGridViewCellStyle6.ForeColor = Color.FromArgb(30, 58, 95);
-            dataGridViewCellStyle6.SelectionBackColor = Color.FromArgb(59, 93, 122);
-            dataGridViewCellStyle6.SelectionForeColor = Color.White;
-            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.False;
-            dataGridView2.DefaultCellStyle = dataGridViewCellStyle6;
-            dataGridView2.Dock = DockStyle.Fill;
-            dataGridView2.EnableHeadersVisualStyles = false;
-            dataGridView2.GridColor = Color.FromArgb(229, 231, 235);
-            dataGridView2.Location = new Point(3, 4);
-            dataGridView2.Margin = new Padding(3, 4, 3, 4);
-            dataGridView2.Name = "dataGridView2";
-            dataGridView2.ReadOnly = true;
-            dataGridView2.RowHeadersVisible = false;
-            dataGridView2.RowHeadersWidth = 51;
-            dataGridView2.Size = new Size(464, 67);
-            dataGridView2.TabIndex = 0;
-            // 
-            // colX2
-            // 
-            colX2.HeaderText = "X";
-            colX2.MinimumWidth = 6;
-            colX2.Name = "colX2";
-            colX2.ReadOnly = true;
-            // 
-            // colY2
-            // 
-            colY2.HeaderText = "Y";
-            colY2.MinimumWidth = 6;
-            colY2.Name = "colY2";
-            colY2.ReadOnly = true;
-            // 
-            // colZ2
-            // 
-            colZ2.HeaderText = "Z";
-            colZ2.MinimumWidth = 6;
-            colZ2.Name = "colZ2";
-            colZ2.ReadOnly = true;
-            // 
-            // flowEntradaFinal
-            // 
-            flowEntradaFinal.Controls.Add(lblFinalX);
-            flowEntradaFinal.Controls.Add(txtFinalX);
-            flowEntradaFinal.Controls.Add(lblFinalY);
-            flowEntradaFinal.Controls.Add(txtFinalY);
-            flowEntradaFinal.Controls.Add(lblFinalZ);
-            flowEntradaFinal.Controls.Add(txtFinalZ);
-            flowEntradaFinal.Controls.Add(btnAgregarFinal);
-            flowEntradaFinal.Controls.Add(btnQuitarFinal);
-            flowEntradaFinal.Dock = DockStyle.Fill;
-            flowEntradaFinal.Location = new Point(3, 79);
-            flowEntradaFinal.Margin = new Padding(3, 4, 3, 4);
-            flowEntradaFinal.Name = "flowEntradaFinal";
-            flowEntradaFinal.Padding = new Padding(0, 5, 0, 0);
-            flowEntradaFinal.Size = new Size(464, 51);
-            flowEntradaFinal.TabIndex = 1;
-            flowEntradaFinal.WrapContents = false;
-            // 
-            // lblFinalX
-            // 
-            lblFinalX.AutoSize = true;
-            lblFinalX.Font = new Font("Segoe UI", 9F);
-            lblFinalX.ForeColor = Color.FromArgb(75, 85, 99);
-            lblFinalX.Location = new Point(0, 13);
-            lblFinalX.Margin = new Padding(0, 8, 5, 0);
-            lblFinalX.Name = "lblFinalX";
-            lblFinalX.Size = new Size(18, 20);
-            lblFinalX.TabIndex = 0;
-            lblFinalX.Text = "X";
-            // 
-            // txtFinalX
-            // 
-            txtFinalX.BorderStyle = BorderStyle.FixedSingle;
-            txtFinalX.Font = new Font("Segoe UI", 9F);
-            txtFinalX.Location = new Point(23, 9);
-            txtFinalX.Margin = new Padding(0, 4, 9, 0);
-            txtFinalX.Name = "txtFinalX";
-            txtFinalX.Size = new Size(66, 27);
-            txtFinalX.TabIndex = 1;
-            // 
-            // lblFinalY
-            // 
-            lblFinalY.AutoSize = true;
-            lblFinalY.Font = new Font("Segoe UI", 9F);
-            lblFinalY.ForeColor = Color.FromArgb(75, 85, 99);
-            lblFinalY.Location = new Point(98, 13);
-            lblFinalY.Margin = new Padding(0, 8, 5, 0);
-            lblFinalY.Name = "lblFinalY";
-            lblFinalY.Size = new Size(17, 20);
-            lblFinalY.TabIndex = 2;
-            lblFinalY.Text = "Y";
-            // 
-            // txtFinalY
-            // 
-            txtFinalY.BorderStyle = BorderStyle.FixedSingle;
-            txtFinalY.Font = new Font("Segoe UI", 9F);
-            txtFinalY.Location = new Point(120, 9);
-            txtFinalY.Margin = new Padding(0, 4, 9, 0);
-            txtFinalY.Name = "txtFinalY";
-            txtFinalY.Size = new Size(66, 27);
-            txtFinalY.TabIndex = 3;
-            // 
-            // lblFinalZ
-            // 
-            lblFinalZ.AutoSize = true;
-            lblFinalZ.Font = new Font("Segoe UI", 9F);
-            lblFinalZ.ForeColor = Color.FromArgb(75, 85, 99);
-            lblFinalZ.Location = new Point(195, 13);
-            lblFinalZ.Margin = new Padding(0, 8, 5, 0);
-            lblFinalZ.Name = "lblFinalZ";
-            lblFinalZ.Size = new Size(18, 20);
-            lblFinalZ.TabIndex = 4;
-            lblFinalZ.Text = "Z";
-            // 
-            // txtFinalZ
-            // 
-            txtFinalZ.BorderStyle = BorderStyle.FixedSingle;
-            txtFinalZ.Font = new Font("Segoe UI", 9F);
-            txtFinalZ.Location = new Point(218, 9);
-            txtFinalZ.Margin = new Padding(0, 4, 9, 0);
-            txtFinalZ.Name = "txtFinalZ";
-            txtFinalZ.Size = new Size(66, 27);
-            txtFinalZ.TabIndex = 5;
-            // 
-            // btnAgregarFinal
-            // 
-            btnAgregarFinal.BackColor = Color.FromArgb(245, 158, 11);
-            btnAgregarFinal.FlatAppearance.BorderSize = 0;
-            btnAgregarFinal.FlatStyle = FlatStyle.Flat;
-            btnAgregarFinal.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            btnAgregarFinal.ForeColor = Color.White;
-            btnAgregarFinal.Location = new Point(293, 8);
-            btnAgregarFinal.Margin = new Padding(0, 3, 7, 0);
-            btnAgregarFinal.Name = "btnAgregarFinal";
-            btnAgregarFinal.Size = new Size(103, 35);
-            btnAgregarFinal.TabIndex = 6;
-            btnAgregarFinal.Text = "Agregar";
-            btnAgregarFinal.UseVisualStyleBackColor = false;
-            btnAgregarFinal.Click += btnAgregarFinal_Click;
-            // 
-            // btnQuitarFinal
-            // 
-            btnQuitarFinal.BackColor = Color.FromArgb(229, 231, 235);
-            btnQuitarFinal.FlatAppearance.BorderSize = 0;
-            btnQuitarFinal.FlatStyle = FlatStyle.Flat;
-            btnQuitarFinal.Font = new Font("Segoe UI", 9F);
-            btnQuitarFinal.ForeColor = Color.FromArgb(17, 24, 39);
-            btnQuitarFinal.Location = new Point(403, 8);
-            btnQuitarFinal.Margin = new Padding(0, 3, 0, 0);
-            btnQuitarFinal.Name = "btnQuitarFinal";
-            btnQuitarFinal.Size = new Size(80, 35);
-            btnQuitarFinal.TabIndex = 7;
-            btnQuitarFinal.Text = "Quitar";
-            btnQuitarFinal.UseVisualStyleBackColor = false;
-            btnQuitarFinal.Click += btnQuitarFinal_Click;
-            // 
             // groupBox4
             // 
             groupBox4.BackColor = Color.White;
@@ -733,11 +457,11 @@ namespace Proyecto_Integrador.Vistas.Cotizaciones
             groupBox4.Dock = DockStyle.Fill;
             groupBox4.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             groupBox4.ForeColor = Color.FromArgb(30, 58, 95);
-            groupBox4.Location = new Point(3, 555);
+            groupBox4.Location = new Point(3, 557);
             groupBox4.Margin = new Padding(3, 4, 3, 4);
             groupBox4.Name = "groupBox4";
             groupBox4.Padding = new Padding(3, 4, 3, 4);
-            groupBox4.Size = new Size(476, 221);
+            groupBox4.Size = new Size(476, 219);
             groupBox4.TabIndex = 3;
             groupBox4.TabStop = false;
             groupBox4.Text = "Resultado";
@@ -762,7 +486,7 @@ namespace Proyecto_Integrador.Vistas.Cotizaciones
             tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
             tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Absolute, 75F));
             tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Absolute, 75F));
-            tableLayoutPanel4.Size = new Size(470, 193);
+            tableLayoutPanel4.Size = new Size(470, 191);
             tableLayoutPanel4.TabIndex = 0;
             // 
             // label4
@@ -861,22 +585,15 @@ namespace Proyecto_Integrador.Vistas.Cotizaciones
             Name = "CotizacionControl";
             Size = new Size(1222, 788);
             tableLayoutPanel1.ResumeLayout(false);
-            panelGrafica.ResumeLayout(false);
-            tableLayoutPanel5.ResumeLayout(false);
             tableLayoutPanel2.ResumeLayout(false);
             groupBox1.ResumeLayout(false);
             tableLayoutPanel3.ResumeLayout(false);
             tableLayoutPanel3.PerformLayout();
             groupBox2.ResumeLayout(false);
-            tableLayoutTerrenoOriginal.ResumeLayout(false);
+            tableLayoutTerreno.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             flowEntradaOriginal.ResumeLayout(false);
             flowEntradaOriginal.PerformLayout();
-            groupBox3.ResumeLayout(false);
-            tableLayoutTerrenoFinal.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)dataGridView2).EndInit();
-            flowEntradaFinal.ResumeLayout(false);
-            flowEntradaFinal.PerformLayout();
             groupBox4.ResumeLayout(false);
             tableLayoutPanel4.ResumeLayout(false);
             tableLayoutPanel4.PerformLayout();
@@ -895,7 +612,7 @@ namespace Proyecto_Integrador.Vistas.Cotizaciones
         private Label label3;
         private TextBox textBox1;
         private GroupBox groupBox2;
-        private TableLayoutPanel tableLayoutTerrenoOriginal;
+        private TableLayoutPanel tableLayoutTerreno;
         private FlowLayoutPanel flowEntradaOriginal;
         private Label lblOrigX;
         private TextBox txtOrigX;
@@ -909,21 +626,6 @@ namespace Proyecto_Integrador.Vistas.Cotizaciones
         private DataGridViewTextBoxColumn colX1;
         private DataGridViewTextBoxColumn colY1;
         private DataGridViewTextBoxColumn colZ1;
-        private GroupBox groupBox3;
-        private TableLayoutPanel tableLayoutTerrenoFinal;
-        private FlowLayoutPanel flowEntradaFinal;
-        private Label lblFinalX;
-        private TextBox txtFinalX;
-        private Label lblFinalY;
-        private TextBox txtFinalY;
-        private Label lblFinalZ;
-        private TextBox txtFinalZ;
-        private Button btnAgregarFinal;
-        private Button btnQuitarFinal;
-        private DataGridView dataGridView2;
-        private DataGridViewTextBoxColumn colX2;
-        private DataGridViewTextBoxColumn colY2;
-        private DataGridViewTextBoxColumn colZ2;
         private GroupBox groupBox4;
         private TableLayoutPanel tableLayoutPanel4;
         private Label label4;
@@ -934,8 +636,5 @@ namespace Proyecto_Integrador.Vistas.Cotizaciones
         private Button btnGuardarCotizacion;
         private Label label2;
         private ComboBox comboBoxMateriales;
-        private TableLayoutPanel tableLayoutPanel5;
-        private Panel panelGraficaOriginal;
-        private Panel panelGraficaFinal;
     }
 }

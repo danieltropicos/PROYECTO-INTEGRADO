@@ -30,11 +30,10 @@ public class FacturaControlador
 
     public string ImprimirFactura(
         Factura factura,
-        byte[]? imgTerrenoOriginal = null,
-        byte[]? imgTerrenoFinal = null,
+        byte[]? imgTerreno = null,
         string? rutaLogo = null)
     { 
-        return facturaRepositorio.ImprimirFactura(factura, imgTerrenoOriginal, imgTerrenoFinal, rutaLogo);
+        return facturaRepositorio.ImprimirFactura(factura, imgTerreno, rutaLogo);
     }
 }
     

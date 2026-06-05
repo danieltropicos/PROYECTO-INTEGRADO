@@ -6,8 +6,8 @@ namespace Proyecto_Integrador.Vistas.Utilidades;
 public static class IconosAcciones
 {
     public static Image? Editar { get; } = Cargar(AppAssets.ArchivoIconoEditar);
-    public static Image? Activar { get; } = Cargar(AppAssets.ArchivoIconoActivar);
-    public static Image? Inactivar { get; } = Cargar(AppAssets.ArchivoIconoInactivar);
+    public static Image? Activo { get; } = Cargar(AppAssets.ArchivoIconoActivo);
+    public static Image? Inactivo { get; } = Cargar(AppAssets.ArchivoIconoInactivo);
     public static Image? GenerarFactura { get; } = Cargar(AppAssets.ArchivoIconoGenerarFactura);
     public static Image? Imprimir { get; } = Cargar(AppAssets.ArchivoIconoImprimir);
     public static Image? CambiarEstado { get; } = Cargar(AppAssets.ArchivoIconoCambiarEstado);

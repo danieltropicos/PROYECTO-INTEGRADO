@@ -50,7 +50,7 @@ public partial class ListaCotizacionControl : UserControl
 
         foreach (var c in _cotizaciones)
         {
-            var activa = c.Estado == "Activa";
+            var activa = string.Equals(c.Estado, "Activa", StringComparison.OrdinalIgnoreCase);
             var indice = dgvCotizaciones.Rows.Add(
                 c.Id,
                 c.Cliente?.NombreCompleto ?? "N/A",
@@ -63,7 +63,7 @@ public partial class ListaCotizacionControl : UserControl
             if (EsAdmin)
             {
                 dgvCotizaciones.Rows[indice].Cells[colIconoEstado.Index].Value =
-                    activa ? IconosAcciones.Inactivar : IconosAcciones.Activar;
+                    activa ? IconosAcciones.Activo : IconosAcciones.Inactivo;
             }
 
             dgvCotizaciones.Rows[indice].Cells[colIconoFactura.Index].Value =
@@ -126,7 +126,7 @@ public partial class ListaCotizacionControl : UserControl
         string ayuda = "";
         if (e.RowIndex >= 0)
         {
-            if (e.ColumnIndex == colIconoEstado.Index) ayuda = "Activar o inactivar";
+            if (e.ColumnIndex == colIconoEstado.Index) ayuda = "Clic para cambiar estado";
             else if (e.ColumnIndex == colIconoFactura.Index) ayuda = "Generar factura";
         }
 

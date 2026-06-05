@@ -24,8 +24,7 @@ public static class FacturaPdfGeneradorService
 
     public static string Generar(
         Factura factura,
-        byte[]? imgOriginal = null,
-        byte[]? imgFinal = null,
+        byte[]? imgTerreno = null,
         string? rutaLogo = null)
     {
         var carpeta = Path.Combine(
@@ -35,7 +34,7 @@ public static class FacturaPdfGeneradorService
         string nombre = $"Factura_{factura.Id.ToString()[..8]}_{factura.FechaEmision:yyyyMMdd}.pdf";
         string ruta = Path.Combine(carpeta, nombre);
 
-        Document.Create(doc => Construir(doc, factura, imgOriginal, imgFinal, rutaLogo))
+        Document.Create(doc => Construir(doc, factura, imgTerreno, rutaLogo))
                 .GeneratePdf(ruta);
 
         return ruta;
@@ -44,8 +43,7 @@ public static class FacturaPdfGeneradorService
     private static void Construir(
         IDocumentContainer doc,
         Factura factura,
-        byte[]? imgOriginal,
-        byte[]? imgFinal,
+        byte[]? imgTerreno,
         string? rutaLogo)
     {
         doc.Page(page =>
@@ -55,8 +53,7 @@ public static class FacturaPdfGeneradorService
             page.DefaultTextStyle(t => t.FontFamily("Arial").FontSize(9));
 
             page.Header().Element(c => Header(c, factura, rutaLogo));
-            page.Content().Element(c => Contenido(c, factura, imgOriginal, imgFinal));
-            page.Footer().Element(c => Footer(c, factura));
+            page.Content().Element(c => Contenido(c, factura, imgTerreno));
         });
     }
 
@@ -138,8 +135,7 @@ public static class FacturaPdfGeneradorService
     private static void Contenido(
         IContainer cnt,
         Factura factura,
-        byte[]? imgOriginal,
-        byte[]? imgFinal)
+        byte[]? imgTerreno)
     {
         cnt.Column(col =>
         {
@@ -147,7 +143,9 @@ public static class FacturaPdfGeneradorService
             col.Item().Element(c => SeccionCliente(c, factura));
             col.Item().Element(c => SeccionDetalle(c, factura));
             col.Item().Element(c => SeccionTotal(c, factura));
-            col.Item().Element(c => SeccionGraficas(c, imgOriginal, imgFinal));
+            col.Item().Element(c => SeccionGraficas(c, imgTerreno));
+            col.Item().Height(8);
+            col.Item().Element(c => SeccionPie(c, factura));
         });
     }
 
@@ -278,68 +276,45 @@ public static class FacturaPdfGeneradorService
         });
     }
 
-    // ── Sección Gráficas 3D ───────────────────────────────────────────────────
+    // ── Sección Gráfica 3D ─────────────────────────────────────────────────────
+    private const float AnchoGraficaPdf = 255f;
+    private const float AltoGraficaPdf = 168f;
+
     private static void SeccionGraficas(
         IContainer cnt,
-        byte[]? imgOriginal,
-        byte[]? imgFinal)
+        byte[]? imgTerreno)
     {
         cnt.Column(col =>
         {
             col.Item().Element(c => TituloSeccion(c, "VISUALIZACIÓN DEL TERRENO"));
             col.Item().Height(8);
 
-            col.Item().Row(row =>
+            col.Item().AlignCenter().Width(AnchoGraficaPdf).Column(c =>
             {
-                row.Spacing(10);
+                c.Item().Background(C_PRIMARIO).Padding(6)
+                 .AlignCenter()
+                 .Text("Terreno")
+                 .FontColor(Colors.White).Bold().FontSize(8);
 
-                // Terreno Original
-                row.RelativeItem().Column(c =>
-                {
-                    c.Item().Background(C_PRIMARIO).Padding(6)
-                     .AlignCenter()
-                     .Text("▲  Terreno Original")
-                     .FontColor(Colors.White).Bold().FontSize(8);
-
-                    c.Item()
-                     .Border(1).BorderColor(Colors.Grey.Lighten2)
-                     .Height(175)
-                     .Element(img =>
-                     {
-                         if (imgOriginal != null)
-                             img.Image(imgOriginal).FitArea();
-                         else
-                             img.Background(C_FONDO).AlignCenter().AlignMiddle()
-                                .Text("Sin imagen").FontColor(C_GRIS);
-                     });
-                });
-
-                // Terreno Final
-                row.RelativeItem().Column(c =>
-                {
-                    c.Item().Background(C_SECUNDARIO).Padding(6)
-                     .AlignCenter()
-                     .Text("▼  Terreno Final")
-                     .FontColor(Colors.White).Bold().FontSize(8);
-
-                    c.Item()
-                     .Border(1).BorderColor(Colors.Grey.Lighten2)
-                     .Height(175)
-                     .Element(img =>
-                     {
-                         if (imgFinal != null)
-                             img.Image(imgFinal).FitArea();
-                         else
-                             img.Background(C_FONDO).AlignCenter().AlignMiddle()
-                                .Text("Sin imagen").FontColor(C_GRIS);
-                     });
-                });
+                c.Item()
+                 .Border(1).BorderColor(Colors.Grey.Lighten2)
+                 .Height(AltoGraficaPdf)
+                 .AlignCenter()
+                 .AlignMiddle()
+                 .Element(img =>
+                 {
+                     if (imgTerreno != null)
+                         img.Image(imgTerreno).FitArea();
+                     else
+                         img.Background(C_FONDO).AlignCenter().AlignMiddle()
+                            .Text("Sin imagen").FontColor(C_GRIS);
+                 });
             });
 
             col.Item().Height(6);
             col.Item()
                .Background(C_FONDO).Padding(6)
-               .Text("Las gráficas representan la visualización 3D del terreno. " +
+               .Text("La gráfica representa la visualización 3D del terreno. " +
                      "El volumen fue calculado mediante integración numérica " +
                      "(Regla del Trapecio 2D) sobre la grilla de puntos ingresados.")
                .FontSize(7.5f).FontColor(C_GRIS).Italic();
@@ -347,9 +322,9 @@ public static class FacturaPdfGeneradorService
     }
 
     // ─────────────────────────────────────────────────────────────────────────
-    // FOOTER
+    // PIE (fluye después de la gráfica, sin espacio vacío al final de página)
     // ─────────────────────────────────────────────────────────────────────────
-    private static void Footer(IContainer cnt, Factura factura)
+    private static void SeccionPie(IContainer cnt, Factura factura)
     {
         cnt
             .BorderTop(1).BorderColor(Colors.Grey.Lighten2)

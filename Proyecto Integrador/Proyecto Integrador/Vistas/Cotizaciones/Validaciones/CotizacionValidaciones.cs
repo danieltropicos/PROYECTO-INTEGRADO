@@ -27,13 +27,9 @@ internal static class CotizacionValidaciones
         if (!string.IsNullOrEmpty(errorMaterial))
             return errorMaterial;
 
-        var errorOriginal = ValidarTerreno(cotizacion.TerrenoOriginal, "terreno original");
-        if (!string.IsNullOrEmpty(errorOriginal))
-            return errorOriginal;
-
-        var errorFinal = ValidarTerreno(cotizacion.TerrenoFinal, "terreno final");
-        if (!string.IsNullOrEmpty(errorFinal))
-            return errorFinal;
+        var errorTerreno = ValidarTerreno(cotizacion.Terreno, "terreno");
+        if (!string.IsNullOrEmpty(errorTerreno))
+            return errorTerreno;
 
         if (cotizacion.VolumenCalculado < 0)
             return "El volumen calculado no puede ser negativo.";
@@ -44,7 +40,7 @@ internal static class CotizacionValidaciones
     public static string ValidarAntesDeCalcular(
     int indiceCliente,
     int indiceMaterial,
-    IReadOnlyList<PuntoTerreno> terrenoOriginal)
+    IReadOnlyList<PuntoTerreno> terreno)
     {
         if (indiceCliente < 0)
             return "Debe seleccionar un cliente.";
@@ -52,9 +48,9 @@ internal static class CotizacionValidaciones
         if (indiceMaterial < 0)
             return "Debe seleccionar un material.";
 
-        var errorOriginal = ValidarTerreno(terrenoOriginal, "terreno original");
-        if (!string.IsNullOrEmpty(errorOriginal))
-            return errorOriginal;
+        var errorTerreno = ValidarTerreno(terreno, "terreno");
+        if (!string.IsNullOrEmpty(errorTerreno))
+            return errorTerreno;
 
         return string.Empty;
     }

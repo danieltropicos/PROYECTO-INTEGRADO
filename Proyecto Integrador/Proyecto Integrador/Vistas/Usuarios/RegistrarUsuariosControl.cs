@@ -74,7 +74,7 @@ namespace Proyecto_Integrador.Vistas.Usuarios
 
                 dgvUsuarios.Rows[indice].Cells[colIconoEditar.Index].Value = IconosAcciones.Editar;
                 dgvUsuarios.Rows[indice].Cells[colIconoEstado.Index].Value =
-                    usuario.EsActivo ? IconosAcciones.Inactivar : IconosAcciones.Activar;
+                    usuario.EsActivo ? IconosAcciones.Activo : IconosAcciones.Inactivo;
             }
         }
 
@@ -118,7 +118,7 @@ namespace Proyecto_Integrador.Vistas.Usuarios
             if (e.RowIndex >= 0)
             {
                 if (e.ColumnIndex == colIconoEditar.Index) ayuda = "Editar usuario";
-                else if (e.ColumnIndex == colIconoEstado.Index) ayuda = "Activar o inactivar";
+                else if (e.ColumnIndex == colIconoEstado.Index) ayuda = "Clic para cambiar estado";
             }
 
             _toolTip.SetToolTip(dgvUsuarios, ayuda);

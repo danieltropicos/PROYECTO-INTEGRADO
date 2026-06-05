@@ -8,9 +8,6 @@ namespace Proyecto_Integrador.Vistas.Cotizaciones;
 
 public partial class Terreno3DControl : UserControl
 {
-    public enum TipoTerreno { Original, Final }
-    private readonly TipoTerreno _tipo;
-
     private GLControl _gl = null!;
     private bool _ready;
 
@@ -33,9 +30,8 @@ public partial class Terreno3DControl : UserControl
 
     private static readonly Vector3 LUZ = Vector3.Normalize(new Vector3(1f, 0.8f, 2f));
 
-    public Terreno3DControl(TipoTerreno tipo)
+    public Terreno3DControl()
     {
-        _tipo = tipo;
         Init();
     }
 
@@ -43,7 +39,7 @@ public partial class Terreno3DControl : UserControl
     {
         var titulo = new Label
         {
-            Text = _tipo == TipoTerreno.Original ? "▲  Terreno Original" : "▼  Terreno Final",
+            Text = "Terreno",
             Dock = DockStyle.Top,
             Height = 26,
             TextAlign = ContentAlignment.MiddleCenter,

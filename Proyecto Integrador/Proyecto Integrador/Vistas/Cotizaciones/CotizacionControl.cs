@@ -13,11 +13,9 @@ public partial class CotizacionControl : UserControl
     private readonly ClienteControlador clienteControlador;
     private readonly CotizacionControlador cotizacionControlador;
 
-    private readonly List<PuntoTerreno> _terrenoOriginal = [];
-    private readonly List<PuntoTerreno> _terrenoFinal = [];
+    private readonly List<PuntoTerreno> _terreno = [];
 
-    private Terreno3DControl terrenoOriginal3D = null!;
-    private Terreno3DControl terrenoFinal3D = null!;
+    private Terreno3DControl terreno3D = null!;
 
     private Usuario? _usuario;
     private double _ultimoVolumen;
@@ -37,7 +35,7 @@ public partial class CotizacionControl : UserControl
         cargarClientes();
         cargarMateriales();
 
-        InicializarTerrenos();
+        InicializarTerreno();
         CargarDatosPrueba();
     }
 
@@ -46,23 +44,15 @@ public partial class CotizacionControl : UserControl
         _usuario = usuario;
     }
 
-    private void InicializarTerrenos()
+    private void InicializarTerreno()
     {
-        terrenoOriginal3D = new Terreno3DControl(Terreno3DControl.TipoTerreno.Original)
+        terreno3D = new Terreno3DControl
         {
             Dock = DockStyle.Fill
         };
 
-        panelGraficaOriginal.Controls.Clear();
-        panelGraficaOriginal.Controls.Add(terrenoOriginal3D);
-
-        terrenoFinal3D = new Terreno3DControl(Terreno3DControl.TipoTerreno.Final)
-        {
-            Dock = DockStyle.Fill
-        };
-
-        panelGraficaFinal.Controls.Clear();
-        panelGraficaFinal.Controls.Add(terrenoFinal3D);
+        panelGrafica.Controls.Clear();
+        panelGrafica.Controls.Add(terreno3D);
     }
 
     private void button1_Click(object sender, EventArgs e)
@@ -70,7 +60,7 @@ public partial class CotizacionControl : UserControl
         var mensaje = CotizacionValidaciones.ValidarAntesDeCalcular(
             comboBoxClientes.SelectedIndex,
             comboBoxMateriales.SelectedIndex,
-            _terrenoOriginal); 
+            _terreno); 
 
         if (!string.IsNullOrEmpty(mensaje))
         {
@@ -121,7 +111,7 @@ public partial class CotizacionControl : UserControl
 
             var cotizacion = new Cotizacion(cliente, _usuario!, material);
             cotizacion.EstablecerVolumen((decimal)_ultimoVolumen);
-            cotizacion.EstablecerTerrenos(_terrenoOriginal, _terrenoFinal);
+            cotizacion.EstablecerTerreno(_terreno);
 
             cotizacionControlador.AgregarCotizacion(cotizacion);
 
@@ -142,16 +132,10 @@ public partial class CotizacionControl : UserControl
     }
 
     private void btnAgregarOriginal_Click(object sender, EventArgs e) =>
-        AgregarPunto(txtOrigX, txtOrigY, txtOrigZ, _terrenoOriginal, dataGridView1);
+        AgregarPunto(txtOrigX, txtOrigY, txtOrigZ, _terreno, dataGridView1);
 
     private void btnQuitarOriginal_Click(object sender, EventArgs e) =>
-        QuitarPuntoSeleccionado(_terrenoOriginal, dataGridView1);
-
-    private void btnAgregarFinal_Click(object sender, EventArgs e) =>
-        AgregarPunto(txtFinalX, txtFinalY, txtFinalZ, _terrenoFinal, dataGridView2);
-
-    private void btnQuitarFinal_Click(object sender, EventArgs e) =>
-        QuitarPuntoSeleccionado(_terrenoFinal, dataGridView2);
+        QuitarPuntoSeleccionado(_terreno, dataGridView1);
 
     private void AgregarPunto(
         TextBox txtX,
@@ -201,8 +185,7 @@ public partial class CotizacionControl : UserControl
 
     private void ActualizarGrafica()
     {
-        terrenoOriginal3D.ActualizarTerreno(_terrenoOriginal);
-        terrenoFinal3D.ActualizarTerreno(_terrenoFinal);
+        terreno3D.ActualizarTerreno(_terreno);
     }
 
     private void RefrescarGrid(List<PuntoTerreno> puntos, DataGridView grid)
@@ -260,10 +243,7 @@ public partial class CotizacionControl : UserControl
 
     private void CargarDatosPrueba()
     {
-        _terrenoOriginal.Clear();
-        _terrenoFinal.Clear();
-
-        _terrenoOriginal.Clear();
+        _terreno.Clear();
 
         for (int y = 0; y <= 200; y += 10)
         {
@@ -276,46 +256,20 @@ public partial class CotizacionControl : UserControl
                     Math.Pow(x - cx, 2) +
                     Math.Pow(y - cy, 2));
 
-                // Montañas suaves
                 double borde = 20 - (d * 0.05);
-
-                // Cráter gigante
                 double crater = -80 * Math.Exp(-(d * d) / 1500);
-
-                // Ondulaciones
                 double ondulacion =
                     4 * Math.Sin(x * 0.08) +
                     3 * Math.Cos(y * 0.06);
 
                 double z = borde + crater + ondulacion;
 
-                _terrenoOriginal.Add(
+                _terreno.Add(
                     new PuntoTerreno(x, y, Math.Round(z, 2)));
             }
         }
 
-        _terrenoFinal.Clear();
-
-        for (int y = -50; y <= 50; y += 10)
-        {
-            for (int x = -50; x <= 50; x += 10)
-            {
-                double z = 5;
-
-                if (x >= -20 && x <= 20 &&
-                    y >= -20 && y <= 20)
-                {
-                    z = -20;
-                }
-
-                _terrenoFinal.Add(
-                    new PuntoTerreno(x, y, z));
-            }
-        }
-        _terrenoFinal.Clear();
-
-        RefrescarGrid(_terrenoOriginal, dataGridView1);
-        RefrescarGrid(_terrenoFinal, dataGridView2);
+        RefrescarGrid(_terreno, dataGridView1);
         ActualizarGrafica();
     }
 }
