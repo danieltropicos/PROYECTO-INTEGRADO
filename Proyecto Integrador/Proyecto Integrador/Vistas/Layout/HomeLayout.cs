@@ -11,6 +11,7 @@ namespace Proyecto_Integrador.Vistas.Layout
     {
         private readonly Button[] _botonesMenu;
         private readonly Usuario _usuario;
+        private Button? _botonSidebarActivo;
 
         public HomeLayout(Usuario usuario)
         {
@@ -18,15 +19,33 @@ namespace Proyecto_Integrador.Vistas.Layout
             _botonesMenu = [btnHome, button1, button2, button3, button4, button5];
             _usuario = usuario;
 
-            button1.Visible = _usuario.Rol.Nombre == "Admin";
-            button4.Visible = _usuario.Rol.Nombre == "Admin";
+            var esAdmin = _usuario.Rol.Nombre == "Admin";
+            panelMenuUsuarios.Visible = esAdmin;
+            panelMenuMateriales.Visible = esAdmin;
 
             picLogoNavbar.ImageLocation = AppAssets.RutaLogoNavbar;
             picLogoCentro.ImageLocation = AppAssets.RutaLogoCentro;
-            picIconoCerrarSesion.ImageLocation = AppAssets.RutaIconoCerrarSesion;
 
+            ConfigurarHoverSidebar();
             UiHelper.EstilizarBotonNavbar(btnMiPerfilNavbar);
             MostrarHome();
+        }
+
+        private void ConfigurarHoverSidebar()
+        {
+            UiHelper.ConfigurarHoverItemSidebar(panelMenuHome, btnHome, () => _botonSidebarActivo == btnHome);
+            UiHelper.ConfigurarHoverItemSidebar(panelMenuUsuarios, button1, () => _botonSidebarActivo == button1);
+            UiHelper.ConfigurarHoverItemSidebar(panelMenuClientes, button2, () => _botonSidebarActivo == button2);
+            UiHelper.ConfigurarHoverItemSidebar(panelMenuCotizacion, button3, () => _botonSidebarActivo == button3);
+            UiHelper.ConfigurarHoverItemSidebar(panelMenuMateriales, button4, () => _botonSidebarActivo == button4);
+            UiHelper.ConfigurarHoverItemSidebar(panelMenuFacturas, button5, () => _botonSidebarActivo == button5);
+            UiHelper.ConfigurarHoverItemSidebar(panelCerrarSesion, btnCerrarSesion, () => false);
+        }
+
+        private void MarcarActivoSidebar(Button? activo)
+        {
+            _botonSidebarActivo = activo;
+            UiHelper.MarcarBotonSidebarActivo(activo, _botonesMenu);
         }
 
         private void MostrarHome()
@@ -37,7 +56,7 @@ namespace Proyecto_Integrador.Vistas.Layout
             panelBienvenida.Visible = true;
             panelBienvenida.BringToFront();
 
-            UiHelper.MarcarBotonSidebarActivo(btnHome, _botonesMenu);
+            MarcarActivoSidebar(btnHome);
         }
 
         private void AbrirVista(UserControl vista, Button? botonActivo)
@@ -50,7 +69,7 @@ namespace Proyecto_Integrador.Vistas.Layout
             panelContenido.Controls.Add(vista);
             vista.BringToFront();
 
-            UiHelper.MarcarBotonSidebarActivo(botonActivo, _botonesMenu);
+            MarcarActivoSidebar(botonActivo);
         }
 
         private void btnHome_Click(object sender, EventArgs e) => MostrarHome();

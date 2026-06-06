@@ -4,6 +4,7 @@ namespace Proyecto_Integrador.Vistas.Utilidades
     {
         private static readonly Color AzulPrincipal = Color.FromArgb(30, 58, 95);
         private static readonly Color AzulSecundario = Color.FromArgb(59, 93, 122);
+        private static readonly Color AzulHover = Color.FromArgb(75, 110, 140);
         private static readonly Color NaranjaPrincipal = Color.FromArgb(245, 158, 11);
         private static readonly Font FuenteBoton = new("Segoe UI", 10F);
         private const int AnchoMinimoAccion = 56;
@@ -13,9 +14,45 @@ namespace Proyecto_Integrador.Vistas.Utilidades
             foreach (var boton in todos)
             {
                 bool esActivo = boton == activo;
-                boton.BackColor = esActivo ? AzulSecundario : AzulPrincipal;
+                var color = esActivo ? AzulSecundario : AzulPrincipal;
+                boton.BackColor = color;
                 boton.Font = esActivo ? new Font(FuenteBoton, FontStyle.Bold) : FuenteBoton;
+
+                if (boton.Parent?.Parent is Panel panelMenu)
+                    panelMenu.BackColor = color;
+
+                boton.FlatAppearance.MouseOverBackColor = AzulHover;
             }
+        }
+
+        public static void ConfigurarHoverItemSidebar(Panel contenedor, Button boton, Func<bool> esActivo)
+        {
+            void Aplicar(Color color)
+            {
+                contenedor.BackColor = color;
+                boton.BackColor = color;
+            }
+
+            void AlEntrar(object? s, EventArgs e) => Aplicar(AzulHover);
+
+            void AlSalir(object? s, EventArgs e)
+            {
+                var pos = contenedor.PointToClient(Cursor.Position);
+                if (contenedor.ClientRectangle.Contains(pos))
+                    return;
+
+                Aplicar(esActivo() ? AzulSecundario : AzulPrincipal);
+            }
+
+            void Registrar(Control control)
+            {
+                control.MouseEnter += AlEntrar;
+                control.MouseLeave += AlSalir;
+                foreach (Control hijo in control.Controls)
+                    Registrar(hijo);
+            }
+
+            Registrar(contenedor);
         }
 
         public static void EstilizarBotonNavbar(Button boton)

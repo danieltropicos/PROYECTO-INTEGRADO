@@ -22,11 +22,30 @@ namespace Proyecto_Integrador.Vistas.Layout
             btnMiPerfilNavbar = new Button();
             panelSidebar = new Panel();
             flowLayoutPanel1 = new FlowLayoutPanel();
+            panelMenuHome = new Panel();
+            tableLayoutMenuHome = new TableLayoutPanel();
+            picIconoHome = new PictureBox();
             btnHome = new Button();
+            panelMenuUsuarios = new Panel();
+            tableLayoutMenuUsuarios = new TableLayoutPanel();
+            picIconoUsuarios = new PictureBox();
             button1 = new Button();
+            panelMenuClientes = new Panel();
+            tableLayoutMenuClientes = new TableLayoutPanel();
+            picIconoClientes = new PictureBox();
             button2 = new Button();
+            panelMenuCotizacion = new Panel();
+            tableLayoutMenuCotizacion = new TableLayoutPanel();
+            picIconoCotizacion = new PictureBox();
             button3 = new Button();
+            panelMenuMateriales = new Panel();
+            tableLayoutMenuMateriales = new TableLayoutPanel();
+            picIconoMateriales = new PictureBox();
             button4 = new Button();
+            panelMenuFacturas = new Panel();
+            tableLayoutMenuFacturas = new TableLayoutPanel();
+            picIconoFacturas = new PictureBox();
+            button5 = new Button();
             panelCerrarSesion = new Panel();
             tableLayoutCerrarSesion = new TableLayoutPanel();
             picIconoCerrarSesion = new PictureBox();
@@ -35,13 +54,30 @@ namespace Proyecto_Integrador.Vistas.Layout
             panelBienvenida = new Panel();
             tableLayoutCentro = new TableLayoutPanel();
             picLogoCentro = new PictureBox();
-            button5 = new Button();
             tableLayoutPanel1.SuspendLayout();
             panelNavbar.SuspendLayout();
             tableLayoutNavbar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)picLogoNavbar).BeginInit();
             panelSidebar.SuspendLayout();
             flowLayoutPanel1.SuspendLayout();
+            panelMenuHome.SuspendLayout();
+            tableLayoutMenuHome.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)picIconoHome).BeginInit();
+            panelMenuUsuarios.SuspendLayout();
+            tableLayoutMenuUsuarios.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)picIconoUsuarios).BeginInit();
+            panelMenuClientes.SuspendLayout();
+            tableLayoutMenuClientes.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)picIconoClientes).BeginInit();
+            panelMenuCotizacion.SuspendLayout();
+            tableLayoutMenuCotizacion.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)picIconoCotizacion).BeginInit();
+            panelMenuMateriales.SuspendLayout();
+            tableLayoutMenuMateriales.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)picIconoMateriales).BeginInit();
+            panelMenuFacturas.SuspendLayout();
+            tableLayoutMenuFacturas.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)picIconoFacturas).BeginInit();
             panelCerrarSesion.SuspendLayout();
             tableLayoutCerrarSesion.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)picIconoCerrarSesion).BeginInit();
@@ -147,12 +183,12 @@ namespace Proyecto_Integrador.Vistas.Layout
             // flowLayoutPanel1
             // 
             flowLayoutPanel1.BackColor = Color.FromArgb(30, 58, 95);
-            flowLayoutPanel1.Controls.Add(btnHome);
-            flowLayoutPanel1.Controls.Add(button1);
-            flowLayoutPanel1.Controls.Add(button2);
-            flowLayoutPanel1.Controls.Add(button3);
-            flowLayoutPanel1.Controls.Add(button4);
-            flowLayoutPanel1.Controls.Add(button5);
+            flowLayoutPanel1.Controls.Add(panelMenuHome);
+            flowLayoutPanel1.Controls.Add(panelMenuUsuarios);
+            flowLayoutPanel1.Controls.Add(panelMenuClientes);
+            flowLayoutPanel1.Controls.Add(panelMenuCotizacion);
+            flowLayoutPanel1.Controls.Add(panelMenuMateriales);
+            flowLayoutPanel1.Controls.Add(panelMenuFacturas);
             flowLayoutPanel1.Dock = DockStyle.Fill;
             flowLayoutPanel1.FlowDirection = FlowDirection.TopDown;
             flowLayoutPanel1.Location = new Point(8, 12);
@@ -162,102 +198,312 @@ namespace Proyecto_Integrador.Vistas.Layout
             flowLayoutPanel1.TabIndex = 0;
             flowLayoutPanel1.WrapContents = false;
             // 
+            // panelMenuHome
+            // 
+            panelMenuHome.BackColor = Color.FromArgb(59, 93, 122);
+            panelMenuHome.Controls.Add(tableLayoutMenuHome);
+            panelMenuHome.Location = new Point(3, 3);
+            panelMenuHome.Margin = new Padding(3, 3, 3, 6);
+            panelMenuHome.Name = "panelMenuHome";
+            panelMenuHome.Size = new Size(198, 48);
+            panelMenuHome.TabIndex = 0;
+            // 
+            // tableLayoutMenuHome
+            // 
+            tableLayoutMenuHome.ColumnCount = 2;
+            tableLayoutMenuHome.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 32F));
+            tableLayoutMenuHome.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            tableLayoutMenuHome.Controls.Add(picIconoHome, 0, 0);
+            tableLayoutMenuHome.Controls.Add(btnHome, 1, 0);
+            tableLayoutMenuHome.Dock = DockStyle.Fill;
+            tableLayoutMenuHome.Location = new Point(0, 0);
+            tableLayoutMenuHome.Margin = new Padding(0);
+            tableLayoutMenuHome.Name = "tableLayoutMenuHome";
+            tableLayoutMenuHome.RowCount = 1;
+            tableLayoutMenuHome.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            tableLayoutMenuHome.Size = new Size(198, 48);
+            tableLayoutMenuHome.TabIndex = 0;
+            // 
+            // picIconoHome
+            // 
+            picIconoHome.BackColor = Color.Transparent;
+            picIconoHome.Cursor = Cursors.Hand;
+            picIconoHome.Dock = DockStyle.Fill;
+            picIconoHome.ImageLocation = "Recursos\\Imagenes\\icono-home.png";
+            picIconoHome.Location = new Point(3, 0);
+            picIconoHome.Margin = new Padding(3, 0, 0, 0);
+            picIconoHome.Name = "picIconoHome";
+            picIconoHome.Size = new Size(29, 48);
+            picIconoHome.SizeMode = PictureBoxSizeMode.Zoom;
+            picIconoHome.TabIndex = 0;
+            picIconoHome.TabStop = false;
+            picIconoHome.Click += btnHome_Click;
+            // 
             // btnHome
             // 
             btnHome.BackColor = Color.FromArgb(59, 93, 122);
             btnHome.Cursor = Cursors.Hand;
+            btnHome.Dock = DockStyle.Fill;
             btnHome.FlatAppearance.BorderSize = 0;
             btnHome.FlatAppearance.MouseOverBackColor = Color.FromArgb(75, 110, 140);
             btnHome.FlatStyle = FlatStyle.Flat;
             btnHome.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             btnHome.ForeColor = Color.White;
-            btnHome.Location = new Point(3, 3);
-            btnHome.Margin = new Padding(3, 3, 3, 6);
+            btnHome.Location = new Point(32, 0);
+            btnHome.Margin = new Padding(0);
             btnHome.Name = "btnHome";
-            btnHome.Padding = new Padding(18, 0, 0, 0);
-            btnHome.Size = new Size(198, 48);
-            btnHome.TabIndex = 0;
-            btnHome.Text = "  Inicio";
+            btnHome.Padding = new Padding(4, 0, 0, 0);
+            btnHome.Size = new Size(166, 48);
+            btnHome.TabIndex = 1;
+            btnHome.Text = "Inicio";
             btnHome.TextAlign = ContentAlignment.MiddleLeft;
             btnHome.UseVisualStyleBackColor = false;
             btnHome.Click += btnHome_Click;
+            // 
+            // panelMenuUsuarios
+            // 
+            panelMenuUsuarios.BackColor = Color.FromArgb(30, 58, 95);
+            panelMenuUsuarios.Controls.Add(tableLayoutMenuUsuarios);
+            panelMenuUsuarios.Location = new Point(3, 57);
+            panelMenuUsuarios.Margin = new Padding(3, 3, 3, 6);
+            panelMenuUsuarios.Name = "panelMenuUsuarios";
+            panelMenuUsuarios.Size = new Size(198, 48);
+            panelMenuUsuarios.TabIndex = 1;
+            // 
+            // tableLayoutMenuUsuarios
+            // 
+            tableLayoutMenuUsuarios.ColumnCount = 2;
+            tableLayoutMenuUsuarios.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 32F));
+            tableLayoutMenuUsuarios.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            tableLayoutMenuUsuarios.Controls.Add(picIconoUsuarios, 0, 0);
+            tableLayoutMenuUsuarios.Controls.Add(button1, 1, 0);
+            tableLayoutMenuUsuarios.Dock = DockStyle.Fill;
+            tableLayoutMenuUsuarios.Location = new Point(0, 0);
+            tableLayoutMenuUsuarios.Margin = new Padding(0);
+            tableLayoutMenuUsuarios.Name = "tableLayoutMenuUsuarios";
+            tableLayoutMenuUsuarios.RowCount = 1;
+            tableLayoutMenuUsuarios.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            tableLayoutMenuUsuarios.Size = new Size(198, 48);
+            tableLayoutMenuUsuarios.TabIndex = 0;
+            // 
+            // picIconoUsuarios
+            // 
+            picIconoUsuarios.BackColor = Color.Transparent;
+            picIconoUsuarios.Cursor = Cursors.Hand;
+            picIconoUsuarios.Dock = DockStyle.Fill;
+            picIconoUsuarios.ImageLocation = "Recursos\\Imagenes\\icono-usuario.png";
+            picIconoUsuarios.Location = new Point(3, 0);
+            picIconoUsuarios.Margin = new Padding(3, 0, 0, 0);
+            picIconoUsuarios.Name = "picIconoUsuarios";
+            picIconoUsuarios.Size = new Size(29, 48);
+            picIconoUsuarios.SizeMode = PictureBoxSizeMode.Zoom;
+            picIconoUsuarios.TabIndex = 0;
+            picIconoUsuarios.TabStop = false;
+            picIconoUsuarios.Click += button1_Click;
             // 
             // button1
             // 
             button1.BackColor = Color.FromArgb(30, 58, 95);
             button1.Cursor = Cursors.Hand;
+            button1.Dock = DockStyle.Fill;
             button1.FlatAppearance.BorderSize = 0;
             button1.FlatAppearance.MouseOverBackColor = Color.FromArgb(59, 93, 122);
             button1.FlatStyle = FlatStyle.Flat;
             button1.Font = new Font("Segoe UI", 10F);
             button1.ForeColor = Color.White;
-            button1.Location = new Point(3, 60);
-            button1.Margin = new Padding(3, 3, 3, 6);
+            button1.Location = new Point(32, 0);
+            button1.Margin = new Padding(0);
             button1.Name = "button1";
-            button1.Padding = new Padding(18, 0, 0, 0);
-            button1.Size = new Size(198, 48);
-            button1.TabIndex = 0;
-            button1.Text = "  Usuarios";
+            button1.Padding = new Padding(4, 0, 0, 0);
+            button1.Size = new Size(166, 48);
+            button1.TabIndex = 1;
+            button1.Text = "Usuarios";
             button1.TextAlign = ContentAlignment.MiddleLeft;
             button1.UseVisualStyleBackColor = false;
             button1.Click += button1_Click;
+            // 
+            // panelMenuClientes
+            // 
+            panelMenuClientes.BackColor = Color.FromArgb(30, 58, 95);
+            panelMenuClientes.Controls.Add(tableLayoutMenuClientes);
+            panelMenuClientes.Location = new Point(3, 111);
+            panelMenuClientes.Margin = new Padding(3, 3, 3, 6);
+            panelMenuClientes.Name = "panelMenuClientes";
+            panelMenuClientes.Size = new Size(198, 48);
+            panelMenuClientes.TabIndex = 2;
+            // 
+            // tableLayoutMenuClientes
+            // 
+            tableLayoutMenuClientes.ColumnCount = 2;
+            tableLayoutMenuClientes.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 32F));
+            tableLayoutMenuClientes.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            tableLayoutMenuClientes.Controls.Add(picIconoClientes, 0, 0);
+            tableLayoutMenuClientes.Controls.Add(button2, 1, 0);
+            tableLayoutMenuClientes.Dock = DockStyle.Fill;
+            tableLayoutMenuClientes.Location = new Point(0, 0);
+            tableLayoutMenuClientes.Margin = new Padding(0);
+            tableLayoutMenuClientes.Name = "tableLayoutMenuClientes";
+            tableLayoutMenuClientes.RowCount = 1;
+            tableLayoutMenuClientes.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            tableLayoutMenuClientes.Size = new Size(198, 48);
+            tableLayoutMenuClientes.TabIndex = 0;
+            // 
+            // picIconoClientes
+            // 
+            picIconoClientes.BackColor = Color.Transparent;
+            picIconoClientes.Cursor = Cursors.Hand;
+            picIconoClientes.Dock = DockStyle.Fill;
+            picIconoClientes.ImageLocation = "Recursos\\Imagenes\\icono-cliente.png";
+            picIconoClientes.Location = new Point(3, 0);
+            picIconoClientes.Margin = new Padding(3, 0, 0, 0);
+            picIconoClientes.Name = "picIconoClientes";
+            picIconoClientes.Size = new Size(29, 48);
+            picIconoClientes.SizeMode = PictureBoxSizeMode.Zoom;
+            picIconoClientes.TabIndex = 0;
+            picIconoClientes.TabStop = false;
+            picIconoClientes.Click += button2_Click;
             // 
             // button2
             // 
             button2.BackColor = Color.FromArgb(30, 58, 95);
             button2.Cursor = Cursors.Hand;
+            button2.Dock = DockStyle.Fill;
             button2.FlatAppearance.BorderSize = 0;
             button2.FlatAppearance.MouseOverBackColor = Color.FromArgb(59, 93, 122);
             button2.FlatStyle = FlatStyle.Flat;
             button2.Font = new Font("Segoe UI", 10F);
             button2.ForeColor = Color.White;
-            button2.Location = new Point(3, 117);
-            button2.Margin = new Padding(3, 3, 3, 6);
+            button2.Location = new Point(32, 0);
+            button2.Margin = new Padding(0);
             button2.Name = "button2";
-            button2.Padding = new Padding(18, 0, 0, 0);
-            button2.Size = new Size(198, 48);
+            button2.Padding = new Padding(4, 0, 0, 0);
+            button2.Size = new Size(166, 48);
             button2.TabIndex = 1;
-            button2.Text = "  Clientes";
+            button2.Text = "Clientes";
             button2.TextAlign = ContentAlignment.MiddleLeft;
             button2.UseVisualStyleBackColor = false;
             button2.Click += button2_Click;
+            // 
+            // panelMenuCotizacion
+            // 
+            panelMenuCotizacion.BackColor = Color.FromArgb(30, 58, 95);
+            panelMenuCotizacion.Controls.Add(tableLayoutMenuCotizacion);
+            panelMenuCotizacion.Location = new Point(3, 165);
+            panelMenuCotizacion.Margin = new Padding(3, 3, 3, 6);
+            panelMenuCotizacion.Name = "panelMenuCotizacion";
+            panelMenuCotizacion.Size = new Size(198, 48);
+            panelMenuCotizacion.TabIndex = 3;
+            // 
+            // tableLayoutMenuCotizacion
+            // 
+            tableLayoutMenuCotizacion.ColumnCount = 2;
+            tableLayoutMenuCotizacion.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 32F));
+            tableLayoutMenuCotizacion.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            tableLayoutMenuCotizacion.Controls.Add(picIconoCotizacion, 0, 0);
+            tableLayoutMenuCotizacion.Controls.Add(button3, 1, 0);
+            tableLayoutMenuCotizacion.Dock = DockStyle.Fill;
+            tableLayoutMenuCotizacion.Location = new Point(0, 0);
+            tableLayoutMenuCotizacion.Margin = new Padding(0);
+            tableLayoutMenuCotizacion.Name = "tableLayoutMenuCotizacion";
+            tableLayoutMenuCotizacion.RowCount = 1;
+            tableLayoutMenuCotizacion.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            tableLayoutMenuCotizacion.Size = new Size(198, 48);
+            tableLayoutMenuCotizacion.TabIndex = 0;
+            // 
+            // picIconoCotizacion
+            // 
+            picIconoCotizacion.BackColor = Color.Transparent;
+            picIconoCotizacion.Cursor = Cursors.Hand;
+            picIconoCotizacion.Dock = DockStyle.Fill;
+            picIconoCotizacion.ImageLocation = "Recursos\\Imagenes\\icono-cotizacion.png";
+            picIconoCotizacion.Location = new Point(3, 0);
+            picIconoCotizacion.Margin = new Padding(3, 0, 0, 0);
+            picIconoCotizacion.Name = "picIconoCotizacion";
+            picIconoCotizacion.Size = new Size(29, 48);
+            picIconoCotizacion.SizeMode = PictureBoxSizeMode.Zoom;
+            picIconoCotizacion.TabIndex = 0;
+            picIconoCotizacion.TabStop = false;
+            picIconoCotizacion.Click += button3_Click;
             // 
             // button3
             // 
             button3.BackColor = Color.FromArgb(30, 58, 95);
             button3.Cursor = Cursors.Hand;
+            button3.Dock = DockStyle.Fill;
             button3.FlatAppearance.BorderSize = 0;
             button3.FlatAppearance.MouseOverBackColor = Color.FromArgb(59, 93, 122);
             button3.FlatStyle = FlatStyle.Flat;
             button3.Font = new Font("Segoe UI", 10F);
             button3.ForeColor = Color.White;
-            button3.Location = new Point(3, 174);
-            button3.Margin = new Padding(3, 3, 3, 6);
+            button3.Location = new Point(32, 0);
+            button3.Margin = new Padding(0);
             button3.Name = "button3";
-            button3.Padding = new Padding(18, 0, 0, 0);
-            button3.Size = new Size(198, 48);
-            button3.TabIndex = 2;
-            button3.Text = "  Cotización";
+            button3.Padding = new Padding(4, 0, 0, 0);
+            button3.Size = new Size(166, 48);
+            button3.TabIndex = 1;
+            button3.Text = "Cotización";
             button3.TextAlign = ContentAlignment.MiddleLeft;
             button3.UseVisualStyleBackColor = false;
             button3.Click += button3_Click;
+            // 
+            // panelMenuMateriales
+            // 
+            panelMenuMateriales.BackColor = Color.FromArgb(30, 58, 95);
+            panelMenuMateriales.Controls.Add(tableLayoutMenuMateriales);
+            panelMenuMateriales.Location = new Point(3, 219);
+            panelMenuMateriales.Margin = new Padding(3, 3, 3, 6);
+            panelMenuMateriales.Name = "panelMenuMateriales";
+            panelMenuMateriales.Size = new Size(198, 48);
+            panelMenuMateriales.TabIndex = 4;
+            // 
+            // tableLayoutMenuMateriales
+            // 
+            tableLayoutMenuMateriales.ColumnCount = 2;
+            tableLayoutMenuMateriales.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 32F));
+            tableLayoutMenuMateriales.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            tableLayoutMenuMateriales.Controls.Add(picIconoMateriales, 0, 0);
+            tableLayoutMenuMateriales.Controls.Add(button4, 1, 0);
+            tableLayoutMenuMateriales.Dock = DockStyle.Fill;
+            tableLayoutMenuMateriales.Location = new Point(0, 0);
+            tableLayoutMenuMateriales.Margin = new Padding(0);
+            tableLayoutMenuMateriales.Name = "tableLayoutMenuMateriales";
+            tableLayoutMenuMateriales.RowCount = 1;
+            tableLayoutMenuMateriales.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            tableLayoutMenuMateriales.Size = new Size(198, 48);
+            tableLayoutMenuMateriales.TabIndex = 0;
+            // 
+            // picIconoMateriales
+            // 
+            picIconoMateriales.BackColor = Color.Transparent;
+            picIconoMateriales.Cursor = Cursors.Hand;
+            picIconoMateriales.Dock = DockStyle.Fill;
+            picIconoMateriales.ImageLocation = "Recursos\\Imagenes\\icono-material.png";
+            picIconoMateriales.Location = new Point(3, 0);
+            picIconoMateriales.Margin = new Padding(3, 0, 0, 0);
+            picIconoMateriales.Name = "picIconoMateriales";
+            picIconoMateriales.Size = new Size(29, 48);
+            picIconoMateriales.SizeMode = PictureBoxSizeMode.Zoom;
+            picIconoMateriales.TabIndex = 0;
+            picIconoMateriales.TabStop = false;
+            picIconoMateriales.Click += button4_Click;
             // 
             // button4
             // 
             button4.BackColor = Color.FromArgb(30, 58, 95);
             button4.Cursor = Cursors.Hand;
+            button4.Dock = DockStyle.Fill;
             button4.FlatAppearance.BorderSize = 0;
             button4.FlatAppearance.MouseOverBackColor = Color.FromArgb(59, 93, 122);
             button4.FlatStyle = FlatStyle.Flat;
             button4.Font = new Font("Segoe UI", 10F);
             button4.ForeColor = Color.White;
-            button4.Location = new Point(3, 231);
-            button4.Margin = new Padding(3, 3, 3, 6);
+            button4.Location = new Point(32, 0);
+            button4.Margin = new Padding(0);
             button4.Name = "button4";
-            button4.Padding = new Padding(18, 0, 0, 0);
-            button4.Size = new Size(198, 48);
-            button4.TabIndex = 3;
-            button4.Text = "  Materiales";
+            button4.Padding = new Padding(4, 0, 0, 0);
+            button4.Size = new Size(166, 48);
+            button4.TabIndex = 1;
+            button4.Text = "Materiales";
             button4.TextAlign = ContentAlignment.MiddleLeft;
             button4.UseVisualStyleBackColor = false;
             button4.Click += button4_Click;
@@ -378,22 +624,64 @@ namespace Proyecto_Integrador.Vistas.Layout
             picLogoCentro.TabIndex = 0;
             picLogoCentro.TabStop = false;
             // 
+            // panelMenuFacturas
+            // 
+            panelMenuFacturas.BackColor = Color.FromArgb(30, 58, 95);
+            panelMenuFacturas.Controls.Add(tableLayoutMenuFacturas);
+            panelMenuFacturas.Location = new Point(3, 273);
+            panelMenuFacturas.Margin = new Padding(3, 3, 3, 6);
+            panelMenuFacturas.Name = "panelMenuFacturas";
+            panelMenuFacturas.Size = new Size(198, 48);
+            panelMenuFacturas.TabIndex = 5;
+            // 
+            // tableLayoutMenuFacturas
+            // 
+            tableLayoutMenuFacturas.ColumnCount = 2;
+            tableLayoutMenuFacturas.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 32F));
+            tableLayoutMenuFacturas.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            tableLayoutMenuFacturas.Controls.Add(picIconoFacturas, 0, 0);
+            tableLayoutMenuFacturas.Controls.Add(button5, 1, 0);
+            tableLayoutMenuFacturas.Dock = DockStyle.Fill;
+            tableLayoutMenuFacturas.Location = new Point(0, 0);
+            tableLayoutMenuFacturas.Margin = new Padding(0);
+            tableLayoutMenuFacturas.Name = "tableLayoutMenuFacturas";
+            tableLayoutMenuFacturas.RowCount = 1;
+            tableLayoutMenuFacturas.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            tableLayoutMenuFacturas.Size = new Size(198, 48);
+            tableLayoutMenuFacturas.TabIndex = 0;
+            // 
+            // picIconoFacturas
+            // 
+            picIconoFacturas.BackColor = Color.Transparent;
+            picIconoFacturas.Cursor = Cursors.Hand;
+            picIconoFacturas.Dock = DockStyle.Fill;
+            picIconoFacturas.ImageLocation = "Recursos\\Imagenes\\icono-factura.png";
+            picIconoFacturas.Location = new Point(3, 0);
+            picIconoFacturas.Margin = new Padding(3, 0, 0, 0);
+            picIconoFacturas.Name = "picIconoFacturas";
+            picIconoFacturas.Size = new Size(29, 48);
+            picIconoFacturas.SizeMode = PictureBoxSizeMode.Zoom;
+            picIconoFacturas.TabIndex = 0;
+            picIconoFacturas.TabStop = false;
+            picIconoFacturas.Click += button5_Click;
+            // 
             // button5
             // 
             button5.BackColor = Color.FromArgb(30, 58, 95);
             button5.Cursor = Cursors.Hand;
+            button5.Dock = DockStyle.Fill;
             button5.FlatAppearance.BorderSize = 0;
             button5.FlatAppearance.MouseOverBackColor = Color.FromArgb(59, 93, 122);
             button5.FlatStyle = FlatStyle.Flat;
             button5.Font = new Font("Segoe UI", 10F);
             button5.ForeColor = Color.White;
-            button5.Location = new Point(3, 288);
-            button5.Margin = new Padding(3, 3, 3, 6);
+            button5.Location = new Point(32, 0);
+            button5.Margin = new Padding(0);
             button5.Name = "button5";
-            button5.Padding = new Padding(18, 0, 0, 0);
-            button5.Size = new Size(198, 48);
-            button5.TabIndex = 4;
-            button5.Text = "  Facturas";
+            button5.Padding = new Padding(4, 0, 0, 0);
+            button5.Size = new Size(166, 48);
+            button5.TabIndex = 1;
+            button5.Text = "Facturas";
             button5.TextAlign = ContentAlignment.MiddleLeft;
             button5.UseVisualStyleBackColor = false;
             button5.Click += button5_Click;
@@ -416,6 +704,24 @@ namespace Proyecto_Integrador.Vistas.Layout
             ((System.ComponentModel.ISupportInitialize)picLogoNavbar).EndInit();
             panelSidebar.ResumeLayout(false);
             flowLayoutPanel1.ResumeLayout(false);
+            panelMenuHome.ResumeLayout(false);
+            tableLayoutMenuHome.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)picIconoHome).EndInit();
+            panelMenuUsuarios.ResumeLayout(false);
+            tableLayoutMenuUsuarios.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)picIconoUsuarios).EndInit();
+            panelMenuClientes.ResumeLayout(false);
+            tableLayoutMenuClientes.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)picIconoClientes).EndInit();
+            panelMenuCotizacion.ResumeLayout(false);
+            tableLayoutMenuCotizacion.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)picIconoCotizacion).EndInit();
+            panelMenuMateriales.ResumeLayout(false);
+            tableLayoutMenuMateriales.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)picIconoMateriales).EndInit();
+            panelMenuFacturas.ResumeLayout(false);
+            tableLayoutMenuFacturas.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)picIconoFacturas).EndInit();
             panelCerrarSesion.ResumeLayout(false);
             tableLayoutCerrarSesion.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)picIconoCerrarSesion).EndInit();
@@ -435,7 +741,25 @@ namespace Proyecto_Integrador.Vistas.Layout
         private Button btnMiPerfilNavbar;
         private Panel panelSidebar;
         private FlowLayoutPanel flowLayoutPanel1;
+        private Panel panelMenuHome;
+        private TableLayoutPanel tableLayoutMenuHome;
+        private PictureBox picIconoHome;
         private Button btnHome;
+        private Panel panelMenuUsuarios;
+        private TableLayoutPanel tableLayoutMenuUsuarios;
+        private PictureBox picIconoUsuarios;
+        private Panel panelMenuClientes;
+        private TableLayoutPanel tableLayoutMenuClientes;
+        private PictureBox picIconoClientes;
+        private Panel panelMenuCotizacion;
+        private TableLayoutPanel tableLayoutMenuCotizacion;
+        private PictureBox picIconoCotizacion;
+        private Panel panelMenuMateriales;
+        private TableLayoutPanel tableLayoutMenuMateriales;
+        private PictureBox picIconoMateriales;
+        private Panel panelMenuFacturas;
+        private TableLayoutPanel tableLayoutMenuFacturas;
+        private PictureBox picIconoFacturas;
         private Panel panelCerrarSesion;
         private TableLayoutPanel tableLayoutCerrarSesion;
         private PictureBox picIconoCerrarSesion;
