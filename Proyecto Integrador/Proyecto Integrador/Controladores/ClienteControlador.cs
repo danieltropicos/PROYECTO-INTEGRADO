@@ -19,4 +19,7 @@ public class ClienteControlador
 
     public void ActualizarCliente(Guid id, Cliente cliente) =>
         clienteRepositorio.Actualizar(id, cliente);
+
+    public int ContarClientes() =>
+        clienteRepositorio.ContarClientes();
 }

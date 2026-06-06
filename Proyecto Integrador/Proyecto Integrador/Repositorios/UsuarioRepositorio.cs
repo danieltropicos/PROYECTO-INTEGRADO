@@ -47,6 +47,11 @@ public class UsuarioRepositorio
             .ToList();
     }
 
+    public int ContarUsuarios()
+    {
+        return Leer().Count;
+    }
+
     public Usuario? ObtenerUsuarioPorNombreUsuario(string nombreDeUsuario)
     {
         return Leer().FirstOrDefault(x => x.NombreUsuario == nombreDeUsuario);

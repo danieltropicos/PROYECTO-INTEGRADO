@@ -4,7 +4,6 @@ namespace Proyecto_Integrador.Vistas.Utilidades
     {
         public const string CarpetaImagenes = "Recursos/Imagenes";
         public const string ArchivoLogoNavbar = "logo-navbar.png";
-        public const string ArchivoLogoCentro = "logo-center.png";
         public const string ArchivoIconoCerrarSesion = "icono-cerrar-sesion.png";
         public const string ArchivoIconoEditar = "icono-editar.png";
         public const string ArchivoIconoActivo = "icono-activo.png";
@@ -27,7 +26,6 @@ namespace Proyecto_Integrador.Vistas.Utilidades
             Path.Combine(Application.StartupPath, CarpetaImagenes, archivo);
 
         public static string RutaLogoNavbar => Ruta(ArchivoLogoNavbar);
-        public static string RutaLogoCentro => Ruta(ArchivoLogoCentro);
         public static string RutaIconoCerrarSesion => Ruta(ArchivoIconoCerrarSesion);
     }
 }

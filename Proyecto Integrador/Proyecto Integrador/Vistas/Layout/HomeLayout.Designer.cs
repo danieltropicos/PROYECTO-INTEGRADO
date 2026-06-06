@@ -51,9 +51,6 @@ namespace Proyecto_Integrador.Vistas.Layout
             picIconoCerrarSesion = new PictureBox();
             btnCerrarSesion = new Button();
             panelContenido = new Panel();
-            panelBienvenida = new Panel();
-            tableLayoutCentro = new TableLayoutPanel();
-            picLogoCentro = new PictureBox();
             tableLayoutPanel1.SuspendLayout();
             panelNavbar.SuspendLayout();
             tableLayoutNavbar.SuspendLayout();
@@ -82,9 +79,6 @@ namespace Proyecto_Integrador.Vistas.Layout
             tableLayoutCerrarSesion.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)picIconoCerrarSesion).BeginInit();
             panelContenido.SuspendLayout();
-            panelBienvenida.SuspendLayout();
-            tableLayoutCentro.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)picLogoCentro).BeginInit();
             SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -575,7 +569,6 @@ namespace Proyecto_Integrador.Vistas.Layout
             // panelContenido
             // 
             panelContenido.BackColor = Color.FromArgb(243, 244, 246);
-            panelContenido.Controls.Add(panelBienvenida);
             panelContenido.Dock = DockStyle.Fill;
             panelContenido.Location = new Point(220, 54);
             panelContenido.Margin = new Padding(0);
@@ -583,46 +576,6 @@ namespace Proyecto_Integrador.Vistas.Layout
             panelContenido.Padding = new Padding(16, 16, 16, 16);
             panelContenido.Size = new Size(851, 456);
             panelContenido.TabIndex = 2;
-            // 
-            // panelBienvenida
-            // 
-            panelBienvenida.BackColor = Color.FromArgb(243, 244, 246);
-            panelBienvenida.Controls.Add(tableLayoutCentro);
-            panelBienvenida.Dock = DockStyle.Fill;
-            panelBienvenida.Location = new Point(16, 16);
-            panelBienvenida.Name = "panelBienvenida";
-            panelBienvenida.Size = new Size(819, 424);
-            panelBienvenida.TabIndex = 0;
-            // 
-            // tableLayoutCentro
-            // 
-            tableLayoutCentro.ColumnCount = 3;
-            tableLayoutCentro.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            tableLayoutCentro.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 630F));
-            tableLayoutCentro.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            tableLayoutCentro.Controls.Add(picLogoCentro, 1, 1);
-            tableLayoutCentro.Dock = DockStyle.Fill;
-            tableLayoutCentro.Location = new Point(0, 0);
-            tableLayoutCentro.Margin = new Padding(3, 2, 3, 2);
-            tableLayoutCentro.Name = "tableLayoutCentro";
-            tableLayoutCentro.RowCount = 3;
-            tableLayoutCentro.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutCentro.RowStyles.Add(new RowStyle(SizeType.Absolute, 300F));
-            tableLayoutCentro.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutCentro.Size = new Size(819, 424);
-            tableLayoutCentro.TabIndex = 0;
-            // 
-            // picLogoCentro
-            // 
-            picLogoCentro.BackColor = Color.Transparent;
-            picLogoCentro.Dock = DockStyle.Fill;
-            picLogoCentro.Location = new Point(94, 62);
-            picLogoCentro.Margin = new Padding(0);
-            picLogoCentro.Name = "picLogoCentro";
-            picLogoCentro.Size = new Size(630, 300);
-            picLogoCentro.SizeMode = PictureBoxSizeMode.Zoom;
-            picLogoCentro.TabIndex = 0;
-            picLogoCentro.TabStop = false;
             // 
             // panelMenuFacturas
             // 
@@ -726,9 +679,6 @@ namespace Proyecto_Integrador.Vistas.Layout
             tableLayoutCerrarSesion.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)picIconoCerrarSesion).EndInit();
             panelContenido.ResumeLayout(false);
-            panelBienvenida.ResumeLayout(false);
-            tableLayoutCentro.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)picLogoCentro).EndInit();
             ResumeLayout(false);
         }
 
@@ -765,9 +715,6 @@ namespace Proyecto_Integrador.Vistas.Layout
         private PictureBox picIconoCerrarSesion;
         private Button btnCerrarSesion;
         private Panel panelContenido;
-        private Panel panelBienvenida;
-        private TableLayoutPanel tableLayoutCentro;
-        private PictureBox picLogoCentro;
         private Button button1;
         private Button button2;
         private Button button3;

@@ -24,6 +24,15 @@ public class CotizacionRepositorio
 
     public List<Cotizacion> ObtenerCotizaciones() => cotizaciones;
 
+    public int ContarCotizaciones(string? estado)
+    {
+        if (string.IsNullOrWhiteSpace(estado))
+        {
+            return cotizaciones.Count;
+        }
+        return cotizaciones.Count(x => x.Estado == estado);
+    }
+
     public void ActualizarCotizacion(Cotizacion cotizacion)
     {
         var index = cotizaciones.FindIndex(c => c.Id == cotizacion.Id);

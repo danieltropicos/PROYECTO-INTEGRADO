@@ -32,4 +32,9 @@ public class CotizacionControlador
         cotizacion.Activar();
         cotizacionRepositorio.ActualizarCotizacion(cotizacion);
     }
+
+    public int ContarCotizaciones(string? estado)
+    {
+        return cotizacionRepositorio.ContarCotizaciones(estado);
+    }
 }

@@ -32,6 +32,8 @@ public class MaterialRepositorio
             .ToList();
     }
 
+    public int ContarMateriales() => materiales.Count;
+
     public void AgregarMaterial(Material material)
     {
         materiales.Add(material);

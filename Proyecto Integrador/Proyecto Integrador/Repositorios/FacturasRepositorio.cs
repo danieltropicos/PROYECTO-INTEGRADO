@@ -51,6 +51,15 @@ public class FacturasRepositorio
         return facturas;
     }
 
+    public int ContarFacturas(string estado)
+    {
+        if(!string.IsNullOrEmpty(estado))
+        {
+            return facturas.Count;
+        }
+        return facturas.Count(x => x.Estado == estado);
+    } 
+
     public void Actualizar(Factura factura)
     {
         var index = facturas.FindIndex(f => f.Id == factura.Id);

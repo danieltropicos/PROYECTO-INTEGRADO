@@ -19,4 +19,7 @@ public class MaterialControlador
 
     public void ActualizarMaterial(Guid id, Material material) =>
         materialRespositorio.Actualizar(id, material);
+
+    public int ContarMateriales() =>
+        materialRespositorio.ContarMateriales();
 }

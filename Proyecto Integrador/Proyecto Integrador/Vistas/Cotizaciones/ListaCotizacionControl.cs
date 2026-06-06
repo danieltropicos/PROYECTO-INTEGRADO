@@ -2,6 +2,7 @@
 using Proyecto_Integrador.Modelos.Cotizaciones;
 using Proyecto_Integrador.Modelos.Facturas;
 using Proyecto_Integrador.Modelos.Usuarios;
+using Proyecto_Integrador.Vistas.Layout;
 using Proyecto_Integrador.Vistas.Utilidades;
 using System.Globalization;
 
@@ -12,10 +13,7 @@ public partial class ListaCotizacionControl : UserControl
     private readonly CotizacionControlador cotizacionControlador;
     private readonly FacturaControlador facturaControlador;
     private readonly Usuario _usuario;
-    private readonly ToolTip _toolTip = new();
     private List<Cotizacion> _cotizaciones = [];
-
-    public event EventHandler? CrearCotizacionClick;
 
     public ListaCotizacionControl(Usuario usuario)
     {
@@ -74,8 +72,10 @@ public partial class ListaCotizacionControl : UserControl
         }
     }
 
-    private void btnCrearCotizacion_Click(object sender, EventArgs e) =>
-        CrearCotizacionClick?.Invoke(this, EventArgs.Empty);
+    private void btnCrearCotizacion_Click(object sender, EventArgs e)
+    {
+        HomeLayout.AbrirVista(new CotizacionControl(_usuario));
+    }
 
     private void txtBuscar_TextChanged(object sender, EventArgs e) => CargarCotizaciones();
 
@@ -138,19 +138,5 @@ public partial class ListaCotizacionControl : UserControl
                 MessageBoxButtons.OK, MessageBoxIcon.Information);
             CargarCotizaciones();
         }
-    }
-
-    private void dgvCotizaciones_CellMouseMove(object sender, DataGridViewCellMouseEventArgs e)
-    {
-        string ayuda = "";
-        if (e.RowIndex >= 0)
-        {
-            if (e.ColumnIndex == colIconoGrafica.Index) ayuda = "Ver gráfica del terreno";
-            else if (e.ColumnIndex == colIconoEstado.Index) ayuda = "Clic para cambiar estado";
-            else if (e.ColumnIndex == colIconoFactura.Index) ayuda = "Generar factura";
-        }
-
-        _toolTip.SetToolTip(dgvCotizaciones, ayuda);
-        dgvCotizaciones.Cursor = ayuda.Length > 0 ? Cursors.Hand : Cursors.Default;
     }
 }

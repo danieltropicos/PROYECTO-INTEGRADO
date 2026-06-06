@@ -40,6 +40,8 @@ public class ClienteRepositorio
             .ToList();
     }
 
+    public int ContarClientes() => clientes.Count(c => c.EsActivo);
+
     public void Actualizar(Guid id, Cliente nuevoModelo)
     {
         var index = clientes.FindIndex(c => c.Id == id);
