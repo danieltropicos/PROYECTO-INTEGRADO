@@ -15,6 +15,13 @@ namespace Proyecto_Integrador.Vistas.Utilidades
         public const string ArchivoOjoAbierto = "ojoAbierto.jpg";
         public const string ArchivoOjoCerrado = "ojoCerrado.jpg";
 
+        // Login
+        public const string ArchivoLoginFondoMaquina = "login-fondo-maquina.jpg";
+        public const string ArchivoLoginLogoGeoterra = "login-logo-geoterra.png";
+        public const string ArchivoLoginFondoDerecho = "login-fondo-derecho.png";
+        public const string ArchivoLoginIconoFormulario = "login-icono-formulario.png";
+        public const string ArchivoIconoEscudo = "icono-escudo.png";
+
         public static string Ruta(string archivo) =>
             Path.Combine(Application.StartupPath, CarpetaImagenes, archivo);
 

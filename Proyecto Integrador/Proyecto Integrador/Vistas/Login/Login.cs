@@ -1,4 +1,5 @@
-﻿using Proyecto_Integrador.Controladores;
+﻿using System.Runtime.InteropServices;
+using Proyecto_Integrador.Controladores;
 using Proyecto_Integrador.Modelos.Usuarios;
 using Proyecto_Integrador.Vistas.Layout;
 using Proyecto_Integrador.Vistas.Utilidades;
@@ -12,7 +13,51 @@ namespace Proyecto_Integrador.Vistas.Login
         public Login()
         {
             InitializeComponent();
-            picOjo.ImageLocation = AppAssets.Ruta(AppAssets.ArchivoOjoCerrado);
+            CargarImagenes();
+        }
+
+        private void CargarImagenes()
+        {
+            panelBrand.ImagenMaquina = CargarImagen(AppAssets.ArchivoLoginFondoMaquina);
+            panelBrand.Invalidate();
+
+            AsignarImagen(picLogoGeoterra, AppAssets.ArchivoLoginLogoGeoterra);
+            AsignarImagen(picIconoFormulario, AppAssets.ArchivoLoginIconoFormulario);
+            AsignarImagen(picEscudo, AppAssets.ArchivoIconoEscudo);
+            AsignarImagen(picOjo, AppAssets.ArchivoOjoCerrado);
+
+            var fondoDerecho = CargarImagen(AppAssets.ArchivoLoginFondoDerecho);
+            if (fondoDerecho is not null)
+            {
+                panelForm.BackgroundImage = fondoDerecho;
+                panelForm.BackgroundImageLayout = ImageLayout.Zoom;
+            }
+        }
+
+        private static void AsignarImagen(PictureBox pictureBox, string archivo)
+        {
+            var imagen = CargarImagen(archivo);
+            if (imagen is null)
+                return;
+
+            pictureBox.Image?.Dispose();
+            pictureBox.Image = imagen;
+        }
+
+        private static Image? CargarImagen(string archivo)
+        {
+            var ruta = AppAssets.Ruta(archivo);
+            if (!File.Exists(ruta))
+                return null;
+
+            try
+            {
+                return Image.FromFile(ruta);
+            }
+            catch (ExternalException)
+            {
+                return null;
+            }
         }
 
         private void btnIngresar_Click(object sender, EventArgs e)
@@ -86,7 +131,7 @@ namespace Proyecto_Integrador.Vistas.Login
         {
             var mostrar = txtContraseña.UseSystemPasswordChar;
             txtContraseña.UseSystemPasswordChar = !mostrar;
-            picOjo.ImageLocation = AppAssets.Ruta(mostrar ? AppAssets.ArchivoOjoAbierto : AppAssets.ArchivoOjoCerrado);
+            AsignarImagen(picOjo, mostrar ? AppAssets.ArchivoOjoAbierto : AppAssets.ArchivoOjoCerrado);
         }
     }
 }

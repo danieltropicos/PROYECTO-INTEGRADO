@@ -16,38 +16,50 @@
         private void InitializeComponent()
         {
             tableLayoutMain = new TableLayoutPanel();
-            panelBrand = new Panel();
-            tableLayoutLogo = new TableLayoutPanel();
-            picLogo = new PictureBox();
+            panelBrand = new PanelLateralLogin();
+            picLogoGeoterra = new PictureBox();
+            lblSubtitulo = new Label();
             panelForm = new Panel();
             tableLayoutCentro = new TableLayoutPanel();
+            panelMarco = new Panel();
+            panelCard = new Panel();
             tableLayoutForm = new TableLayoutPanel();
+            picIconoFormulario = new PictureBox();
             lblTitulo = new Label();
+            panelLineaTitulo = new Panel();
             lblUsuario = new Label();
             txtUsuario = new TextBox();
             lblContraseña = new Label();
-            tableLayoutContraseña = new TableLayoutPanel();
+            panelFilaContraseña = new Panel();
+            tableLayoutFilaContraseña = new TableLayoutPanel();
             txtContraseña = new TextBox();
-            tableLayoutOjo = new TableLayoutPanel();
             picOjo = new PictureBox();
             btnIngresar = new Button();
+            tableLayoutSeguro = new TableLayoutPanel();
+            picEscudo = new PictureBox();
+            lblSeguro = new Label();
             tableLayoutMain.SuspendLayout();
             panelBrand.SuspendLayout();
-            tableLayoutLogo.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)picLogo).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)picLogoGeoterra).BeginInit();
             panelForm.SuspendLayout();
             tableLayoutCentro.SuspendLayout();
+            panelMarco.SuspendLayout();
+            panelCard.SuspendLayout();
             tableLayoutForm.SuspendLayout();
-            tableLayoutContraseña.SuspendLayout();
-            tableLayoutOjo.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)picIconoFormulario).BeginInit();
+            panelFilaContraseña.SuspendLayout();
+            tableLayoutFilaContraseña.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)picOjo).BeginInit();
+            tableLayoutSeguro.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)picEscudo).BeginInit();
             SuspendLayout();
             // 
             // tableLayoutMain
             // 
+            tableLayoutMain.BackColor = Color.FromArgb(237, 241, 245);
             tableLayoutMain.ColumnCount = 2;
-            tableLayoutMain.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 30F));
-            tableLayoutMain.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 70F));
+            tableLayoutMain.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 44F));
+            tableLayoutMain.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 56F));
             tableLayoutMain.Controls.Add(panelBrand, 0, 0);
             tableLayoutMain.Controls.Add(panelForm, 1, 0);
             tableLayoutMain.Dock = DockStyle.Fill;
@@ -56,283 +68,376 @@
             tableLayoutMain.Name = "tableLayoutMain";
             tableLayoutMain.RowCount = 1;
             tableLayoutMain.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutMain.Size = new Size(920, 560);
+            tableLayoutMain.Size = new Size(1050, 525);
             tableLayoutMain.TabIndex = 0;
             // 
             // panelBrand
             // 
-            panelBrand.BackColor = Color.FromArgb(30, 58, 95);
-            panelBrand.Controls.Add(tableLayoutLogo);
+            panelBrand.BackColor = Color.FromArgb(237, 241, 245);
+            panelBrand.Controls.Add(picLogoGeoterra);
+            panelBrand.Controls.Add(lblSubtitulo);
             panelBrand.Dock = DockStyle.Fill;
             panelBrand.Location = new Point(0, 0);
             panelBrand.Margin = new Padding(0);
             panelBrand.Name = "panelBrand";
-            panelBrand.Size = new Size(276, 560);
+            panelBrand.Size = new Size(462, 525);
             panelBrand.TabIndex = 0;
             // 
-            // tableLayoutLogo
+            // picLogoGeoterra
             // 
-            tableLayoutLogo.ColumnCount = 3;
-            tableLayoutLogo.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            tableLayoutLogo.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 457F));
-            tableLayoutLogo.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            tableLayoutLogo.Controls.Add(picLogo, 1, 1);
-            tableLayoutLogo.Dock = DockStyle.Fill;
-            tableLayoutLogo.Location = new Point(0, 0);
-            tableLayoutLogo.Margin = new Padding(3, 4, 3, 4);
-            tableLayoutLogo.Name = "tableLayoutLogo";
-            tableLayoutLogo.RowCount = 3;
-            tableLayoutLogo.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutLogo.RowStyles.Add(new RowStyle(SizeType.Absolute, 347F));
-            tableLayoutLogo.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutLogo.Size = new Size(276, 560);
-            tableLayoutLogo.TabIndex = 0;
+            picLogoGeoterra.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            picLogoGeoterra.BackColor = Color.Transparent;
+            picLogoGeoterra.Location = new Point(61, 116);
+            picLogoGeoterra.Margin = new Padding(3, 2, 3, 2);
+            picLogoGeoterra.Name = "picLogoGeoterra";
+            picLogoGeoterra.Size = new Size(307, 210);
+            picLogoGeoterra.SizeMode = PictureBoxSizeMode.Zoom;
+            picLogoGeoterra.TabIndex = 0;
+            picLogoGeoterra.TabStop = false;
             // 
-            // picLogo
+            // lblSubtitulo
             // 
-            picLogo.BackColor = Color.Transparent;
-            picLogo.Dock = DockStyle.Fill;
-            picLogo.ImageLocation = "Recursos\\Imagenes\\logo-center.png";
-            picLogo.Location = new Point(-90, 106);
-            picLogo.Margin = new Padding(0);
-            picLogo.Name = "picLogo";
-            picLogo.Size = new Size(457, 347);
-            picLogo.SizeMode = PictureBoxSizeMode.Zoom;
-            picLogo.TabIndex = 0;
-            picLogo.TabStop = false;
+            lblSubtitulo.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            lblSubtitulo.BackColor = Color.Transparent;
+            lblSubtitulo.Font = new Font("Segoe UI", 9.5F);
+            lblSubtitulo.ForeColor = Color.FromArgb(200, 210, 225);
+            lblSubtitulo.Location = new Point(61, 346);
+            lblSubtitulo.Name = "lblSubtitulo";
+            lblSubtitulo.Padding = new Padding(7, 0, 7, 9);
+            lblSubtitulo.Size = new Size(307, 46);
+            lblSubtitulo.TabIndex = 1;
+            lblSubtitulo.Text = "Gestión inteligente para proyectos de movimiento de tierra";
+            lblSubtitulo.TextAlign = ContentAlignment.TopCenter;
             // 
             // panelForm
             // 
-            panelForm.AutoScroll = true;
-            panelForm.BackColor = Color.White;
+            panelForm.BackColor = Color.FromArgb(237, 241, 245);
             panelForm.Controls.Add(tableLayoutCentro);
             panelForm.Dock = DockStyle.Fill;
-            panelForm.Location = new Point(276, 0);
+            panelForm.Location = new Point(462, 0);
             panelForm.Margin = new Padding(0);
             panelForm.Name = "panelForm";
-            panelForm.Padding = new Padding(27, 32, 27, 32);
-            panelForm.Size = new Size(644, 560);
+            panelForm.Size = new Size(588, 525);
             panelForm.TabIndex = 1;
             // 
             // tableLayoutCentro
             // 
             tableLayoutCentro.ColumnCount = 3;
             tableLayoutCentro.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            tableLayoutCentro.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 503F));
+            tableLayoutCentro.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 455F));
             tableLayoutCentro.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            tableLayoutCentro.Controls.Add(tableLayoutForm, 1, 1);
+            tableLayoutCentro.Controls.Add(panelMarco, 1, 1);
             tableLayoutCentro.Dock = DockStyle.Fill;
-            tableLayoutCentro.Location = new Point(27, 32);
-            tableLayoutCentro.Margin = new Padding(3, 4, 3, 4);
+            tableLayoutCentro.Location = new Point(0, 0);
+            tableLayoutCentro.Margin = new Padding(0);
             tableLayoutCentro.Name = "tableLayoutCentro";
+            tableLayoutCentro.Padding = new Padding(0, 18, 21, 18);
             tableLayoutCentro.RowCount = 3;
             tableLayoutCentro.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutCentro.RowStyles.Add(new RowStyle());
+            tableLayoutCentro.RowStyles.Add(new RowStyle(SizeType.Absolute, 435F));
             tableLayoutCentro.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutCentro.Size = new Size(590, 496);
+            tableLayoutCentro.Size = new Size(588, 525);
             tableLayoutCentro.TabIndex = 0;
+            // 
+            // panelMarco
+            // 
+            panelMarco.BackColor = Color.FromArgb(190, 198, 210);
+            panelMarco.Controls.Add(panelCard);
+            panelMarco.Dock = DockStyle.Fill;
+            panelMarco.Location = new Point(56, 45);
+            panelMarco.Margin = new Padding(0);
+            panelMarco.Name = "panelMarco";
+            panelMarco.Padding = new Padding(0, 0, 9, 8);
+            panelMarco.Size = new Size(455, 435);
+            panelMarco.TabIndex = 0;
+            // 
+            // panelCard
+            // 
+            panelCard.BackColor = Color.White;
+            panelCard.Controls.Add(tableLayoutForm);
+            panelCard.Dock = DockStyle.Fill;
+            panelCard.Location = new Point(0, 0);
+            panelCard.Margin = new Padding(3, 2, 3, 2);
+            panelCard.Name = "panelCard";
+            panelCard.Padding = new Padding(38, 30, 38, 24);
+            panelCard.Size = new Size(446, 427);
+            panelCard.TabIndex = 0;
             // 
             // tableLayoutForm
             // 
-            tableLayoutForm.AutoSize = true;
-            tableLayoutForm.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            tableLayoutForm.ColumnCount = 1;
-            tableLayoutForm.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
-            tableLayoutForm.Controls.Add(lblTitulo, 0, 0);
-            tableLayoutForm.Controls.Add(lblUsuario, 0, 1);
-            tableLayoutForm.Controls.Add(txtUsuario, 0, 2);
-            tableLayoutForm.Controls.Add(lblContraseña, 0, 3);
-            tableLayoutForm.Controls.Add(tableLayoutContraseña, 0, 4);
-            tableLayoutForm.Controls.Add(btnIngresar, 0, 5);
+            tableLayoutForm.ColumnCount = 3;
+            tableLayoutForm.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutForm.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 120F));
+            tableLayoutForm.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutForm.Controls.Add(picIconoFormulario, 1, 0);
+            tableLayoutForm.Controls.Add(lblTitulo, 0, 1);
+            tableLayoutForm.Controls.Add(panelLineaTitulo, 1, 2);
+            tableLayoutForm.Controls.Add(lblUsuario, 0, 3);
+            tableLayoutForm.Controls.Add(txtUsuario, 0, 4);
+            tableLayoutForm.Controls.Add(lblContraseña, 0, 5);
+            tableLayoutForm.Controls.Add(panelFilaContraseña, 0, 6);
+            tableLayoutForm.Controls.Add(btnIngresar, 0, 7);
+            tableLayoutForm.Controls.Add(tableLayoutSeguro, 0, 8);
             tableLayoutForm.Dock = DockStyle.Fill;
-            tableLayoutForm.Location = new Point(43, 51);
-            tableLayoutForm.Margin = new Padding(0);
+            tableLayoutForm.Location = new Point(38, 30);
+            tableLayoutForm.Margin = new Padding(3, 2, 3, 2);
             tableLayoutForm.Name = "tableLayoutForm";
-            tableLayoutForm.RowCount = 7;
-            tableLayoutForm.RowStyles.Add(new RowStyle(SizeType.Absolute, 72F));
-            tableLayoutForm.RowStyles.Add(new RowStyle(SizeType.Absolute, 32F));
-            tableLayoutForm.RowStyles.Add(new RowStyle(SizeType.Absolute, 59F));
-            tableLayoutForm.RowStyles.Add(new RowStyle(SizeType.Absolute, 32F));
-            tableLayoutForm.RowStyles.Add(new RowStyle(SizeType.Absolute, 59F));
-            tableLayoutForm.RowStyles.Add(new RowStyle(SizeType.Absolute, 80F));
-            tableLayoutForm.RowStyles.Add(new RowStyle(SizeType.Absolute, 59F));
-            tableLayoutForm.Size = new Size(503, 393);
+            tableLayoutForm.RowCount = 9;
+            tableLayoutForm.RowStyles.Add(new RowStyle(SizeType.Absolute, 54F));
+            tableLayoutForm.RowStyles.Add(new RowStyle(SizeType.Absolute, 36F));
+            tableLayoutForm.RowStyles.Add(new RowStyle(SizeType.Absolute, 12F));
+            tableLayoutForm.RowStyles.Add(new RowStyle(SizeType.Absolute, 21F));
+            tableLayoutForm.RowStyles.Add(new RowStyle(SizeType.Absolute, 36F));
+            tableLayoutForm.RowStyles.Add(new RowStyle(SizeType.Absolute, 22F));
+            tableLayoutForm.RowStyles.Add(new RowStyle(SizeType.Absolute, 39F));
+            tableLayoutForm.RowStyles.Add(new RowStyle(SizeType.Absolute, 45F));
+            tableLayoutForm.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            tableLayoutForm.Size = new Size(370, 373);
             tableLayoutForm.TabIndex = 0;
+            // 
+            // picIconoFormulario
+            // 
+            picIconoFormulario.Dock = DockStyle.Fill;
+            picIconoFormulario.Location = new Point(128, 2);
+            picIconoFormulario.Margin = new Padding(3, 2, 3, 2);
+            picIconoFormulario.Name = "picIconoFormulario";
+            picIconoFormulario.Size = new Size(114, 50);
+            picIconoFormulario.SizeMode = PictureBoxSizeMode.Zoom;
+            picIconoFormulario.TabIndex = 0;
+            picIconoFormulario.TabStop = false;
             // 
             // lblTitulo
             // 
+            tableLayoutForm.SetColumnSpan(lblTitulo, 3);
             lblTitulo.Dock = DockStyle.Fill;
             lblTitulo.Font = new Font("Segoe UI", 20F, FontStyle.Bold);
             lblTitulo.ForeColor = Color.FromArgb(30, 58, 95);
-            lblTitulo.Location = new Point(3, 0);
+            lblTitulo.Location = new Point(3, 54);
             lblTitulo.Name = "lblTitulo";
-            lblTitulo.Size = new Size(497, 72);
-            lblTitulo.TabIndex = 0;
+            lblTitulo.Size = new Size(364, 36);
+            lblTitulo.TabIndex = 1;
             lblTitulo.Text = "Inicio de sesión";
-            lblTitulo.TextAlign = ContentAlignment.MiddleLeft;
+            lblTitulo.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // panelLineaTitulo
+            // 
+            panelLineaTitulo.BackColor = Color.FromArgb(245, 158, 11);
+            panelLineaTitulo.Location = new Point(128, 92);
+            panelLineaTitulo.Margin = new Padding(3, 2, 3, 6);
+            panelLineaTitulo.Name = "panelLineaTitulo";
+            panelLineaTitulo.Size = new Size(114, 4);
+            panelLineaTitulo.TabIndex = 2;
             // 
             // lblUsuario
             // 
-            lblUsuario.AutoSize = true;
+            tableLayoutForm.SetColumnSpan(lblUsuario, 3);
             lblUsuario.Dock = DockStyle.Fill;
             lblUsuario.Font = new Font("Segoe UI", 10F);
             lblUsuario.ForeColor = Color.FromArgb(75, 85, 99);
-            lblUsuario.Location = new Point(3, 72);
+            lblUsuario.Location = new Point(3, 102);
             lblUsuario.Name = "lblUsuario";
-            lblUsuario.Size = new Size(497, 32);
-            lblUsuario.TabIndex = 1;
+            lblUsuario.Size = new Size(364, 21);
+            lblUsuario.TabIndex = 3;
             lblUsuario.Text = "Usuario";
             lblUsuario.TextAlign = ContentAlignment.BottomLeft;
             // 
             // txtUsuario
             // 
-            txtUsuario.BackColor = Color.White;
             txtUsuario.BorderStyle = BorderStyle.FixedSingle;
+            tableLayoutForm.SetColumnSpan(txtUsuario, 3);
             txtUsuario.Dock = DockStyle.Fill;
             txtUsuario.Font = new Font("Segoe UI", 11F);
-            txtUsuario.Location = new Point(3, 107);
-            txtUsuario.Margin = new Padding(3, 3, 3, 8);
+            txtUsuario.Location = new Point(0, 123);
+            txtUsuario.Margin = new Padding(0);
             txtUsuario.Name = "txtUsuario";
-            txtUsuario.Size = new Size(497, 32);
-            txtUsuario.TabIndex = 2;
+            txtUsuario.Size = new Size(370, 27);
+            txtUsuario.TabIndex = 4;
             // 
             // lblContraseña
             // 
-            lblContraseña.AutoSize = true;
+            tableLayoutForm.SetColumnSpan(lblContraseña, 3);
             lblContraseña.Dock = DockStyle.Fill;
             lblContraseña.Font = new Font("Segoe UI", 10F);
             lblContraseña.ForeColor = Color.FromArgb(75, 85, 99);
-            lblContraseña.Location = new Point(3, 163);
+            lblContraseña.Location = new Point(3, 159);
             lblContraseña.Name = "lblContraseña";
-            lblContraseña.Size = new Size(497, 32);
-            lblContraseña.TabIndex = 3;
+            lblContraseña.Size = new Size(364, 22);
+            lblContraseña.TabIndex = 5;
             lblContraseña.Text = "Contraseña";
             lblContraseña.TextAlign = ContentAlignment.BottomLeft;
             // 
-            // tableLayoutContraseña
+            // panelFilaContraseña
             // 
-            tableLayoutContraseña.ColumnCount = 2;
-            tableLayoutContraseña.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
-            tableLayoutContraseña.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 34F));
-            tableLayoutContraseña.Controls.Add(txtContraseña, 0, 0);
-            tableLayoutContraseña.Controls.Add(tableLayoutOjo, 1, 0);
-            tableLayoutContraseña.Dock = DockStyle.Fill;
-            tableLayoutContraseña.Location = new Point(3, 198);
-            tableLayoutContraseña.Margin = new Padding(3, 3, 3, 8);
-            tableLayoutContraseña.Name = "tableLayoutContraseña";
-            tableLayoutContraseña.RowCount = 1;
-            tableLayoutContraseña.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutContraseña.Size = new Size(497, 48);
-            tableLayoutContraseña.TabIndex = 4;
+            tableLayoutForm.SetColumnSpan(panelFilaContraseña, 3);
+            panelFilaContraseña.Controls.Add(tableLayoutFilaContraseña);
+            panelFilaContraseña.Dock = DockStyle.Fill;
+            panelFilaContraseña.Location = new Point(0, 181);
+            panelFilaContraseña.Margin = new Padding(0);
+            panelFilaContraseña.Name = "panelFilaContraseña";
+            panelFilaContraseña.Size = new Size(370, 39);
+            panelFilaContraseña.TabIndex = 6;
+            // 
+            // tableLayoutFilaContraseña
+            // 
+            tableLayoutFilaContraseña.ColumnCount = 2;
+            tableLayoutFilaContraseña.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            tableLayoutFilaContraseña.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 35F));
+            tableLayoutFilaContraseña.Controls.Add(txtContraseña, 0, 0);
+            tableLayoutFilaContraseña.Controls.Add(picOjo, 1, 0);
+            tableLayoutFilaContraseña.Dock = DockStyle.Fill;
+            tableLayoutFilaContraseña.Location = new Point(0, 0);
+            tableLayoutFilaContraseña.Margin = new Padding(0);
+            tableLayoutFilaContraseña.Name = "tableLayoutFilaContraseña";
+            tableLayoutFilaContraseña.RowCount = 1;
+            tableLayoutFilaContraseña.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            tableLayoutFilaContraseña.Size = new Size(370, 39);
+            tableLayoutFilaContraseña.TabIndex = 0;
             // 
             // txtContraseña
             // 
-            txtContraseña.BackColor = Color.White;
             txtContraseña.BorderStyle = BorderStyle.FixedSingle;
             txtContraseña.Dock = DockStyle.Fill;
             txtContraseña.Font = new Font("Segoe UI", 11F);
-            txtContraseña.Location = new Point(3, 3);
-            txtContraseña.Margin = new Padding(3, 3, 7, 3);
+            txtContraseña.Location = new Point(0, 0);
+            txtContraseña.Margin = new Padding(0);
             txtContraseña.Name = "txtContraseña";
-            txtContraseña.Size = new Size(453, 32);
+            txtContraseña.Size = new Size(335, 27);
             txtContraseña.TabIndex = 0;
             txtContraseña.UseSystemPasswordChar = true;
             // 
-            // tableLayoutOjo
-            // 
-            tableLayoutOjo.ColumnCount = 1;
-            tableLayoutOjo.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
-            tableLayoutOjo.Controls.Add(picOjo, 0, 1);
-            tableLayoutOjo.Dock = DockStyle.Fill;
-            tableLayoutOjo.Location = new Point(463, 0);
-            tableLayoutOjo.Margin = new Padding(0);
-            tableLayoutOjo.Name = "tableLayoutOjo";
-            tableLayoutOjo.RowCount = 3;
-            tableLayoutOjo.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutOjo.RowStyles.Add(new RowStyle(SizeType.Absolute, 37F));
-            tableLayoutOjo.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutOjo.Size = new Size(34, 48);
-            tableLayoutOjo.TabIndex = 2;
-            // 
             // picOjo
             // 
-            picOjo.BackColor = Color.Transparent;
             picOjo.Cursor = Cursors.Hand;
-            picOjo.Dock = DockStyle.Fill;
-            picOjo.ImageLocation = "Recursos\\Imagenes\\ojoCerrado.jpg";
-            picOjo.Location = new Point(2, 8);
-            picOjo.Margin = new Padding(2, 3, 2, 3);
+            picOjo.Location = new Point(339, 6);
+            picOjo.Margin = new Padding(4, 6, 0, 6);
             picOjo.Name = "picOjo";
-            picOjo.Size = new Size(30, 31);
+            picOjo.Size = new Size(28, 13);
             picOjo.SizeMode = PictureBoxSizeMode.Zoom;
-            picOjo.TabIndex = 0;
+            picOjo.TabIndex = 1;
             picOjo.TabStop = false;
             picOjo.Click += picOjo_Click;
             // 
             // btnIngresar
             // 
-            btnIngresar.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             btnIngresar.BackColor = Color.FromArgb(245, 158, 11);
+            tableLayoutForm.SetColumnSpan(btnIngresar, 3);
             btnIngresar.Cursor = Cursors.Hand;
+            btnIngresar.Dock = DockStyle.Fill;
             btnIngresar.FlatAppearance.BorderSize = 0;
             btnIngresar.FlatAppearance.MouseOverBackColor = Color.FromArgb(217, 119, 6);
             btnIngresar.FlatStyle = FlatStyle.Flat;
             btnIngresar.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
             btnIngresar.ForeColor = Color.White;
-            btnIngresar.Location = new Point(3, 270);
-            btnIngresar.Margin = new Padding(3, 16, 3, 3);
+            btnIngresar.Location = new Point(0, 226);
+            btnIngresar.Margin = new Padding(0, 6, 0, 0);
             btnIngresar.Name = "btnIngresar";
-            btnIngresar.Size = new Size(497, 48);
-            btnIngresar.TabIndex = 5;
-            btnIngresar.Text = "Ingresar";
+            btnIngresar.Size = new Size(370, 39);
+            btnIngresar.TabIndex = 7;
+            btnIngresar.Text = "INGRESAR";
             btnIngresar.UseVisualStyleBackColor = false;
             btnIngresar.Click += btnIngresar_Click;
             // 
+            // tableLayoutSeguro
+            // 
+            tableLayoutSeguro.ColumnCount = 4;
+            tableLayoutForm.SetColumnSpan(tableLayoutSeguro, 3);
+            tableLayoutSeguro.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutSeguro.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 26F));
+            tableLayoutSeguro.ColumnStyles.Add(new ColumnStyle());
+            tableLayoutSeguro.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutSeguro.Controls.Add(picEscudo, 1, 0);
+            tableLayoutSeguro.Controls.Add(lblSeguro, 2, 0);
+            tableLayoutSeguro.Dock = DockStyle.Fill;
+            tableLayoutSeguro.Location = new Point(0, 271);
+            tableLayoutSeguro.Margin = new Padding(0, 6, 0, 0);
+            tableLayoutSeguro.Name = "tableLayoutSeguro";
+            tableLayoutSeguro.RowCount = 1;
+            tableLayoutSeguro.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            tableLayoutSeguro.Size = new Size(370, 102);
+            tableLayoutSeguro.TabIndex = 8;
+            // 
+            // picEscudo
+            // 
+            picEscudo.Anchor = AnchorStyles.None;
+            picEscudo.Location = new Point(71, 40);
+            picEscudo.Margin = new Padding(0, 0, 5, 0);
+            picEscudo.Name = "picEscudo";
+            picEscudo.Size = new Size(21, 21);
+            picEscudo.SizeMode = PictureBoxSizeMode.Zoom;
+            picEscudo.TabIndex = 0;
+            picEscudo.TabStop = false;
+            // 
+            // lblSeguro
+            // 
+            lblSeguro.Anchor = AnchorStyles.None;
+            lblSeguro.AutoSize = true;
+            lblSeguro.Font = new Font("Segoe UI", 10F);
+            lblSeguro.ForeColor = Color.FromArgb(107, 114, 128);
+            lblSeguro.Location = new Point(97, 41);
+            lblSeguro.Margin = new Padding(0);
+            lblSeguro.Name = "lblSeguro";
+            lblSeguro.Size = new Size(201, 19);
+            lblSeguro.TabIndex = 1;
+            lblSeguro.Text = "Acceso seguro a tu información";
+            lblSeguro.TextAlign = ContentAlignment.MiddleLeft;
+            // 
             // Login
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.FromArgb(243, 244, 246);
-            ClientSize = new Size(920, 560);
+            BackColor = Color.FromArgb(237, 241, 245);
+            ClientSize = new Size(1050, 525);
             Controls.Add(tableLayoutMain);
-            MinimumSize = new Size(820, 544);
+            Margin = new Padding(3, 2, 3, 2);
+            MinimumSize = new Size(790, 460);
             Name = "Login";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Iniciar sesión";
+            Text = "GeoTerra — Iniciar sesión";
             WindowState = FormWindowState.Maximized;
             tableLayoutMain.ResumeLayout(false);
             panelBrand.ResumeLayout(false);
-            tableLayoutLogo.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)picLogo).EndInit();
+            ((System.ComponentModel.ISupportInitialize)picLogoGeoterra).EndInit();
             panelForm.ResumeLayout(false);
             tableLayoutCentro.ResumeLayout(false);
-            tableLayoutCentro.PerformLayout();
+            panelMarco.ResumeLayout(false);
+            panelCard.ResumeLayout(false);
             tableLayoutForm.ResumeLayout(false);
             tableLayoutForm.PerformLayout();
-            tableLayoutContraseña.ResumeLayout(false);
-            tableLayoutContraseña.PerformLayout();
-            tableLayoutOjo.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)picIconoFormulario).EndInit();
+            panelFilaContraseña.ResumeLayout(false);
+            tableLayoutFilaContraseña.ResumeLayout(false);
+            tableLayoutFilaContraseña.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)picOjo).EndInit();
+            tableLayoutSeguro.ResumeLayout(false);
+            tableLayoutSeguro.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)picEscudo).EndInit();
             ResumeLayout(false);
         }
 
         #endregion
 
         private TableLayoutPanel tableLayoutMain;
-        private Panel panelBrand;
-        private TableLayoutPanel tableLayoutLogo;
-        private PictureBox picLogo;
+        private PanelLateralLogin panelBrand;
+        private PictureBox picLogoGeoterra;
+        private Label lblSubtitulo;
         private Panel panelForm;
         private TableLayoutPanel tableLayoutCentro;
+        private Panel panelMarco;
+        private Panel panelCard;
         private TableLayoutPanel tableLayoutForm;
+        private PictureBox picIconoFormulario;
         private Label lblTitulo;
+        private Panel panelLineaTitulo;
         private Label lblUsuario;
         private TextBox txtUsuario;
         private Label lblContraseña;
-        private TableLayoutPanel tableLayoutContraseña;
+        private Panel panelFilaContraseña;
+        private TableLayoutPanel tableLayoutFilaContraseña;
         private TextBox txtContraseña;
-        private TableLayoutPanel tableLayoutOjo;
         private PictureBox picOjo;
         private Button btnIngresar;
+        private TableLayoutPanel tableLayoutSeguro;
+        private PictureBox picEscudo;
+        private Label lblSeguro;
     }
 }
