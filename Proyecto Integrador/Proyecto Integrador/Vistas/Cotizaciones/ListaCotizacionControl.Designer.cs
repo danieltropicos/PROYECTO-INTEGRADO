@@ -32,6 +32,7 @@
             colTotal = new DataGridViewTextBoxColumn();
             colFecha = new DataGridViewTextBoxColumn();
             colEstado = new DataGridViewTextBoxColumn();
+            colIconoGrafica = new DataGridViewImageColumn();
             colIconoEstado = new DataGridViewImageColumn();
             colIconoFactura = new DataGridViewImageColumn();
             tableLayoutPanel1.SuspendLayout();
@@ -152,7 +153,7 @@
             dgvCotizaciones.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             dgvCotizaciones.ColumnHeadersHeight = 36;
             dgvCotizaciones.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dgvCotizaciones.Columns.AddRange(new DataGridViewColumn[] { colId, colCliente, colMaterial, colVolumen, colTotal, colFecha, colEstado, colIconoEstado, colIconoFactura });
+            dgvCotizaciones.Columns.AddRange(new DataGridViewColumn[] { colId, colCliente, colMaterial, colVolumen, colTotal, colFecha, colEstado, colIconoGrafica, colIconoEstado, colIconoFactura });
             dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = Color.White;
             dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F);
@@ -217,7 +218,16 @@
             colEstado.HeaderText = "Estado";
             colEstado.Name = "colEstado";
             colEstado.ReadOnly = true;
-            //
+            // 
+            // colIconoGrafica
+            // 
+            colIconoGrafica.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            colIconoGrafica.HeaderText = "Gráfica";
+            colIconoGrafica.ImageLayout = DataGridViewImageCellLayout.Zoom;
+            colIconoGrafica.MinimumWidth = 50;
+            colIconoGrafica.Name = "colIconoGrafica";
+            colIconoGrafica.Width = 50;
+            // 
             // colIconoEstado
             // 
             colIconoEstado.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
@@ -268,6 +278,7 @@
         private DataGridViewTextBoxColumn colTotal;
         private DataGridViewTextBoxColumn colFecha;
         private DataGridViewTextBoxColumn colEstado;
+        private DataGridViewImageColumn colIconoGrafica;
         private DataGridViewImageColumn colIconoEstado;
         private DataGridViewImageColumn colIconoFactura;
     }

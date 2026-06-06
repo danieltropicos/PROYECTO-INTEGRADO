@@ -24,9 +24,9 @@ public partial class ListaCotizacionControl : UserControl
         _usuario = usuario;
 
         InitializeComponent();
-        UiHelper.ConfigurarColumnasGrid(dgvCotizaciones, colIconoEstado, colIconoFactura);
+        UiHelper.ConfigurarColumnasGrid(dgvCotizaciones, colIconoGrafica, colIconoEstado, colIconoFactura);
         colIconoEstado.Visible = EsAdmin;
-        UiHelper.AjustarAnchosColumnas(dgvCotizaciones, colIconoEstado, colIconoFactura);
+        UiHelper.AjustarAnchosColumnas(dgvCotizaciones, colIconoGrafica, colIconoEstado, colIconoFactura);
         CargarCotizaciones();
     }
 
@@ -60,6 +60,9 @@ public partial class ListaCotizacionControl : UserControl
                 c.FechaCreacion.ToString("dd/MM/yyyy"),
                 c.Estado);
 
+            dgvCotizaciones.Rows[indice].Cells[colIconoGrafica.Index].Value =
+                c.Terreno.Count >= 3 ? IconosAcciones.VerGrafica : null;
+
             if (EsAdmin)
             {
                 dgvCotizaciones.Rows[indice].Cells[colIconoEstado.Index].Value =
@@ -82,7 +85,23 @@ public partial class ListaCotizacionControl : UserControl
 
         var cotizacion = _cotizaciones[e.RowIndex];
 
-        if (e.ColumnIndex == colIconoEstado.Index && EsAdmin)
+        if (e.ColumnIndex == colIconoGrafica.Index)
+        {
+            if (cotizacion.Terreno.Count < 3)
+            {
+                MessageBox.Show(
+                    "Esta cotización no tiene suficientes puntos para mostrar la gráfica.",
+                    "Gráfica no disponible",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
+                return;
+            }
+
+            var titulo = $"Terreno — {cotizacion.Cliente?.NombreCompleto ?? "Cotización"}";
+            using var ventana = new TerrenoGraficaForm(cotizacion.Terreno, titulo);
+            ventana.ShowDialog();
+        }
+        else if (e.ColumnIndex == colIconoEstado.Index && EsAdmin)
         {
             if (cotizacion.Estado == "Activa")
             {
@@ -126,7 +145,8 @@ public partial class ListaCotizacionControl : UserControl
         string ayuda = "";
         if (e.RowIndex >= 0)
         {
-            if (e.ColumnIndex == colIconoEstado.Index) ayuda = "Clic para cambiar estado";
+            if (e.ColumnIndex == colIconoGrafica.Index) ayuda = "Ver gráfica del terreno";
+            else if (e.ColumnIndex == colIconoEstado.Index) ayuda = "Clic para cambiar estado";
             else if (e.ColumnIndex == colIconoFactura.Index) ayuda = "Generar factura";
         }
 

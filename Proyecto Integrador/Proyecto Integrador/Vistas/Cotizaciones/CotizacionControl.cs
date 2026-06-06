@@ -4,6 +4,7 @@ using Proyecto_Integrador.Modelos.Cotizaciones;
 using Proyecto_Integrador.Modelos.Usuarios;
 using Proyecto_Integrador.Vistas.Cotizaciones.Validaciones;
 using System.Globalization;
+using System.Text.Json;
 
 namespace Proyecto_Integrador.Vistas.Cotizaciones;
 
@@ -136,6 +137,28 @@ public partial class CotizacionControl : UserControl
 
     private void btnQuitarOriginal_Click(object sender, EventArgs e) =>
         QuitarPuntoSeleccionado(_terreno, dataGridView1);
+
+    private void btnCargarCoordenadas_Click(object sender, EventArgs e)
+    {
+        var opcionesJson = new JsonSerializerOptions { WriteIndented = true };
+        var jsonInicial = _terreno.Count > 0
+            ? JsonSerializer.Serialize(_terreno, opcionesJson)
+            : string.Empty;
+
+        using var ventana = new CargarCoordenadasForm(jsonInicial);
+        if (ventana.ShowDialog() != DialogResult.OK)
+            return;
+
+        _terreno.Clear();
+        _terreno.AddRange(ventana.Puntos);
+
+        RefrescarGrid(_terreno, dataGridView1);
+        ActualizarGrafica();
+
+        btnGuardarCotizacion.Visible = false;
+        label5.Text = "—";
+        label7.Text = "—";
+    }
 
     private void AgregarPunto(
         TextBox txtX,

@@ -55,6 +55,7 @@ namespace Proyecto_Integrador.Vistas.Cotizaciones
             txtOrigY = new TextBox();
             lblOrigZ = new Label();
             txtOrigZ = new TextBox();
+            btnCargarCoordenadas = new Button();
             btnAgregarOriginal = new Button();
             btnQuitarOriginal = new Button();
             groupBox4 = new GroupBox();
@@ -340,6 +341,7 @@ namespace Proyecto_Integrador.Vistas.Cotizaciones
             flowEntradaOriginal.Controls.Add(txtOrigY);
             flowEntradaOriginal.Controls.Add(lblOrigZ);
             flowEntradaOriginal.Controls.Add(txtOrigZ);
+            flowEntradaOriginal.Controls.Add(btnCargarCoordenadas);
             flowEntradaOriginal.Controls.Add(btnAgregarOriginal);
             flowEntradaOriginal.Controls.Add(btnQuitarOriginal);
             flowEntradaOriginal.Dock = DockStyle.Fill;
@@ -349,7 +351,7 @@ namespace Proyecto_Integrador.Vistas.Cotizaciones
             flowEntradaOriginal.Padding = new Padding(0, 5, 0, 0);
             flowEntradaOriginal.Size = new Size(464, 51);
             flowEntradaOriginal.TabIndex = 1;
-            flowEntradaOriginal.WrapContents = false;
+            flowEntradaOriginal.WrapContents = true;
             // 
             // lblOrigX
             // 
@@ -417,6 +419,22 @@ namespace Proyecto_Integrador.Vistas.Cotizaciones
             txtOrigZ.Size = new Size(66, 27);
             txtOrigZ.TabIndex = 5;
             // 
+            // btnCargarCoordenadas
+            // 
+            btnCargarCoordenadas.BackColor = Color.FromArgb(59, 93, 122);
+            btnCargarCoordenadas.FlatAppearance.BorderSize = 0;
+            btnCargarCoordenadas.FlatStyle = FlatStyle.Flat;
+            btnCargarCoordenadas.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            btnCargarCoordenadas.ForeColor = Color.White;
+            btnCargarCoordenadas.Location = new Point(293, 8);
+            btnCargarCoordenadas.Margin = new Padding(0, 3, 7, 0);
+            btnCargarCoordenadas.Name = "btnCargarCoordenadas";
+            btnCargarCoordenadas.Size = new Size(110, 35);
+            btnCargarCoordenadas.TabIndex = 6;
+            btnCargarCoordenadas.Text = "Cargar JSON";
+            btnCargarCoordenadas.UseVisualStyleBackColor = false;
+            btnCargarCoordenadas.Click += btnCargarCoordenadas_Click;
+            // 
             // btnAgregarOriginal
             // 
             btnAgregarOriginal.BackColor = Color.FromArgb(245, 158, 11);
@@ -424,11 +442,11 @@ namespace Proyecto_Integrador.Vistas.Cotizaciones
             btnAgregarOriginal.FlatStyle = FlatStyle.Flat;
             btnAgregarOriginal.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             btnAgregarOriginal.ForeColor = Color.White;
-            btnAgregarOriginal.Location = new Point(293, 8);
+            btnAgregarOriginal.Location = new Point(410, 8);
             btnAgregarOriginal.Margin = new Padding(0, 3, 7, 0);
             btnAgregarOriginal.Name = "btnAgregarOriginal";
             btnAgregarOriginal.Size = new Size(103, 35);
-            btnAgregarOriginal.TabIndex = 6;
+            btnAgregarOriginal.TabIndex = 7;
             btnAgregarOriginal.Text = "Agregar";
             btnAgregarOriginal.UseVisualStyleBackColor = false;
             btnAgregarOriginal.Click += btnAgregarOriginal_Click;
@@ -440,11 +458,11 @@ namespace Proyecto_Integrador.Vistas.Cotizaciones
             btnQuitarOriginal.FlatStyle = FlatStyle.Flat;
             btnQuitarOriginal.Font = new Font("Segoe UI", 9F);
             btnQuitarOriginal.ForeColor = Color.FromArgb(17, 24, 39);
-            btnQuitarOriginal.Location = new Point(403, 8);
+            btnQuitarOriginal.Location = new Point(520, 8);
             btnQuitarOriginal.Margin = new Padding(0, 3, 0, 0);
             btnQuitarOriginal.Name = "btnQuitarOriginal";
             btnQuitarOriginal.Size = new Size(80, 35);
-            btnQuitarOriginal.TabIndex = 7;
+            btnQuitarOriginal.TabIndex = 8;
             btnQuitarOriginal.Text = "Quitar";
             btnQuitarOriginal.UseVisualStyleBackColor = false;
             btnQuitarOriginal.Click += btnQuitarOriginal_Click;
@@ -620,6 +638,7 @@ namespace Proyecto_Integrador.Vistas.Cotizaciones
         private TextBox txtOrigY;
         private Label lblOrigZ;
         private TextBox txtOrigZ;
+        private Button btnCargarCoordenadas;
         private Button btnAgregarOriginal;
         private Button btnQuitarOriginal;
         private DataGridView dataGridView1;

@@ -11,6 +11,7 @@ public static class IconosAcciones
     public static Image? GenerarFactura { get; } = Cargar(AppAssets.ArchivoIconoGenerarFactura);
     public static Image? Imprimir { get; } = Cargar(AppAssets.ArchivoIconoImprimir);
     public static Image? CambiarEstado { get; } = Cargar(AppAssets.ArchivoIconoCambiarEstado);
+    public static Image? VerGrafica { get; } = Cargar(AppAssets.ArchivoIconoCotizacion);
 
     private static Image? Cargar(string archivo)
     {
