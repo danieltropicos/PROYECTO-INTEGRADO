@@ -89,7 +89,7 @@ public partial class CotizacionControl : UserControl
 
             var materialSeleccionado = comboBoxMateriales.SelectedItem as Material;
             decimal precioMetroCubico = materialSeleccionado?.ValorMetroCubico ?? 0;
-            decimal costoTotal = (decimal)volumen * precioMetroCubico;
+            decimal costoTotal = (decimal)volumen * precioMetroCubico ;
             label7.Text = costoTotal.ToString("C0", new CultureInfo("es-CO"));
 
             btnGuardarCotizacion.Visible = true;

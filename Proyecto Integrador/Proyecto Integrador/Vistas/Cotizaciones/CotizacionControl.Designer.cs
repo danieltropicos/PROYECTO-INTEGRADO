@@ -251,7 +251,7 @@ namespace Proyecto_Integrador.Vistas.Cotizaciones
             groupBox2.Margin = new Padding(3, 4, 3, 4);
             groupBox2.Name = "groupBox2";
             groupBox2.Padding = new Padding(3, 4, 3, 4);
-            groupBox2.Size = new Size(476, 334);
+            groupBox2.Size = new Size(476, 333);
             groupBox2.TabIndex = 1;
             groupBox2.TabStop = false;
             groupBox2.Text = "Coordenadas del Terreno";
@@ -269,7 +269,7 @@ namespace Proyecto_Integrador.Vistas.Cotizaciones
             tableLayoutTerreno.RowCount = 2;
             tableLayoutTerreno.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
             tableLayoutTerreno.RowStyles.Add(new RowStyle(SizeType.Absolute, 59F));
-            tableLayoutTerreno.Size = new Size(470, 306);
+            tableLayoutTerreno.Size = new Size(470, 305);
             tableLayoutTerreno.TabIndex = 0;
             // 
             // dataGridView1
@@ -309,7 +309,7 @@ namespace Proyecto_Integrador.Vistas.Cotizaciones
             dataGridView1.ReadOnly = true;
             dataGridView1.RowHeadersVisible = false;
             dataGridView1.RowHeadersWidth = 51;
-            dataGridView1.Size = new Size(464, 239);
+            dataGridView1.Size = new Size(464, 238);
             dataGridView1.TabIndex = 0;
             // 
             // colX1
@@ -345,13 +345,12 @@ namespace Proyecto_Integrador.Vistas.Cotizaciones
             flowEntradaOriginal.Controls.Add(btnAgregarOriginal);
             flowEntradaOriginal.Controls.Add(btnQuitarOriginal);
             flowEntradaOriginal.Dock = DockStyle.Fill;
-            flowEntradaOriginal.Location = new Point(3, 251);
+            flowEntradaOriginal.Location = new Point(3, 250);
             flowEntradaOriginal.Margin = new Padding(3, 4, 3, 4);
             flowEntradaOriginal.Name = "flowEntradaOriginal";
             flowEntradaOriginal.Padding = new Padding(0, 5, 0, 0);
             flowEntradaOriginal.Size = new Size(464, 51);
             flowEntradaOriginal.TabIndex = 1;
-            flowEntradaOriginal.WrapContents = true;
             // 
             // lblOrigX
             // 
@@ -442,7 +441,7 @@ namespace Proyecto_Integrador.Vistas.Cotizaciones
             btnAgregarOriginal.FlatStyle = FlatStyle.Flat;
             btnAgregarOriginal.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             btnAgregarOriginal.ForeColor = Color.White;
-            btnAgregarOriginal.Location = new Point(410, 8);
+            btnAgregarOriginal.Location = new Point(0, 46);
             btnAgregarOriginal.Margin = new Padding(0, 3, 7, 0);
             btnAgregarOriginal.Name = "btnAgregarOriginal";
             btnAgregarOriginal.Size = new Size(103, 35);
@@ -458,7 +457,7 @@ namespace Proyecto_Integrador.Vistas.Cotizaciones
             btnQuitarOriginal.FlatStyle = FlatStyle.Flat;
             btnQuitarOriginal.Font = new Font("Segoe UI", 9F);
             btnQuitarOriginal.ForeColor = Color.FromArgb(17, 24, 39);
-            btnQuitarOriginal.Location = new Point(520, 8);
+            btnQuitarOriginal.Location = new Point(110, 46);
             btnQuitarOriginal.Margin = new Padding(0, 3, 0, 0);
             btnQuitarOriginal.Name = "btnQuitarOriginal";
             btnQuitarOriginal.Size = new Size(80, 35);
@@ -475,11 +474,11 @@ namespace Proyecto_Integrador.Vistas.Cotizaciones
             groupBox4.Dock = DockStyle.Fill;
             groupBox4.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             groupBox4.ForeColor = Color.FromArgb(30, 58, 95);
-            groupBox4.Location = new Point(3, 557);
+            groupBox4.Location = new Point(3, 556);
             groupBox4.Margin = new Padding(3, 4, 3, 4);
             groupBox4.Name = "groupBox4";
             groupBox4.Padding = new Padding(3, 4, 3, 4);
-            groupBox4.Size = new Size(476, 219);
+            groupBox4.Size = new Size(476, 220);
             groupBox4.TabIndex = 3;
             groupBox4.TabStop = false;
             groupBox4.Text = "Resultado";
@@ -504,7 +503,7 @@ namespace Proyecto_Integrador.Vistas.Cotizaciones
             tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
             tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Absolute, 75F));
             tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Absolute, 75F));
-            tableLayoutPanel4.Size = new Size(470, 191);
+            tableLayoutPanel4.Size = new Size(470, 192);
             tableLayoutPanel4.TabIndex = 0;
             // 
             // label4
