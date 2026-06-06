@@ -18,15 +18,15 @@ namespace Proyecto_Integrador.Vistas.Login
 
         private void CargarImagenes()
         {
-            panelBrand.ImagenMaquina = CargarImagen(AppAssets.ArchivoLoginFondoMaquina);
+            panelBrand.ImagenMaquina = CargarImagen(RecursosAplicacion.ArchivoLoginFondoMaquina);
             panelBrand.Invalidate();
 
-            AsignarImagen(picLogoGeoterra, AppAssets.ArchivoLoginLogoGeoterra);
-            AsignarImagen(picIconoFormulario, AppAssets.ArchivoLoginIconoFormulario);
-            AsignarImagen(picEscudo, AppAssets.ArchivoIconoEscudo);
-            AsignarImagen(picOjo, AppAssets.ArchivoOjoCerrado);
+            AsignarImagen(picLogoGeoterra, RecursosAplicacion.ArchivoLoginLogoGeoterra);
+            AsignarImagen(picIconoFormulario, RecursosAplicacion.ArchivoLoginIconoFormulario);
+            AsignarImagen(picEscudo, RecursosAplicacion.ArchivoIconoEscudo);
+            AsignarImagen(picOjo, RecursosAplicacion.ArchivoOjoCerrado);
 
-            var fondoDerecho = CargarImagen(AppAssets.ArchivoLoginFondoDerecho);
+            var fondoDerecho = CargarImagen(RecursosAplicacion.ArchivoLoginFondoDerecho);
             if (fondoDerecho is not null)
             {
                 panelForm.BackgroundImage = fondoDerecho;
@@ -46,7 +46,7 @@ namespace Proyecto_Integrador.Vistas.Login
 
         private static Image? CargarImagen(string archivo)
         {
-            var ruta = AppAssets.Ruta(archivo);
+            var ruta = RecursosAplicacion.Ruta(archivo);
             if (!File.Exists(ruta))
                 return null;
 
@@ -131,7 +131,7 @@ namespace Proyecto_Integrador.Vistas.Login
         {
             var mostrar = txtContraseña.UseSystemPasswordChar;
             txtContraseña.UseSystemPasswordChar = !mostrar;
-            AsignarImagen(picOjo, mostrar ? AppAssets.ArchivoOjoAbierto : AppAssets.ArchivoOjoCerrado);
+            AsignarImagen(picOjo, mostrar ? RecursosAplicacion.ArchivoOjoAbierto : RecursosAplicacion.ArchivoOjoCerrado);
         }
     }
 }

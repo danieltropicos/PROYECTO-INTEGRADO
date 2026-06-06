@@ -4,10 +4,10 @@ using QuestPDF.Infrastructure;
 using Proyecto_Integrador.Modelos.Facturas;
 using System.Globalization;
 
-namespace Proyecto_Integrador.Services;
+namespace Proyecto_Integrador.Servicios;
 
 
-public static class FacturaPdfGeneradorService
+public static class FacturaPdfGeneradorServicio
 {
     private const string C_PRIMARIO = "#1E3A5F";
     private const string C_SECUNDARIO = "#2E6DA4";

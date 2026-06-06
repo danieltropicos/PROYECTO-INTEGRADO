@@ -19,7 +19,7 @@ namespace Proyecto_Integrador.Vistas.Usuarios
             btnGuardar.Text = "Guardar";
             comboBoxRol.DisplayMember = nameof(Rol.Nombre);
             comboBoxRol.DataSource = _rolControlador.ObtenerRoles();
-            picOjo.ImageLocation = AppAssets.Ruta(AppAssets.ArchivoOjoCerrado);
+            picOjo.ImageLocation = RecursosAplicacion.Ruta(RecursosAplicacion.ArchivoOjoCerrado);
         }
 
         public UsuarioForm(Usuario usuario) : this()
@@ -90,12 +90,12 @@ namespace Proyecto_Integrador.Vistas.Usuarios
             if (txtContrasena.UseSystemPasswordChar)
             {
                 txtContrasena.UseSystemPasswordChar = false;
-                picOjo.ImageLocation = AppAssets.Ruta(AppAssets.ArchivoOjoAbierto);
+                picOjo.ImageLocation = RecursosAplicacion.Ruta(RecursosAplicacion.ArchivoOjoAbierto);
             }
             else
             {
                 txtContrasena.UseSystemPasswordChar = true;
-                picOjo.ImageLocation = AppAssets.Ruta(AppAssets.ArchivoOjoCerrado);
+                picOjo.ImageLocation = RecursosAplicacion.Ruta(RecursosAplicacion.ArchivoOjoCerrado);
             }
         }
     }

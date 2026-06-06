@@ -1,5 +1,5 @@
 ﻿using Proyecto_Integrador.Modelos.Facturas;
-using Proyecto_Integrador.Services;
+using Proyecto_Integrador.Servicios;
 using System.Globalization;
 using System.Text.Json;
 
@@ -69,10 +69,10 @@ public class FacturasRepositorio
         var cotizacion = factura.Cotizacion;
 
         imgTerreno ??= cotizacion?.Terreno is { Count: >= 3 } terreno
-            ? TerrenoImagenCapturaService.Capturar(terreno)
+            ? TerrenoImagenCapturaServicio.Capturar(terreno)
             : null;
 
-        return FacturaPdfGeneradorService.Generar(
+        return FacturaPdfGeneradorServicio.Generar(
             factura,
             imgTerreno,
             rutaLogo);

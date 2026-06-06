@@ -85,7 +85,7 @@ public partial class FacturaControl : UserControl
             UseWaitCursor = true;
             dgvFacturas.Enabled = false;
 
-            var ruta = facturaControlador.ImprimirFactura(factura, rutaLogo: AppAssets.RutaLogoNavbar);
+            var ruta = facturaControlador.ImprimirFactura(factura, rutaLogo: RecursosAplicacion.RutaLogoNavbar);
 
             if (MessageBox.Show("Factura PDF generada. ¿Desea abrirla?", "Factura impresa",
                     MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)

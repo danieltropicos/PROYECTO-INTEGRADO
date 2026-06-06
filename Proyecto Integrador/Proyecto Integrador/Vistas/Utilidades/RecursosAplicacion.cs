@@ -1,6 +1,6 @@
 namespace Proyecto_Integrador.Vistas.Utilidades
 {
-    public static class AppAssets
+    public static class RecursosAplicacion
     {
         public const string CarpetaImagenes = "Recursos/Imagenes";
         public const string ArchivoLogoNavbar = "logo-navbar.png";

@@ -23,8 +23,8 @@ namespace Proyecto_Integrador.Vistas.Layout
             panelMenuUsuarios.Visible = esAdmin;
             panelMenuMateriales.Visible = esAdmin;
 
-            picLogoNavbar.ImageLocation = AppAssets.RutaLogoNavbar;
-            picLogoCentro.ImageLocation = AppAssets.RutaLogoCentro;
+            picLogoNavbar.ImageLocation = RecursosAplicacion.RutaLogoNavbar;
+            picLogoCentro.ImageLocation = RecursosAplicacion.RutaLogoCentro;
 
             ConfigurarHoverSidebar();
             UiHelper.EstilizarBotonNavbar(btnMiPerfilNavbar);

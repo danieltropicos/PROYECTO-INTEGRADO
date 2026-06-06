@@ -1,9 +1,9 @@
 using Proyecto_Integrador.Modelos.Cotizaciones;
 using Proyecto_Integrador.Vistas.Cotizaciones;
 
-namespace Proyecto_Integrador.Services;
+namespace Proyecto_Integrador.Servicios;
 
-public static class TerrenoImagenCapturaService
+public static class TerrenoImagenCapturaServicio
 {
     public static byte[]? Capturar(IReadOnlyList<PuntoTerreno> puntos)
     {

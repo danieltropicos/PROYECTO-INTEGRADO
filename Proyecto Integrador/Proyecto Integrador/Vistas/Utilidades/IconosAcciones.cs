@@ -5,17 +5,17 @@ namespace Proyecto_Integrador.Vistas.Utilidades;
 /// </summary>
 public static class IconosAcciones
 {
-    public static Image? Editar { get; } = Cargar(AppAssets.ArchivoIconoEditar);
-    public static Image? Activo { get; } = Cargar(AppAssets.ArchivoIconoActivo);
-    public static Image? Inactivo { get; } = Cargar(AppAssets.ArchivoIconoInactivo);
-    public static Image? GenerarFactura { get; } = Cargar(AppAssets.ArchivoIconoGenerarFactura);
-    public static Image? Imprimir { get; } = Cargar(AppAssets.ArchivoIconoImprimir);
-    public static Image? CambiarEstado { get; } = Cargar(AppAssets.ArchivoIconoCambiarEstado);
-    public static Image? VerGrafica { get; } = Cargar(AppAssets.ArchivoIconoCotizacion);
+    public static Image? Editar { get; } = Cargar(RecursosAplicacion.ArchivoIconoEditar);
+    public static Image? Activo { get; } = Cargar(RecursosAplicacion.ArchivoIconoActivo);
+    public static Image? Inactivo { get; } = Cargar(RecursosAplicacion.ArchivoIconoInactivo);
+    public static Image? GenerarFactura { get; } = Cargar(RecursosAplicacion.ArchivoIconoGenerarFactura);
+    public static Image? Imprimir { get; } = Cargar(RecursosAplicacion.ArchivoIconoImprimir);
+    public static Image? CambiarEstado { get; } = Cargar(RecursosAplicacion.ArchivoIconoCambiarEstado);
+    public static Image? VerGrafica { get; } = Cargar(RecursosAplicacion.ArchivoIconoCotizacion);
 
     private static Image? Cargar(string archivo)
     {
-        var ruta = AppAssets.Ruta(archivo);
+        var ruta = RecursosAplicacion.Ruta(archivo);
         if (!File.Exists(ruta)) return null;
 
         try
