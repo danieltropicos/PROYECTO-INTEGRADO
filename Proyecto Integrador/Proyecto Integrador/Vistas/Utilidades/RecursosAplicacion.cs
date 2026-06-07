@@ -10,7 +10,9 @@ namespace Proyecto_Integrador.Vistas.Utilidades
         public const string ArchivoIconoInactivo = "icono-inactivo.png";
         public const string ArchivoIconoGenerarFactura = "icono-generar-factura.png";
         public const string ArchivoIconoImprimir = "icono-imprimir.png";
-        public const string ArchivoIconoCambiarEstado = "icono-cambiar-estado.png";
+        public const string ArchivoIconoCambiarEstadoPendiente = "icono-cambiar-estado-pendiente.png";
+        public const string ArchivoIconoCambiarEstadoPagado = "icono-cambiar-estado-pagado.png";
+        public const string ArchivoIconoCambiarEstadoCancelado = "icono-cambiar-estado-cancelado.png";
         public const string ArchivoIconoCotizacion = "icono-ver-cotizacion.png";
         public const string ArchivoOjoAbierto = "ojoAbierto.jpg";
         public const string ArchivoOjoCerrado = "ojoCerrado.jpg";

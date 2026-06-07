@@ -46,7 +46,8 @@ public partial class FacturaControl : UserControl
                 f.Estado);
 
             if (EsAdmin)
-                dgvFacturas.Rows[indice].Cells[colIconoEstado.Index].Value = IconosAcciones.CambiarEstado;
+                dgvFacturas.Rows[indice].Cells[colIconoEstado.Index].Value =
+                    IconosAcciones.IconoCambiarEstadoFactura(f.Estado);
 
             dgvFacturas.Rows[indice].Cells[colIconoImprimir.Index].Value = IconosAcciones.Imprimir;
         }
@@ -110,7 +111,8 @@ public partial class FacturaControl : UserControl
         string ayuda = "";
         if (e.RowIndex >= 0)
         {
-            if (e.ColumnIndex == colIconoEstado.Index) ayuda = "Cambiar estado";
+            if (e.ColumnIndex == colIconoEstado.Index)
+                ayuda = $"Estado: {_facturas[e.RowIndex].Estado} (clic para cambiar)";
             else if (e.ColumnIndex == colIconoImprimir.Index) ayuda = "Imprimir PDF";
         }
 
