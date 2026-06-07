@@ -22,7 +22,7 @@ public class FacturaControlador
         return facturaRepositorio.Listar();
     }
 
-    public int ContarFacturas(string estado)
+    public int ContarFacturas(string? estado = null)
         => facturaRepositorio.ContarFacturas(estado);
 
     public void CambiarEstado(Factura factura, string nuevoEstado)
