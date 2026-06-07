@@ -1,14 +1,10 @@
 ﻿using Proyecto_Integrador.Modelos.Cotizaciones;
-using System.Text.Json;
 
 namespace Proyecto_Integrador.Repositorios;
 
 public class MaterialRepositorio
 {
-    const string CarpetaData = "Data";
-    private static readonly string RutaArchivo =
-        Path.Combine(AppDomain.CurrentDomain.BaseDirectory, CarpetaData, "material.json");
-
+    private const string NombreArchivo = "material.json";
 
     private readonly List<Material> materiales = [];
 
@@ -49,37 +45,13 @@ public class MaterialRepositorio
         GuardarMateriales();
     }
 
-    private void GuardarMateriales()
-    {
-        Directory.CreateDirectory(CarpetaData);
-        var options = new JsonSerializerOptions
-        {
-            WriteIndented = true
-        };
-        using (var writer = new StreamWriter(RutaArchivo))
-        {
-            var json = JsonSerializer.Serialize(materiales, options);
-            writer.Write(json);
-        }
-    }
+    private void GuardarMateriales() =>
+        AlmacenJsonCifrado.Guardar(NombreArchivo, materiales);
 
     private void CargarMateriales()
     {
-        if (!File.Exists(RutaArchivo)) return;
-
-        var opciones = new JsonSerializerOptions
-        {
-            PropertyNameCaseInsensitive = true
-        };
-
-        using (var reader = new StreamReader(RutaArchivo))
-        {
-            var json = reader.ReadToEnd();
-            var materialesCargados = JsonSerializer.Deserialize<List<Material>>(json, opciones);
-            if (materialesCargados != null)
-            {
-                materiales.AddRange(materialesCargados);
-            }
-        }
+        var materialesCargados = AlmacenJsonCifrado.Cargar<List<Material>>(NombreArchivo);
+        if (materialesCargados != null)
+            materiales.AddRange(materialesCargados);
     }
 }

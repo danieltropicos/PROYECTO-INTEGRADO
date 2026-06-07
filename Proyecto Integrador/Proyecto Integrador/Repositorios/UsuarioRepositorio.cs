@@ -1,37 +1,17 @@
 ﻿using Proyecto_Integrador.Modelos.Usuarios;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Text.Json;
 
 namespace Proyecto_Integrador.Repositorios;
 
 public class UsuarioRepositorio
 {
-    private static readonly string folder = "Data";
-    public static readonly string filePath = Path.Combine(folder, "Usuarios.json");
+    private const string NombreArchivo = "usuarios.json";
 
     public List<Usuario> Leer(string? filtro = null)
     {
-        List<Usuario> lista = new List<Usuario>();
+        if (!AlmacenJsonCifrado.Existe(NombreArchivo))
+            AlmacenJsonCifrado.Guardar(NombreArchivo, CrearUsuariosIniciales());
 
-        if (File.Exists(filePath))
-        {
-            using (StreamReader sr = new StreamReader(filePath))
-            {
-                string json = sr.ReadToEnd();
-
-                if (!string.IsNullOrWhiteSpace(json))
-                {
-                    lista = JsonSerializer.Deserialize<List<Usuario>>(json) ?? lista;
-                }
-            }
-        }
-        else
-        {
-            Directory.CreateDirectory(folder);
-            File.WriteAllText(filePath, "[]");
-        }
+        var lista = AlmacenJsonCifrado.Cargar<List<Usuario>>(NombreArchivo) ?? [];
 
         if (!string.IsNullOrWhiteSpace(filtro))
         {
@@ -47,39 +27,24 @@ public class UsuarioRepositorio
             .ToList();
     }
 
-    public int ContarUsuarios()
-    {
-        return Leer().Count;
-    }
+    public int ContarUsuarios() => Leer().Count;
 
-    public Usuario? ObtenerUsuarioPorNombreUsuario(string nombreDeUsuario)
-    {
-        return Leer().FirstOrDefault(x => x.NombreUsuario == nombreDeUsuario);
-    }
+    public Usuario? ObtenerUsuarioPorNombreUsuario(string nombreDeUsuario) =>
+        Leer().FirstOrDefault(x => x.NombreUsuario == nombreDeUsuario);
 
-    private void Guardar(List<Usuario> lista)
-    {
-        var opciones = new JsonSerializerOptions
-        {
-            WriteIndented = true
-        };
-
-        using (StreamWriter sw = new StreamWriter(filePath))
-        {
-            string json = JsonSerializer.Serialize<List<Usuario>>(lista, opciones);
-            sw.Write(json);
-        }
-    }
+    private void Guardar(List<Usuario> lista) =>
+        AlmacenJsonCifrado.Guardar(NombreArchivo, lista);
 
     public void Agregar(Usuario usuario)
     {
-        List<Usuario> lista = Leer();
+        var lista = AlmacenJsonCifrado.Cargar<List<Usuario>>(NombreArchivo) ?? [];
         lista.Add(usuario);
         Guardar(lista);
     }
+
     public void Actualizar(Guid id, Usuario nuevoModelo, string? contrasenaPlana = null)
     {
-        var lista = Leer();
+        var lista = AlmacenJsonCifrado.Cargar<List<Usuario>>(NombreArchivo) ?? [];
         var index = lista.FindIndex(u => u.Id == id);
         if (index < 0) return;
 
@@ -102,4 +67,26 @@ public class UsuarioRepositorio
 
         Guardar(lista);
     }
+
+    private static List<Usuario> CrearUsuariosIniciales() =>
+    [
+        new Usuario(
+            "Admin",
+            "Sistema",
+            "admin@gmail.com",
+            "3000000000",
+            "Sin dirección",
+            "admin",
+            "1234",
+            new Rol("Admin")),
+        new Usuario(
+            "Usuario",
+            "Prueba",
+            "usuario@gmail.com",
+            "3000000001",
+            "Sin dirección",
+            "usuario",
+            "1234",
+            new Rol("Usuario"))
+    ];
 }

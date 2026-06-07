@@ -1,15 +1,11 @@
 ﻿using Proyecto_Integrador.Modelos.Facturas;
 using Proyecto_Integrador.Servicios;
-using System.Globalization;
-using System.Text.Json;
 
 namespace Proyecto_Integrador.Repositorios;
 
 public class FacturasRepositorio
 {
-    private static readonly string CarpetaData = "Data";
-    private static readonly string RutaArchivo =
-        Path.Combine(AppDomain.CurrentDomain.BaseDirectory, CarpetaData, "facturas.json");
+    private const string NombreArchivo = "facturas.json";
 
     private List<Factura> facturas = [];
 
@@ -20,25 +16,13 @@ public class FacturasRepositorio
 
     private void Cargar()
     {
-        if (!File.Exists(RutaArchivo)) return;
-
-        var opciones = new JsonSerializerOptions { PropertyNameCaseInsensitive = true };
-        using var reader = new StreamReader(RutaArchivo);
-        var json = reader.ReadToEnd();
-        var cargadas = JsonSerializer.Deserialize<List<Factura>>(json, opciones);
+        var cargadas = AlmacenJsonCifrado.Cargar<List<Factura>>(NombreArchivo);
         if (cargadas != null)
             facturas.AddRange(cargadas);
     }
 
-    private void Guardar()
-    {
-        Directory.CreateDirectory(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, CarpetaData));
-
-        var opciones = new JsonSerializerOptions { WriteIndented = true };
-        using var writer = new StreamWriter(RutaArchivo);
-        var json = JsonSerializer.Serialize(facturas, opciones);
-        writer.Write(json);
-    }
+    private void Guardar() =>
+        AlmacenJsonCifrado.Guardar(NombreArchivo, facturas);
 
     public void Agregar(Factura factura)
     {
@@ -46,10 +30,7 @@ public class FacturasRepositorio
         Guardar();
     }
 
-    public List<Factura> Listar()
-    {
-        return facturas;
-    }
+    public List<Factura> Listar() => facturas;
 
     public int ContarFacturas(string? estado)
     {

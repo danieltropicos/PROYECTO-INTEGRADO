@@ -1,13 +1,10 @@
 using Proyecto_Integrador.Modelos.Usuarios;
-using System.Text.Json;
 
 namespace Proyecto_Integrador.Repositorios;
 
 public class RolRepositorio
 {
-    const string CarpetaData = "Data";
-    private static readonly string RutaArchivo =
-        Path.Combine(AppDomain.CurrentDomain.BaseDirectory, CarpetaData, "roles.json");
+    private const string NombreArchivo = "roles.json";
 
     private readonly List<Rol> roles = [];
 
@@ -31,23 +28,12 @@ public class RolRepositorio
             .ToList();
     }
 
-    private void GuardarRoles()
-    {
-        Directory.CreateDirectory(CarpetaData);
-        var options = new JsonSerializerOptions
-        {
-            WriteIndented = true
-        };
-        using (var writer = new StreamWriter(RutaArchivo))
-        {
-            var json = JsonSerializer.Serialize(roles, options);
-            writer.Write(json);
-        }
-    }
+    private void GuardarRoles() =>
+        AlmacenJsonCifrado.Guardar(NombreArchivo, roles);
 
     private void CargarRoles()
     {
-        if (!File.Exists(RutaArchivo))
+        if (!AlmacenJsonCifrado.Existe(NombreArchivo))
         {
             roles.AddRange(
             [
@@ -58,19 +44,8 @@ public class RolRepositorio
             return;
         }
 
-        var opciones = new JsonSerializerOptions
-        {
-            PropertyNameCaseInsensitive = true
-        };
-
-        using (var reader = new StreamReader(RutaArchivo))
-        {
-            var json = reader.ReadToEnd();
-            var rolesCargados = JsonSerializer.Deserialize<List<Rol>>(json, opciones);
-            if (rolesCargados != null)
-            {
-                roles.AddRange(rolesCargados);
-            }
-        }
+        var rolesCargados = AlmacenJsonCifrado.Cargar<List<Rol>>(NombreArchivo);
+        if (rolesCargados != null)
+            roles.AddRange(rolesCargados);
     }
 }

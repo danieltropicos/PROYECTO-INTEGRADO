@@ -1,18 +1,15 @@
 ﻿using Proyecto_Integrador.Modelos.Cotizaciones;
-using System.Text.Json;
 
 namespace Proyecto_Integrador.Repositorios;
 
 public class CotizacionRepositorio
 {
-    const string CarpetaData = "Data";
-    private static readonly string RutaArchivo = 
-        Path.Combine(AppDomain.CurrentDomain.BaseDirectory, CarpetaData, "cotizaciones.json");
-   
+    private const string NombreArchivo = "cotizaciones.json";
+
     private readonly List<Cotizacion> cotizaciones = [];
 
     public CotizacionRepositorio()
-    {        
+    {
         CargarCotizaciones();
     }
 
@@ -27,9 +24,8 @@ public class CotizacionRepositorio
     public int ContarCotizaciones(string? estado)
     {
         if (string.IsNullOrWhiteSpace(estado))
-        {
             return cotizaciones.Count;
-        }
+
         return cotizaciones.Count(x => x.Estado == estado);
     }
 
@@ -43,39 +39,13 @@ public class CotizacionRepositorio
         }
     }
 
-    private void GuardarCotizaciones()
-    {
-        Directory.CreateDirectory(CarpetaData);
-
-        var options = new JsonSerializerOptions 
-        { 
-            WriteIndented = true 
-        };        
-        
-        using (var writer = new StreamWriter(RutaArchivo))
-        {
-            var json = JsonSerializer.Serialize(cotizaciones, options);
-            writer.Write(json);
-        }
-    }
+    private void GuardarCotizaciones() =>
+        AlmacenJsonCifrado.Guardar(NombreArchivo, cotizaciones);
 
     private void CargarCotizaciones()
     {
-        if (!File.Exists(RutaArchivo)) return;
-
-        var opciones = new JsonSerializerOptions
-        {
-            PropertyNameCaseInsensitive = true
-        };
-
-        using (var reader = new StreamReader(RutaArchivo))
-        {
-            var json = reader.ReadToEnd();
-            var cotizacionesCargadas = JsonSerializer.Deserialize<List<Cotizacion>>(json, opciones);
-            if (cotizacionesCargadas != null)
-            {
-                cotizaciones.AddRange(cotizacionesCargadas);
-            }
-        }
+        var cotizacionesCargadas = AlmacenJsonCifrado.Cargar<List<Cotizacion>>(NombreArchivo);
+        if (cotizacionesCargadas != null)
+            cotizaciones.AddRange(cotizacionesCargadas);
     }
 }
