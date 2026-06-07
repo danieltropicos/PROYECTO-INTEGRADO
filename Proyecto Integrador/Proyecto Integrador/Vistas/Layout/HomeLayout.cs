@@ -28,7 +28,7 @@ public partial class HomeLayout : Form
 
         picLogoNavbar.ImageLocation = RecursosAplicacion.RutaLogoNavbar;
         ConfigurarHoverSidebar();
-        UiHelper.EstilizarBotonNavbar(btnMiPerfilNavbar);
+        Estilos.EstilizarBotonNavbar(btnMiPerfilNavbar);
         AbrirVista(new HomeControl(_usuario), btnHome);
     }
 
@@ -60,20 +60,20 @@ public partial class HomeLayout : Form
 
     private void ConfigurarHoverSidebar()
     {
-        UiHelper.ConfigurarHoverItemSidebar(panelMenuHome, btnHome, () => _botonSidebarActivo == btnHome);
-        UiHelper.ConfigurarHoverItemSidebar(panelMenuUsuarios, button1, () => _botonSidebarActivo == button1);
-        UiHelper.ConfigurarHoverItemSidebar(panelMenuClientes, button2, () => _botonSidebarActivo == button2);
-        UiHelper.ConfigurarHoverItemSidebar(panelMenuCotizacion, button3, () => _botonSidebarActivo == button3);
-        UiHelper.ConfigurarHoverItemSidebar(panelMenuMateriales, button4, () => _botonSidebarActivo == button4);
-        UiHelper.ConfigurarHoverItemSidebar(panelMenuFacturas, button5, () => _botonSidebarActivo == button5);
-        UiHelper.ConfigurarHoverItemSidebar(panelCerrarSesion, btnCerrarSesion, () => false);
+        Estilos.ConfigurarHoverItemSidebar(panelMenuHome, btnHome, () => _botonSidebarActivo == btnHome);
+        Estilos.ConfigurarHoverItemSidebar(panelMenuUsuarios, button1, () => _botonSidebarActivo == button1);
+        Estilos.ConfigurarHoverItemSidebar(panelMenuClientes, button2, () => _botonSidebarActivo == button2);
+        Estilos.ConfigurarHoverItemSidebar(panelMenuCotizacion, button3, () => _botonSidebarActivo == button3);
+        Estilos.ConfigurarHoverItemSidebar(panelMenuMateriales, button4, () => _botonSidebarActivo == button4);
+        Estilos.ConfigurarHoverItemSidebar(panelMenuFacturas, button5, () => _botonSidebarActivo == button5);
+        Estilos.ConfigurarHoverItemSidebar(panelCerrarSesion, btnCerrarSesion, () => false);
     }
 
     private void MarcarActivoSidebar(Button? activo)
 
     {
         _botonSidebarActivo = activo;
-        UiHelper.MarcarBotonSidebarActivo(activo, _botonesMenu);
+        Estilos.MarcarBotonSidebarActivo(activo, _botonesMenu);
     }
 
     private void btnHome_Click(object sender, EventArgs e) =>

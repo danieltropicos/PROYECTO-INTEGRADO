@@ -15,9 +15,9 @@ namespace Proyecto_Integrador.Vistas.Usuarios
         {
             _usuario = usuario;
             InitializeComponent();
-            UiHelper.ConfigurarColumnasGrid(dgvUsuarios, colIconoEditar, colIconoEstado);
+            Estilos.ConfigurarColumnasGrid(dgvUsuarios, colIconoEditar, colIconoEstado);
             colIconoEstado.Visible = EsAdmin;
-            UiHelper.AjustarAnchosColumnas(dgvUsuarios, colIconoEditar, colIconoEstado);
+            Estilos.AjustarAnchosColumnas(dgvUsuarios, colIconoEditar, colIconoEstado);
             CargarUsuarios();
         }
 

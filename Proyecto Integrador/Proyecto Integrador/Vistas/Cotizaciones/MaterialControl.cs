@@ -14,7 +14,7 @@ namespace Proyecto_Integrador.Vistas.Cotizaciones
         public MaterialControl()
         {
             InitializeComponent();
-            UiHelper.ConfigurarColumnasGrid(dgvMateriales, colIconoEditar);
+            Estilos.ConfigurarColumnasGrid(dgvMateriales, colIconoEditar);
             CargarMateriales();
         }
 

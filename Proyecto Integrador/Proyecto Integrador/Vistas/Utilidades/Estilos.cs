@@ -1,6 +1,6 @@
 namespace Proyecto_Integrador.Vistas.Utilidades
 {
-    public static class UiHelper
+    public static class Estilos
     {
         private static readonly Color AzulPrincipal = Color.FromArgb(30, 58, 95);
         private static readonly Color AzulSecundario = Color.FromArgb(59, 93, 122);

@@ -3,6 +3,7 @@ using Proyecto_Integrador.Controladores;
 using Proyecto_Integrador.Modelos.Cotizaciones;
 using Proyecto_Integrador.Modelos.Usuarios;
 using Proyecto_Integrador.Vistas.Cotizaciones.Validaciones;
+using Proyecto_Integrador.Vistas.Layout;
 using System.Globalization;
 using System.Text.Json;
 
@@ -21,7 +22,6 @@ public partial class CotizacionControl : UserControl
     private Usuario? _usuario;
     private double _ultimoVolumen;
 
-    public event EventHandler? CotizacionGuardada;
     CalculoVolumenCodigo _calculo = new CalculoVolumenCodigo();
 
 
@@ -122,8 +122,7 @@ public partial class CotizacionControl : UserControl
                 MessageBoxButtons.OK,
                 MessageBoxIcon.Information);
 
-            btnGuardarCotizacion.Visible = false;
-            CotizacionGuardada?.Invoke(this, EventArgs.Empty);
+            HomeLayout.AbrirVista(new ListaCotizacionControl(_usuario!));
         }
         catch (Exception ex)
         {

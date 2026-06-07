@@ -13,7 +13,7 @@ namespace Proyecto_Integrador.Vistas.Clientes
         public ClienteControl(Usuario _)
         {
             InitializeComponent();
-            UiHelper.ConfigurarColumnasGrid(dgvClientes, colIconoEditar);
+            Estilos.ConfigurarColumnasGrid(dgvClientes, colIconoEditar);
             CargarClientes();
         }
 

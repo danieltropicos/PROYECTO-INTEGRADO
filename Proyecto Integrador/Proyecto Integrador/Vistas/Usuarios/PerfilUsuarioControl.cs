@@ -8,8 +8,8 @@ namespace Proyecto_Integrador.Vistas.Usuarios
         public PerfilUsuarioControl(Usuario usuario)
         {
             InitializeComponent();
-            UiHelper.EstilizarPanelTarjeta(panelTarjeta);
-            UiHelper.EstilizarEtiquetaRol(lblRol);
+            Estilos.EstilizarPanelTarjeta(panelTarjeta);
+            Estilos.EstilizarEtiquetaRol(lblRol);
             CargarDatos(usuario);
         }
 

@@ -21,9 +21,9 @@ public partial class FacturaControl : UserControl
         _usuario = usuario;
         facturaControlador = new FacturaControlador();
         InitializeComponent();
-        UiHelper.ConfigurarColumnasGrid(dgvFacturas, colIconoEstado, colIconoImprimir);
+        Estilos.ConfigurarColumnasGrid(dgvFacturas, colIconoEstado, colIconoImprimir);
         colIconoEstado.Visible = EsAdmin;
-        UiHelper.AjustarAnchosColumnas(dgvFacturas, colIconoEstado, colIconoImprimir);
+        Estilos.AjustarAnchosColumnas(dgvFacturas, colIconoEstado, colIconoImprimir);
         CargarFacturas();
     }
 

@@ -22,9 +22,9 @@ public partial class ListaCotizacionControl : UserControl
         _usuario = usuario;
 
         InitializeComponent();
-        UiHelper.ConfigurarColumnasGrid(dgvCotizaciones, colIconoGrafica, colIconoEstado, colIconoFactura);
+        Estilos.ConfigurarColumnasGrid(dgvCotizaciones, colIconoGrafica, colIconoEstado, colIconoFactura);
         colIconoEstado.Visible = EsAdmin;
-        UiHelper.AjustarAnchosColumnas(dgvCotizaciones, colIconoGrafica, colIconoEstado, colIconoFactura);
+        Estilos.AjustarAnchosColumnas(dgvCotizaciones, colIconoGrafica, colIconoEstado, colIconoFactura);
         CargarCotizaciones();
     }
 

@@ -157,10 +157,7 @@ public partial class HomeControl : UserControl
 
     private void btnNuevaCotizacion_Click(object sender, EventArgs e)
     {
-        var cotizacion = new CotizacionControl(_usuario);
-        cotizacion.CotizacionGuardada += (_, _) =>
-            HomeLayout.AbrirVista(new ListaCotizacionControl(_usuario));
-        HomeLayout.AbrirVista(cotizacion);
+        HomeLayout.AbrirVista(new CotizacionControl(_usuario));
     }
 
     private enum TipoActividad
