@@ -1,4 +1,5 @@
 using Proyecto_Integrador.Modelos.Usuarios;
+using Proyecto_Integrador.Validaciones;
 
 namespace Proyecto_Integrador.Vistas.Clientes
 {

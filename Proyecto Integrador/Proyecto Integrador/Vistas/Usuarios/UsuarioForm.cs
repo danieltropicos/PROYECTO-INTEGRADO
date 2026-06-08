@@ -1,5 +1,6 @@
 using Proyecto_Integrador.Controladores;
 using Proyecto_Integrador.Modelos.Usuarios;
+using Proyecto_Integrador.Validaciones;
 using Proyecto_Integrador.Vistas.Utilidades;
 
 namespace Proyecto_Integrador.Vistas.Usuarios
@@ -48,30 +49,52 @@ namespace Proyecto_Integrador.Vistas.Usuarios
                 string.IsNullOrWhiteSpace(txtUsuario.Text) ||
                 comboBoxRol.SelectedItem is not Rol rolSeleccionado)
             {
-                MessageBox.Show("Complete los campos obligatorios.", "Datos incompletos",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Complete los campos obligatorios.",
+                    "Datos incompletos",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
                 return;
             }
 
-            if (!EsEditar && string.IsNullOrWhiteSpace(txtContrasena.Text))
-            {
-                MessageBox.Show("Ingrese la contraseña.", "Datos incompletos",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            if (!ValidarNombreApellido.EsValido(txtNombre.Text))
                 return;
+
+            if (!ValidarNombreApellido.EsValido(txtApellido.Text))
+                return;
+
+            if (!string.IsNullOrWhiteSpace(txtTelefono.Text) &&
+                !ValidarTelefono.EsValido(txtTelefono.Text))
+                return;
+
+            if (!EsEditar)
+            {
+                if (string.IsNullOrWhiteSpace(txtContrasena.Text))
+                {
+                    MessageBox.Show("Ingrese la contraseña.",
+                        "Datos incompletos",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Warning);
+                    return;
+                }
+
+                if (!ValidarContraseña.EsValida(txtContrasena.Text))
+                    return;
             }
 
             var contrasena = txtContrasena.Text;
-            ContrasenaPlana = string.IsNullOrWhiteSpace(contrasena) ? null : contrasena;
+            ContrasenaPlana = string.IsNullOrWhiteSpace(contrasena)
+                ? null
+                : contrasena;
 
-            // En edición sin contraseña nueva, el repositorio conserva la anterior.
             var contrasenaParaModelo = ContrasenaPlana ?? "no-cambiar";
+
             Entidad = new Usuario(
                 txtNombre.Text.Trim(),
                 txtApellido.Text.Trim(),
                 txtCorreo.Text.Trim(),
                 txtTelefono.Text.Trim(),
                 txtDireccion.Text.Trim(),
-                txtUsuario.Text.Trim(),     
+                txtUsuario.Text.Trim(),
                 contrasenaParaModelo,
                 rolSeleccionado);
 
