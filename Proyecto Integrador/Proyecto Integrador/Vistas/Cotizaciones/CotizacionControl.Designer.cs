@@ -60,6 +60,10 @@ namespace Proyecto_Integrador.Vistas.Cotizaciones
             btnQuitarOriginal = new Button();
             groupBox4 = new GroupBox();
             tableLayoutPanel4 = new TableLayoutPanel();
+            label11 = new Label();
+            label10 = new Label();
+            label9 = new Label();
+            label8 = new Label();
             label4 = new Label();
             label5 = new Label();
             label6 = new Label();
@@ -488,23 +492,75 @@ namespace Proyecto_Integrador.Vistas.Cotizaciones
             tableLayoutPanel4.ColumnCount = 2;
             tableLayoutPanel4.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
             tableLayoutPanel4.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutPanel4.Controls.Add(label11, 1, 3);
+            tableLayoutPanel4.Controls.Add(label10, 0, 3);
+            tableLayoutPanel4.Controls.Add(label9, 1, 2);
+            tableLayoutPanel4.Controls.Add(label8, 0, 2);
             tableLayoutPanel4.Controls.Add(label4, 0, 0);
             tableLayoutPanel4.Controls.Add(label5, 1, 0);
             tableLayoutPanel4.Controls.Add(label6, 0, 1);
             tableLayoutPanel4.Controls.Add(label7, 1, 1);
-            tableLayoutPanel4.Controls.Add(button1, 0, 2);
-            tableLayoutPanel4.Controls.Add(btnGuardarCotizacion, 0, 3);
+            tableLayoutPanel4.Controls.Add(button1, 0, 4);
+            tableLayoutPanel4.Controls.Add(btnGuardarCotizacion, 0, 5);
             tableLayoutPanel4.Dock = DockStyle.Fill;
             tableLayoutPanel4.Location = new Point(3, 24);
             tableLayoutPanel4.Margin = new Padding(3, 4, 3, 4);
             tableLayoutPanel4.Name = "tableLayoutPanel4";
-            tableLayoutPanel4.RowCount = 4;
-            tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Absolute, 75F));
-            tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Absolute, 75F));
+            tableLayoutPanel4.RowCount = 6;
+            tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Percent, 25F));
+            tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Percent, 25F));
+            tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Percent, 25F));
+            tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Percent, 25F));
+            tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Absolute, 60F));
+            tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Absolute, 60F));
             tableLayoutPanel4.Size = new Size(470, 192);
             tableLayoutPanel4.TabIndex = 0;
+            // 
+            // label11
+            // 
+            label11.AutoSize = true;
+            label11.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label11.ForeColor = Color.FromArgb(30, 58, 95);
+            label11.Location = new Point(238, 54);
+            label11.Name = "label11";
+            label11.Size = new Size(27, 18);
+            label11.TabIndex = 9;
+            label11.Text = "$0";
+            label11.TextAlign = ContentAlignment.MiddleLeft;
+            // 
+            // label10
+            // 
+            label10.AutoSize = true;
+            label10.ForeColor = Color.FromArgb(75, 85, 99);
+            label10.Location = new Point(3, 54);
+            label10.Name = "label10";
+            label10.Size = new Size(208, 18);
+            label10.TabIndex = 8;
+            label10.Text = "Total A Pagar (IVA Incluido):";
+            label10.TextAlign = ContentAlignment.MiddleLeft;
+            // 
+            // label9
+            // 
+            label9.AutoSize = true;
+            label9.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label9.ForeColor = Color.FromArgb(30, 58, 95);
+            label9.Location = new Point(238, 36);
+            label9.Name = "label9";
+            label9.Size = new Size(27, 18);
+            label9.TabIndex = 7;
+            label9.Text = "$0";
+            label9.TextAlign = ContentAlignment.MiddleLeft;
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.ForeColor = Color.FromArgb(75, 85, 99);
+            label8.Location = new Point(3, 36);
+            label8.Name = "label8";
+            label8.Size = new Size(38, 18);
+            label8.TabIndex = 6;
+            label8.Text = "IVA:";
+            label8.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // label4
             // 
@@ -512,7 +568,7 @@ namespace Proyecto_Integrador.Vistas.Cotizaciones
             label4.ForeColor = Color.FromArgb(75, 85, 99);
             label4.Location = new Point(3, 0);
             label4.Name = "label4";
-            label4.Size = new Size(71, 20);
+            label4.Size = new Size(71, 18);
             label4.TabIndex = 0;
             label4.Text = "Volumen";
             label4.TextAlign = ContentAlignment.MiddleLeft;
@@ -524,7 +580,7 @@ namespace Proyecto_Integrador.Vistas.Cotizaciones
             label5.ForeColor = Color.FromArgb(30, 58, 95);
             label5.Location = new Point(238, 0);
             label5.Name = "label5";
-            label5.Size = new Size(42, 20);
+            label5.Size = new Size(42, 18);
             label5.TabIndex = 1;
             label5.Text = "0 m³";
             // 
@@ -532,9 +588,9 @@ namespace Proyecto_Integrador.Vistas.Cotizaciones
             // 
             label6.AutoSize = true;
             label6.ForeColor = Color.FromArgb(75, 85, 99);
-            label6.Location = new Point(3, 21);
+            label6.Location = new Point(3, 18);
             label6.Name = "label6";
-            label6.Size = new Size(48, 20);
+            label6.Size = new Size(48, 18);
             label6.TabIndex = 2;
             label6.Text = "Total:";
             label6.TextAlign = ContentAlignment.MiddleLeft;
@@ -544,9 +600,9 @@ namespace Proyecto_Integrador.Vistas.Cotizaciones
             label7.AutoSize = true;
             label7.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label7.ForeColor = Color.FromArgb(30, 58, 95);
-            label7.Location = new Point(238, 21);
+            label7.Location = new Point(238, 18);
             label7.Name = "label7";
-            label7.Size = new Size(27, 20);
+            label7.Size = new Size(27, 18);
             label7.TabIndex = 3;
             label7.Text = "$0";
             label7.TextAlign = ContentAlignment.MiddleLeft;
@@ -562,10 +618,10 @@ namespace Proyecto_Integrador.Vistas.Cotizaciones
             button1.FlatStyle = FlatStyle.Flat;
             button1.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             button1.ForeColor = Color.White;
-            button1.Location = new Point(3, 55);
+            button1.Location = new Point(3, 85);
             button1.Margin = new Padding(3, 13, 3, 4);
             button1.Name = "button1";
-            button1.Size = new Size(464, 56);
+            button1.Size = new Size(464, 43);
             button1.TabIndex = 4;
             button1.Text = "Calcular";
             button1.UseVisualStyleBackColor = false;
@@ -582,14 +638,13 @@ namespace Proyecto_Integrador.Vistas.Cotizaciones
             btnGuardarCotizacion.FlatStyle = FlatStyle.Flat;
             btnGuardarCotizacion.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             btnGuardarCotizacion.ForeColor = Color.White;
-            btnGuardarCotizacion.Location = new Point(3, 130);
+            btnGuardarCotizacion.Location = new Point(3, 145);
             btnGuardarCotizacion.Margin = new Padding(3, 13, 3, 4);
             btnGuardarCotizacion.Name = "btnGuardarCotizacion";
-            btnGuardarCotizacion.Size = new Size(464, 56);
+            btnGuardarCotizacion.Size = new Size(464, 43);
             btnGuardarCotizacion.TabIndex = 5;
             btnGuardarCotizacion.Text = "Guardar Cotización";
             btnGuardarCotizacion.UseVisualStyleBackColor = false;
-            btnGuardarCotizacion.Visible = false;
             btnGuardarCotizacion.Click += btnGuardarCotizacion_Click;
             // 
             // CotizacionControl
@@ -651,8 +706,12 @@ namespace Proyecto_Integrador.Vistas.Cotizaciones
         private Label label6;
         private Label label7;
         private Button button1;
-        private Button btnGuardarCotizacion;
         private Label label2;
         private ComboBox comboBoxMateriales;
+        private Label label9;
+        private Label label8;
+        private Button btnGuardarCotizacion;
+        private Label label11;
+        private Label label10;
     }
 }

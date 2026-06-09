@@ -245,7 +245,83 @@ public partial class Terreno3DControl : UserControl
 
         using var g = _gl.CreateGraphics();
         DibujarLeyenda(g);
+        DibujarEtiquetasEjes(g);   // <── agregar esta línea
         DibujarHint(g);
+    }
+    private void DibujarEtiquetasEjes(Graphics g)
+    {
+        if (_puntos.Count == 0) return;
+
+        using var f = new Font("Segoe UI", 7f);
+        using var brX = new SolidBrush(Color.FromArgb(230, 230, 80, 80));
+        using var brY = new SolidBrush(Color.FromArgb(230, 80, 210, 80));
+        using var brZ = new SolidBrush(Color.FromArgb(230, 100, 160, 255));
+
+        float piso = _zMin - (_zMax - _zMin) * 0.10f;
+        const int PASOS = 8;
+
+        // Etiquetas X
+        for (int i = 0; i <= PASOS; i++)
+        {
+            float xv = _xMin + (_xMax - _xMin) * i / PASOS;
+            if (Project(new Vector3(xv, _yMin, piso), out PointF sp))
+                g.DrawString($"{xv:F1}", f, brX, sp.X - 12, sp.Y + 2);
+        }
+
+        // Etiquetas Y
+        for (int i = 0; i <= PASOS; i++)
+        {
+            float yv = _yMin + (_yMax - _yMin) * i / PASOS;
+            if (Project(new Vector3(_xMin, yv, piso), out PointF sp))
+                g.DrawString($"{yv:F1}", f, brY, sp.X + 3, sp.Y - 8);
+        }
+
+        // Etiquetas Z
+        const int TICKS = 5;
+        float tickLen = (_xMax - _xMin) * 0.03f;
+        for (int i = 0; i <= TICKS; i++)
+        {
+            float zv = _zMin + (_zMax - _zMin) * i / TICKS;
+            if (Project(new Vector3(_xMin - tickLen, _yMin, zv), out PointF sp))
+                g.DrawString($"{zv:F1}", f, brZ, sp.X - 30, sp.Y - 6);
+        }
+    }
+
+    /// <summary>
+    /// Proyecta un punto del mundo 3D a coordenadas de pantalla.
+    /// Devuelve false si está fuera del frustum.
+    /// </summary>
+    private bool Project(Vector3 world, out PointF screen)
+    {
+        screen = PointF.Empty;
+
+        // Aplicar la misma transformación que en RenderEscenaGl
+        var translated = new Vector3(
+            (world.X - _cx) * _scale + _panX,
+            (world.Y - _cy) * _scale + _panY,
+            (world.Z - _cz) * _scale);
+
+        float thetaRad = MathHelper.DegreesToRadians(_camTheta);
+        float phiRad = MathHelper.DegreesToRadians(_camPhi);
+        float eyeX = _camDist * (float)(Math.Cos(phiRad) * Math.Cos(thetaRad));
+        float eyeY = _camDist * (float)(Math.Cos(phiRad) * Math.Sin(thetaRad));
+        float eyeZ = _camDist * (float)Math.Sin(phiRad);
+
+        var view = Matrix4.LookAt(new Vector3(eyeX, eyeY, eyeZ), Vector3.Zero, Vector3.UnitZ);
+        var proj = Matrix4.CreatePerspectiveFieldOfView(
+            MathHelper.DegreesToRadians(40f),
+            (float)_gl.Width / _gl.Height, 0.001f, 200f);
+
+        var clip = Vector4.Transform(new Vector4(translated, 1f), view * proj);
+        if (Math.Abs(clip.W) < 1e-7f) return false;
+
+        var ndc = new Vector3(clip.X / clip.W, clip.Y / clip.W, clip.Z / clip.W);
+        if (ndc.Z < -1f || ndc.Z > 1f) return false;
+
+        screen = new PointF(
+            (ndc.X + 1f) * 0.5f * _gl.Width,
+            (1f - (ndc.Y + 1f) * 0.5f) * _gl.Height);
+        return true;
     }
 
     private void RenderEscenaGl(int ancho, int alto)
@@ -403,6 +479,7 @@ public partial class Terreno3DControl : UserControl
         float extXY = (_xMax - _xMin) * 0.07f;
         float extZ = (_zMax - _zMin) * 0.15f;
 
+        // ── Ejes principales ──────────────────────────────────────────
         GL.LineWidth(2f);
         GL.Begin(PrimitiveType.Lines);
         GL.Color3(0.9f, 0.2f, 0.2f);
@@ -411,6 +488,58 @@ public partial class Terreno3DControl : UserControl
         GL.Vertex3(_xMin, _yMin, piso); GL.Vertex3(_xMin, _yMax + extXY, piso);
         GL.Color3(0.35f, 0.6f, 1.0f);
         GL.Vertex3(_xMin, _yMin, piso); GL.Vertex3(_xMin, _yMin, _zMax + extZ);
+        GL.End();
+        GL.LineWidth(1f);
+
+        // ── Cuadrícula base (plano XY en piso) ───────────────────────
+        DibujarCuadriculaBase(piso);
+
+        // ── Ticks de Z (líneas horizontales en eje Z) ─────────────────
+        DibujarTicksZ(piso);
+    }
+
+    private void DibujarCuadriculaBase(float piso)
+    {
+        GL.LineWidth(0.6f);
+        GL.Color4(0.4f, 0.5f, 0.6f, 0.35f);  // gris-azulado semitransparente
+
+        const int PASOS = 8;
+
+        // Líneas paralelas al eje Y (varían en X)
+        GL.Begin(PrimitiveType.Lines);
+        for (int i = 0; i <= PASOS; i++)
+        {
+            float x = _xMin + (_xMax - _xMin) * i / PASOS;
+            GL.Vertex3(x, _yMin, piso);
+            GL.Vertex3(x, _yMax, piso);
+        }
+        // Líneas paralelas al eje X (varían en Y)
+        for (int i = 0; i <= PASOS; i++)
+        {
+            float y = _yMin + (_yMax - _yMin) * i / PASOS;
+            GL.Vertex3(_xMin, y, piso);
+            GL.Vertex3(_xMax, y, piso);
+        }
+        GL.End();
+
+        GL.LineWidth(1f);
+    }
+
+    private void DibujarTicksZ(float piso)
+    {
+        const int TICKS = 5;
+        float tickLen = (_xMax - _xMin) * 0.03f;
+
+        GL.LineWidth(1.2f);
+        GL.Color3(0.35f, 0.6f, 1.0f);
+        GL.Begin(PrimitiveType.Lines);
+        for (int i = 0; i <= TICKS; i++)
+        {
+            float z = _zMin + (_zMax - _zMin) * i / TICKS;
+            // pequeña marca horizontal en el eje Z
+            GL.Vertex3(_xMin, _yMin, z);
+            GL.Vertex3(_xMin - tickLen, _yMin, z);
+        }
         GL.End();
         GL.LineWidth(1f);
     }

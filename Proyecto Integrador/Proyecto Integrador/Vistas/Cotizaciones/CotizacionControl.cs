@@ -90,7 +90,11 @@ public partial class CotizacionControl : UserControl
             var materialSeleccionado = comboBoxMateriales.SelectedItem as Material;
             decimal precioMetroCubico = materialSeleccionado?.ValorMetroCubico ?? 0;
             decimal costoTotal = (decimal)volumen * precioMetroCubico ;
+            decimal iva = costoTotal * 0.19m;
+            decimal totalapagar = costoTotal + iva;
             label7.Text = costoTotal.ToString("C0", new CultureInfo("es-CO"));
+            label9.Text = iva.ToString("C0", new CultureInfo("es-CO"));
+            label11.Text = totalapagar.ToString("C0", new CultureInfo("es-CO"));
 
             btnGuardarCotizacion.Visible = true;
         }
@@ -271,23 +275,34 @@ public partial class CotizacionControl : UserControl
         {
             for (int x = 0; x <= 200; x += 10)
             {
-                double cx = 100;
-                double cy = 100;
+                double z = 15;
 
-                double d = Math.Sqrt(
-                    Math.Pow(x - cx, 2) +
-                    Math.Pow(y - cy, 2));
+                // Entrada poco profunda
+                if (x >= 50 && x < 80)
+                    z = 10;
 
-                double borde = 20 - (d * 0.05);
-                double crater = -80 * Math.Exp(-(d * d) / 1500);
-                double ondulacion =
-                    4 * Math.Sin(x * 0.08) +
-                    3 * Math.Cos(y * 0.06);
+                // Más profunda
+                if (x >= 80 && x < 110)
+                    z = 5;
 
-                double z = borde + crater + ondulacion;
+                // Parte media
+                if (x >= 110 && x < 140)
+                    z = 0;
+
+                // Zona profunda
+                if (x >= 140 && x < 170)
+                    z = -10;
+
+                // Fondo más profundo
+                if (x >= 170)
+                    z = -20;
+
+                // Limitar la piscina a una franja
+                if (y < 50 || y > 150)
+                    z = 15;
 
                 _terreno.Add(
-                    new PuntoTerreno(x, y, Math.Round(z, 2)));
+                    new PuntoTerreno(x, y, z));
             }
         }
 
