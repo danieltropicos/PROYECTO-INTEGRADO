@@ -15,8 +15,10 @@ public class Cotizacion
     public Material Material { get; private set; }
     public decimal VolumenCalculado { get; private set; }
     public string Estado { get; private set; }
-    public decimal Total => VolumenCalculado * Material.ValorMetroCubico;
-
+    public decimal SubTotal => VolumenCalculado * Material.ValorMetroCubico;
+    public decimal Iva => SubTotal * 0.19m;
+    public decimal Total => SubTotal + Iva;
+   
     public DateTime FechaCreacion { get; private set; } = DateTime.Now;
 
     public Cotizacion(

@@ -245,7 +245,7 @@ public static class FacturaPdfGeneradorServicio
                {
                    r.RelativeItem().Text("Subtotal:").Bold().FontSize(9);
                    r.ConstantItem(110).AlignRight()
-                    .Text(factura.Total.ToString("C0", cultura)).FontSize(9);
+                    .Text(factura.Subtotal.ToString("C0", cultura)).FontSize(9);
                });
 
             // IVA
@@ -258,7 +258,7 @@ public static class FacturaPdfGeneradorServicio
                    r.RelativeItem()
                     .Text("IVA (0%):").FontColor(C_GRIS).FontSize(9);
                    r.ConstantItem(110).AlignRight()
-                    .Text("$0").FontColor(C_GRIS).FontSize(9);
+                    .Text(factura.Iva.ToString("C0", cultura) ?? "$0").FontColor(C_GRIS).FontSize(9);
                });
 
             // Total destacado
