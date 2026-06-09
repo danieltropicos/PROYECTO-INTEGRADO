@@ -256,7 +256,7 @@ public static class FacturaPdfGeneradorServicio
                .Row(r =>
                {
                    r.RelativeItem()
-                    .Text("IVA (0%):").FontColor(C_GRIS).FontSize(9);
+                    .Text("IVA (19%):").FontColor(C_GRIS).FontSize(9);
                    r.ConstantItem(110).AlignRight()
                     .Text(factura.Iva.ToString("C0", cultura) ?? "$0").FontColor(C_GRIS).FontSize(9);
                });
