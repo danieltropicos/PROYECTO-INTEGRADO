@@ -55,6 +55,7 @@ public partial class HomeControl : UserControl
 
         lblCantidadCotizacionesActivas.Text = _cotizacionControlador.ContarCotizaciones("Activa").ToString();
         lblCantidadCotizacionesInactivas.Text = _cotizacionControlador.ContarCotizaciones("Inactiva").ToString();
+        label2.Text=_facturaControlador.ContarFacturas().ToString();
 
         lblCantidadFacturasPendientes.Text = _facturaControlador.ContarFacturas("Pendiente").ToString();
         lblCantidadFacturasPagadas.Text = _facturaControlador.ContarFacturas("Pagada").ToString();
