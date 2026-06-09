@@ -17,6 +17,15 @@ namespace Proyecto_Integrador.Validaciones
                     MessageBoxIcon.Warning);
                 return false;
             }
+            if (telefono.Length != 10)
+            {
+                MessageBox.Show(
+                    "El telefono debe tener 10 digitos.",
+                    "Validación",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
+                return false;
+            }
 
             return true;
         }
