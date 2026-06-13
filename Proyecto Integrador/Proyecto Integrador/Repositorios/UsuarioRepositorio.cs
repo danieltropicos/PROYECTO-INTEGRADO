@@ -42,35 +42,25 @@ public class UsuarioRepositorio
         Guardar(lista);
     }
 
-    public void Actualizar(Guid id, Usuario nuevoModelo, string? contrasenaPlana = null)
+    public void Actualizar(Guid id, Usuario datos, string? contrasenaPlana = null)
     {
         var lista = AlmacenJsonCifrado.Cargar<List<Usuario>>(NombreArchivo) ?? [];
         var index = lista.FindIndex(u => u.Id == id);
-        if (index < 0) return;
+        if (index < 0)
+            return;
 
         var actual = lista[index];
-        lista[index] = new Usuario(
-            id,
-            nuevoModelo.Nombre,
-            nuevoModelo.Apellido,
-            nuevoModelo.CorreoElectronico,
-            nuevoModelo.Telefono,
-            nuevoModelo.Direccion,
-            nuevoModelo.NombreUsuario,
-            actual.ContrasenaEncriptada,
-            nuevoModelo.Rol,
-            nuevoModelo.EsActivo,
-            actual.FechaRegistro);
+        actual.ActualizarDatos(datos);
 
         if (!string.IsNullOrWhiteSpace(contrasenaPlana))
-            lista[index].CambiarContrasena(contrasenaPlana);
+            actual.CambiarContrasena(contrasenaPlana);
 
         Guardar(lista);
     }
 
     private static List<Usuario> CrearUsuariosIniciales() =>
     [
-        new Usuario(
+        CrearUsuarioInicial(
             "Admin",
             "Sistema",
             "admin@gmail.com",
@@ -79,7 +69,7 @@ public class UsuarioRepositorio
             "admin",
             "1234",
             new Rol("Admin")),
-        new Usuario(
+        CrearUsuarioInicial(
             "Usuario",
             "Prueba",
             "usuario@gmail.com",
@@ -89,4 +79,19 @@ public class UsuarioRepositorio
             "1234",
             new Rol("Usuario"))
     ];
+
+    private static Usuario CrearUsuarioInicial(
+        string nombre,
+        string apellido,
+        string correo,
+        string telefono,
+        string direccion,
+        string nombreUsuario,
+        string contrasena,
+        Rol rol)
+    {
+        var usuario = new Usuario(nombre, apellido, correo, telefono, direccion, nombreUsuario, rol);
+        usuario.EstablecerContrasena(contrasena);
+        return usuario;
+    }
 }

@@ -81,13 +81,15 @@ namespace Proyecto_Integrador.Vistas.Usuarios
                 if (!ValidarContraseña.EsValida(txtContrasena.Text))
                     return;
             }
+            else if (!string.IsNullOrWhiteSpace(txtContrasena.Text) &&
+                     !ValidarContraseña.EsValida(txtContrasena.Text))
+            {
+                return;
+            }
 
-            var contrasena = txtContrasena.Text;
-            ContrasenaPlana = string.IsNullOrWhiteSpace(contrasena)
+            ContrasenaPlana = string.IsNullOrWhiteSpace(txtContrasena.Text)
                 ? null
-                : contrasena;
-
-            var contrasenaParaModelo = ContrasenaPlana ?? "no-cambiar";
+                : txtContrasena.Text.Trim();
 
             Entidad = new Usuario(
                 txtNombre.Text.Trim(),
@@ -96,8 +98,10 @@ namespace Proyecto_Integrador.Vistas.Usuarios
                 txtTelefono.Text.Trim(),
                 txtDireccion.Text.Trim(),
                 txtUsuario.Text.Trim(),
-                contrasenaParaModelo,
                 _rol);
+
+            if (!EsEditar)
+                Entidad.EstablecerContrasena(ContrasenaPlana!);
 
             DialogResult = DialogResult.OK;
             Close();

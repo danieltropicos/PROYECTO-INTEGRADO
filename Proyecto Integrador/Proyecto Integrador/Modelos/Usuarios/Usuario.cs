@@ -7,8 +7,22 @@ namespace Proyecto_Integrador.Modelos.Usuarios;
 public class Usuario : Persona
 {
     public string NombreUsuario { get; private set; }
-    public string ContrasenaEncriptada { get; private set; }
+    public string ContrasenaEncriptada { get; private set; } = string.Empty;
     public Rol Rol { get; private set; }
+
+    public Usuario(
+        string nombre,
+        string apellido,
+        string correoElectronico,
+        string telefono,
+        string direccion,
+        string nombreUsuario,
+        Rol rol)
+        : base(nombre, apellido, correoElectronico, telefono, direccion)
+    {
+        NombreUsuario = nombreUsuario;
+        Rol = rol;
+    }
 
     [JsonConstructor]
     public Usuario(
@@ -30,33 +44,29 @@ public class Usuario : Persona
         Rol = rol;
     }
 
-    public Usuario(
-        string nombre,
-        string apellido,
-        string correoElectronico,
-        string telefono,
-        string direccion,
-        string nombreUsuario,
-        string contrasenaUsuario,
-        Rol rol)
-        : base(nombre, apellido, correoElectronico, telefono, direccion)
+    public void EstablecerContrasena(string contrasenaPlana)
     {
-        NombreUsuario = nombreUsuario;
-        ContrasenaEncriptada = HashContrasena(contrasenaUsuario);
-        Rol = rol;
-    }
-    public void CambiarContrasena(string nuevaContrasena)
-    {
-        ContrasenaEncriptada = HashContrasena(nuevaContrasena);
+        ContrasenaEncriptada = HashContrasena(contrasenaPlana);
     }
 
-    public bool ValidarContrasena(string contrasena)
+    public void CambiarContrasena(string nuevaContrasena) =>
+        EstablecerContrasena(nuevaContrasena);
+
+    public void ActualizarDatos(Usuario datos)
     {
-        return ContrasenaEncriptada ==
-            HashContrasena(contrasena);
+        Nombre = datos.Nombre;
+        Apellido = datos.Apellido;
+        CorreoElectronico = datos.CorreoElectronico;
+        Telefono = datos.Telefono;
+        Direccion = datos.Direccion;
+        NombreUsuario = datos.NombreUsuario;
+        Rol = datos.Rol;
     }
 
-    private string HashContrasena(string contrasena)
+    public bool ValidarContrasena(string contrasena) =>
+        ContrasenaEncriptada == HashContrasena(contrasena);
+
+    private static string HashContrasena(string contrasena)
     {
         using SHA256 sha256 = SHA256.Create();
         byte[] bytes = Encoding.UTF8.GetBytes(contrasena);

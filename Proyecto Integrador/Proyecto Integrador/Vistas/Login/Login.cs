@@ -108,16 +108,17 @@ namespace Proyecto_Integrador.Vistas.Login
 
         private static Usuario ObtenerUsuarioPrueba()
         {
-            var rol = new Rol("Admin");
-            return new Usuario(
+            var usuario = new Usuario(
                 "Admin",
                 "Temporal",
                 "admin@gmail.com",
                 "3000000000",
                 "Sin direccion",
                 "admin",
-                "1234",
-                rol);
+                new Rol("Admin"));
+
+            usuario.EstablecerContrasena("1234");
+            return usuario;
         }
 
         private void Ingresar(Usuario usuario)
