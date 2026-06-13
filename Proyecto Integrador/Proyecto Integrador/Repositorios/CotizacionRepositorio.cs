@@ -44,8 +44,18 @@ public class CotizacionRepositorio
 
     private void CargarCotizaciones()
     {
-        var cotizacionesCargadas = AlmacenJsonCifrado.Cargar<List<Cotizacion>>(NombreArchivo);
-        if (cotizacionesCargadas != null)
-            cotizaciones.AddRange(cotizacionesCargadas);
+        var cargadas = AlmacenJsonCifrado.Cargar<List<Cotizacion>>(NombreArchivo);
+        if (cargadas == null)
+            return;
+
+        var clienteRepositorio = new ClienteRepositorio();
+        foreach (var cotizacion in cargadas)
+        {
+            var cliente = clienteRepositorio.ObtenerPorId(cotizacion.ClienteId);
+            if (cliente != null)
+                cotizacion.VincularCliente(cliente);
+
+            cotizaciones.Add(cotizacion);
+        }
     }
 }

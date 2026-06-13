@@ -1,4 +1,3 @@
-using Proyecto_Integrador.Controladores;
 using Proyecto_Integrador.Modelos.Usuarios;
 using Proyecto_Integrador.Validaciones;
 using Proyecto_Integrador.Vistas.Utilidades;
@@ -7,47 +6,49 @@ namespace Proyecto_Integrador.Vistas.Usuarios
 {
     public partial class UsuarioForm : Form
     {
-        private readonly RolControlador _rolControlador = new();
+        private static readonly Rol RolPorDefecto = new("Usuario");
+
+        private readonly Rol _rol;
 
         public bool EsEditar { get; private set; }
         public Usuario? Entidad { get; private set; }
         public string? ContrasenaPlana { get; private set; }
 
-        public UsuarioForm()
+        public UsuarioForm() : this(null)
         {
-            InitializeComponent();
-            Text = "Nuevo usuario";
-            btnGuardar.Text = "Guardar";
-            comboBoxRol.DisplayMember = nameof(Rol.Nombre);
-            comboBoxRol.DataSource = _rolControlador.ObtenerRoles();
-            picOjo.ImageLocation = RecursosAplicacion.Ruta(RecursosAplicacion.ArchivoOjoCerrado);
         }
 
-        public UsuarioForm(Usuario usuario) : this()
+        public UsuarioForm(Usuario? usuario)
         {
-            EsEditar = true;
-            Text = "Editar usuario";
-            btnGuardar.Text = "Actualizar";
+            _rol = usuario?.Rol ?? RolPorDefecto;
+            EsEditar = usuario is not null;
 
-            txtNombre.Text = usuario.Nombre;
-            txtApellido.Text = usuario.Apellido;
-            txtCorreo.Text = usuario.CorreoElectronico;
-            txtTelefono.Text = usuario.Telefono;
-            txtDireccion.Text = usuario.Direccion;
-            txtUsuario.Text = usuario.NombreUsuario;
+            InitializeComponent();
+            picOjo.ImageLocation = RecursosAplicacion.Ruta(RecursosAplicacion.ArchivoOjoCerrado);
 
-            var rol = _rolControlador.ObtenerRoles()
-                .FirstOrDefault(r => r.Nombre == usuario.Rol.Nombre);
-            if (rol is not null)
-                comboBoxRol.SelectedItem = rol;
+            if (EsEditar)
+            {
+                Text = "Editar usuario";
+                btnGuardar.Text = "Actualizar";
+                txtNombre.Text = usuario!.Nombre;
+                txtApellido.Text = usuario.Apellido;
+                txtCorreo.Text = usuario.CorreoElectronico;
+                txtTelefono.Text = usuario.Telefono;
+                txtDireccion.Text = usuario.Direccion;
+                txtUsuario.Text = usuario.NombreUsuario;
+            }
+            else
+            {
+                Text = "Nuevo usuario";
+                btnGuardar.Text = "Guardar";
+            }
         }
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(txtNombre.Text) ||
                 string.IsNullOrWhiteSpace(txtApellido.Text) ||
-                string.IsNullOrWhiteSpace(txtUsuario.Text) ||
-                comboBoxRol.SelectedItem is not Rol rolSeleccionado)
+                string.IsNullOrWhiteSpace(txtUsuario.Text))
             {
                 MessageBox.Show("Complete los campos obligatorios.",
                     "Datos incompletos",
@@ -96,7 +97,7 @@ namespace Proyecto_Integrador.Vistas.Usuarios
                 txtDireccion.Text.Trim(),
                 txtUsuario.Text.Trim(),
                 contrasenaParaModelo,
-                rolSeleccionado);
+                _rol);
 
             DialogResult = DialogResult.OK;
             Close();

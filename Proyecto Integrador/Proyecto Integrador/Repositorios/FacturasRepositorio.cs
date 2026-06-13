@@ -17,8 +17,18 @@ public class FacturasRepositorio
     private void Cargar()
     {
         var cargadas = AlmacenJsonCifrado.Cargar<List<Factura>>(NombreArchivo);
-        if (cargadas != null)
-            facturas.AddRange(cargadas);
+        if (cargadas == null)
+            return;
+
+        var clienteRepositorio = new ClienteRepositorio();
+        foreach (var factura in cargadas)
+        {
+            var cliente = clienteRepositorio.ObtenerPorId(factura.ClienteId);
+            if (cliente != null)
+                factura.VincularCliente(cliente);
+
+            facturas.Add(factura);
+        }
     }
 
     private void Guardar() =>

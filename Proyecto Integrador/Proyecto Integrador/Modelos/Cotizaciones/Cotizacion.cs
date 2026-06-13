@@ -1,12 +1,16 @@
-﻿using System.Text.Json.Serialization;
-using Proyecto_Integrador.Modelos.Usuarios;
+﻿using Proyecto_Integrador.Modelos.Usuarios;
+using System.Text.Json.Serialization;
 
 namespace Proyecto_Integrador.Modelos.Cotizaciones;
 
 public class Cotizacion
 {
     public Guid Id { get; private set; } = Guid.NewGuid();
-    public Cliente Cliente { get; private set; }
+    public Guid ClienteId { get; private set; }
+
+    [JsonIgnore]
+    public Cliente? Cliente { get; private set; }
+
     public Usuario UsuarioCreador { get; private set; }
 
     [JsonPropertyName("TerrenoOriginal")]
@@ -18,7 +22,7 @@ public class Cotizacion
     public decimal SubTotal => VolumenCalculado * Material.ValorMetroCubico;
     public decimal Iva => SubTotal * 0.19m;
     public decimal Total => SubTotal + Iva;
-   
+
     public DateTime FechaCreacion { get; private set; } = DateTime.Now;
 
     public Cotizacion(
@@ -26,6 +30,7 @@ public class Cotizacion
         Usuario usuarioCreador,
         Material material)
     {
+        ClienteId = cliente.Id;
         Cliente = cliente;
         UsuarioCreador = usuarioCreador;
         Material = material;
@@ -35,7 +40,7 @@ public class Cotizacion
     [JsonConstructor]
     public Cotizacion(
         Guid id,
-        Cliente cliente,
+        Guid clienteId,
         Usuario usuarioCreador,
         List<PuntoTerreno> terreno,
         Material material,
@@ -44,7 +49,7 @@ public class Cotizacion
         DateTime fechaCreacion)
     {
         Id = id;
-        Cliente = cliente;
+        ClienteId = clienteId;
         UsuarioCreador = usuarioCreador;
         Terreno = terreno ?? new();
         Material = material;
@@ -53,28 +58,22 @@ public class Cotizacion
         FechaCreacion = fechaCreacion;
     }
 
-    public void Activar()
+    public void VincularCliente(Cliente cliente)
     {
-        Estado = "Activa";
+        if (cliente.Id != ClienteId)
+            return;
+
+        Cliente = cliente;
     }
 
-    public void Desactivar()
-    {
-        Estado = "Inactiva";
-    }
+    public void Activar() => Estado = "Activa";
 
-    public void AgregarPunto(PuntoTerreno punto)
-    {
-        Terreno.Add(punto);
-    }
+    public void Desactivar() => Estado = "Inactiva";
 
-    public void EstablecerVolumen(decimal volumen)
-    {
-        VolumenCalculado = volumen;
-    }
+    public void AgregarPunto(PuntoTerreno punto) => Terreno.Add(punto);
 
-    public void EstablecerTerreno(List<PuntoTerreno> terreno)
-    {
+    public void EstablecerVolumen(decimal volumen) => VolumenCalculado = volumen;
+
+    public void EstablecerTerreno(List<PuntoTerreno> terreno) =>
         Terreno = new List<PuntoTerreno>(terreno);
-    }
 }

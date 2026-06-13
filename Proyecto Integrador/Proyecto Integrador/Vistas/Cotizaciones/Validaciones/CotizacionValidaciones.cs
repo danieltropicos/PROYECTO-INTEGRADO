@@ -14,7 +14,7 @@ internal static class CotizacionValidaciones
         if (cotizacion is null)
             return "La cotización no puede ser nula.";
 
-        if (cotizacion.Cliente is null)
+        if (cotizacion.ClienteId == Guid.Empty || cotizacion.Cliente is null)
             return "Debe seleccionar un cliente.";
 
         if (cotizacion.UsuarioCreador is null)

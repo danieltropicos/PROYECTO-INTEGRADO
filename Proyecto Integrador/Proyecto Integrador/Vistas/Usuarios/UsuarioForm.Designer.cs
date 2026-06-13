@@ -34,8 +34,6 @@ namespace Proyecto_Integrador.Vistas.Usuarios
             tableLayoutContrasena = new TableLayoutPanel();
             txtContrasena = new TextBox();
             picOjo = new PictureBox();
-            labelRol = new Label();
-            comboBoxRol = new ComboBox();
             flowLayoutPanelBotones = new FlowLayoutPanel();
             btnCancelar = new Button();
             btnGuardar = new Button();
@@ -95,15 +93,12 @@ namespace Proyecto_Integrador.Vistas.Usuarios
             tableLayoutDatos.Controls.Add(txtUsuario, 1, 5);
             tableLayoutDatos.Controls.Add(labelContrasena, 0, 6);
             tableLayoutDatos.Controls.Add(tableLayoutContrasena, 1, 6);
-            tableLayoutDatos.Controls.Add(labelRol, 0, 7);
-            tableLayoutDatos.Controls.Add(comboBoxRol, 1, 7);
             tableLayoutDatos.Dock = DockStyle.Fill;
             tableLayoutDatos.Location = new Point(14, 31);
             tableLayoutDatos.Margin = new Padding(3, 4, 3, 4);
             tableLayoutDatos.Name = "tableLayoutDatos";
             tableLayoutDatos.Padding = new Padding(5);
-            tableLayoutDatos.RowCount = 8;
-            tableLayoutDatos.RowStyles.Add(new RowStyle(SizeType.Absolute, 48F));
+            tableLayoutDatos.RowCount = 7;
             tableLayoutDatos.RowStyles.Add(new RowStyle(SizeType.Absolute, 48F));
             tableLayoutDatos.RowStyles.Add(new RowStyle(SizeType.Absolute, 48F));
             tableLayoutDatos.RowStyles.Add(new RowStyle(SizeType.Absolute, 48F));
@@ -306,29 +301,6 @@ namespace Proyecto_Integrador.Vistas.Usuarios
             picOjo.TabStop = false;
             picOjo.Click += picOjo_Click;
             // 
-            // labelRol
-            // 
-            labelRol.Dock = DockStyle.Fill;
-            labelRol.Font = new Font("Segoe UI", 9F);
-            labelRol.ForeColor = Color.FromArgb(75, 85, 99);
-            labelRol.Location = new Point(8, 341);
-            labelRol.Name = "labelRol";
-            labelRol.Size = new Size(120, 50);
-            labelRol.TabIndex = 14;
-            labelRol.Text = "Rol";
-            labelRol.TextAlign = ContentAlignment.MiddleLeft;
-            // 
-            // comboBoxRol
-            // 
-            comboBoxRol.Dock = DockStyle.Fill;
-            comboBoxRol.DropDownStyle = ComboBoxStyle.DropDownList;
-            comboBoxRol.Font = new Font("Segoe UI", 10F);
-            comboBoxRol.Location = new Point(134, 345);
-            comboBoxRol.Margin = new Padding(3, 4, 3, 4);
-            comboBoxRol.Name = "comboBoxRol";
-            comboBoxRol.Size = new Size(347, 31);
-            comboBoxRol.TabIndex = 15;
-            // 
             // flowLayoutPanelBotones
             // 
             flowLayoutPanelBotones.Controls.Add(btnCancelar);
@@ -419,8 +391,6 @@ namespace Proyecto_Integrador.Vistas.Usuarios
         private TableLayoutPanel tableLayoutContrasena;
         private TextBox txtContrasena;
         private PictureBox picOjo;
-        private Label labelRol;
-        private ComboBox comboBoxRol;
         private FlowLayoutPanel flowLayoutPanelBotones;
         private Button btnCancelar;
         private Button btnGuardar;

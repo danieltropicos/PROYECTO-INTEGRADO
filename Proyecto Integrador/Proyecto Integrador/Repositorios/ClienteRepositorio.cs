@@ -39,6 +39,9 @@ public class ClienteRepositorio
 
     public int ContarClientes() => clientes.Count(c => c.EsActivo);
 
+    public Cliente? ObtenerPorId(Guid id) =>
+        clientes.FirstOrDefault(c => c.Id == id);
+
     public void Actualizar(Guid id, Cliente nuevoModelo)
     {
         var index = clientes.FindIndex(c => c.Id == id);
