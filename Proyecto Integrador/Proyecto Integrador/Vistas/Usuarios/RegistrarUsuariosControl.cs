@@ -38,7 +38,7 @@ namespace Proyecto_Integrador.Vistas.Usuarios
             {
                 var actualizado = form.Entidad;
                 actualizado.CambiarEstado(usuario!.EsActivo);
-                _controlador.ActualizarUsuario(usuario.Id, actualizado, form.ContrasenaPlana);
+                _controlador.ActualizarUsuario(usuario.Id, actualizado);
                 MessageBox.Show("Usuario actualizado exitosamente", "Éxito",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
             }

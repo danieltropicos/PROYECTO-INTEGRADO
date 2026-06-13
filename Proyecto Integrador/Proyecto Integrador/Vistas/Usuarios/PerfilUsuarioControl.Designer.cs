@@ -20,6 +20,7 @@
             panelTarjeta = new Panel();
             tableLayoutPerfil = new TableLayoutPanel();
             lblTitulo = new Label();
+            flowLayoutRol = new FlowLayoutPanel();
             lblRol = new Label();
             lblNombreValor = new Label();
             lblEtiquetaUsuario = new Label();
@@ -32,10 +33,12 @@
             lblDireccionValor = new Label();
             lblEtiquetaEstado = new Label();
             lblEstadoValor = new Label();
+            btnCambiarContrasena = new Button();
             panelPrincipal.SuspendLayout();
             tableLayoutCentro.SuspendLayout();
             panelTarjeta.SuspendLayout();
             tableLayoutPerfil.SuspendLayout();
+            flowLayoutRol.SuspendLayout();
             SuspendLayout();
             // 
             // panelPrincipal
@@ -82,7 +85,7 @@
             tableLayoutPerfil.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 150F));
             tableLayoutPerfil.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
             tableLayoutPerfil.Controls.Add(lblTitulo, 0, 0);
-            tableLayoutPerfil.Controls.Add(lblRol, 1, 0);
+            tableLayoutPerfil.Controls.Add(flowLayoutRol, 1, 0);
             tableLayoutPerfil.Controls.Add(lblNombreValor, 0, 1);
             tableLayoutPerfil.Controls.Add(lblEtiquetaUsuario, 0, 2);
             tableLayoutPerfil.Controls.Add(lblUsuarioValor, 1, 2);
@@ -119,6 +122,20 @@
             lblTitulo.TabIndex = 0;
             lblTitulo.Text = "Mi perfil";
             lblTitulo.TextAlign = ContentAlignment.MiddleLeft;
+            // 
+            // flowLayoutRol
+            // 
+            flowLayoutRol.Controls.Add(lblRol);
+            flowLayoutRol.Controls.Add(btnCambiarContrasena);
+            flowLayoutRol.Dock = DockStyle.Fill;
+            flowLayoutRol.FlowDirection = FlowDirection.LeftToRight;
+            flowLayoutRol.Location = new Point(153, 0);
+            flowLayoutRol.Margin = new Padding(0);
+            flowLayoutRol.Name = "flowLayoutRol";
+            flowLayoutRol.Padding = new Padding(0, 11, 0, 0);
+            flowLayoutRol.Size = new Size(346, 52);
+            flowLayoutRol.TabIndex = 13;
+            flowLayoutRol.WrapContents = false;
             // 
             // lblRol
             // 
@@ -268,7 +285,25 @@
             lblEstadoValor.TabIndex = 12;
             lblEstadoValor.Text = "Activo";
             lblEstadoValor.TextAlign = ContentAlignment.MiddleLeft;
-            // 
+            //
+            // btnCambiarContrasena
+            //
+            btnCambiarContrasena.Anchor = AnchorStyles.Left;
+            btnCambiarContrasena.BackColor = Color.FromArgb(30, 58, 95);
+            btnCambiarContrasena.Cursor = Cursors.Hand;
+            btnCambiarContrasena.FlatAppearance.BorderSize = 0;
+            btnCambiarContrasena.FlatStyle = FlatStyle.Flat;
+            btnCambiarContrasena.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            btnCambiarContrasena.ForeColor = Color.White;
+            btnCambiarContrasena.Location = new Point(85, 11);
+            btnCambiarContrasena.Margin = new Padding(12, 0, 0, 0);
+            btnCambiarContrasena.Name = "btnCambiarContrasena";
+            btnCambiarContrasena.Size = new Size(160, 29);
+            btnCambiarContrasena.TabIndex = 14;
+            btnCambiarContrasena.Text = "Cambiar contraseña";
+            btnCambiarContrasena.UseVisualStyleBackColor = false;
+            btnCambiarContrasena.Click += btnCambiarContrasena_Click;
+            //
             // PerfilUsuarioControl
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -282,6 +317,8 @@
             panelTarjeta.ResumeLayout(false);
             tableLayoutPerfil.ResumeLayout(false);
             tableLayoutPerfil.PerformLayout();
+            flowLayoutRol.ResumeLayout(false);
+            flowLayoutRol.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -292,6 +329,7 @@
         private Panel panelTarjeta;
         private TableLayoutPanel tableLayoutPerfil;
         private Label lblTitulo;
+        private FlowLayoutPanel flowLayoutRol;
         private Label lblRol;
         private Label lblNombreValor;
         private Label lblEtiquetaUsuario;
@@ -304,5 +342,6 @@
         private Label lblDireccionValor;
         private Label lblEtiquetaEstado;
         private Label lblEstadoValor;
+        private Button btnCambiarContrasena;
     }
 }

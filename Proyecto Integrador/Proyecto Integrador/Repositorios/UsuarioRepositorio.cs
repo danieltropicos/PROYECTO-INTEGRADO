@@ -42,6 +42,22 @@ public class UsuarioRepositorio
         Guardar(lista);
     }
 
+    public Usuario? ObtenerPorId(Guid id) =>
+        Leer().FirstOrDefault(u => u.Id == id);
+
+    public bool CambiarContrasena(Guid id, string contrasenaActual, string contrasenaNueva)
+    {
+        var lista = AlmacenJsonCifrado.Cargar<List<Usuario>>(NombreArchivo) ?? [];
+        var usuario = lista.FirstOrDefault(u => u.Id == id);
+
+        if (usuario is null || !usuario.ValidarContrasena(contrasenaActual))
+            return false;
+
+        usuario.CambiarContrasena(contrasenaNueva);
+        Guardar(lista);
+        return true;
+    }
+
     public void Actualizar(Guid id, Usuario datos, string? contrasenaPlana = null)
     {
         var lista = AlmacenJsonCifrado.Cargar<List<Usuario>>(NombreArchivo) ?? [];

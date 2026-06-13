@@ -5,12 +5,21 @@ namespace Proyecto_Integrador.Vistas.Usuarios
 {
     public partial class PerfilUsuarioControl : UserControl
     {
+        private readonly Usuario _usuario;
+
         public PerfilUsuarioControl(Usuario usuario)
         {
+            _usuario = usuario;
             InitializeComponent();
             Estilos.EstilizarPanelTarjeta(panelTarjeta);
             Estilos.EstilizarEtiquetaRol(lblRol);
             CargarDatos(usuario);
+        }
+
+        private void btnCambiarContrasena_Click(object sender, EventArgs e)
+        {
+            using var form = new CambiarContrasenaUsuario(_usuario);
+            form.ShowDialog(FindForm());
         }
 
         private void CargarDatos(Usuario usuario)

@@ -30,6 +30,8 @@ namespace Proyecto_Integrador.Vistas.Usuarios
             {
                 Text = "Editar usuario";
                 btnGuardar.Text = "Actualizar";
+                labelContrasena.Visible = false;
+                tableLayoutContrasena.Visible = false;
                 txtNombre.Text = usuario!.Nombre;
                 txtApellido.Text = usuario.Apellido;
                 txtCorreo.Text = usuario.CorreoElectronico;
@@ -46,50 +48,17 @@ namespace Proyecto_Integrador.Vistas.Usuarios
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(txtNombre.Text) ||
-                string.IsNullOrWhiteSpace(txtApellido.Text) ||
-                string.IsNullOrWhiteSpace(txtUsuario.Text))
-            {
-                MessageBox.Show("Complete los campos obligatorios.",
-                    "Datos incompletos",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Warning);
-                return;
-            }
-
-            if (!ValidarNombreApellido.EsValido(txtNombre.Text))
-                return;
-
-            if (!ValidarNombreApellido.EsValido(txtApellido.Text))
+            if (!ValidarUsuario.EsValidoParaGuardar(
+                    txtNombre.Text,
+                    txtApellido.Text,
+                    txtUsuario.Text,
+                    !EsEditar,
+                    txtContrasena.Text))
                 return;
 
             if (!string.IsNullOrWhiteSpace(txtTelefono.Text) &&
                 !ValidarTelefono.EsValido(txtTelefono.Text))
                 return;
-
-            if (!EsEditar)
-            {
-                if (string.IsNullOrWhiteSpace(txtContrasena.Text))
-                {
-                    MessageBox.Show("Ingrese la contraseña.",
-                        "Datos incompletos",
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Warning);
-                    return;
-                }
-
-                if (!ValidarContraseña.EsValida(txtContrasena.Text))
-                    return;
-            }
-            else if (!string.IsNullOrWhiteSpace(txtContrasena.Text) &&
-                     !ValidarContraseña.EsValida(txtContrasena.Text))
-            {
-                return;
-            }
-
-            ContrasenaPlana = string.IsNullOrWhiteSpace(txtContrasena.Text)
-                ? null
-                : txtContrasena.Text.Trim();
 
             Entidad = new Usuario(
                 txtNombre.Text.Trim(),
@@ -101,7 +70,14 @@ namespace Proyecto_Integrador.Vistas.Usuarios
                 _rol);
 
             if (!EsEditar)
-                Entidad.EstablecerContrasena(ContrasenaPlana!);
+            {
+                Entidad.EstablecerContrasena(txtContrasena.Text.Trim());
+                ContrasenaPlana = null;
+            }
+            else
+            {
+                ContrasenaPlana = null;
+            }
 
             DialogResult = DialogResult.OK;
             Close();

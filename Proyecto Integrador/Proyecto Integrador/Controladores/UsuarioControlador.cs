@@ -18,6 +18,9 @@ public class UsuarioControlador
     public Usuario? ObtenerUsuarioPorNombreUsuario(string nombreDeUsuario) =>
         usuarioRepositorio.ObtenerUsuarioPorNombreUsuario(nombreDeUsuario);
 
+    public bool CambiarContrasena(Guid id, string contrasenaActual, string contrasenaNueva) =>
+        usuarioRepositorio.CambiarContrasena(id, contrasenaActual, contrasenaNueva);
+
     public void AgregarUsuario(Usuario usuario)
     {
         usuarioRepositorio.Agregar(usuario);
